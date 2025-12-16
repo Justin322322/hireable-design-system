@@ -1,1 +1,0 @@
-export { AvailabilityCard } from "./AvailabilityCard";

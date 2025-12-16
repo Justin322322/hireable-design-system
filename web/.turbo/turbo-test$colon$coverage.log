@@ -1,0 +1,91 @@
+[?25l[2J[m[H]0;npm[?25h]0;npm run test:coverage[?25l
+> web@1.0.0 test:coverage
+> vitest run --coverage[5;1H[K[?25h]0;C:\Windows\system32\cmd.exe [?25l[46m[1m
+ RUN [m [36mv4.0.14 [90mC:/Users/rainb/OneDrive/Desktop/hireable-design/apps/web[m
+      [2mCoverage enabled with [33m[22mv8[m
+
+[70C[?2026h
+[2m Test Files [32m[22m[1m0 passed[90m[22m (4)[K[46C[m
+[2m      Tests [32m[22m[1m0 passed[90m[22m (0)[K[46C[m
+[2m   Start at [22m21:48:47[K[50C
+[2m   Duration [22m975ms[K[53C[?2026l
+[70C[?2026h[3;1H[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/input.test.tsx[2m [queued][22m[K
+[K[2m
+ Test Files [32m[22m[1m0 passed[90m[22m (4)[K[m[2m
+      Tests [32m[22m[1m0 passed[90m[22m (0)[K[m[2m
+   Start at [22m21:48:47[K[50C
+[2m   Duration [22m1.52s[K[53C[?2026l
+[70C[?2026h[H[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/badge.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/button.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/input.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/features/waitlist/services/waitlist.service.test.ts[2m [queued][22m   
+[K[2m
+ Test Files [32m[22m[1m0 passed[90m[22m (4)[K[m[2m
+      Tests [32m[22m[1m0 passed[90m[22m (0)[K[46C[m
+[2m   Start at [22m21:48:47[K[50C
+[2m   Duration [22m1.61s[K[53C[?2026l
+[70C[?2026h[H[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/badge.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/button.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/input.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/features/waitlist/services/waitlist.service.test.ts[2m [queued][22m   
+[K[2m
+ Test Files [32m[22m[1m0 passed[90m[22m (4)[K[m[2m
+      Tests [32m[22m[1m0 passed[90m[22m (0)[K[46C[m
+[2m   Start at [22m21:48:47[K[50C
+[2m   Duration [22m1.93s[K[53C[?2026l
+[70C[?2026h[H[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/badge.test.tsx[2m 0/7[22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/button.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/input.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/features/waitlist/services/waitlist.service.test.ts[2m [queued][22m   
+[K[2m
+ Test Files [32m[22m[1m0 passed[90m[22m (4)[K[m[2m
+      Tests [32m[22m[1m0 passed[90m[22m (7)[K[46C[m
+[2m   Start at [22m21:48:47[K[50C
+[2m   Duration [22m2.25s[K[53C[?2026l
+[70C[?2026h[H [32m✓ [msrc/features/waitlist/services/waitlist.service.test.ts [2m(1 test)[32m[22m 9[2mms[m[K
+[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/badge.test.tsx[2m 0/7[22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/button.test.tsx[2m 0/5[22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/input.test.tsx[2m 1/5[22m[K
+[K[2m
+ Test Files [32m[22m[1m1 passed[90m[22m (4)[K[46C[m
+[2m      Tests [32m[22m[1m2 passed[90m[22m (18)[K[45C[m
+[2m   Start at [22m21:48:47[K[50C
+[2m   Duration [22m2.35s[K[53C[?2026l
+[70C[?2026h[H [32m✓ [msrc/components/ui/ui-test/badge.test.tsx [2m(7 tests)[32m[22m 95[2mms[m[K
+ [32m✓ [msrc/components/ui/ui-test/input.test.tsx [2m(5 tests)[32m[22m 126[2mms[m[K
+[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/button.test.tsx[2m 4/5[22m[K
+[K[2m
+ Test Files [32m[22m[1m3 passed[90m[22m (4)[K[m[2m
+      Tests [32m[22m[1m17 passed[90m[22m (18)[K[m[2m
+   Start at [22m21:48:47[K[50C
+[2m   Duration [22m2.55s[K[53C[?2026l
+[70C[H [32m✓ [msrc/components/ui/ui-test/button.test.tsx [2m(5 tests)[32m[22m 142[2mms[m[K
+[K[2m
+ Test Files [22m [32m[1m4 passed[90m[22m (4)[K[m[2m
+      Tests [22m [32m[1m18 passed[90m[22m (18)[K[m[2m
+   Start at [22m 21:48:47[K[2m
+   Duration [22m 2.69s[2m (transform 438ms, setup 2.29s, import 505ms, tests 372ms, environment 4.44s)[22m[K
+[K[70C
+[34m % [m[2mCoverage report from [33m[22mv8[K[44C[m
+---------|---------|----------|---------|---------|-------------------
+File     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------|---------|----------|---------|---------|-------------------
+[33m[1m...files[m | [33m[1m  53.65[m | [32m[1m      80[m | [31m[1m  28.57[m | [33m[1m  53.65[m | [31m[1m[17X[m[17C 
+[32m[1m ...s/ui[m | [32m[1m    100[m | [32m[1m     100[m | [32m[1m    100[m | [32m[1m    100[m | [33m[1m[17X[m[17C 
+[32m[1m  ...tsx[m | [32m[1m    100[m | [32m[1m     100[m | [32m[1m    100[m | [32m[1m    100[m | [33m[1m[17X[m[17C 
+[32m[1m  ...tsx[m | [32m[1m    100[m | [32m[1m     100[m | [32m[1m    100[m | [32m[1m    100[m | [33m[1m[17X[m[17C 
+[32m[1m  ...tsx[m | [32m[1m    100[m | [32m[1m     100[m | [32m[1m    100[m | [32m[1m    100[m | [33m[1m[17X[m[17C 
+[31m[1m ...ices[m | [31m[1m  38.46[m | [33m[1m      50[m | [31m[1m  33.33[m | [31m[1m  38.46[m | [31m[1m[17X[m[17C 
+[31m[1m  ....ts[m | [31m[1m  38.46[m | [33m[1m      50[m | [31m[1m  33.33[m | [31m[1m  38.46[m | [31m[1m51-79,107-111    [m 
+[32m[1m lib    [m | [32m[1m    100[m | [32m[1m     100[m | [32m[1m    100[m | [32m[1m    100[m | [33m[1m[17X[m[17C 
+[70C[32m[1m  ....ts[m | [32m[1m    100[m | [32m[1m     100[m | [32m[1m    100[m | [32m[1m    100[m | [33m[1m[17X[m[17C 
+[31m[1m .../api[m | [31m[1m  35.29[m | [32m[1m     100[m | [31m[1m      0[m | [31m[1m  35.29[m | [31m[1m[17X[m[17C 
+[31m[1m  ....ts[m | [31m[1m  35.29[m | [32m[1m     100[m | [31m[1m      0[m | [31m[1m  35.29[m | [31m[1m...42,47-49,54-57[m 
+---------|---------|----------|---------|---------|-------------------
+[70C[?25h[K

@@ -1,0 +1,31 @@
+(globalThis.TURBOPACK_CHUNK_LISTS || (globalThis.TURBOPACK_CHUNK_LISTS = [])).push({
+    script: typeof document === "object" ? document.currentScript : undefined,
+    chunks: [
+  "static/chunks/apps_web_src_features_waitlist_sections_357f832a._.js",
+  "static/chunks/apps_web_src_features_waitlist_9597dea2._.js",
+  "static/chunks/apps_web_src_features_auth_1abf7e35._.js",
+  "static/chunks/apps_web_src_components_ba1e8722._.js",
+  "static/chunks/apps_web_src_621d7fc9._.js",
+  "static/chunks/apps_web_public_animated-icons_5c87b8b0._.js",
+  "static/chunks/node_modules_zod_v4_c222d447._.js",
+  "static/chunks/node_modules_tailwind-merge_dist_bundle-mjs_mjs_56b6fd65._.js",
+  "static/chunks/node_modules_next_cbc77adf._.js",
+  "static/chunks/node_modules_framer-motion_dist_es_831279b6._.js",
+  "static/chunks/node_modules_motion-dom_dist_es_a3821813._.js",
+  "static/chunks/node_modules_react-reconciler_dd58c996._.js",
+  "static/chunks/node_modules_three_build_three_core_996ef05a.js",
+  "static/chunks/node_modules_three_build_three_module_0c59ee63.js",
+  "static/chunks/node_modules_three_build_three_module_f7d46d9b.js",
+  "static/chunks/node_modules_@react-three_fiber_dist_89905fcc._.js",
+  "static/chunks/node_modules_recharts_es6_fd737fe8._.js",
+  "static/chunks/node_modules_lottie-web_build_player_lottie_576e9750.js",
+  "static/chunks/node_modules_react-icons_ai_index_mjs_9504e8ee._.js",
+  "static/chunks/node_modules_react-icons_fa_index_mjs_0459ff00._.js",
+  "static/chunks/node_modules_react-icons_lib_844c6c50._.js",
+  "static/chunks/node_modules_@radix-ui_1f2164c5._.js",
+  "static/chunks/node_modules_@floating-ui_1b6e7b6d._.js",
+  "static/chunks/node_modules_@reduxjs_toolkit_b00a18bb._.js",
+  "static/chunks/node_modules_46554ebd._.js"
+],
+    source: "dynamic"
+});

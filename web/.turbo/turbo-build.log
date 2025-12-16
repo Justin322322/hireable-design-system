@@ -1,0 +1,41 @@
+[?25l[2J[m[35m[2m[H$[m[1m[2m[1Cnext build
+]0;C:\Users\rainb\.bun\bin\bun.exe[?25h[22m[?25l   [38;2;173;127;168m[1m▲ Next.js 16.0.10[m (Turbopack)
+   - Environments: .env.local[5;1H[?25h [37m[1m [m Creating an optimized production build ...
+ [32m[1m✓[m Compiled successfully in 15.8s
+[?25l [37m[1m [m Running TypeScript  [36m.[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m [37m[1m [m Running TypeScript  [36m..[K[16C[m [37m[1m [m Running TypeScript  [36m...[K[15C[m [37m[1m [m Running TypeScript  [36m.[K[17C[m[7;1H [32m[1m✓[m Finished TypeScript in 14.4s[K
+ [37m[1m [m Collecting page data using 11 workers 
+[7;41H 
+ [36m.[K[39C[m[7;1H [37m[1m [m Collecting page data using 11 workers  [36m..[K[38C[m[K[41C[7;1H [37m[1m [m Collecting page data using 11 workers  [36m...[m[K[41C[7;1H[K[41C [37m[1m [m Collecting page data using 11 workers  [36m.[m[7;1H[K
+[K[41C[7;1H [37m[1m [m Collecting page data using 11 workers  [36m..[m[K[41C[7;1H [37m[1m [m Collecting page data using 11 workers  [36m...[m[7;1H [37m[1m [m Collecting page data using 11 workers  [36m.[K[39C[m[7;1H [37m[1m [m Collecting page data using 11 workers  [36m..[K[38C[m[7;1H [37m[1m [m Collecting page data using 11 workers  [36m...[K[37C[m[7;1H [37m[1m [m Collecting page data using 11 workers  [32m[1m✓[m Collecting page data using 11 workers [?25h
+[7;41H in 1841.7ms
+ [37m[1m [m Generating static pages using 11 worke[?25l
+[7;41Hers (0/17)  [36m[    ][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (0/17)  [36m[=   ][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (0/17)  [36m[==  ][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (0/17)  [36m[=== ][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (0/17)  [36m[ ===][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (0/17)  [36m[  ==][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (0/17)  [36m[   =][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (0/17)  [36m[    ][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (0/17)  [36m[   =][K[24C[m[K[41C[7;1H[K[41C [37m[1m [m Generating static pages using 11 workers (8/17)  [36m[  ==][m[7;1H [37m[1m [m Generating static pages using 11 workers (8/17)  [36m[ ===][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (8/17)  [36m[====][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (8/17)  [36m[=== ][K[24C[m[7;1H [37m[1m [m Generating static pages using 11 workers (16/17)  [36m[==  ][K[23C[m[K[41C[7;1H [32m[1m✓[m Generating static pages using 11 workers (17/17) in 2.7s[?25h
+ [37m[1m [m Finalizing page optimization  [36m.[?25l[m[7;1H [37m[1m [m Finalizing page optimization  [36m..      [m
+[K[41C[6;1H [37m[1m [m Finalizing page optimization  [36m...     [m
+[K[41C[5;1H [37m[1m [m Finalizing page optimization  [36m.       [m
+[K[41C[4;1H [37m[1m [m Finalizing page optimization  [36m..      [m
+[K[41C[3;1H [37m[1m [m Finalizing page optimization  [36m...     [m
+[K[41C[2;1H [37m[1m [m Finalizing page optimization  [36m.       [m
+[K[41C[H [37m[1m [m Finalizing page optimization  [36m..      [m
+[K[41C[H [37m[1m [m Finalizing page optimization in 1545.1 [32m[1m✓[m Finalizing page optimization in 1545.1ms [4m[5;1HRoute (app)[24m
+┌ ○ /
+├ ○ /_not-found
+├ ○ /forgot-password[?25h
+├ ○ /login
+├ ○ /privacy-policy
+├ ○ /reset-password
+├ ○ /robots.txt
+├ ○ /signup
+├ ○ /signup/client
+├ ○ /signup/success
+├ ○ /signup/talent
+├ ○ /signup/verify-email
+├ ○ /sitemap.xml
+├ ○ /toast-test
+├ ○ /waitlist/client/success
+└ ○ /waitlist/talent/success
+
+
+○  (Static)  prerendered as static conten
+[7;41Hnt
+

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/rainb/OneDrive/Desktop/hireable-site-v2/apps/web/src/features/waitlist/sections/FAQSection/index.ts"],"sourcesContent":["export { FAQSection } from \"./FAQSection\";\n"],"names":[],"mappings":";AAAA"}}]
+}

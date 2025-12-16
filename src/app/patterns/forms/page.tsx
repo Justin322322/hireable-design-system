@@ -1,0 +1,179 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { CodeBlock } from "@/components/docs/code-block";
+import { ComponentPreview } from "@/components/docs/component-preview";
+
+export default function FormsPatternPage() {
+  return (
+    <div className="container max-w-4xl py-12 px-8">
+      <div className="mb-12">
+        <h1 className="mb-4 text-3xl font-bold">Forms</h1>
+        <p className="text-lg text-muted-foreground">
+          Best practices for form layout, validation, and error handling to create 
+          accessible and user-friendly forms.
+        </p>
+      </div>
+
+      <Tabs defaultValue="layout" className="space-y-8">
+        <TabsList>
+          <TabsTrigger value="layout">Layout</TabsTrigger>
+          <TabsTrigger value="validation">Validation</TabsTrigger>
+          <TabsTrigger value="examples">Examples</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="layout" className="space-y-8">
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Form Layout Guidelines</h2>
+            <div className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Single Column</CardTitle>
+                </CardHeader>
+                <CardContent className="text-muted-foreground">
+                  <p>Use single-column layouts for most forms. They&apos;re easier to scan and complete.</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Label Placement</CardTitle>
+                </CardHeader>
+                <CardContent className="text-muted-foreground">
+                  <p>Place labels above inputs for better readability. Left-aligned labels work well for longer forms.</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Grouping</CardTitle>
+                </CardHeader>
+                <CardContent className="text-muted-foreground">
+                  <p>Group related fields together using fieldsets or visual spacing. This helps users understand the form structure.</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Button Placement</CardTitle>
+                </CardHeader>
+                <CardContent className="text-muted-foreground">
+                  <p>Place primary actions on the left, aligned with form fields. Secondary actions (Cancel) go to the right of primary.</p>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+        </TabsContent>
+
+        <TabsContent value="validation" className="space-y-8">
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Validation Guidelines</h2>
+            <div className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Inline Validation</CardTitle>
+                </CardHeader>
+                <CardContent className="text-muted-foreground">
+                  <p>Validate fields on blur (when user leaves the field). Show errors immediately below the field.</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Error Messages</CardTitle>
+                </CardHeader>
+                <CardContent className="text-muted-foreground">
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Be specific about what went wrong</li>
+                    <li>Explain how to fix the error</li>
+                    <li>Use plain language, not error codes</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Required Fields</CardTitle>
+                </CardHeader>
+                <CardContent className="text-muted-foreground">
+                  <p>Mark required fields with an asterisk (*) or indicate optional fields. Be consistent throughout the form.</p>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+        </TabsContent>
+
+        <TabsContent value="examples" className="space-y-8">
+          <ComponentPreview title="Basic Form">
+            <form className="space-y-4 max-w-md">
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-medium">
+                  Name <span className="text-destructive">*</span>
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium">
+                  Email <span className="text-destructive">*</span>
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-medium">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  placeholder="Your message..."
+                />
+              </div>
+              <div className="flex gap-2">
+                <Button type="submit">Submit</Button>
+                <Button type="button" variant="outline">Cancel</Button>
+              </div>
+            </form>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`<form className="space-y-4">
+  <div className="space-y-2">
+    <label htmlFor="name" className="text-sm font-medium">
+      Name <span className="text-destructive">*</span>
+    </label>
+    <input
+      id="name"
+      type="text"
+      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+    />
+  </div>
+  
+  <div className="space-y-2">
+    <label htmlFor="email" className="text-sm font-medium">
+      Email <span className="text-destructive">*</span>
+    </label>
+    <input
+      id="email"
+      type="email"
+      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+    />
+  </div>
+  
+  <div className="flex gap-2">
+    <Button type="submit">Submit</Button>
+    <Button type="button" variant="outline">Cancel</Button>
+  </div>
+</form>`}
+            language="tsx"
+          />
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
+}

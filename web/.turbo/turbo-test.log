@@ -1,0 +1,69 @@
+[?25l[2J[m[35m[2m[H$[m[1m[2m[1Cvitest run
+]0;C:\Users\rainb\.bun\bin\bun.exe[?25h[22m[?25l[46m[1m
+ RUN [m [36mv4.0.15 [90mC:/Users/rainb/OneDrive/Desktop/hireable-site-v2/apps/web[m[?2026h[?2026l[2m[8;1H Test Files [32m[22m[1m0 passed[90m[22m (9)[m[2m
+      Tests [32m[22m[1m0 passed[90m[22m (0)[m[2m
+   Start at [22m20:25:48[2m
+   Duration [22m966ms[?2026h[?2026l[7;1H[K[33m[1m
+ ❯ [msrc/features/waitlist/services/waitlist.service.test.ts[2m [queued][22m   
+[K[2m
+ Test Files [32m[22m[1m0 passed[90m[22m (9)[K[m[2m
+      Tests [32m[22m[1m0 passed[90m[22m (0)[K[m[2m
+   Start at [22m20:25:48[2m
+   Duration [22m1.85s[?2026h[7;1H[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/badge.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/button.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/input.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/features/auth/components/AuthLayout.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/features/waitlist/services/waitlist.service.integration.test.ts[2m [queued][33m[22m[1m
+ ❯ [msrc/features/waitlist/services/waitlist.service.test.ts[2m [queued][22m
+[33m[1m ❯ [msrc/hooks/useDebounce.test.ts[2m [q[22m
+[2m[19;35Hqueued][22m[K[29C
+[35C
+[2m Test Files [32m[22m[1m0 passed[90m[22m (9)[K[11C[m
+[2m      Tests [32m[22m[1m0 passed[90m[22m (0)[K[11C[m
+[2m   Start at [22m20:25:48[K[15C
+[2m   Duration [22m1.95s[K[18C[?2026l
+[35C[?2026h[H[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/badge.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/button.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/input.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/features/auth/components/AuthLayout.test.tsx[2m [queued][22m[K[33m[1m
+ ❯ [msrc/features/waitlist/services/waitlist.service.integration.test.ts[2m [queued][22m[K[33m[1m
+ ❯ [msrc/features/waitlist/services/waitlist.service.test.ts[2m [queued][22m   [33m[1m
+ ❯ [msrc/hooks/useDebounce.test.ts[2m 0/5[22m[K[33m[1m
+ ❯ [msrc/hooks/useMediaQuery.test.ts[2m [queued][22m[K[33m[1m
+ ❯ [msrc/lib/cors.test.ts[2m [queued][22m   
+[K[35C
+[2m Test Files [32m[22m[1m0 passed[90m[22m (9)[K[11C[m
+[2m      Tests [32m[22m[1m0 passed[90m[22m (5)[K[11C[m
+[2m   Start at [22m20:25:48[K[15C
+[2m   Duration [22m2.92s[K[18C[?2026l
+[35C[?2026h[H [32m✓ [msrc/features/waitlist/services/waitlist.service.test.ts [2m(2 tests)[32m[22m 10[2mms[m[K
+ [32m✓ [msrc/features/waitlist/services/waitlist.service.integration.test.ts [2m(4 tests)[32m[22m 15[2mms[m[K
+ [32m✓ [msrc/hooks/useDebounce.test.ts [2m(5 tests)[32m[22m 87[2mms[m[K
+[K
+[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/badge.test.tsx[2m 0/7[22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/button.test.tsx[2m 0/5[22m[K[33m[1m
+ ❯ [msrc/components/ui/ui-test/input.test.tsx[2m 0/5[22m[K[33m[1m
+ ❯ [msrc/features/auth/components/AuthLayout.test.tsx[2m 0/3[22m[K[33m[1m
+ ❯ [msrc/hooks/useMediaQuery.test.ts[2m 1/4[22m[K[32C
+[33m[1m ❯ [msrc/lib/cors.test.ts[2m [queued][22m   
+[35C
+[2m Test Files [32m[22m[1m3 passed[90m[22m (9)[K[11C[m
+[2m      Tests [32m[22m[1m12 passed[90m[22m (35)[K[9C[m
+[2m   Start at [22m20:25:48[K[15C
+[2m   Duration [22m3.02s[K[18C[?2026l
+[35C[2;1H [32m✓ [msrc/hooks/useMediaQuery.test.ts [2m(4 tests)[32m[22m 75[2mms[m[K
+ [32m✓ [msrc/components/ui/ui-test/badge.test.tsx [2m(7 tests)[32m[22m 96[2mms[m[K
+ [32m✓ [msrc/lib/cors.test.ts [2m(3 tests)[32m[22m 11[2mms[m[K
+ [32m✓ [msrc/components/ui/ui-test/input.test.tsx [2m(5 tests)[32m[22m 117[2mms[m[K
+ [32m✓ [msrc/features/auth/components/AuthLayout.test.tsx [2m(3 tests)[32m[22m 93[2mms[m    
+ [32m✓ [msrc/components/ui/ui-test/button.test.tsx [2m(5 tests)[32m[22m 116[2mms[m[K
+[K[2m
+ Test Files [22m [32m[1m9 passed[90m[22m (9)[K[m[2m
+      Tests [22m [32m[1m38 passed[90m[22m (38)        [m[2m
+   Start at [22m 20:25:48[K[2m
+   Duration [22m 3.14s[2m (transform 1.83s, setup 7.08s, import 2.22s, tests 621ms, environment 12.64s)[22m[K[9C
+[35C
+[?25h

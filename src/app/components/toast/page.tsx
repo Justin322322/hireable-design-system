@@ -28,8 +28,8 @@ export default function ToastPage() {
             <h2 className="mb-4 text-xl font-semibold">Toast Variants</h2>
             <div className="space-y-4">
               <Card>
-                <CardContent className="py-4">
-                  <div className="rounded-lg border bg-background p-4 shadow-lg flex items-start gap-3">
+                <CardContent className="py-4 flex justify-center">
+                  <div className="rounded-lg border bg-background p-4 shadow-lg flex items-start gap-3 w-full max-w-md">
                     <div className="flex-1">
                       <p className="font-medium">Success</p>
                       <p className="text-sm text-muted-foreground">Your changes have been saved.</p>
@@ -40,8 +40,8 @@ export default function ToastPage() {
               </Card>
 
               <Card>
-                <CardContent className="py-4">
-                  <div className="rounded-lg border border-destructive bg-background p-4 shadow-lg flex items-start gap-3">
+                <CardContent className="py-4 flex justify-center">
+                  <div className="rounded-lg border border-destructive bg-background p-4 shadow-lg flex items-start gap-3 w-full max-w-md">
                     <div className="flex-1">
                       <p className="font-medium text-destructive">Error</p>
                       <p className="text-sm text-muted-foreground">Something went wrong. Please try again.</p>

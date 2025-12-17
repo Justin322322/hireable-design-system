@@ -9,7 +9,7 @@ interface CodeBlockProps {
   showLineNumbers?: boolean;
 }
 
-export function CodeBlock({ code, language = "tsx", showLineNumbers = false }: CodeBlockProps) {
+export function CodeBlock({ code, language = "tsx" }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = async () => {

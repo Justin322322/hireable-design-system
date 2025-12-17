@@ -18,6 +18,11 @@ const guidelines = [
     href: "/guidelines/spacing",
   },
   {
+    title: "Corners & Roundness",
+    description: "Border radius scale and guidelines for consistent visual softness.",
+    href: "/guidelines/corners",
+  },
+  {
     title: "Icons",
     description: "Icon usage, sizing, and implementation guidelines.",
     href: "/guidelines/icons",

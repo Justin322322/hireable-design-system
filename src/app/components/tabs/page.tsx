@@ -12,7 +12,7 @@ export default function TabsPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Tabs</h1>
-          <Badge>Stable</Badge>
+          <Badge variant="outline">Stable</Badge>
         </div>
         <p className="text-lg text-muted-foreground">
           Tabs organize content into separate views where only one view is visible at a time.

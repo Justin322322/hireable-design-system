@@ -10,7 +10,7 @@ export default function InputPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Input</h1>
-          <Badge>Stable</Badge>
+          <Badge variant="outline">Stable</Badge>
         </div>
         <p className="text-lg text-muted-foreground">
           Input fields allow users to enter and edit text. Use appropriate types and validation for better UX.

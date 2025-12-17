@@ -1,40 +1,16 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-
-const sections = [
-  {
-    title: "Guidelines",
-    description: "Foundational standards for typography, color, spacing, and more.",
-    href: "/guidelines",
-  },
-  {
-    title: "Components",
-    description: "Reusable UI building blocks with usage guidelines and code examples.",
-    href: "/components",
-  },
-  {
-    title: "Patterns",
-    description: "Common UI patterns and best practices for complex interfaces.",
-    href: "/patterns",
-  },
-  {
-    title: "Resources",
-    description: "Design tokens, accessibility guidelines, and getting started guides.",
-    href: "/resources",
-  },
-];
 
 export default function HomePage() {
   return (
-    <div className="container max-w-5xl py-16 px-8">
-      <div className="mb-16">
+    <div className="container max-w-3xl py-16 px-8">
+      <div className="mb-12">
         <h1 className="mb-4 text-4xl font-bold tracking-tight">
           Hireable Design System
         </h1>
         <p className="mb-8 max-w-2xl text-lg text-muted-foreground">
           A comprehensive design system for building consistent, accessible, and 
-          scalable user interfaces. Built with modern tooling and best practices.
+          scalable user interfaces.
         </p>
         <div className="flex gap-4">
           <Button asChild>
@@ -46,17 +22,42 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        {sections.map((section) => (
-          <Link key={section.href} href={section.href}>
-            <Card className="h-full transition-colors hover:bg-muted/50">
-              <CardHeader>
-                <CardTitle>{section.title}</CardTitle>
-                <CardDescription>{section.description}</CardDescription>
-              </CardHeader>
-            </Card>
+      <div className="space-y-8">
+        <section>
+          <Link href="/guidelines" className="text-xl font-semibold hover:underline underline-offset-4">
+            Guidelines
           </Link>
-        ))}
+          <p className="mt-2 text-muted-foreground">
+            Foundational standards for typography, color, spacing, and more.
+          </p>
+        </section>
+
+        <section>
+          <Link href="/components" className="text-xl font-semibold hover:underline underline-offset-4">
+            Components
+          </Link>
+          <p className="mt-2 text-muted-foreground">
+            Reusable UI building blocks with usage guidelines and code examples.
+          </p>
+        </section>
+
+        <section>
+          <Link href="/patterns" className="text-xl font-semibold hover:underline underline-offset-4">
+            Patterns
+          </Link>
+          <p className="mt-2 text-muted-foreground">
+            Common UI patterns and best practices for complex interfaces.
+          </p>
+        </section>
+
+        <section>
+          <Link href="/resources" className="text-xl font-semibold hover:underline underline-offset-4">
+            Resources
+          </Link>
+          <p className="mt-2 text-muted-foreground">
+            Design tokens, accessibility guidelines, and getting started guides.
+          </p>
+        </section>
       </div>
     </div>
   );

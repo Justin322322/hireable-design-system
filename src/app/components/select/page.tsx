@@ -17,7 +17,7 @@ export default function SelectPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Select</h1>
-          <Badge>Stable</Badge>
+          <Badge variant="outline">Stable</Badge>
         </div>
         <p className="text-lg text-muted-foreground">
           Select allows users to choose from a list of options. Use when there are more than 5 options.

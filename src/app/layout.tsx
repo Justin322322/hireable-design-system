@@ -19,6 +19,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Hireable Design System",
   description: "A comprehensive design system for building consistent, accessible user interfaces.",
+  icons: {
+    icon: "/Logo.svg",
+  },
 };
 
 export default function RootLayout({

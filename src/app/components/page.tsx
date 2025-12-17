@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge";
 
 const components = [
   {
+    title: "Badge",
+    description: "Highlight important information and show status indicators.",
+    href: "/components/badge",
+    status: "stable",
+  },
+  {
     title: "Button",
     description: "Trigger actions and events with various styles and states.",
     href: "/components/button",
@@ -34,6 +40,12 @@ const components = [
     status: "stable",
   },
   {
+    title: "Toggle",
+    description: "Two-state button for on/off and binary choices.",
+    href: "/components/toggle",
+    status: "stable",
+  },
+  {
     title: "Modal",
     description: "Overlay dialogs for focused interactions.",
     href: "/components/modal",
@@ -48,9 +60,9 @@ const components = [
 ];
 
 const statusColors: Record<string, "default" | "secondary" | "outline"> = {
-  stable: "default",
+  stable: "outline",
   draft: "secondary",
-  deprecated: "outline",
+  deprecated: "secondary",
 };
 
 export default function ComponentsPage() {

@@ -21,7 +21,7 @@ const resources = [
 
 export default function ResourcesPage() {
   return (
-    <div className="container max-w-4xl py-12 px-8">
+    <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-12">
         <h1 className="mb-4 text-3xl font-bold">Resources</h1>
         <p className="text-lg text-muted-foreground">

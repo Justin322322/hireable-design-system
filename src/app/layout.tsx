@@ -3,6 +3,7 @@ import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Sidebar } from "@/components/layout/sidebar";
+import { Toaster } from "@/components/ui/toaster";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
             <main className="flex-1 overflow-auto flex justify-center">{children}</main>
           </div>
         </div>
+        <Toaster />
       </body>
     </html>
   );

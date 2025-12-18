@@ -10,8 +10,10 @@ import {
   LayoutGrid, 
   BookOpen 
 } from "lucide-react";
+import { DocsSearch } from "./search";
+import { MobileNav } from "./mobile-nav";
 
-const navItems = [
+export const navItems = [
   { label: "Guidelines", href: "/guidelines", icon: Ruler },
   { label: "Components", href: "/components", icon: Component },
   { label: "Patterns", href: "/patterns", icon: LayoutGrid },
@@ -23,13 +25,13 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
-      <div className="flex h-14 items-center px-6">
-        <Link href="/" className="mr-8 flex items-center gap-2">
+      <div className="flex h-14 items-center px-4 md:px-6">
+        <Link href="/" className="mr-4 flex items-center gap-2 md:mr-8">
           <Image src="/Logo.svg" alt="Logo" width={28} height={28} />
-          <Image src="/Logo-name.svg" alt="Hireable" width={80} height={20} className="h-5 w-auto" />
+          <Image src="/Logo-name.svg" alt="Hireable" width={80} height={20} className="hidden h-5 w-auto sm:block" />
         </Link>
 
-        <nav className="flex items-center gap-2">
+        <nav className="hidden items-center gap-2 md:flex">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname.startsWith(item.href);
@@ -52,13 +54,17 @@ export function SiteHeader() {
                     isActive ? "text-[#00A7F8]" : "text-muted-foreground"
                   )} 
                 />
-                <span>{item.label}</span>
+                <span className="hidden lg:inline-block">{item.label}</span>
+                {isActive && <span className="lg:hidden">{item.label}</span>}
               </Link>
             );
           })}
         </nav>
 
-
+        <div className="ml-auto flex flex-1 items-center justify-end gap-2 md:flex-initial md:gap-4">
+          <DocsSearch />
+          <MobileNav />
+        </div>
       </div>
     </header>
   );

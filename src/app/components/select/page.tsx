@@ -13,7 +13,7 @@ import { ComponentPreview } from "@/components/docs/component-preview";
 
 export default function SelectPage() {
   return (
-    <div className="container max-w-4xl py-12 px-8">
+    <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Select</h1>

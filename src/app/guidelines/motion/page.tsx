@@ -61,7 +61,7 @@ function EasingDemo({ easing, className }: { easing: string; className: string }
 
 export default function MotionPage() {
   return (
-    <div className="container max-w-4xl py-12 px-8">
+    <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-12">
         <h1 className="mb-4 text-3xl font-bold">Motion</h1>
         <p className="text-lg text-muted-foreground">

@@ -30,6 +30,10 @@ import {
   BadgeCheck,
   RectangleHorizontal,
   AreaChart,
+  CircleUser,
+  Divide,
+  Menu,
+  PanelBottom,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -44,7 +48,7 @@ interface NavSection {
   items: NavItem[];
 }
 
-const sidebarNav: Record<string, NavSection> = {
+export const sidebarNav: Record<string, NavSection> = {
   guidelines: {
     title: "Guidelines",
     items: [
@@ -70,6 +74,10 @@ const sidebarNav: Record<string, NavSection> = {
       { label: "Toast", href: "/components/toast", icon: Bell },
       { label: "Badge", href: "/components/badge", icon: BadgeCheck },
       { label: "Toggle", href: "/components/toggle", icon: ToggleLeft },
+      { label: "Avatar", href: "/components/avatar", icon: CircleUser },
+      { label: "Separator", href: "/components/separator", icon: Divide },
+      { label: "Navigation Menu", href: "/components/navigation-menu", icon: Menu },
+      { label: "Drawer", href: "/components/drawer", icon: PanelBottom },
       { label: "Chart", href: "/components/chart", icon: AreaChart },
     ],
   },

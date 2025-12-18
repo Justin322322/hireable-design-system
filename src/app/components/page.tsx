@@ -57,6 +57,36 @@ const components = [
     href: "/components/toast",
     status: "draft",
   },
+  {
+    title: "Avatar",
+    description: "Visual representation of a user or entity.",
+    href: "/components/avatar",
+    status: "draft",
+  },
+  {
+    title: "Separator",
+    description: "Visual divider between content sections.",
+    href: "/components/separator",
+    status: "draft",
+  },
+  {
+    title: "Navigation Menu",
+    description: "List of links for site navigation.",
+    href: "/components/navigation-menu",
+    status: "draft",
+  },
+  {
+    title: "Drawer",
+    description: "A panel that slides in from the edge of the screen.",
+    href: "/components/drawer",
+    status: "draft",
+  },
+  {
+    title: "Chart",
+    description: "Data visualizations for trends and comparisons.",
+    href: "/components/chart",
+    status: "draft",
+  },
 ];
 
 const statusColors: Record<string, "default" | "secondary" | "outline"> = {
@@ -67,7 +97,7 @@ const statusColors: Record<string, "default" | "secondary" | "outline"> = {
 
 export default function ComponentsPage() {
   return (
-    <div className="container max-w-4xl py-12 px-8">
+    <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-12">
         <h1 className="mb-4 text-3xl font-bold">Components</h1>
         <p className="text-lg text-muted-foreground">
@@ -83,9 +113,11 @@ export default function ComponentsPage() {
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-lg">{component.title}</CardTitle>
-                  <Badge variant={statusColors[component.status]}>
-                    {component.status}
-                  </Badge>
+                  {component.status !== "stable" && (
+                    <Badge variant={statusColors[component.status]}>
+                      {component.status}
+                    </Badge>
+                  )}
                 </div>
                 <CardDescription>{component.description}</CardDescription>
               </CardHeader>

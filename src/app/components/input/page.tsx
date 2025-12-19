@@ -124,6 +124,7 @@ export default function InputPage() {
                   <tr className="border-b">
                     <th className="py-3 text-left font-medium">Prop</th>
                     <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
                     <th className="py-3 text-left font-medium">Description</th>
                   </tr>
                 </thead>
@@ -131,17 +132,109 @@ export default function InputPage() {
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">type</td>
                     <td className="py-3 font-mono">string</td>
-                    <td className="py-3">Input type (text, email, password, etc.)</td>
+                    <td className="py-3">&quot;text&quot;</td>
+                    <td className="py-3">Input type (text, email, password, number, etc.)</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">placeholder</td>
                     <td className="py-3 font-mono">string</td>
-                    <td className="py-3">Placeholder text</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Placeholder text shown when empty</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">value</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Controlled input value</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">defaultValue</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Default value for uncontrolled input</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">onChange</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Callback when value changes</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">disabled</td>
                     <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">false</td>
                     <td className="py-3">Disable the input</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">required</td>
+                    <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">false</td>
+                    <td className="py-3">Mark input as required</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">readOnly</td>
+                    <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">false</td>
+                    <td className="py-3">Make input read-only</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">maxLength</td>
+                    <td className="py-3 font-mono">number</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Maximum character length</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">pattern</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Regex pattern for validation</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Input Types</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                    <th className="py-3 text-left font-medium">Use Case</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">text</td>
+                    <td className="py-3">Single-line text input</td>
+                    <td className="py-3">Names, titles, general text</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">email</td>
+                    <td className="py-3">Email address input with validation</td>
+                    <td className="py-3">Email fields</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">password</td>
+                    <td className="py-3">Masked text input</td>
+                    <td className="py-3">Password fields</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">number</td>
+                    <td className="py-3">Numeric input with spinners</td>
+                    <td className="py-3">Quantities, amounts</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">tel</td>
+                    <td className="py-3">Phone number input</td>
+                    <td className="py-3">Phone fields</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">search</td>
+                    <td className="py-3">Search input with clear button</td>
+                    <td className="py-3">Search bars</td>
                   </tr>
                 </tbody>
               </table>

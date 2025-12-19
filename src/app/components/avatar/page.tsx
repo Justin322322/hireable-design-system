@@ -99,29 +99,87 @@ export default function AvatarPage() {
 
         <TabsContent value="api" className="space-y-8">
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Avatar Props</h2>
+            <h2 className="mb-4 text-xl font-semibold">Components</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b">
                     <th className="py-3 text-left font-medium">Component</th>
-                    <th className="py-3 text-left font-medium">Prop</th>
-                    <th className="py-3 text-left font-medium">Type</th>
                     <th className="py-3 text-left font-medium">Description</th>
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
                   <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">Avatar</td>
+                    <td className="py-3">Root container element</td>
+                  </tr>
+                  <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">AvatarImage</td>
-                    <td className="py-3 font-mono">src</td>
-                    <td className="py-3 font-mono">string</td>
-                    <td className="py-3">The source of the image to render</td>
+                    <td className="py-3">Image element with loading states</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">AvatarFallback</td>
-                    <td className="py-3 font-mono">delayMs</td>
+                    <td className="py-3">Fallback content when image fails</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">AvatarImage Props</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Prop</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">src</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Image source URL</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">alt</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Alt text for accessibility</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">onLoadingStatusChange</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Callback for loading state changes</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">AvatarFallback Props</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Prop</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">delayMs</td>
                     <td className="py-3 font-mono">number</td>
-                    <td className="py-3">How long to wait before showing fallback</td>
+                    <td className="py-3">600</td>
+                    <td className="py-3">Delay before showing fallback (ms)</td>
                   </tr>
                 </tbody>
               </table>

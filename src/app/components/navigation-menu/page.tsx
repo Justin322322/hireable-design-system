@@ -133,9 +133,90 @@ export default function NavigationMenuPage() {
 
         <TabsContent value="api" className="space-y-8">
           <section>
-            <h2 className="mb-4 text-xl font-semibold">API Reference</h2>
-            <div className="text-sm text-muted-foreground">
-              Supports all props from Radix UI Navigation Menu.
+            <h2 className="mb-4 text-xl font-semibold">Components</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Component</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">NavigationMenu</td>
+                    <td className="py-3">Root container</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">NavigationMenuList</td>
+                    <td className="py-3">Container for menu items</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">NavigationMenuItem</td>
+                    <td className="py-3">Individual menu item wrapper</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">NavigationMenuTrigger</td>
+                    <td className="py-3">Button that opens dropdown content</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">NavigationMenuContent</td>
+                    <td className="py-3">Dropdown content container</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">NavigationMenuLink</td>
+                    <td className="py-3">Navigation link element</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">NavigationMenu Props</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Prop</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">value</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Controlled active item value</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">defaultValue</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Default active item value</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">onValueChange</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Callback when active item changes</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">delayDuration</td>
+                    <td className="py-3 font-mono">number</td>
+                    <td className="py-3">200</td>
+                    <td className="py-3">Delay before opening on hover (ms)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">skipDelayDuration</td>
+                    <td className="py-3 font-mono">number</td>
+                    <td className="py-3">300</td>
+                    <td className="py-3">Delay skip duration when moving between items</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </section>
         </TabsContent>

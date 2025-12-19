@@ -1,0 +1,64 @@
+{
+  "applicationsColumn": {
+    "id": "col-applications-sent",
+    "title": "Applications Sent",
+    "count": 3,
+    "items": [
+      {
+        "id": "app-001",
+        "company": "Smith Boutique Corp",
+        "position": "Regional Sales Director",
+        "salary": "$110k - $140k/yr",
+        "experience": "1-3 years experience",
+        "status": "FULL-TIME",
+        "postedTime": "Posted 1 day ago."
+      },
+      {
+        "id": "app-002",
+        "company": "NowTech Industries",
+        "position": "Account Executive",
+        "salary": "$90k - $120k/yr",
+        "experience": "1-3 years experience",
+        "status": "FULL-TIME",
+        "postedTime": "Posted 1 day ago."
+      },
+      {
+        "id": "app-003",
+        "company": "Quantum Loop Enterprises",
+        "position": "Sales Operations Specialist",
+        "salary": "$75k - $95k/yr",
+        "experience": "1-3 years experience",
+        "status": "FULL-TIME",
+        "postedTime": "Posted 1 day ago."
+      }
+    ]
+  },
+  "candidatesColumn": {
+    "id": "col-candidates",
+    "title": "Candidates",
+    "count": 3,
+    "items": [
+      {
+        "id": "cand-001",
+        "name": "Isabel Reyes",
+        "role": "Sales Manager",
+        "salary": "$1,750 /mo",
+        "experience": "2-5 years"
+      },
+      {
+        "id": "cand-002",
+        "name": "Nicola Fernandez",
+        "role": "Sales Manager",
+        "salary": "$1,850 /mo",
+        "experience": "2-5 years"
+      },
+      {
+        "id": "cand-003",
+        "name": "Bianca Santos",
+        "role": "Sales Manager",
+        "salary": "$1,650 /mo",
+        "experience": "2-5 years"
+      }
+    ]
+  }
+}

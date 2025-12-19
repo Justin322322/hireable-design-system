@@ -1,0 +1,66 @@
+{
+  "candidateProfile": {
+    "id": "candidate-94821",
+    "name": "Mikaela Santos",
+    "role": "Sales Representative",
+    "avatar": "https://randomuser.me/api/portraits/women/44.jpg",
+    "salary": "$2,200 /mo",
+    "experience": "5-8 years",
+    "location": "Manila, Philippines",
+    "status": "Active",
+    "activityTitle": "Activity Title",
+    "application": {
+      "position": "Sales Representative",
+      "appliedDate": "2 days ago"
+    },
+    "aiMatch": {
+      "percentage": 92,
+      "workStyleFit": "Mikaela's collaborative and results-driven personality aligns with your team's preference for structured problem solvers who thrive in cross-functional environments.",
+      "performanceHistory": "In her previous role, Mikaela successfully delivered objectives in sales prospecting and pipeline growth, which directly match your current objectives for lead generation and revenue expansion.",
+      "jobDescriptionFit": "With 4+ years of experience in B2B sales operations and a track record of implementing productivity-enhancing strategies, Mikaela's background matches the role requirements for a Sales Representative."
+    },
+    "about": "I am a dedicated sales operations manager with a knack for optimizing processes and driving team success. My experience spans across managing sales strategies and implementing effective solutions that enhance productivity. I thrive on collaboration and am always looking for innovative ways to support my team and improve our sales performance. My goal is to leverage my skills to contribute to the growth and efficiency of the organization.",
+    "skills": [
+      "Talent skills",
+      "Sales Operations",
+      "CRM",
+      "Data Analysis",
+      "Team Leadership",
+      "Process Optimization",
+      "Strategy"
+    ],
+    "education": [
+      {
+        "id": "edu-001",
+        "degree": "Master of Business Administration",
+        "school": "De La Salle University, Manila",
+        "years": "2014-2018"
+      },
+      {
+        "id": "edu-002",
+        "degree": "Bachelor of Science in Marketing Management",
+        "school": "De La Salle University, Manila",
+        "years": "2010-2014"
+      }
+    ],
+    "certificates": [
+      {
+        "id": "cert-001",
+        "name": "Digital Marketing Certification",
+        "issuer": "Google Digital Garage",
+        "year": "2020"
+      },
+      {
+        "id": "cert-002",
+        "name": "HubSpot Content Marketing Certification",
+        "issuer": "HubSpot Academy",
+        "year": "2019"
+      }
+    ],
+    "links": {
+      "linkedin": "https://linkedin.com/in/mikaela-santos",
+      "portfolio": "https://mikaelasantos.com"
+    },
+    "personalMessage": "I am excited to apply for this Sales Manager position. With my background in sales operations and team leadership, I believe I can contribute significantly to your organization's growth objectives..."
+  }
+}

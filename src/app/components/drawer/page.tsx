@@ -5,8 +5,19 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CodeBlock } from "@/components/docs/code-block";
-import { ComponentPreview } from "@/components/docs/component-preview";
+import { 
+  CodeBlock, 
+  ComponentPreview,
+  ComponentsTable,
+  InterfaceTable 
+} from "@/components/docs";
+import {
+  drawerComponents,
+  candidateProfileInterface,
+  aiMatchInterface,
+  educationInterface,
+  certificateInterface,
+} from "@/data/api/drawer";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
@@ -30,13 +41,78 @@ import {
 } from "lucide-react";
 import { VisuallyHidden } from "@/components/ui/visually-hidden";
 
+// Import JSON data (simulates API response)
+import drawerData from "@/data/drawer.json";
+
+// ============================================================================
+// TYPE DEFINITIONS - Backend-ready interfaces
+// ============================================================================
+
+interface Education {
+  id: string;
+  degree: string;
+  school: string;
+  years: string;
+}
+
+interface Certificate {
+  id: string;
+  name: string;
+  issuer: string;
+  year: string;
+}
+
+interface AIMatch {
+  percentage: number;
+  workStyleFit: string;
+  performanceHistory: string;
+  jobDescriptionFit: string;
+}
+
+interface Application {
+  position: string;
+  appliedDate: string;
+}
+
+interface Links {
+  linkedin?: string;
+  portfolio?: string;
+}
+
+interface CandidateProfile {
+  id: string;
+  name: string;
+  role: string;
+  avatar: string;
+  salary: string;
+  experience: string;
+  location: string;
+  status: string;
+  activityTitle: string;
+  application: Application;
+  aiMatch: AIMatch;
+  about: string;
+  skills: string[];
+  education: Education[];
+  certificates: Certificate[];
+  links: Links;
+  personalMessage: string;
+}
+
+// Cast imported JSON to typed data
+const candidateData = drawerData.candidateProfile as CandidateProfile;
+
 // ============================================================================
 // PROFILE DRAWER COMPONENTS
 // ============================================================================
 
 // Candidate Trigger Card Component (Ported from Profile Card)
-const CandidateCard = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
-  ({ className, ...props }, ref) => (
+interface CandidateCardProps extends React.ComponentProps<"div"> {
+  data: CandidateProfile;
+}
+
+const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps>(
+  ({ className, data, ...props }, ref) => (
     <div
       ref={ref}
       className={cn(
@@ -48,24 +124,26 @@ const CandidateCard = React.forwardRef<HTMLDivElement, React.ComponentProps<"div
       {/* Profile Section */}
       <div className="flex flex-row items-center gap-2.5 w-full">
         <Avatar className="w-14 h-14 flex-shrink-0">
-          <AvatarImage src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mikaela Santos" />
-          <AvatarFallback className="bg-gray-300">MS</AvatarFallback>
+          <AvatarImage src={data.avatar} alt={data.name} />
+          <AvatarFallback className="bg-gray-300">
+            {data.name.split(" ").map(n => n[0]).join("")}
+          </AvatarFallback>
         </Avatar>
         <div className="flex flex-col items-start gap-1 flex-1">
-          <p className="font-semibold text-sm text-[#212121] leading-[120%]">Mikaela Santos</p>
-          <p className="font-normal text-xs text-[#212121] leading-[120%]">Sales Representative</p>
+          <p className="font-semibold text-sm text-[#212121] leading-[120%]">{data.name}</p>
+          <p className="font-normal text-xs text-[#212121] leading-[120%]">{data.role}</p>
         </div>
       </div>
 
       {/* Metadata Section */}
       <div className="flex flex-row items-center gap-6 w-full text-xs text-[#212121]">
-        <span>$2,200 /mo</span>
-        <span>5-8 years</span>
+        <span>{data.salary}</span>
+        <span>{data.experience}</span>
       </div>
 
       {/* Activity Section */}
       <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-[#212121]">Activity Title</span>
+        <span className="text-xs text-[#212121]">{data.activityTitle}</span>
         <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-[#00A7F8] hover:bg-[#0085C6]">
           <ChevronRight className="w-3.5 h-3.5" />
         </Button>
@@ -108,34 +186,38 @@ const ProfileDrawerHeader: React.FC<ProfileDrawerHeaderProps> = ({ onClose }) =>
 );
 
 // Candidate Header Component
-const CandidateHeader: React.FC = () => (
+interface CandidateHeaderProps {
+  data: CandidateProfile;
+}
+
+const CandidateHeader: React.FC<CandidateHeaderProps> = ({ data }) => (
   <div className="flex items-center gap-4">
     <Avatar className="size-16 border-2 border-white shadow-md">
-      <AvatarImage src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mikaela Santos" />
-      <AvatarFallback>MS</AvatarFallback>
+      <AvatarImage src={data.avatar} alt={data.name} />
+      <AvatarFallback>{data.name.split(" ").map(n => n[0]).join("")}</AvatarFallback>
     </Avatar>
 
     <div className="flex flex-col gap-1">
       <div className="flex items-center gap-2">
         <h1 className="text-xl font-bold tracking-tight text-neutral-900">
-          Mikaela Santos
+          {data.name}
         </h1>
         <Badge variant="muted" className="px-2 py-0.5 text-xs rounded-md bg-neutral-100 border-0 normal-case font-medium">
-          ID: 94821
+          ID: {data.id.split("-")[1]}
         </Badge>
         <Badge className="px-2 py-0.5 text-xs bg-green-50 text-green-700 border-0">
-          Active
+          {data.status}
         </Badge>
       </div>
 
       <p className="text-sm font-medium text-neutral-600">
-        Sales Representative
+        {data.role}
       </p>
 
       <div className="flex items-center gap-1">
         <MapPin className="size-4 text-neutral-400" />
         <span className="text-sm text-neutral-400">
-          Manila, Philippines
+          {data.location}
         </span>
       </div>
     </div>
@@ -143,18 +225,22 @@ const CandidateHeader: React.FC = () => (
 );
 
 // Job Details Component
-const JobDetails: React.FC = () => (
+interface JobDetailsProps {
+  application: Application;
+}
+
+const JobDetails: React.FC<JobDetailsProps> = ({ application }) => (
   <div className="flex flex-col gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
     <div className="flex items-center gap-2">
       <span className="text-sm text-neutral-500">Applied for:</span>
       <span className="text-sm font-semibold text-neutral-900">
-        Sales Representative
+        {application.position}
       </span>
     </div>
     <div className="flex items-center gap-2">
       <span className="text-sm text-neutral-500">Applied:</span>
       <span className="text-sm font-semibold text-neutral-900">
-        2 days ago
+        {application.appliedDate}
       </span>
     </div>
   </div>
@@ -162,6 +248,7 @@ const JobDetails: React.FC = () => (
 
 // AI Match Card Component
 interface AIMatchCardProps {
+  aiMatch: AIMatch;
   isExpanded: boolean;
   onToggle: () => void;
 }
@@ -183,7 +270,7 @@ const MatchSection: React.FC<{ title: string; children: React.ReactNode }> = ({
   </div>
 );
 
-const AIMatchCard: React.FC<AIMatchCardProps> = ({ isExpanded, onToggle }) => (
+const AIMatchCard: React.FC<AIMatchCardProps> = ({ aiMatch, isExpanded, onToggle }) => (
   <div className="w-full">
     <div className="flex w-full flex-col rounded-lg border border-[#00a7f8] bg-white">
       <div className="flex w-full items-start justify-between p-4">
@@ -200,16 +287,14 @@ const AIMatchCard: React.FC<AIMatchCardProps> = ({ isExpanded, onToggle }) => (
         </div>
         <div className="flex h-7 items-center justify-center rounded-md border border-green-600 bg-green-50 px-3">
           <span className="text-xs font-medium uppercase text-green-700">
-            92% MATCHED
+            {aiMatch.percentage}% MATCHED
           </span>
         </div>
       </div>
 
       <div className="flex flex-col gap-4 px-4 pb-4">
         <MatchSection title="WORK STYLE FIT">
-          Mikaela&apos;s collaborative and results-driven personality aligns
-          with your team&apos;s preference for structured problem solvers who
-          thrive in cross-functional environments.
+          {aiMatch.workStyleFit}
         </MatchSection>
 
         {/* Animated expand/collapse section */}
@@ -222,16 +307,11 @@ const AIMatchCard: React.FC<AIMatchCardProps> = ({ isExpanded, onToggle }) => (
           <div className="overflow-hidden">
             <div className="flex flex-col gap-4">
               <MatchSection title="PERFORMANCE HISTORY">
-                In her previous role, Mikaela successfully delivered objectives in
-                sales prospecting and pipeline growth, which directly match your
-                current objectives for lead generation and revenue expansion.
+                {aiMatch.performanceHistory}
               </MatchSection>
 
               <MatchSection title="JOB DESCRIPTION FIT">
-                With 4+ years of experience in B2B sales operations and a track
-                record of implementing productivity-enhancing strategies,
-                Mikaela&apos;s background matches the role requirements for a
-                Sales Representative.
+                {aiMatch.jobDescriptionFit}
               </MatchSection>
             </div>
           </div>
@@ -286,35 +366,27 @@ const SectionCard: React.FC<{ title: string; children: React.ReactNode }> = ({
 );
 
 // About Section
-const AboutSection: React.FC = () => (
+interface AboutSectionProps {
+  about: string;
+}
+
+const AboutSection: React.FC<AboutSectionProps> = ({ about }) => (
   <SectionCard title="About">
     <p className="text-sm leading-relaxed text-neutral-700">
-      I am a dedicated sales operations manager with a knack for optimizing
-      processes and driving team success. My experience spans across managing
-      sales strategies and implementing effective solutions that enhance
-      productivity. I thrive on collaboration and am always looking for
-      innovative ways to support my team and improve our sales performance. My
-      goal is to leverage my skills to contribute to the growth and efficiency
-      of the organization.
+      {about}
     </p>
   </SectionCard>
 );
 
 // Skills Section
-const SKILLS = [
-  "Talent skills",
-  "Sales Operations",
-  "CRM",
-  "Data Analysis",
-  "Team Leadership",
-  "Process Optimization",
-  "Strategy",
-];
+interface SkillsSectionProps {
+  skills: string[];
+}
 
-const SkillsSection: React.FC = () => (
+const SkillsSection: React.FC<SkillsSectionProps> = ({ skills }) => (
   <SectionCard title="Skills">
     <div className="flex flex-wrap gap-2">
-      {SKILLS.map((skill, i) => (
+      {skills.map((skill, i) => (
         <Badge
           key={i}
           variant="muted"
@@ -328,30 +400,15 @@ const SkillsSection: React.FC = () => (
 );
 
 // Education Section
-interface EducationItem {
-  degree: string;
-  school: string;
-  years: string;
+interface EducationSectionProps {
+  education: Education[];
 }
 
-const EDUCATION: EducationItem[] = [
-  {
-    degree: "Master of Business Administration",
-    school: "De La Salle University, Manila",
-    years: "2014-2018",
-  },
-  {
-    degree: "Bachelor of Science in Marketing Management",
-    school: "De La Salle University, Manila",
-    years: "2010-2014",
-  },
-];
-
-const EducationSection: React.FC = () => (
+const EducationSection: React.FC<EducationSectionProps> = ({ education }) => (
   <SectionCard title="Education">
     <div className="flex flex-col gap-3">
-      {EDUCATION.map((item, i) => (
-        <React.Fragment key={i}>
+      {education.map((item, i) => (
+        <React.Fragment key={item.id}>
           {i > 0 && <Separator className="bg-neutral-200" />}
           <div className="flex flex-col gap-1">
             <span className="text-sm font-semibold text-neutral-900">
@@ -373,30 +430,15 @@ const EducationSection: React.FC = () => (
 );
 
 // Certificates Section
-interface CertificateItem {
-  name: string;
-  issuer: string;
-  year: string;
+interface CertificatesSectionProps {
+  certificates: Certificate[];
 }
 
-const CERTIFICATES: CertificateItem[] = [
-  {
-    name: "Digital Marketing Certification",
-    issuer: "Google Digital Garage",
-    year: "2020",
-  },
-  {
-    name: "HubSpot Content Marketing Certification",
-    issuer: "HubSpot Academy",
-    year: "2019",
-  },
-];
-
-const CertificatesSection: React.FC = () => (
+const CertificatesSection: React.FC<CertificatesSectionProps> = ({ certificates }) => (
   <SectionCard title="Certificates">
     <div className="flex flex-col gap-3">
-      {CERTIFICATES.map((cert, i) => (
-        <React.Fragment key={i}>
+      {certificates.map((cert, i) => (
+        <React.Fragment key={cert.id}>
           {i > 0 && <Separator className="bg-neutral-200" />}
           <div className="flex flex-col gap-1">
             <span className="text-sm font-semibold text-neutral-900">
@@ -442,7 +484,11 @@ const LinksSection: React.FC = () => (
 );
 
 // Personal Message Section
-const PersonalMessageSection: React.FC = () => (
+interface PersonalMessageSectionProps {
+  message: string;
+}
+
+const PersonalMessageSection: React.FC<PersonalMessageSectionProps> = ({ message }) => (
   <Card className="rounded-lg border-neutral-200 shadow-sm">
     <CardContent className="p-4 flex flex-col gap-3">
       <span className="text-sm font-semibold text-neutral-900">
@@ -450,9 +496,7 @@ const PersonalMessageSection: React.FC = () => (
       </span>
       <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
         <p className="text-sm leading-relaxed text-neutral-600">
-          I am excited to apply for this Sales Manager position. With my background in 
-          sales operations and team leadership, I believe I can contribute significantly 
-          to your organization's growth objectives...
+          {message}
         </p>
       </div>
     </CardContent>
@@ -516,11 +560,11 @@ export default function DrawerPage() {
             <div className="flex justify-center">
               <Drawer>
                 <DrawerTrigger asChild>
-                  <CandidateCard />
+                  <CandidateCard data={candidateData} />
                 </DrawerTrigger>
                 <DrawerContent className="sm:max-w-4xl p-0">
                   <VisuallyHidden>
-                    <DrawerTitle>Candidate Profile - Mikaela Santos</DrawerTitle>
+                    <DrawerTitle>Candidate Profile - {candidateData.name}</DrawerTitle>
                   </VisuallyHidden>
                   
                   <div className="flex flex-col h-full bg-white overflow-hidden">
@@ -531,9 +575,10 @@ export default function DrawerPage() {
                     <div className="flex-1 overflow-y-auto">
                       {/* Top Section */}
                       <div className="flex flex-col gap-5 border-b border-neutral-200 p-6">
-                        <CandidateHeader />
-                        <JobDetails />
+                        <CandidateHeader data={candidateData} />
+                        <JobDetails application={candidateData.application} />
                         <AIMatchCard
+                          aiMatch={candidateData.aiMatch}
                           isExpanded={isAICardExpanded}
                           onToggle={() => setIsAICardExpanded(!isAICardExpanded)}
                         />
@@ -542,12 +587,12 @@ export default function DrawerPage() {
 
                       {/* Bottom Section - Profile Details */}
                       <div className="flex flex-col gap-4 p-6">
-                        <AboutSection />
-                        <SkillsSection />
-                        <EducationSection />
-                        <CertificatesSection />
+                        <AboutSection about={candidateData.about} />
+                        <SkillsSection skills={candidateData.skills} />
+                        <EducationSection education={candidateData.education} />
+                        <CertificatesSection certificates={candidateData.certificates} />
                         <LinksSection />
-                        <PersonalMessageSection />
+                        <PersonalMessageSection message={candidateData.personalMessage} />
                       </div>
                     </div>
 
@@ -560,34 +605,38 @@ export default function DrawerPage() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`<Drawer>
+            code={`// Fetch candidate data from API
+const [candidate, setCandidate] = useState<CandidateProfile | null>(null);
+const [loading, setLoading] = useState(false);
+
+const fetchCandidate = async (id: string) => {
+  setLoading(true);
+  const res = await fetch(\`/api/candidates/\${id}\`);
+  const data = await res.json();
+  setCandidate(data);
+  setLoading(false);
+};
+
+// Usage
+<Drawer onOpenChange={(open) => open && fetchCandidate("94821")}>
   <DrawerTrigger asChild>
-    <CandidateCard />
+    <CandidateCard data={candidatePreview} />
   </DrawerTrigger>
-  <DrawerContent className="sm:max-w-2xl">
-    <VisuallyHidden>
-      <DrawerTitle>Candidate Profile - Mikaela Santos</DrawerTitle>
-    </VisuallyHidden>
-    
-    <div className="flex flex-col h-full">
-      <ProfileDrawerHeader />
-      
-      <div className="flex-1 overflow-y-auto">
-        <CandidateHeader />
-        <JobDetails />
-        <AIMatchCard />
-        <ProfileTabs />
-        
-        <AboutSection />
-        <SkillsSection />
-        <EducationSection />
-        <CertificatesSection />
-        <LinksSection />
-        <PersonalMessageSection />
-      </div>
-      
-      <ProfileDrawerFooter />
-    </div>
+  <DrawerContent>
+    {loading ? (
+      <LoadingSpinner />
+    ) : candidate && (
+      <>
+        <CandidateHeader data={candidate} />
+        <JobDetails application={candidate.application} />
+        <AIMatchCard aiMatch={candidate.aiMatch} />
+        <AboutSection about={candidate.about} />
+        <SkillsSection skills={candidate.skills} />
+        <EducationSection education={candidate.education} />
+        <CertificatesSection certificates={candidate.certificates} />
+        <PersonalMessageSection message={candidate.personalMessage} />
+      </>
+    )}
   </DrawerContent>
 </Drawer>`}
             language="tsx"
@@ -611,12 +660,11 @@ export default function DrawerPage() {
         </TabsContent>
 
         <TabsContent value="api" className="space-y-8">
-          <section>
-            <h2 className="mb-4 text-xl font-semibold">API</h2>
-            <p className="text-sm text-muted-foreground">
-              Built using Radix UI Dialog primitives. Follows the standard trigger/content pattern.
-            </p>
-          </section>
+          <ComponentsTable title="Drawer Components" components={drawerComponents} />
+          <InterfaceTable title="CandidateProfile Interface" properties={candidateProfileInterface} />
+          <InterfaceTable title="AIMatch Interface" properties={aiMatchInterface} />
+          <InterfaceTable title="Education Interface" properties={educationInterface} />
+          <InterfaceTable title="Certificate Interface" properties={certificateInterface} />
         </TabsContent>
       </Tabs>
     </div>

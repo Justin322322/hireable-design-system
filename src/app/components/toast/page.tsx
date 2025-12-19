@@ -2,7 +2,6 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { CodeBlock } from "@/components/docs/code-block";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -72,7 +71,6 @@ export default function ToastPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Toast</h1>
-          <Badge variant="secondary">Draft</Badge>
         </div>
         <p className="text-lg text-muted-foreground">
           Toasts provide brief, non-blocking notifications. They appear temporarily and dismiss automatically.
@@ -259,6 +257,7 @@ toast({
                   <tr className="border-b">
                     <th className="py-3 text-left font-medium">Option</th>
                     <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
                     <th className="py-3 text-left font-medium">Description</th>
                   </tr>
                 </thead>
@@ -266,22 +265,112 @@ toast({
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">title</td>
                     <td className="py-3 font-mono">string</td>
-                    <td className="py-3">Toast title</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Toast title text</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">description</td>
                     <td className="py-3 font-mono">string</td>
-                    <td className="py-3">Toast description</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Toast description/body text</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">variant</td>
                     <td className="py-3 font-mono">string</td>
-                    <td className="py-3">&quot;default&quot; | &quot;destructive&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;info&quot;</td>
+                    <td className="py-3">&quot;default&quot;</td>
+                    <td className="py-3">Visual style variant</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">duration</td>
                     <td className="py-3 font-mono">number</td>
-                    <td className="py-3">Auto-dismiss time in ms</td>
+                    <td className="py-3">5000</td>
+                    <td className="py-3">Auto-dismiss time in milliseconds</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">action</td>
+                    <td className="py-3 font-mono">ReactNode</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Action button element</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">onOpenChange</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Callback when toast visibility changes</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Variants</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Variant</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                    <th className="py-3 text-left font-medium">Use Case</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">default</td>
+                    <td className="py-3">Neutral notification style</td>
+                    <td className="py-3">General notifications</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">success</td>
+                    <td className="py-3">Green success indicator</td>
+                    <td className="py-3">Successful operations</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">destructive</td>
+                    <td className="py-3">Red error indicator</td>
+                    <td className="py-3">Errors and failures</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">warning</td>
+                    <td className="py-3">Amber warning indicator</td>
+                    <td className="py-3">Warnings and cautions</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">info</td>
+                    <td className="py-3">Blue informational indicator</td>
+                    <td className="py-3">Informational messages</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">useToast Hook</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Return</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">toast</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">Function to trigger a toast notification</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">toasts</td>
+                    <td className="py-3 font-mono">Toast[]</td>
+                    <td className="py-3">Array of active toast objects</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">dismiss</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">Function to dismiss a specific toast by ID</td>
                   </tr>
                 </tbody>
               </table>

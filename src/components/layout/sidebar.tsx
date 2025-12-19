@@ -34,6 +34,7 @@ import {
   Divide,
   Menu,
   PanelBottom,
+  Columns3,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -79,6 +80,7 @@ export const sidebarNav: Record<string, NavSection> = {
       { label: "Navigation Menu", href: "/components/navigation-menu", icon: Menu },
       { label: "Drawer", href: "/components/drawer", icon: PanelBottom },
       { label: "Chart", href: "/components/chart", icon: AreaChart },
+      { label: "Kanban", href: "/components/kanban", icon: Columns3 },
     ],
   },
   patterns: {

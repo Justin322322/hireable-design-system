@@ -2,8 +2,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CodeBlock } from "@/components/docs/code-block";
-import { ComponentPreview } from "@/components/docs/component-preview";
+import { CodeBlock, ComponentPreview, PropsTable, VariantsTable } from "@/components/docs";
+import { buttonProps, buttonVariants, buttonSizes } from "@/data/api/button";
 
 export default function ButtonPage() {
   return (
@@ -118,47 +118,9 @@ export default function ButtonPage() {
         </TabsContent>
 
         <TabsContent value="api" className="space-y-8">
-          <section>
-            <h2 className="mb-4 text-xl font-semibold">Props</h2>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b">
-                    <th className="py-3 text-left font-medium">Prop</th>
-                    <th className="py-3 text-left font-medium">Type</th>
-                    <th className="py-3 text-left font-medium">Default</th>
-                    <th className="py-3 text-left font-medium">Description</th>
-                  </tr>
-                </thead>
-                <tbody className="text-muted-foreground">
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">variant</td>
-                    <td className="py-3 font-mono">string</td>
-                    <td className="py-3">&quot;default&quot;</td>
-                    <td className="py-3">Visual style variant</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">size</td>
-                    <td className="py-3 font-mono">string</td>
-                    <td className="py-3">&quot;default&quot;</td>
-                    <td className="py-3">Button size</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">disabled</td>
-                    <td className="py-3 font-mono">boolean</td>
-                    <td className="py-3">false</td>
-                    <td className="py-3">Disable the button</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">asChild</td>
-                    <td className="py-3 font-mono">boolean</td>
-                    <td className="py-3">false</td>
-                    <td className="py-3">Render as child element</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
+          <PropsTable title="Props" props={buttonProps} />
+          <VariantsTable title="Variants" variants={buttonVariants} />
+          <VariantsTable title="Sizes" variants={buttonSizes} />
         </TabsContent>
 
         <TabsContent value="accessibility" className="space-y-8">

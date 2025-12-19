@@ -124,13 +124,58 @@ export default function SelectPage() {
 
         <TabsContent value="api" className="space-y-8">
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Props</h2>
+            <h2 className="mb-4 text-xl font-semibold">Components</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Component</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">Select</td>
+                    <td className="py-3">Root container</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">SelectTrigger</td>
+                    <td className="py-3">Button that opens the dropdown</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">SelectValue</td>
+                    <td className="py-3">Displays selected value or placeholder</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">SelectContent</td>
+                    <td className="py-3">Dropdown content container</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">SelectItem</td>
+                    <td className="py-3">Individual option item</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">SelectGroup</td>
+                    <td className="py-3">Groups related items together</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">SelectLabel</td>
+                    <td className="py-3">Label for a group of items</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Select Props</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b">
                     <th className="py-3 text-left font-medium">Prop</th>
                     <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
                     <th className="py-3 text-left font-medium">Description</th>
                   </tr>
                 </thead>
@@ -138,22 +183,74 @@ export default function SelectPage() {
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">value</td>
                     <td className="py-3 font-mono">string</td>
-                    <td className="py-3">The value of the select</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">onValueChange</td>
-                    <td className="py-3 font-mono">function</td>
-                    <td className="py-3">Event handler for value changes</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Controlled selected value</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">defaultValue</td>
                     <td className="py-3 font-mono">string</td>
-                    <td className="py-3">The default value of the select</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Default selected value</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">onValueChange</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Callback when selection changes</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">disabled</td>
                     <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">false</td>
                     <td className="py-3">Disable the select</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">required</td>
+                    <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">false</td>
+                    <td className="py-3">Mark as required for forms</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">name</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Name for form submission</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">SelectItem Props</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Prop</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">value</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">required</td>
+                    <td className="py-3">Unique value for the item</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">disabled</td>
+                    <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">false</td>
+                    <td className="py-3">Disable the item</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">textValue</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Text for typeahead search</td>
                   </tr>
                 </tbody>
               </table>

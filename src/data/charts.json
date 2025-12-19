@@ -1,0 +1,19 @@
+{
+  "progressChart": {
+    "id": "chart-progress-001",
+    "title": "Progress Over Time",
+    "dataPoints": [
+      { "date": "Nov 04", "progress": 20 },
+      { "date": "Nov 05", "progress": 35 },
+      { "date": "Nov 06", "progress": 25 },
+      { "date": "Nov 07", "progress": 45 },
+      { "date": "Nov 08", "progress": 30 },
+      { "date": "Nov 09", "progress": 55 },
+      { "date": "Nov 10", "progress": 40 },
+      { "date": "Nov 11", "progress": 60 },
+      { "date": "Nov 12", "progress": 50 },
+      { "date": "Nov 13", "progress": 70 },
+      { "date": "Nov 14", "progress": 65 }
+    ]
+  }
+}

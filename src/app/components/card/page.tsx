@@ -7,6 +7,102 @@ import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { ChevronRight } from "lucide-react";
 
+// Import JSON data (simulates API response)
+import cardsData from "@/data/cards.json";
+
+// ============================================================================
+// TYPE DEFINITIONS - Backend-ready interfaces
+// ============================================================================
+
+interface Profile {
+  id: string;
+  name: string;
+  role: string;
+  avatar?: string;
+  salary: string;
+  experience: string;
+  activityTitle?: string;
+}
+
+interface Goal {
+  id: string;
+  title: string;
+  type: "Automatic" | "Manual";
+  progress: number;
+  completedResults: number;
+  totalResults: number;
+  dueDate: string;
+}
+
+// Cast imported JSON to typed data
+const profileData = cardsData.profile as Profile;
+const goalData = cardsData.goal as Goal;
+
+// ============================================================================
+// COMPONENTS
+// ============================================================================
+
+function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Profile, "id" | "avatar">) {
+  return (
+    <div className="flex flex-col items-start gap-2.5 p-4 bg-white border border-[#C3C3C3] rounded-lg w-96 transition-colors hover:bg-[#F2F2F2] hover:border-[#C3C3C3] cursor-pointer">
+      <div className="flex flex-row items-center gap-2.5 w-full">
+        <div className="w-14 h-14 rounded-full bg-gray-300 flex-shrink-0" />
+        <div className="flex flex-col items-start gap-1 flex-1">
+          <p className="font-semibold text-sm text-[#212121] leading-[120%]">{name}</p>
+          <p className="font-normal text-xs text-[#212121] leading-[120%]">{role}</p>
+        </div>
+      </div>
+      <div className="flex flex-row items-center gap-6 w-full text-xs text-[#212121]">
+        <span>{salary}</span>
+        <span>{experience}</span>
+      </div>
+      <div className="flex flex-row items-center justify-between gap-4 w-full">
+        <span className="text-xs text-[#212121]">{activityTitle}</span>
+        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-[#00A7F8] hover:bg-[#0085C6]">
+          <ChevronRight className="w-3.5 h-3.5" />
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function GoalCard({ title, type, progress, completedResults, totalResults, dueDate }: Omit<Goal, "id">) {
+  return (
+    <div className="flex flex-col items-start gap-5 p-4 bg-white border border-[#C3C3C3] rounded-lg w-96 transition-colors hover:bg-[#F2F2F2] hover:border-[#C3C3C3] cursor-pointer">
+      <div className="flex items-start justify-between w-full">
+        <div className="flex-1 flex items-center">
+          <p className="font-semibold text-sm text-[#212121] leading-[1.5] tracking-[0.02em]">
+            {title}
+          </p>
+        </div>
+        <span className="bg-[#F2F2F2] border border-[#E0E0E0] px-2 py-0.5 rounded-full text-[10px] text-[#616161] font-medium whitespace-nowrap">
+          {type}
+        </span>
+      </div>
+      <div className="flex flex-col gap-2 w-full">
+        <div className="flex items-center">
+          <span className="font-semibold text-2xl text-[#212121] leading-[1.2]">
+            {progress}%
+          </span>
+        </div>
+        <div className="flex items-center w-full h-2">
+          <div className="flex-1 bg-[#F2F2F2] rounded-full h-1.5 overflow-hidden">
+            <div className="bg-[#00A7F8] h-full rounded-full" style={{ width: `${progress}%` }} />
+          </div>
+        </div>
+        <div className="flex items-center justify-between w-full">
+          <span className="text-xs text-[#616161] leading-[1.2] tracking-[0.02em]">
+            {completedResults} of {totalResults} key results completed
+          </span>
+          <span className="text-xs text-[#616161] leading-[1.2] tracking-[0.02em]">
+            {dueDate}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function CardPage() {
   return (
     <div className="container max-w-4xl py-12 px-4 md:px-8">
@@ -81,170 +177,75 @@ export default function CardPage() {
             </div>
           </ComponentPreview>
 
-          <CodeBlock
-            code={`<Card className="w-[350px]">
-  <CardHeader>
-    <CardTitle>Notifications</CardTitle>
-  </CardHeader>
-  <CardContent className="space-y-4">
-    <div className="flex items-center justify-between">
-      <span className="text-sm font-medium">Push notifications</span>
-      <Switch defaultChecked aria-label="Toggle push notifications" />
-    </div>
-    <div className="flex items-center justify-between">
-      <span className="text-sm font-medium">Email notifications</span>
-      <Switch aria-label="Toggle email notifications" />
-    </div>
-  </CardContent>
-</Card>`}
-            language="tsx"
-          />
-
           <ComponentPreview title="Profile Card">
             <div className="flex justify-center">
-              <div className="flex flex-col items-start gap-2.5 p-4 bg-white border border-[#C3C3C3] rounded-lg w-96 transition-colors hover:bg-[#F2F2F2] hover:border-[#C3C3C3] cursor-pointer">
-                {/* Profile Section */}
-                <div className="flex flex-row items-center gap-2.5 w-full">
-                  <div className="w-14 h-14 rounded-full bg-gray-300 flex-shrink-0" />
-                  <div className="flex flex-col items-start gap-1 flex-1">
-                    <p className="font-semibold text-sm text-[#212121] leading-[120%]">Mikaela Santos</p>
-                    <p className="font-normal text-xs text-[#212121] leading-[120%]">Sales Representative</p>
-                  </div>
-                </div>
-
-                {/* Metadata Section */}
-                <div className="flex flex-row items-center gap-6 w-full text-xs text-[#212121]">
-                  <span>$2,200 /mo</span>
-                  <span>5-8 years</span>
-                </div>
-
-                {/* Activity Section */}
-                <div className="flex flex-row items-center justify-between gap-4 w-full">
-                  <span className="text-xs text-[#212121]">Activity Title</span>
-                  <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-[#00A7F8] hover:bg-[#0085C6]">
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </Button>
-                </div>
-              </div>
+              <ProfileCard {...profileData} />
             </div>
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { ChevronRight } from "lucide-react";
+            code={`// Fetch profile data from API
+const [profile, setProfile] = useState<Profile | null>(null);
 
-<div className="flex flex-col items-start gap-2.5 p-4 bg-white border border-[#C3C3C3] rounded-lg w-96 transition-colors hover:bg-[#F2F2F2] hover:border-[#C3C3C3] cursor-pointer">
-  {/* Profile Section */}
-  <div className="flex flex-row items-center gap-2.5 w-full">
-    <div className="w-14 h-14 rounded-full bg-gray-300 flex-shrink-0" />
-    <div className="flex flex-col items-start gap-1 flex-1">
-      <p className="font-semibold text-sm text-[#212121] leading-[120%]">Mikaela Santos</p>
-      <p className="font-normal text-xs text-[#212121] leading-[120%]">Sales Representative</p>
-    </div>
-  </div>
+useEffect(() => {
+  const fetchProfile = async () => {
+    const res = await fetch("/api/profiles/profile-001");
+    const data = await res.json();
+    setProfile(data);
+  };
+  fetchProfile();
+}, []);
 
-  {/* Metadata Section */}
-  <div className="flex flex-row items-center gap-6 w-full text-xs text-[#212121]">
-    <span>$2,200 /mo</span>
-    <span>5-8 years</span>
-  </div>
+// Type Definition
+interface Profile {
+  id: string;
+  name: string;
+  role: string;
+  avatar?: string;
+  salary: string;
+  experience: string;
+  activityTitle?: string;
+}
 
-  {/* Activity Section */}
-  <div className="flex flex-row items-center justify-between gap-4 w-full">
-    <span className="text-xs text-[#212121]">Activity Title</span>
-    <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-[#00A7F8] hover:bg-[#0085C6]">
-      <ChevronRight className="w-3.5 h-3.5" />
-    </Button>
-  </div>
-</div>`}
+// Usage
+{profile && <ProfileCard {...profile} />}`}
             language="tsx"
           />
 
           <ComponentPreview title="Goals Card">
             <div className="flex justify-center">
-              <div className="flex flex-col items-start gap-5 p-4 bg-white border border-[#C3C3C3] rounded-lg w-96 transition-colors hover:bg-[#F2F2F2] hover:border-[#C3C3C3] cursor-pointer">
-                {/* Header Section */}
-                <div className="flex items-start justify-between w-full">
-                  <div className="flex-1 flex items-center">
-                    <p className="font-semibold text-sm text-[#212121] leading-[1.5] tracking-[0.02em]">
-                      Increase Weekly Qualified Leads
-                    </p>
-                  </div>
-                  <span className="bg-[#F2F2F2] border border-[#E0E0E0] px-2 py-0.5 rounded-full text-[10px] text-[#616161] font-medium whitespace-nowrap">
-                    Automatic
-                  </span>
-                </div>
-
-                {/* Progress Section */}
-                <div className="flex flex-col gap-2 w-full">
-                  {/* Progress Value */}
-                  <div className="flex items-center">
-                    <span className="font-semibold text-2xl text-[#212121] leading-[1.2]">
-                      50%
-                    </span>
-                  </div>
-
-                  {/* Progress Bar */}
-                  <div className="flex items-center w-full h-2">
-                    <div className="flex-1 bg-[#F2F2F2] rounded-full h-1.5 overflow-hidden">
-                      <div className="bg-[#00A7F8] h-full rounded-full" style={{ width: '50%' }} />
-                    </div>
-                  </div>
-
-                  {/* Status Row */}
-                  <div className="flex items-center justify-between w-full">
-                    <span className="text-xs text-[#616161] leading-[1.2] tracking-[0.02em]">
-                      2 of 4 key results completed
-                    </span>
-                    <span className="text-xs text-[#616161] leading-[1.2] tracking-[0.02em]">
-                      Nov 30, 2025
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <GoalCard {...goalData} />
             </div>
           </ComponentPreview>
 
           <CodeBlock
-            code={`<div className="flex flex-col items-start gap-5 p-4 bg-white border border-[#C3C3C3] rounded-lg w-96 transition-colors hover:bg-[#F2F2F2] hover:border-[#C3C3C3] cursor-pointer">
-  {/* Header Section */}
-  <div className="flex items-start justify-between w-full">
-    <div className="flex-1 flex items-center">
-      <p className="font-semibold text-sm text-[#212121] leading-[1.5] tracking-[0.02em]">
-        Increase Weekly Qualified Leads
-      </p>
-    </div>
-    <span className="bg-[#F2F2F2] border border-[#E0E0E0] px-2 py-0.5 rounded-full text-[10px] text-[#616161] font-medium whitespace-nowrap">
-      Automatic
-    </span>
-  </div>
+            code={`// Fetch goals from API
+const [goals, setGoals] = useState<Goal[]>([]);
 
-  {/* Progress Section */}
-  <div className="flex flex-col gap-2 w-full">
-    {/* Progress Value */}
-    <div className="flex items-center">
-      <span className="font-semibold text-2xl text-[#212121] leading-[1.2]">
-        50%
-      </span>
-    </div>
+useEffect(() => {
+  const fetchGoals = async () => {
+    const res = await fetch("/api/goals");
+    const data = await res.json();
+    setGoals(data);
+  };
+  fetchGoals();
+}, []);
 
-    {/* Progress Bar */}
-    <div className="flex items-center w-full h-2">
-      <div className="flex-1 bg-[#F2F2F2] rounded-full h-1.5 overflow-hidden">
-        <div className="bg-[#00A7F8] h-full rounded-full" style={{ width: '50%' }} />
-      </div>
-    </div>
+// Type Definition
+interface Goal {
+  id: string;
+  title: string;
+  type: "Automatic" | "Manual";
+  progress: number;
+  completedResults: number;
+  totalResults: number;
+  dueDate: string;
+}
 
-    {/* Status Row */}
-    <div className="flex items-center justify-between w-full">
-      <span className="text-xs text-[#616161] leading-[1.2] tracking-[0.02em]">
-        2 of 4 key results completed
-      </span>
-      <span className="text-xs text-[#616161] leading-[1.2] tracking-[0.02em]">
-        Nov 30, 2025
-      </span>
-    </div>
-  </div>
-</div>`}
+// Usage
+{goals.map((goal) => (
+  <GoalCard key={goal.id} {...goal} />
+))}`}
             language="tsx"
           />
         </TabsContent>
@@ -284,7 +285,7 @@ export default function CardPage() {
 
         <TabsContent value="api" className="space-y-8">
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Components</h2>
+            <h2 className="mb-4 text-xl font-semibold">Base Card Components</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -317,6 +318,105 @@ export default function CardPage() {
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">CardFooter</td>
                     <td className="py-3">Footer with actions</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Profile Interface</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Property</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">id</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">Unique identifier</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">name</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">Full name</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">role</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">Job role/title</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">avatar</td>
+                    <td className="py-3 font-mono">string?</td>
+                    <td className="py-3">Avatar image URL (optional)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">salary</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">Salary amount</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">experience</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">Years of experience</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Goal Interface</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Property</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">id</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">Unique identifier</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">title</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">Goal title</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">type</td>
+                    <td className="py-3 font-mono">&quot;Automatic&quot; | &quot;Manual&quot;</td>
+                    <td className="py-3">Goal tracking type</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">progress</td>
+                    <td className="py-3 font-mono">number</td>
+                    <td className="py-3">Progress percentage (0-100)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">completedResults</td>
+                    <td className="py-3 font-mono">number</td>
+                    <td className="py-3">Number of completed key results</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">totalResults</td>
+                    <td className="py-3 font-mono">number</td>
+                    <td className="py-3">Total number of key results</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">dueDate</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">Due date string</td>
                   </tr>
                 </tbody>
               </table>

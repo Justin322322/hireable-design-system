@@ -137,6 +137,84 @@ export default function TabsPage() {
               </table>
             </div>
           </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Tabs Props</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Prop</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">value</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Controlled active tab value</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">defaultValue</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Default active tab value</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">onValueChange</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Callback when active tab changes</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">orientation</td>
+                    <td className="py-3 font-mono">&quot;horizontal&quot; | &quot;vertical&quot;</td>
+                    <td className="py-3">&quot;horizontal&quot;</td>
+                    <td className="py-3">Orientation of the tabs</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">activationMode</td>
+                    <td className="py-3 font-mono">&quot;automatic&quot; | &quot;manual&quot;</td>
+                    <td className="py-3">&quot;automatic&quot;</td>
+                    <td className="py-3">How tabs are activated on focus</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">TabsTrigger Props</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Prop</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">value</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">required</td>
+                    <td className="py-3">Unique value for the tab</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">disabled</td>
+                    <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">false</td>
+                    <td className="py-3">Disable the tab trigger</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
         </TabsContent>
       </Tabs>
     </div>

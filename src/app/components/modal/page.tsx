@@ -1,6 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { CodeBlock } from "@/components/docs/code-block";
 
 export default function ModalPage() {
@@ -9,7 +8,6 @@ export default function ModalPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Modal</h1>
-          <Badge variant="secondary">Draft</Badge>
         </div>
         <p className="text-lg text-muted-foreground">
           Modals display content in a layer above the page. Use for focused tasks that require user attention.
@@ -152,6 +150,90 @@ export default function ModalPage() {
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">DialogFooter</td>
                     <td className="py-3">Footer with actions</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Dialog Props</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Prop</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">open</td>
+                    <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Controlled open state</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">defaultOpen</td>
+                    <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">false</td>
+                    <td className="py-3">Default open state</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">onOpenChange</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Callback when open state changes</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">modal</td>
+                    <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">true</td>
+                    <td className="py-3">Whether to render as modal with backdrop</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">DialogContent Props</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Prop</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">forceMount</td>
+                    <td className="py-3 font-mono">boolean</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Force mounting for animation control</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">onEscapeKeyDown</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Handler for escape key press</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">onPointerDownOutside</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Handler for clicks outside content</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">onInteractOutside</td>
+                    <td className="py-3 font-mono">function</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Handler for any interaction outside</td>
                   </tr>
                 </tbody>
               </table>

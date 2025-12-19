@@ -1,0 +1,19 @@
+{
+  "profile": {
+    "id": "profile-001",
+    "name": "Mikaela Santos",
+    "role": "Sales Representative",
+    "salary": "$2,200 /mo",
+    "experience": "5-8 years",
+    "activityTitle": "Activity Title"
+  },
+  "goal": {
+    "id": "goal-001",
+    "title": "Increase Weekly Qualified Leads",
+    "type": "Automatic",
+    "progress": 50,
+    "completedResults": 2,
+    "totalResults": 4,
+    "dueDate": "Nov 30, 2025"
+  }
+}

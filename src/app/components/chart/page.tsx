@@ -2,9 +2,9 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
+import { VERSION } from "@/lib/version";
 import {
   AreaChart,
   Area,
@@ -139,7 +139,7 @@ export default function ChartPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Chart</h1>
-          <Badge variant="outline">Stable</Badge>
+          <span className="text-sm text-muted-foreground">{VERSION}</span>
         </div>
         <p className="text-lg text-muted-foreground">
           Charts visualize data trends and patterns. Built with Recharts for flexible, responsive data visualization.

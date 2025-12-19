@@ -1,44 +1,44 @@
 import Link from "next/link";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-const guidelines = [
+const styleItems = [
   {
     title: "Typography",
     description: "Type scale, font families, and text styles for consistent hierarchy.",
-    href: "/guidelines/typography",
+    href: "/style/typography",
   },
   {
     title: "Color",
     description: "Color palette, semantic colors, and accessibility considerations.",
-    href: "/guidelines/color",
+    href: "/style/color",
   },
   {
     title: "Spacing",
     description: "Spacing scale and layout guidelines for consistent rhythm.",
-    href: "/guidelines/spacing",
+    href: "/style/spacing",
   },
   {
     title: "Corners & Roundness",
     description: "Border radius scale and guidelines for consistent visual softness.",
-    href: "/guidelines/corners",
+    href: "/style/corners",
   },
   {
     title: "Icons",
     description: "Icon usage, sizing, and implementation guidelines.",
-    href: "/guidelines/icons",
+    href: "/style/icons",
   },
   {
     title: "Motion",
     description: "Animation principles, timing, and easing functions.",
-    href: "/guidelines/motion",
+    href: "/style/motion",
   },
 ];
 
-export default function GuidelinesPage() {
+export default function StylePage() {
   return (
     <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-12">
-        <h1 className="mb-4 text-3xl font-bold">Guidelines</h1>
+        <h1 className="mb-4 text-3xl font-bold">Style</h1>
         <p className="text-lg text-muted-foreground">
           Foundational design principles and standards that ensure consistency 
           across all products and experiences.
@@ -46,7 +46,7 @@ export default function GuidelinesPage() {
       </div>
 
       <div className="grid gap-4">
-        {guidelines.map((item) => (
+        {styleItems.map((item) => (
           <Link key={item.href} href={item.href}>
             <Card className="transition-colors hover:bg-muted/50">
               <CardHeader>

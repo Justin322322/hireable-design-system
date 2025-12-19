@@ -4,9 +4,9 @@ import * as React from "react";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
+import { VERSION } from "@/lib/version";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -24,7 +24,7 @@ export default function NavigationMenuPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Navigation Menu</h1>
-          <Badge variant="outline">Stable</Badge>
+          <span className="text-sm text-muted-foreground">{VERSION}</span>
         </div>
         <p className="text-lg text-muted-foreground">
           A collection of links for navigating websites and applications.

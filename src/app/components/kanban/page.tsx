@@ -1,10 +1,10 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { MoreHorizontal } from "lucide-react";
+import { VERSION } from "@/lib/version";
 
 // Import JSON data (simulates API response)
 import kanbanData from "@/data/kanban.json";
@@ -173,7 +173,7 @@ export default function KanbanPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Kanban</h1>
-          <Badge variant="outline">Stable</Badge>
+          <span className="text-sm text-muted-foreground">{VERSION}</span>
         </div>
         <p className="text-lg text-muted-foreground">
           Kanban columns organize items into stages. Ideal for tracking workflows, pipelines, and progress.

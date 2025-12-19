@@ -3,7 +3,8 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import MenuOutlined from "@mui/icons-material/MenuOutlined";
+import CloseOutlined from "@mui/icons-material/CloseOutlined";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,7 +22,7 @@ export function MobileNav() {
   const pathname = usePathname();
 
   const getActiveSection = () => {
-    if (pathname.startsWith("/guidelines")) return "guidelines";
+    if (pathname.startsWith("/style")) return "style";
     if (pathname.startsWith("/components")) return "components";
     if (pathname.startsWith("/patterns")) return "patterns";
     if (pathname.startsWith("/resources")) return "resources";
@@ -38,7 +39,7 @@ export function MobileNav() {
           variant="ghost"
           className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
-          <Menu className="h-6 w-6" />
+          <MenuOutlined className="h-6 w-6" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </DrawerTrigger>
@@ -50,7 +51,7 @@ export function MobileNav() {
             className="absolute right-4 top-1/2 -translate-y-1/2 px-2 hover:bg-transparent"
             onClick={() => setOpen(false)}
           >
-            <X className="h-6 w-6" />
+            <CloseOutlined className="h-6 w-6" />
             <span className="sr-only">Close Menu</span>
           </Button>
         </DrawerHeader>

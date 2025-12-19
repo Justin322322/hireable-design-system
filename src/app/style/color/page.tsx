@@ -7,6 +7,29 @@ const primaryColors = [
   { name: "Primary Foreground", variable: "--primary-foreground", className: "bg-primary-foreground", hex: "#FAFAFA" },
 ];
 
+const neutralScale = [
+  { name: "neutral-50", className: "bg-neutral-50", hex: "#FAFAFA" },
+  { name: "neutral-100", className: "bg-neutral-100", hex: "#F5F5F5" },
+  { name: "neutral-200", className: "bg-neutral-200", hex: "#E5E5E5" },
+  { name: "neutral-300", className: "bg-neutral-300", hex: "#D4D4D4" },
+  { name: "neutral-400", className: "bg-neutral-400", hex: "#A3A3A3" },
+  { name: "neutral-500", className: "bg-neutral-500", hex: "#737373" },
+  { name: "neutral-600", className: "bg-neutral-600", hex: "#525252" },
+  { name: "neutral-700", className: "bg-neutral-700", hex: "#404040" },
+  { name: "neutral-800", className: "bg-neutral-800", hex: "#262626" },
+  { name: "neutral-900", className: "bg-neutral-900", hex: "#171717" },
+  { name: "neutral-950", className: "bg-neutral-950", hex: "#0A0A0A" },
+];
+
+const brandColors = [
+  { name: "client", className: "bg-[#00A7F8]", hex: "#00A7F8" },
+  { name: "client-hover", className: "bg-[#0096DE]", hex: "#0096DE" },
+  { name: "success", className: "bg-[#27AE60]", hex: "#27AE60" },
+  { name: "warning-amber", className: "bg-[#F2C94C]", hex: "#F2C94C" },
+  { name: "danger", className: "bg-[#EB5757]", hex: "#EB5757" },
+  { name: "linkedin", className: "bg-[#0A66C2]", hex: "#0A66C2" },
+];
+
 const semanticColors = [
   { name: "Background", variable: "--background", className: "bg-background", hex: "#FFFFFF" },
   { name: "Foreground", variable: "--foreground", className: "bg-foreground", hex: "#0A0A0A" },
@@ -92,6 +115,42 @@ export default function ColorPage() {
                     <p className="text-xs text-muted-foreground font-mono">{color.hex}</p>
                     <p className="text-xs text-muted-foreground mt-1">{color.variable}</p>
                   </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Neutral Scale</h2>
+            <p className="mb-6 text-muted-foreground">
+              The neutral scale provides consistent grays for text, backgrounds, and borders.
+            </p>
+            <div className="space-y-2">
+              {neutralScale.map((color) => (
+                <div key={color.name} className="flex items-center gap-4 p-2 rounded-lg border bg-card">
+                  <div className={`w-10 h-10 rounded-md ${color.className} border`} />
+                  <div className="flex-1">
+                    <p className="font-medium font-mono text-sm">{color.name}</p>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-mono">{color.hex}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Brand Colors</h2>
+            <p className="mb-6 text-muted-foreground">
+              Brand and semantic colors used throughout the design system.
+            </p>
+            <div className="space-y-2">
+              {brandColors.map((color) => (
+                <div key={color.name} className="flex items-center gap-4 p-2 rounded-lg border bg-card">
+                  <div className={`w-10 h-10 rounded-md ${color.className}`} />
+                  <div className="flex-1">
+                    <p className="font-medium font-mono text-sm">{color.name}</p>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-mono">{color.hex}</p>
                 </div>
               ))}
             </div>

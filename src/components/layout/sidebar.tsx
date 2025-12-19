@@ -3,45 +3,43 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import {
-  FileText,
-  Type,
-  Palette,
-  Space,
-  Smile,
-  Zap,
-  LayoutGrid,
-  Square,
-  CreditCard,
-  TextCursor,
-  ChevronDown,
-  PanelTop,
-  MessageSquare,
-  Bell,
-  Layers,
-  FormInput,
-  Navigation,
-  Table,
-  BookOpen,
-  Rocket,
-  Paintbrush,
-  Accessibility,
-  ToggleLeft,
-  BadgeCheck,
-  RectangleHorizontal,
-  AreaChart,
-  CircleUser,
-  Divide,
-  Menu,
-  PanelBottom,
-  Columns3,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import DescriptionOutlined from "@mui/icons-material/DescriptionOutlined";
+import TextFieldsOutlined from "@mui/icons-material/TextFieldsOutlined";
+import PaletteOutlined from "@mui/icons-material/PaletteOutlined";
+import SpaceBarOutlined from "@mui/icons-material/SpaceBarOutlined";
+import RoundedCornerOutlined from "@mui/icons-material/RoundedCornerOutlined";
+import EmojiEmotionsOutlined from "@mui/icons-material/EmojiEmotionsOutlined";
+import AnimationOutlined from "@mui/icons-material/AnimationOutlined";
+import GridViewOutlined from "@mui/icons-material/GridViewOutlined";
+import SmartButtonOutlined from "@mui/icons-material/SmartButtonOutlined";
+import CreditCardOutlined from "@mui/icons-material/CreditCardOutlined";
+import TextFieldsRounded from "@mui/icons-material/TextFieldsRounded";
+import ExpandMoreOutlined from "@mui/icons-material/ExpandMoreOutlined";
+import TabOutlined from "@mui/icons-material/TabOutlined";
+import ChatBubbleOutlineOutlined from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import NotificationsOutlined from "@mui/icons-material/NotificationsOutlined";
+import LayersOutlined from "@mui/icons-material/LayersOutlined";
+import InputOutlined from "@mui/icons-material/InputOutlined";
+import ExploreOutlined from "@mui/icons-material/ExploreOutlined";
+import TableChartOutlined from "@mui/icons-material/TableChartOutlined";
+import MenuBookOutlined from "@mui/icons-material/MenuBookOutlined";
+import RocketLaunchOutlined from "@mui/icons-material/RocketLaunchOutlined";
+import BrushOutlined from "@mui/icons-material/BrushOutlined";
+import AccessibilityNewOutlined from "@mui/icons-material/AccessibilityNewOutlined";
+import ToggleOnOutlined from "@mui/icons-material/ToggleOnOutlined";
+import VerifiedOutlined from "@mui/icons-material/VerifiedOutlined";
+import BarChartOutlined from "@mui/icons-material/BarChartOutlined";
+import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
+import HorizontalRuleOutlined from "@mui/icons-material/HorizontalRuleOutlined";
+import MenuOutlined from "@mui/icons-material/MenuOutlined";
+import VerticalSplitOutlined from "@mui/icons-material/VerticalSplitOutlined";
+import ViewKanbanOutlined from "@mui/icons-material/ViewKanbanOutlined";
+import type { SvgIconComponent } from "@mui/icons-material";
 
 interface NavItem {
   label: string;
   href: string;
-  icon: LucideIcon;
+  icon: SvgIconComponent;
 }
 
 interface NavSection {
@@ -50,55 +48,55 @@ interface NavSection {
 }
 
 export const sidebarNav: Record<string, NavSection> = {
-  guidelines: {
-    title: "Guidelines",
+  style: {
+    title: "Style",
     items: [
-      { label: "Overview", href: "/guidelines", icon: FileText },
-      { label: "Typography", href: "/guidelines/typography", icon: Type },
-      { label: "Color", href: "/guidelines/color", icon: Palette },
-      { label: "Spacing", href: "/guidelines/spacing", icon: Space },
-      { label: "Corners", href: "/guidelines/corners", icon: RectangleHorizontal },
-      { label: "Icons", href: "/guidelines/icons", icon: Smile },
-      { label: "Motion", href: "/guidelines/motion", icon: Zap },
+      { label: "Overview", href: "/style", icon: DescriptionOutlined },
+      { label: "Typography", href: "/style/typography", icon: TextFieldsOutlined },
+      { label: "Color", href: "/style/color", icon: PaletteOutlined },
+      { label: "Spacing", href: "/style/spacing", icon: SpaceBarOutlined },
+      { label: "Corners", href: "/style/corners", icon: RoundedCornerOutlined },
+      { label: "Icons", href: "/style/icons", icon: EmojiEmotionsOutlined },
+      { label: "Motion", href: "/style/motion", icon: AnimationOutlined },
     ],
   },
   components: {
     title: "Components",
     items: [
-      { label: "Overview", href: "/components", icon: LayoutGrid },
-      { label: "Button", href: "/components/button", icon: Square },
-      { label: "Card", href: "/components/card", icon: CreditCard },
-      { label: "Input", href: "/components/input", icon: TextCursor },
-      { label: "Select", href: "/components/select", icon: ChevronDown },
-      { label: "Tabs", href: "/components/tabs", icon: PanelTop },
-      { label: "Modal", href: "/components/modal", icon: MessageSquare },
-      { label: "Toast", href: "/components/toast", icon: Bell },
-      { label: "Badge", href: "/components/badge", icon: BadgeCheck },
-      { label: "Toggle", href: "/components/toggle", icon: ToggleLeft },
-      { label: "Avatar", href: "/components/avatar", icon: CircleUser },
-      { label: "Separator", href: "/components/separator", icon: Divide },
-      { label: "Navigation Menu", href: "/components/navigation-menu", icon: Menu },
-      { label: "Drawer", href: "/components/drawer", icon: PanelBottom },
-      { label: "Chart", href: "/components/chart", icon: AreaChart },
-      { label: "Kanban", href: "/components/kanban", icon: Columns3 },
+      { label: "Overview", href: "/components", icon: GridViewOutlined },
+      { label: "Button", href: "/components/button", icon: SmartButtonOutlined },
+      { label: "Card", href: "/components/card", icon: CreditCardOutlined },
+      { label: "Input", href: "/components/input", icon: InputOutlined },
+      { label: "Select", href: "/components/select", icon: ExpandMoreOutlined },
+      { label: "Tabs", href: "/components/tabs", icon: TabOutlined },
+      { label: "Modal", href: "/components/modal", icon: ChatBubbleOutlineOutlined },
+      { label: "Toast", href: "/components/toast", icon: NotificationsOutlined },
+      { label: "Badge", href: "/components/badge", icon: VerifiedOutlined },
+      { label: "Toggle", href: "/components/toggle", icon: ToggleOnOutlined },
+      { label: "Avatar", href: "/components/avatar", icon: AccountCircleOutlined },
+      { label: "Separator", href: "/components/separator", icon: HorizontalRuleOutlined },
+      { label: "Navigation Menu", href: "/components/navigation-menu", icon: MenuOutlined },
+      { label: "Drawer", href: "/components/drawer", icon: VerticalSplitOutlined },
+      { label: "Chart", href: "/components/chart", icon: BarChartOutlined },
+      { label: "Kanban", href: "/components/kanban", icon: ViewKanbanOutlined },
     ],
   },
   patterns: {
     title: "Patterns",
     items: [
-      { label: "Overview", href: "/patterns", icon: Layers },
-      { label: "Forms", href: "/patterns/forms", icon: FormInput },
-      { label: "Navigation", href: "/patterns/navigation", icon: Navigation },
-      { label: "Data Display", href: "/patterns/data-display", icon: Table },
+      { label: "Overview", href: "/patterns", icon: LayersOutlined },
+      { label: "Forms", href: "/patterns/forms", icon: InputOutlined },
+      { label: "Navigation", href: "/patterns/navigation", icon: ExploreOutlined },
+      { label: "Data Display", href: "/patterns/data-display", icon: TableChartOutlined },
     ],
   },
   resources: {
     title: "Resources",
     items: [
-      { label: "Overview", href: "/resources", icon: BookOpen },
-      { label: "Getting Started", href: "/resources/getting-started", icon: Rocket },
-      { label: "Design Tokens", href: "/resources/design-tokens", icon: Paintbrush },
-      { label: "Accessibility", href: "/resources/accessibility", icon: Accessibility },
+      { label: "Overview", href: "/resources", icon: MenuBookOutlined },
+      { label: "Getting Started", href: "/resources/getting-started", icon: RocketLaunchOutlined },
+      { label: "Design Tokens", href: "/resources/design-tokens", icon: BrushOutlined },
+      { label: "Accessibility", href: "/resources/accessibility", icon: AccessibilityNewOutlined },
     ],
   },
 };
@@ -107,7 +105,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   const getActiveSection = () => {
-    if (pathname.startsWith("/guidelines")) return "guidelines";
+    if (pathname.startsWith("/style")) return "style";
     if (pathname.startsWith("/components")) return "components";
     if (pathname.startsWith("/patterns")) return "patterns";
     if (pathname.startsWith("/resources")) return "resources";

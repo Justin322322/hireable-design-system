@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlock } from "@/components/docs/code-block";
+import { VERSION } from "@/lib/version";
 
 export default function ModalPage() {
   return (
@@ -8,6 +9,7 @@ export default function ModalPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Modal</h1>
+          <span className="text-sm text-muted-foreground">{VERSION}</span>
         </div>
         <p className="text-lg text-muted-foreground">
           Modals display content in a layer above the page. Use for focused tasks that require user attention.

@@ -41,12 +41,8 @@ export default function CornersPage() {
             <div className="space-y-4">
               {cornerRadii.map((corner) => (
                 <div key={corner.name} className="flex items-center gap-4">
-                  <div className="w-20 text-sm font-mono text-muted-foreground">
-                    {corner.name}
-                  </div>
-                  <div className="w-16 text-sm text-muted-foreground">
-                    {corner.value}
-                  </div>
+                  <div className="w-20 text-sm font-mono text-muted-foreground">{corner.name}</div>
+                  <div className="w-16 text-sm text-muted-foreground">{corner.value}</div>
                   <div className="flex-1">
                     <div className={`h-16 w-32 bg-primary border border-border ${corner.className}`} />
                   </div>
@@ -61,9 +57,7 @@ export default function CornersPage() {
             <h2 className="mb-4 text-xl font-semibold">Usage Guidelines</h2>
             <div className="space-y-4">
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Sharp Corners (None)</CardTitle>
-                </CardHeader>
+                <CardHeader><CardTitle className="text-lg">Sharp Corners (None)</CardTitle></CardHeader>
                 <CardContent className="text-muted-foreground space-y-2">
                   <p>Use for:</p>
                   <ul className="list-disc list-inside space-y-1">
@@ -74,9 +68,7 @@ export default function CornersPage() {
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Small Roundness (XS - SM)</CardTitle>
-                </CardHeader>
+                <CardHeader><CardTitle className="text-lg">Small Roundness (XS - SM)</CardTitle></CardHeader>
                 <CardContent className="text-muted-foreground space-y-2">
                   <p>Use for:</p>
                   <ul className="list-disc list-inside space-y-1">
@@ -87,9 +79,7 @@ export default function CornersPage() {
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Medium Roundness (MD - LG)</CardTitle>
-                </CardHeader>
+                <CardHeader><CardTitle className="text-lg">Medium Roundness (MD - LG)</CardTitle></CardHeader>
                 <CardContent className="text-muted-foreground space-y-2">
                   <p>Use for:</p>
                   <ul className="list-disc list-inside space-y-1">
@@ -101,9 +91,7 @@ export default function CornersPage() {
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Large Roundness (XL - 3XL)</CardTitle>
-                </CardHeader>
+                <CardHeader><CardTitle className="text-lg">Large Roundness (XL - 3XL)</CardTitle></CardHeader>
                 <CardContent className="text-muted-foreground space-y-2">
                   <p>Use for:</p>
                   <ul className="list-disc list-inside space-y-1">
@@ -114,9 +102,7 @@ export default function CornersPage() {
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Full Roundness (Full)</CardTitle>
-                </CardHeader>
+                <CardHeader><CardTitle className="text-lg">Full Roundness (Full)</CardTitle></CardHeader>
                 <CardContent className="text-muted-foreground space-y-2">
                   <p>Use for:</p>
                   <ul className="list-disc list-inside space-y-1">
@@ -150,10 +136,6 @@ export default function CornersPage() {
 <div className="rounded-b-lg">Bottom corners only</div>
 <div className="rounded-l-lg">Left corners only</div>
 <div className="rounded-r-lg">Right corners only</div>
-<div className="rounded-tl-lg">Top-left only</div>
-<div className="rounded-tr-lg">Top-right only</div>
-<div className="rounded-bl-lg">Bottom-left only</div>
-<div className="rounded-br-lg">Bottom-right only</div>
 
 // Common component patterns
 <button className="rounded-lg px-4 py-2">Button</button>
@@ -161,37 +143,6 @@ export default function CornersPage() {
 <input className="rounded-md border px-3 py-2" />
 <img className="rounded-full w-12 h-12" />`}
               language="tsx"
-            />
-          </section>
-
-          <section>
-            <h2 className="mb-4 text-xl font-semibold">CSS Custom Properties</h2>
-            <CodeBlock
-              code={`/* Using CSS variables for consistency */
-:root {
-  --radius: 0.625rem; /* 10px base */
-  --radius-sm: calc(var(--radius) - 4px); /* 6px */
-  --radius-md: calc(var(--radius) - 2px); /* 8px */
-  --radius-lg: var(--radius); /* 10px */
-  --radius-xl: calc(var(--radius) + 4px); /* 14px */
-  --radius-2xl: calc(var(--radius) + 8px); /* 18px */
-  --radius-3xl: calc(var(--radius) + 12px); /* 22px */
-  --radius-4xl: calc(var(--radius) + 16px); /* 26px */
-}
-
-/* Apply in components */
-.button {
-  border-radius: var(--radius-md);
-}
-
-.card {
-  border-radius: var(--radius-lg);
-}
-
-.avatar {
-  border-radius: 9999px;
-}`}
-              language="css"
             />
           </section>
         </TabsContent>

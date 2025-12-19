@@ -2,10 +2,10 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { Separator } from "@/components/ui/separator";
+import { VERSION } from "@/lib/version";
 
 export default function SeparatorPage() {
   return (
@@ -13,7 +13,7 @@ export default function SeparatorPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Separator</h1>
-          <Badge variant="outline">Stable</Badge>
+          <span className="text-sm text-muted-foreground">{VERSION}</span>
         </div>
         <p className="text-lg text-muted-foreground">
           Visually or semantically separates content.

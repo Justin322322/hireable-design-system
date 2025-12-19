@@ -24,8 +24,8 @@ export default function HomePage() {
 
       <div className="space-y-8">
         <section>
-          <Link href="/guidelines" className="text-xl font-semibold hover:underline underline-offset-4">
-            Guidelines
+          <Link href="/style" className="text-xl font-semibold hover:underline underline-offset-4">
+            Style
           </Link>
           <p className="mt-2 text-muted-foreground">
             Foundational standards for typography, color, spacing, and more.

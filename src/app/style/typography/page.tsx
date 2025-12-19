@@ -14,6 +14,19 @@ const typeScale = [
   { name: "Caption", size: "0.75rem", lineHeight: "1.4", weight: "400", className: "text-xs" },
 ];
 
+const fontSizes = [
+  { name: "text-xs", size: "12px", rem: "0.75rem", sample: "Extra small text" },
+  { name: "text-sm", size: "14px", rem: "0.875rem", sample: "Small text" },
+  { name: "text-base", size: "16px", rem: "1rem", sample: "Base text" },
+  { name: "text-lg", size: "18px", rem: "1.125rem", sample: "Large text" },
+  { name: "text-xl", size: "20px", rem: "1.25rem", sample: "Extra large" },
+  { name: "text-2xl", size: "24px", rem: "1.5rem", sample: "2X large" },
+  { name: "text-3xl", size: "30px", rem: "1.875rem", sample: "3X large" },
+  { name: "text-4xl", size: "36px", rem: "2.25rem", sample: "4X large" },
+  { name: "text-5xl", size: "48px", rem: "3rem", sample: "5X large" },
+  { name: "text-6xl", size: "60px", rem: "3.75rem", sample: "6X large" },
+];
+
 const fontWeights = [
   { name: "Regular", weight: "400", className: "font-normal" },
   { name: "Medium", weight: "500", className: "font-medium" },
@@ -40,6 +53,7 @@ export default function TypographyPage() {
       <Tabs defaultValue="families" className="space-y-8">
         <TabsList>
           <TabsTrigger value="families">Font Families</TabsTrigger>
+          <TabsTrigger value="sizing">Sizing</TabsTrigger>
           <TabsTrigger value="scale">Type Scale</TabsTrigger>
           <TabsTrigger value="weights">Font Weights</TabsTrigger>
           <TabsTrigger value="usage">Usage</TabsTrigger>
@@ -76,6 +90,31 @@ export default function TypographyPage() {
                     </div>
                   </CardContent>
                 </Card>
+              ))}
+            </div>
+          </section>
+        </TabsContent>
+
+        <TabsContent value="sizing" className="space-y-8">
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Font Sizes</h2>
+            <p className="mb-6 text-muted-foreground">
+              Tailwind CSS font size classes with their pixel and rem values.
+            </p>
+            <div className="space-y-2">
+              {fontSizes.map((item) => (
+                <div key={item.name} className="flex items-center gap-4 p-3 rounded-lg border bg-card">
+                  <div className="w-24">
+                    <p className="font-mono text-sm font-medium">{item.name}</p>
+                  </div>
+                  <div className="flex-1">
+                    <p className={item.name}>{item.sample}</p>
+                  </div>
+                  <div className="text-right text-sm text-muted-foreground font-mono">
+                    <span>{item.size}</span>
+                    <span className="text-neutral-400 ml-2">({item.rem})</span>
+                  </div>
+                </div>
               ))}
             </div>
           </section>

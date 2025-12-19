@@ -4,20 +4,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { 
-  Ruler, 
-  Component, 
-  LayoutGrid, 
-  BookOpen 
-} from "lucide-react";
+import StraightenOutlined from "@mui/icons-material/StraightenOutlined";
+import WidgetsOutlined from "@mui/icons-material/WidgetsOutlined";
+import GridViewOutlined from "@mui/icons-material/GridViewOutlined";
+import MenuBookOutlined from "@mui/icons-material/MenuBookOutlined";
+import type { SvgIconComponent } from "@mui/icons-material";
 import { DocsSearch } from "./search";
 import { MobileNav } from "./mobile-nav";
 
-export const navItems = [
-  { label: "Guidelines", href: "/guidelines", icon: Ruler },
-  { label: "Components", href: "/components", icon: Component },
-  { label: "Patterns", href: "/patterns", icon: LayoutGrid },
-  { label: "Resources", href: "/resources", icon: BookOpen },
+export const navItems: { label: string; href: string; icon: SvgIconComponent }[] = [
+  { label: "Style", href: "/style", icon: StraightenOutlined },
+  { label: "Components", href: "/components", icon: WidgetsOutlined },
+  { label: "Patterns", href: "/patterns", icon: GridViewOutlined },
+  { label: "Resources", href: "/resources", icon: MenuBookOutlined },
 ];
 
 export function SiteHeader() {

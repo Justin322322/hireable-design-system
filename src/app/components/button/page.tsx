@@ -1,9 +1,9 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { CodeBlock, ComponentPreview, PropsTable, VariantsTable } from "@/components/docs";
 import { buttonProps, buttonVariants, buttonSizes } from "@/data/api/button";
+import { VERSION } from "@/lib/version";
 
 export default function ButtonPage() {
   return (
@@ -11,7 +11,7 @@ export default function ButtonPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Button</h1>
-          <Badge variant="outline">Stable</Badge>
+          <span className="text-sm text-muted-foreground">{VERSION}</span>
         </div>
         <p className="text-lg text-muted-foreground">
           Buttons trigger actions and events. Use different variants to indicate 

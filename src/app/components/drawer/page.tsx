@@ -4,13 +4,13 @@ import * as React from "react";
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { 
   CodeBlock, 
   ComponentPreview,
   ComponentsTable,
   InterfaceTable 
 } from "@/components/docs";
+import { VERSION } from "@/lib/version";
 import {
   drawerComponents,
   candidateProfileInterface,
@@ -20,6 +20,7 @@ import {
 } from "@/data/api/drawer";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { 
   Drawer, 
@@ -36,7 +37,7 @@ import {
   MapPin,
   Trash2,
   Sparkles,
-  Linkedin,
+  LinkedinIcon,
   Globe
 } from "lucide-react";
 import { VisuallyHidden } from "@/components/ui/visually-hidden";
@@ -167,7 +168,7 @@ const ProfileDrawerHeader: React.FC<ProfileDrawerHeaderProps> = ({ onClose }) =>
           className="flex items-center gap-2 group"
         >
           <div className="flex size-8 items-center justify-center rounded-full border border-neutral-300 group-hover:bg-neutral-100 transition-colors">
-            <ChevronLeft className="size-4 text-neutral-900" />
+            <ChevronLeft className="size-4 text-neutral-700" />
           </div>
           <span className="text-sm text-neutral-900">
             back
@@ -180,7 +181,7 @@ const ProfileDrawerHeader: React.FC<ProfileDrawerHeaderProps> = ({ onClose }) =>
       <span className="hidden text-sm font-medium text-neutral-900 sm:inline-block">
         Open profile in a new tab
       </span>
-      <ExternalLink className="size-4 text-neutral-900" />
+      <ExternalLink className="size-4 text-neutral-700" />
     </button>
   </div>
 );
@@ -215,8 +216,8 @@ const CandidateHeader: React.FC<CandidateHeaderProps> = ({ data }) => (
       </p>
 
       <div className="flex items-center gap-1">
-        <MapPin className="size-4 text-neutral-400" />
-        <span className="text-sm text-neutral-400">
+        <MapPin className="size-4 text-neutral-600" />
+        <span className="text-sm text-neutral-500">
           {data.location}
         </span>
       </div>
@@ -468,7 +469,7 @@ const LinksSection: React.FC = () => (
         size="sm"
         className="gap-2 border-neutral-300"
       >
-        <Linkedin className="size-4" />
+        <LinkedinIcon className="size-4 text-[#0A66C2]" />
         LinkedIn
       </Button>
       <Button
@@ -476,7 +477,7 @@ const LinksSection: React.FC = () => (
         size="sm"
         className="gap-2 border-neutral-300"
       >
-        <Globe className="size-4" />
+        <Globe className="size-4 text-neutral-700" />
         Portfolio
       </Button>
     </div>
@@ -510,7 +511,7 @@ const ProfileDrawerFooter: React.FC = () => (
       variant="outline"
       className="w-full gap-2 border-red-200 text-red-500 hover:bg-red-50 hover:border-red-300 sm:w-auto"
     >
-      <Trash2 className="size-4" />
+      <Trash2 className="size-4 text-red-500" />
       Drop candidate
     </Button>
     <div className="flex flex-1 gap-2">
@@ -541,7 +542,7 @@ export default function DrawerPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Drawer</h1>
-          <Badge variant="outline">Stable</Badge>
+          <span className="text-sm text-muted-foreground">{VERSION}</span>
         </div>
         <p className="text-lg text-muted-foreground">
           A panel that slides in from the right side of the screen. Built with Radix UI and CSS animations.

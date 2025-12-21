@@ -33,11 +33,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSans.variable} ${inter.variable} font-sans antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded-md focus:bg-background focus:p-4 focus:text-foreground focus:shadow-md focus:ring-2 focus:ring-ring"
+        >
+          Skip to main content
+        </a>
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <div className="flex flex-1">
             <Sidebar />
-            <main className="flex-1 overflow-auto flex justify-center">{children}</main>
+            <main id="main-content" className="flex-1 overflow-auto flex justify-center">{children}</main>
           </div>
         </div>
         <Toaster />

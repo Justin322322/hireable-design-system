@@ -23,7 +23,8 @@ const neutralScale = [
 
 const brandColors = [
   { name: "client", className: "bg-client", hex: "#00A7F8" },
-  { name: "client-hover", className: "bg-client-hover", hex: "#0096DE" },
+  { name: "client-hover", className: "bg-client-hover", hex: "#0085C6" },
+  { name: "client-active", className: "bg-client-active", hex: "#0085C6" },
   { name: "success", className: "bg-success", hex: "#27AE60" },
   { name: "warning", className: "bg-warning", hex: "#F2C94C" },
   { name: "danger", className: "bg-danger", hex: "#EB5757" },

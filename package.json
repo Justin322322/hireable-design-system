@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "fix:tailwind": "powershell -ExecutionPolicy Bypass -File scripts/fix-tailwind.ps1"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

@@ -74,8 +74,8 @@ function ApplicationCard({ company, position, salary, experience, status, posted
           <div
             className={`rounded-full px-[8px] py-[4px] text-[12px] leading-[1.2] font-normal tracking-[0.3px] ${
               isMatched
-                ? "text-[#27AE60] bg-[rgba(39,174,96,0.1)]"
-                : "text-[#00A7F8] bg-[rgba(0,167,248,0.08)]"
+                ? "text-success bg-success/10"
+                : "text-client bg-client/10"
             }`}
           >
             {status}
@@ -85,7 +85,7 @@ function ApplicationCard({ company, position, salary, experience, status, posted
           <p className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-900">
             Activity Title
           </p>
-          <button className="bg-[#00A7F8] flex h-[20px] w-[20px] items-center justify-center rounded-full">
+          <button className="bg-client flex h-[20px] w-[20px] items-center justify-center rounded-full">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d="M4.5 3L7.5 6L4.5 9" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -127,7 +127,7 @@ function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Can
             <span>{experience}</span>
           </div>
           {matchStatus && (
-            <span className="rounded-[4px] bg-[rgba(39,174,96,0.1)] px-[6px] py-[3px] text-[10px] leading-[1.2] font-semibold tracking-[0.2px] text-[#27AE60] uppercase">
+            <span className="rounded-[4px] bg-success/10 px-[6px] py-[3px] text-[10px] leading-[1.2] font-semibold tracking-[0.2px] text-success uppercase">
               {matchStatus}
             </span>
           )}

@@ -39,7 +39,7 @@ export function SiteHeader() {
                 <Icon 
                   className={cn(
                     "h-5 w-5",
-                    isActive ? "text-[#00A7F8]" : "text-muted-foreground"
+                    isActive ? "text-client" : "text-muted-foreground"
                   )} 
                 />
                 <span className="hidden lg:inline-block">{item.label}</span>

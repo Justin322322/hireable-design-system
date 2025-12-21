@@ -45,7 +45,7 @@ export function Sidebar() {
                   <Icon 
                     className={cn(
                       "h-5 w-5 shrink-0",
-                      isActive ? "text-[#00A7F8]" : "text-muted-foreground"
+                      isActive ? "text-client" : "text-muted-foreground"
                     )} 
                   />
                   <span>{item.label}</span>

@@ -14,8 +14,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { navItems } from "./site-header";
-import { sidebarNav } from "./sidebar";
+import { mainNav, sidebarNav } from "@/config/docs";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -60,7 +59,7 @@ export function MobileNav() {
             <div className="flex flex-col space-y-4">
               <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground/70">Main Sections</h4>
               <div className="flex flex-col gap-1 text-lg">
-                {navItems.map((item) => {
+                {mainNav.map((item) => {
                   const Icon = item.icon;
                   return (
                     <Link

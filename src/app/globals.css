@@ -50,6 +50,18 @@
   --color-warning-foreground: var(--warning-foreground);
   --color-danger: var(--danger);
   --color-danger-foreground: var(--danger-foreground);
+
+  /* Button Tokens (semantic) - reference primitives from :root */
+  --color-button-primary-default: var(--button-primary-default);
+  --color-button-primary-hover: var(--button-primary-hover);
+  --color-button-primary-active: var(--button-primary-active);
+  --color-button-primary-foreground: var(--button-primary-foreground);
+  --color-button-primary-disabled: var(--button-primary-disabled);
+  --color-button-primary-disabled-foreground: var(--button-primary-disabled-foreground);
+  --color-button-destructive-default: var(--button-destructive-default);
+  --color-button-destructive-hover: var(--button-destructive-hover);
+  --color-button-destructive-foreground: var(--button-destructive-foreground);
+  --color-border-disabled: var(--border-disabled);
   --color-linkedin: var(--linkedin);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -105,7 +117,7 @@
 
   /* Brand Colors */
   --client: oklch(0.65 0.19 230);           /* #00A7F8 - Primary brand blue */
-  --client-hover: oklch(0.58 0.17 230);     /* #0096DE - Hover state */
+  --client-hover: oklch(0.52 0.15 230);     /* #0085C6 - Hover state (Figma) */
   --client-active: oklch(0.52 0.15 230);    /* #0085C6 - Active state */
   --success: oklch(0.64 0.17 145);          /* #27AE60 - Success green */
   --success-foreground: oklch(1 0 0);       /* White text on success */
@@ -114,6 +126,18 @@
   --danger: oklch(0.58 0.22 25);            /* #EB5757 - Danger red */
   --danger-foreground: oklch(1 0 0);        /* White text on danger */
   --linkedin: oklch(0.50 0.13 250);         /* #0A66C2 - LinkedIn blue */
+
+  /* Button Primitives */
+  --button-primary-default: var(--client);
+  --button-primary-hover: var(--client-hover);
+  --button-primary-active: var(--client-active);
+  --button-primary-foreground: oklch(1 0 0);  /* White */
+  --button-primary-disabled: oklch(0.90 0 0);  /* #E5E5E5 */
+  --button-primary-disabled-foreground: oklch(0.65 0 0);  /* Gray text */
+  --button-destructive-default: var(--danger);
+  --button-destructive-hover: oklch(0.52 0.20 25);  /* Darker red */
+  --button-destructive-foreground: oklch(1 0 0);  /* White */
+  --border-disabled: oklch(0.95 0 0);  /* #F2F2F2 */
 }
 
 .dark {
@@ -148,6 +172,18 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* Button Primitives (dark mode) */
+  --button-primary-default: var(--client);
+  --button-primary-hover: var(--client-hover);
+  --button-primary-active: var(--client-active);
+  --button-primary-foreground: oklch(1 0 0);
+  --button-primary-disabled: oklch(0.30 0 0);  /* Dark gray */
+  --button-primary-disabled-foreground: oklch(0.50 0 0);  /* Gray text */
+  --button-destructive-default: oklch(0.704 0.191 22.216);
+  --button-destructive-hover: oklch(0.60 0.18 22);
+  --button-destructive-foreground: oklch(1 0 0);
+  --border-disabled: oklch(0.35 0 0);
 }
 
 @layer base {

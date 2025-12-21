@@ -1,3 +1,0 @@
-## 2024-05-24 - Missing Dependencies
-**Learning:** This repo had a pre-existing broken build due to a missing dependency (`@radix-ui/react-visually-hidden`) that was imported in `src/components/ui/visually-hidden.tsx` but not listed in `package.json`.
-**Action:** When encountering build errors unrelated to my changes, verify if they are pre-existing. In this case, I had to add the missing dependency to fix the build, even though my specific feature (skip link) didn't use it directly. This ensures the repo is left in a better state than found (Boy Scout Rule), but requires explanation in PR to avoid confusion about "unused dependencies".

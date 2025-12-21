@@ -61,6 +61,9 @@
   --color-button-destructive-default: var(--button-destructive-default);
   --color-button-destructive-hover: var(--button-destructive-hover);
   --color-button-destructive-foreground: var(--button-destructive-foreground);
+  --color-button-secondary-default: var(--button-secondary-default);
+  --color-button-secondary-hover: var(--button-secondary-hover);
+  --color-button-secondary-foreground: var(--button-secondary-foreground);
   --color-border-disabled: var(--border-disabled);
   --color-linkedin: var(--linkedin);
   --radius-sm: calc(var(--radius) - 4px);
@@ -137,6 +140,9 @@
   --button-destructive-default: var(--danger);
   --button-destructive-hover: oklch(0.52 0.20 25);  /* Darker red */
   --button-destructive-foreground: oklch(1 0 0);  /* White */
+  --button-secondary-default: oklch(0.97 0 0);  /* Light gray bg */
+  --button-secondary-hover: oklch(0.92 0 0);  /* Darker gray on hover */
+  --button-secondary-foreground: oklch(0.205 0 0);  /* Dark text */
   --border-disabled: oklch(0.95 0 0);  /* #F2F2F2 */
 }
 
@@ -183,6 +189,9 @@
   --button-destructive-default: oklch(0.704 0.191 22.216);
   --button-destructive-hover: oklch(0.60 0.18 22);
   --button-destructive-foreground: oklch(1 0 0);
+  --button-secondary-default: oklch(0.269 0 0);  /* Dark gray bg */
+  --button-secondary-hover: oklch(0.35 0 0);  /* Lighter gray on hover */
+  --button-secondary-foreground: oklch(0.985 0 0);  /* Light text */
   --border-disabled: oklch(0.35 0 0);
 }
 

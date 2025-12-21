@@ -34,10 +34,10 @@ export default function ModalPage() {
                     This is the modal content. It can contain any elements.
                   </p>
                   <div className="flex justify-end gap-2">
-                    <button className="px-4 py-2 text-sm rounded-md border hover:bg-muted">
+                    <button type="button" className="px-4 py-2 text-sm rounded-md border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground">
                       Cancel
                     </button>
-                    <button className="px-4 py-2 text-sm rounded-md bg-primary text-primary-foreground hover:bg-primary/90">
+                    <button type="button" className="px-4 py-2 text-sm rounded-md bg-button-primary-default text-button-primary-foreground shadow hover:bg-button-primary-hover active:bg-button-primary-active">
                       Confirm
                     </button>
                   </div>

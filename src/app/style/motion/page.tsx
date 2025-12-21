@@ -27,7 +27,7 @@ function DurationDemo({ duration, className }: { duration: string; className: st
     <div className="flex items-center gap-4">
       <Button variant="outline" size="sm" onClick={() => setAnimate(!animate)}>Play</Button>
       <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
-        <div className={`h-full bg-primary rounded-full transition-all ${className} ease-out`} style={{ width: animate ? "100%" : "0%" }} />
+        <div className={`h-full bg-client rounded-full transition-all ${className} ease-out`} style={{ width: animate ? "100%" : "0%" }} />
       </div>
       <span className="text-sm text-muted-foreground w-16">{duration}</span>
     </div>
@@ -40,7 +40,7 @@ function EasingDemo({ easing, className }: { easing: string; className: string }
     <div className="flex items-center gap-4">
       <Button variant="outline" size="sm" onClick={() => setAnimate(!animate)}>Play</Button>
       <div className="flex-1 h-10 bg-muted rounded-lg relative overflow-hidden">
-        <div className={`absolute top-1 bottom-1 w-8 bg-primary rounded transition-all duration-500 ${className}`} style={{ left: animate ? "calc(100% - 2.5rem)" : "0.25rem" }} />
+        <div className={`absolute top-1 bottom-1 w-8 bg-client rounded transition-all duration-500 ${className}`} style={{ left: animate ? "calc(100% - 2.5rem)" : "0.25rem" }} />
       </div>
       <span className="text-sm text-muted-foreground w-24">{easing}</span>
     </div>

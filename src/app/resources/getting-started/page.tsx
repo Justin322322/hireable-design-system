@@ -36,14 +36,7 @@ export default function GettingStartedPage() {
           <section>
             <h2 className="mb-4 text-xl font-semibold">Install Dependencies</h2>
             <CodeBlock
-              code={`# Using bun
-bun add @hireable/design-system
-
-# Using npm
-npm install @hireable/design-system
-
-# Using pnpm
-pnpm add @hireable/design-system`}
+              code={`bun add @hireable/design-system`}
               language="bash"
             />
           </section>

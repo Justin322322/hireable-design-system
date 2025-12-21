@@ -66,8 +66,8 @@ export default function ButtonPage() {
 
           <CodeBlock
             code={`<Button>Primary</Button>
-<Button className="hover:bg-[#0085C6]">Hover</Button>
-<Button className="bg-[#006593] hover:bg-[#006593]">Active</Button>
+<Button className="hover:bg-client-active">Hover</Button>
+<Button className="bg-client-active hover:bg-client-active">Active</Button>
 <Button disabled>Disabled</Button>`}
             language="tsx"
           />
@@ -75,8 +75,8 @@ export default function ButtonPage() {
           <ComponentPreview title="States">
             <div className="flex flex-wrap gap-4">
               <Button>Primary</Button>
-              <Button className="hover:bg-[#0085C6]">Hover</Button>
-              <Button className="bg-[#006593] hover:bg-[#006593]">Active</Button>
+              <Button className="hover:bg-client-active">Hover</Button>
+              <Button className="bg-client-active hover:bg-client-active">Active</Button>
               <Button disabled>Disabled</Button>
             </div>
           </ComponentPreview>

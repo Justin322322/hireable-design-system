@@ -44,21 +44,21 @@ const goalData = cardsData.goal as Goal;
 
 function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Profile, "id" | "avatar">) {
   return (
-    <div className="flex flex-col items-start gap-2.5 p-4 bg-white border border-[#C3C3C3] rounded-lg w-96 transition-colors hover:bg-[#F2F2F2] hover:border-[#C3C3C3] cursor-pointer">
+    <div className="flex flex-col items-start gap-2.5 p-4 bg-white border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
       <div className="flex flex-row items-center gap-2.5 w-full">
-        <div className="w-14 h-14 rounded-full bg-gray-300 flex-shrink-0" />
+        <div className="w-14 h-14 rounded-full bg-gray-300 shrink-0" />
         <div className="flex flex-col items-start gap-1 flex-1">
-          <p className="font-semibold text-sm text-[#212121] leading-[120%]">{name}</p>
-          <p className="font-normal text-xs text-[#212121] leading-[120%]">{role}</p>
+          <p className="font-semibold text-sm text-neutral-900 leading-[120%]">{name}</p>
+          <p className="font-normal text-xs text-neutral-900 leading-[120%]">{role}</p>
         </div>
       </div>
-      <div className="flex flex-row items-center gap-6 w-full text-xs text-[#212121]">
+      <div className="flex flex-row items-center gap-6 w-full text-xs text-neutral-900">
         <span>{salary}</span>
         <span>{experience}</span>
       </div>
       <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-[#212121]">{activityTitle}</span>
-        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-[#00A7F8] hover:bg-[#0085C6]">
+        <span className="text-xs text-neutral-900">{activityTitle}</span>
+        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active">
           <ChevronRight className="w-3.5 h-3.5" />
         </Button>
       </div>
@@ -68,33 +68,33 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Pro
 
 function GoalCard({ title, type, progress, completedResults, totalResults, dueDate }: Omit<Goal, "id">) {
   return (
-    <div className="flex flex-col items-start gap-5 p-4 bg-white border border-[#C3C3C3] rounded-lg w-96 transition-colors hover:bg-[#F2F2F2] hover:border-[#C3C3C3] cursor-pointer">
+    <div className="flex flex-col items-start gap-5 p-4 bg-white border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
       <div className="flex items-start justify-between w-full">
         <div className="flex-1 flex items-center">
-          <p className="font-semibold text-sm text-[#212121] leading-[1.5] tracking-[0.02em]">
+          <p className="font-semibold text-sm text-neutral-900 leading-normal tracking-[0.02em]">
             {title}
           </p>
         </div>
-        <span className="bg-[#F2F2F2] border border-[#E0E0E0] px-2 py-0.5 rounded-full text-[10px] text-[#616161] font-medium whitespace-nowrap">
+        <span className="bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded-full text-[10px] text-neutral-600 font-medium whitespace-nowrap">
           {type}
         </span>
       </div>
       <div className="flex flex-col gap-2 w-full">
         <div className="flex items-center">
-          <span className="font-semibold text-2xl text-[#212121] leading-[1.2]">
+          <span className="font-semibold text-2xl text-neutral-900 leading-[1.2]">
             {progress}%
           </span>
         </div>
         <div className="flex items-center w-full h-2">
-          <div className="flex-1 bg-[#F2F2F2] rounded-full h-1.5 overflow-hidden">
-            <div className="bg-[#00A7F8] h-full rounded-full" style={{ width: `${progress}%` }} />
+          <div className="flex-1 bg-neutral-100 rounded-full h-1.5 overflow-hidden">
+            <div className="bg-client h-full rounded-full" style={{ width: `${progress}%` }} />
           </div>
         </div>
         <div className="flex items-center justify-between w-full">
-          <span className="text-xs text-[#616161] leading-[1.2] tracking-[0.02em]">
+          <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
             {completedResults} of {totalResults} key results completed
           </span>
-          <span className="text-xs text-[#616161] leading-[1.2] tracking-[0.02em]">
+          <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
             {dueDate}
           </span>
         </div>

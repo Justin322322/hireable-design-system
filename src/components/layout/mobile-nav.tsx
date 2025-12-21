@@ -69,11 +69,11 @@ export function MobileNav() {
                       className={cn(
                         "flex w-full items-center gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-muted",
                         pathname.startsWith(item.href)
-                          ? "bg-secondary font-semibold text-[#00A7F8]"
+                          ? "bg-secondary font-semibold text-client"
                           : "text-foreground/80"
                       )}
                     >
-                      <Icon className={cn("size-5", pathname.startsWith(item.href) ? "text-[#00A7F8]" : "text-muted-foreground")} />
+                      <Icon className={cn("size-5", pathname.startsWith(item.href) ? "text-client" : "text-muted-foreground")} />
                       {item.label}
                     </Link>
                   );
@@ -96,11 +96,11 @@ export function MobileNav() {
                         className={cn(
                           "flex w-full items-center gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-muted",
                           pathname === item.href
-                            ? "bg-secondary font-semibold text-[#00A7F8]"
+                            ? "bg-secondary font-semibold text-client"
                             : "text-foreground/80"
                         )}
                       >
-                        <Icon className={cn("size-5", pathname === item.href ? "text-[#00A7F8]" : "text-muted-foreground")} />
+                        <Icon className={cn("size-5", pathname === item.href ? "text-client" : "text-muted-foreground")} />
                         {item.label}
                       </Link>
                     );

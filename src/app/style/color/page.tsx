@@ -22,12 +22,12 @@ const neutralScale = [
 ];
 
 const brandColors = [
-  { name: "client", className: "bg-[#00A7F8]", hex: "#00A7F8" },
-  { name: "client-hover", className: "bg-[#0096DE]", hex: "#0096DE" },
-  { name: "success", className: "bg-[#27AE60]", hex: "#27AE60" },
-  { name: "warning-amber", className: "bg-[#F2C94C]", hex: "#F2C94C" },
-  { name: "danger", className: "bg-[#EB5757]", hex: "#EB5757" },
-  { name: "linkedin", className: "bg-[#0A66C2]", hex: "#0A66C2" },
+  { name: "client", className: "bg-client", hex: "#00A7F8" },
+  { name: "client-hover", className: "bg-client-hover", hex: "#0096DE" },
+  { name: "success", className: "bg-success", hex: "#27AE60" },
+  { name: "warning", className: "bg-warning", hex: "#F2C94C" },
+  { name: "danger", className: "bg-danger", hex: "#EB5757" },
+  { name: "linkedin", className: "bg-linkedin", hex: "#0A66C2" },
 ];
 
 const semanticColors = [

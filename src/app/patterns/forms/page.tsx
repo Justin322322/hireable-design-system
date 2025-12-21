@@ -68,7 +68,7 @@ export default function FormsPatternPage() {
                     <div className="rounded-lg border bg-neutral-50 p-4">
                       <p className="text-xs font-medium text-neutral-500 mb-2">Alternative</p>
                       <div className="flex items-center gap-2">
-                        <div className="h-3 w-12 bg-neutral-300 rounded flex-shrink-0" />
+                        <div className="h-3 w-12 bg-neutral-300 rounded shrink-0" />
                         <div className="h-8 flex-1 bg-white border border-neutral-200 rounded-md" />
                       </div>
                     </div>

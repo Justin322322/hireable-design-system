@@ -124,7 +124,7 @@ export function DocsSearch() {
                       className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors hover:bg-secondary text-left group"
                     >
                       <div className="flex h-8 w-8 items-center justify-center rounded-md border bg-background group-hover:border-primary/50 transition-colors">
-                        <Icon className="h-4 w-4 text-muted-foreground group-hover:text-[#00A7F8]" />
+                        <Icon className="h-4 w-4 text-muted-foreground group-hover:text-client" />
                       </div>
                       <div className="flex flex-col">
                         <span className="font-medium">{item.title}</span>

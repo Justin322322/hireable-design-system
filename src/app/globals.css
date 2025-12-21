@@ -3,6 +3,44 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/**
+ * ============================================
+ * DESIGN TOKENS
+ * ============================================
+ * 
+ * This design system uses CSS custom properties as design tokens.
+ * All components consume these tokens - never hardcode values.
+ * 
+ * TOKEN CATEGORIES:
+ * 
+ * 🎨 COLORS
+ *    Semantic color tokens for consistent theming.
+ *    Pattern: --{semantic-name} / --{semantic-name}-foreground
+ *    Examples: --primary, --secondary, --muted, --accent, --destructive
+ * 
+ * 📐 SPACING (via Tailwind)
+ *    Uses Tailwind's default spacing scale: 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24...
+ *    Pattern: gap-{n}, p-{n}, m-{n}, space-{direction}-{n}
+ *    Base unit: 0.25rem (4px)
+ * 
+ * 📝 TYPOGRAPHY (via Tailwind + fonts)
+ *    Font families: --font-sans (DM Sans), --font-secondary (Inter)
+ *    Sizes: text-xs, text-sm, text-base, text-lg, text-xl, text-2xl...
+ *    Weights: font-normal, font-medium, font-semibold, font-bold
+ * 
+ * 🔲 RADIUS
+ *    Border radius tokens derived from base --radius value.
+ *    Pattern: --radius-{size}
+ *    Values: sm, md, lg, xl, 2xl, 3xl, 4xl
+ * 
+ * 🌑 SHADOWS
+ *    Semantic shadow tokens for elevation.
+ *    Pattern: --shadow-{size}
+ *    Values: xs, sm, md, lg, xl
+ * 
+ * ============================================
+ */
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -37,6 +75,18 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
+  /* Brand Color Mappings */
+  --color-client: var(--client);
+  --color-client-hover: var(--client-hover);
+  --color-client-active: var(--client-active);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-linkedin: var(--linkedin);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -49,8 +99,10 @@
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
 :root {
@@ -86,6 +138,18 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Brand Colors */
+  --client: oklch(0.65 0.19 230);           /* #00A7F8 - Primary brand blue */
+  --client-hover: oklch(0.58 0.17 230);     /* #0096DE - Hover state */
+  --client-active: oklch(0.52 0.15 230);    /* #0085C6 - Active state */
+  --success: oklch(0.64 0.17 145);          /* #27AE60 - Success green */
+  --success-foreground: oklch(1 0 0);       /* White text on success */
+  --warning: oklch(0.83 0.16 85);           /* #F2C94C - Warning amber */
+  --warning-foreground: oklch(0.2 0 0);     /* Dark text on warning */
+  --danger: oklch(0.58 0.22 25);            /* #EB5757 - Danger red */
+  --danger-foreground: oklch(1 0 0);        /* White text on danger */
+  --linkedin: oklch(0.50 0.13 250);         /* #0A66C2 - LinkedIn blue */
 }
 
 .dark {

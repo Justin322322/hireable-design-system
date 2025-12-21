@@ -117,35 +117,35 @@ const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps>(
     <div
       ref={ref}
       className={cn(
-        "flex flex-col items-start gap-2.5 p-4 bg-white border border-[#C3C3C3] rounded-lg w-96 transition-colors hover:bg-[#F2F2F2] hover:border-[#C3C3C3] cursor-pointer",
+        "flex flex-col items-start gap-2.5 p-4 bg-white border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer",
         className
       )}
       {...props}
     >
       {/* Profile Section */}
       <div className="flex flex-row items-center gap-2.5 w-full">
-        <Avatar className="w-14 h-14 flex-shrink-0">
+        <Avatar className="w-14 h-14 shrink-0">
           <AvatarImage src={data.avatar} alt={data.name} />
           <AvatarFallback className="bg-gray-300">
             {data.name.split(" ").map(n => n[0]).join("")}
           </AvatarFallback>
         </Avatar>
         <div className="flex flex-col items-start gap-1 flex-1">
-          <p className="font-semibold text-sm text-[#212121] leading-[120%]">{data.name}</p>
-          <p className="font-normal text-xs text-[#212121] leading-[120%]">{data.role}</p>
+          <p className="font-semibold text-sm text-neutral-900 leading-[120%]">{data.name}</p>
+          <p className="font-normal text-xs text-neutral-900 leading-[120%]">{data.role}</p>
         </div>
       </div>
 
       {/* Metadata Section */}
-      <div className="flex flex-row items-center gap-6 w-full text-xs text-[#212121]">
+      <div className="flex flex-row items-center gap-6 w-full text-xs text-neutral-900">
         <span>{data.salary}</span>
         <span>{data.experience}</span>
       </div>
 
       {/* Activity Section */}
       <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-[#212121]">{data.activityTitle}</span>
-        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-[#00A7F8] hover:bg-[#0085C6]">
+        <span className="text-xs text-neutral-900">{data.activityTitle}</span>
+        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active">
           <ChevronRight className="w-3.5 h-3.5" />
         </Button>
       </div>
@@ -261,7 +261,7 @@ const MatchSection: React.FC<{ title: string; children: React.ReactNode }> = ({
   <div className="flex flex-col gap-2">
     <Badge 
       variant="success" 
-      className="w-fit px-3 py-1 text-xs uppercase bg-[#00a7f814] text-[#00a7f8] border-0 rounded-md font-medium"
+      className="w-fit px-3 py-1 text-xs uppercase bg-client/10 text-client border-0 rounded-md font-medium"
     >
       {title}
     </Badge>
@@ -273,11 +273,11 @@ const MatchSection: React.FC<{ title: string; children: React.ReactNode }> = ({
 
 const AIMatchCard: React.FC<AIMatchCardProps> = ({ aiMatch, isExpanded, onToggle }) => (
   <div className="w-full">
-    <div className="flex w-full flex-col rounded-lg border border-[#00a7f8] bg-white">
+    <div className="flex w-full flex-col rounded-lg border border-client bg-white">
       <div className="flex w-full items-start justify-between p-4">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
-            <Sparkles className="size-4 text-[#00a7f8]" />
+            <Sparkles className="size-4 text-client" />
             <span className="text-sm font-semibold uppercase tracking-wide text-neutral-900">
               AI Matchmaker
             </span>
@@ -320,7 +320,7 @@ const AIMatchCard: React.FC<AIMatchCardProps> = ({ aiMatch, isExpanded, onToggle
 
         <button
           onClick={onToggle}
-          className="text-[#00a7f8] cursor-pointer text-sm underline w-fit hover:text-[#0096de] transition-colors"
+          className="text-client cursor-pointer text-sm underline w-fit hover:text-client-hover transition-colors"
         >
           {isExpanded ? "Show less" : "Show more"}
         </button>
@@ -335,7 +335,7 @@ const ProfileTabs: React.FC = () => (
     <Button 
       variant="outline" 
       size="sm"
-      className="border-[#00a7f8] bg-[#00a7f814] text-[#00a7f8] hover:bg-[#00a7f824] font-semibold"
+      className="border-client bg-client/10 text-client hover:bg-client/15 font-semibold"
     >
       Overview
     </Button>
@@ -469,7 +469,7 @@ const LinksSection: React.FC = () => (
         size="sm"
         className="gap-2 border-neutral-300"
       >
-        <LinkedinIcon className="size-4 text-[#0A66C2]" />
+        <LinkedinIcon className="size-4 text-linkedin" />
         LinkedIn
       </Button>
       <Button
@@ -522,7 +522,7 @@ const ProfileDrawerFooter: React.FC = () => (
         Invite interview
       </Button>
       <Button
-        className="flex-1 bg-[#00a7f8] hover:bg-[#0096de] text-white font-semibold"
+        className="flex-1 bg-client hover:bg-client-hover text-white font-semibold"
       >
         Send offer
       </Button>

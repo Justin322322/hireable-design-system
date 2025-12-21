@@ -54,15 +54,13 @@ export default function ButtonPage() {
               <Button size="sm">Small</Button>
               <Button size="default">Default</Button>
               <Button size="lg">Large</Button>
-              <Button size="xl">Extra Large</Button>
             </div>
           </ComponentPreview>
 
           <CodeBlock
             code={`<Button size="sm">Small</Button>
 <Button size="default">Default</Button>
-<Button size="lg">Large</Button>
-<Button size="xl">Extra Large</Button>`}
+<Button size="lg">Large</Button>`}
             language="tsx"
           />
 

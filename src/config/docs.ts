@@ -21,6 +21,8 @@ import RocketLaunchOutlined from "@mui/icons-material/RocketLaunchOutlined";
 import BrushOutlined from "@mui/icons-material/BrushOutlined";
 import AccessibilityNewOutlined from "@mui/icons-material/AccessibilityNewOutlined";
 import ToggleOnOutlined from "@mui/icons-material/ToggleOnOutlined";
+import CheckBoxOutlined from "@mui/icons-material/CheckBoxOutlined";
+import ViewSidebarOutlined from "@mui/icons-material/ViewSidebarOutlined";
 import VerifiedOutlined from "@mui/icons-material/VerifiedOutlined";
 import BarChartOutlined from "@mui/icons-material/BarChartOutlined";
 import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
@@ -79,6 +81,8 @@ export const sidebarNav: Record<string, NavSection> = {
       { label: "Toast", href: "/components/toast", icon: NotificationsOutlined },
       { label: "Badge", href: "/components/badge", icon: VerifiedOutlined },
       { label: "Toggle", href: "/components/toggle", icon: ToggleOnOutlined },
+      { label: "Checkbox", href: "/components/checkbox", icon: CheckBoxOutlined },
+      { label: "Sidebar", href: "/components/sidebar", icon: ViewSidebarOutlined },
       { label: "Avatar", href: "/components/avatar", icon: AccountCircleOutlined },
       { label: "Separator", href: "/components/separator", icon: HorizontalRuleOutlined },
       { label: "Navigation Menu", href: "/components/navigation-menu", icon: MenuOutlined },

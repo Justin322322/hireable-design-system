@@ -4,6 +4,7 @@ import { CodeBlock } from "@/components/docs/code-block";
 import { Icon, IconSize, IconName } from "@/components/ui/icon";
 
 const iconSizes: { name: string; size: IconSize; description: string }[] = [
+  { name: "16", size: 16, description: "Small UI elements, badges" },
   { name: "20", size: 20, description: "Compact UI elements" },
   { name: "24", size: 24, description: "Default size (recommended)" },
   { name: "40", size: 40, description: "Prominent UI, illustrations" },
@@ -201,7 +202,7 @@ export default function IconsPage() {
                     <div className="w-6 h-6 rounded bg-icon" />
                     <div>
                       <code className="text-sm">--icon</code>
-                      <span className="text-sm ml-2">— Default icon color (#212121 light / light gray dark)</span>
+                      <span className="text-sm ml-2">— Default icon color (#616161 per Figma spec)</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -304,20 +305,23 @@ import { Icon } from "@/components/ui/icon";
               code={`// Available icon names
 type IconName = 
   // Navigation & UI
-  | "close" | "check" | "chevron_right" | "arrow_forward"
+  | "close" | "check" | "chevron_right" | "chevron_left" | "arrow_forward"
   | "keyboard_arrow_down" | "keyboard_arrow_up"
   // Content
   | "add" | "delete" | "edit" | "search" | "home" | "settings"
+  | "work" | "description"
   // Social & Communication
-  | "person" | "mail" | "notifications"
+  | "person" | "person_search" | "group" | "mail" | "chat" | "notifications"
   // Toggle/State
   | "favorite" | "star" | "bookmark"
   // Action Icons
-  | "visibility" | "visibility_off" | "warning" | "info" | "help"
-  | "lock" | "lock_open" | "schedule" | "open_in_new" | "launch"
-  | "done" | "done_all" | "refresh" | "content_copy" | "print"
-  | "share" | "download" | "upload" | "filter_list" | "sort"
-  | "more_vert" | "more_horiz"`}
+  | "visibility" | "visibility_off" | "attach_money" | "payments"
+  | "warning" | "info" | "help" | "lock" | "lock_open" | "schedule"
+  | "open_in_new" | "launch" | "done" | "done_all" | "refresh"
+  | "content_copy" | "print" | "share" | "download" | "upload"
+  | "filter_list" | "sort" | "more_vert" | "more_horiz"
+  // Admin/Business
+  | "bar_chart" | "gavel" | "verified_user" | "shield"`}
               language="tsx"
             />
           </section>

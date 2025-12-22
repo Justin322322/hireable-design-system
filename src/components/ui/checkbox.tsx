@@ -38,8 +38,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     const labelClasses = {
       sm: "text-sm font-secondary leading-[1.2] tracking-[0.2px]",
-      md: "text-base font-nunito leading-[1.5] tracking-[0.2px]",
-      lg: "text-base font-nunito leading-[1.5] tracking-[0.2px]",
+      md: "text-base font-nunito leading-normal tracking-[0.2px]",
+      lg: "text-base font-nunito leading-normal tracking-[0.2px]",
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -16,7 +16,7 @@ export function PasswordInputDemo() {
           id="password"
           type={showPassword ? "text" : "password"}
           placeholder="Enter password"
-          className="flex h-11 w-full rounded-lg border border-input bg-white px-4 py-3 pr-10 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
+          className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 pr-10 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
         />
         <button
           type="button"

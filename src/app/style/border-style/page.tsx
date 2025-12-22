@@ -61,26 +61,26 @@ export default function BorderStylePage() {
             <CardContent className="py-6 space-y-6">
               <div className="flex items-center gap-8">
                 <div className="flex flex-col items-center gap-3">
-                  <div className="w-48 h-11 rounded-lg border border-input bg-white" />
+                  <div className="w-48 h-11 rounded-lg border border-input bg-background" />
                   <span className="text-sm text-muted-foreground">Default</span>
                 </div>
                 <div className="flex flex-col items-center gap-3">
-                  <div className="w-48 h-11 rounded-lg border border-foreground/30 bg-white" />
+                  <div className="w-48 h-11 rounded-lg border border-foreground/30 bg-background" />
                   <span className="text-sm text-muted-foreground">Hover</span>
                 </div>
               </div>
               <div className="flex items-center gap-3 pt-4 border-t">
-                <div className="w-6 h-6 rounded border border-foreground/30" />
+                <div className="w-6 h-6 rounded border border-border-hover" />
                 <div>
-                  <code className="text-sm font-medium">hover:border-foreground/30</code>
-                  <span className="text-sm text-muted-foreground ml-2">— Darkened border on hover</span>
+                  <code className="text-sm font-medium">hover:border-border-hover</code>
+                  <span className="text-sm text-muted-foreground ml-2">— Token: var(--border-hover)</span>
                 </div>
               </div>
             </CardContent>
           </Card>
           <div className="mt-4">
             <CodeBlock
-              code={`<input className="border border-input hover:border-foreground/30 focus-visible:border-border-focused" />`}
+              code={`<input className="border border-input hover:border-border-hover focus-visible:border-border-focused" />`}
               language="tsx"
             />
           </div>
@@ -96,11 +96,11 @@ export default function BorderStylePage() {
             <CardContent className="py-6 space-y-6">
               <div className="flex items-center gap-8">
                 <div className="flex flex-col items-center gap-3">
-                  <div className="w-48 h-11 rounded-lg border border-input bg-white" />
+                  <div className="w-48 h-11 rounded-lg border border-input bg-background" />
                   <span className="text-sm text-muted-foreground">Default</span>
                 </div>
                 <div className="flex flex-col items-center gap-3">
-                  <div className="w-48 h-11 rounded-lg border border-border-focused bg-white" />
+                  <div className="w-48 h-11 rounded-lg border border-border-focused bg-background" />
                   <span className="text-sm text-muted-foreground">Focused</span>
                 </div>
               </div>

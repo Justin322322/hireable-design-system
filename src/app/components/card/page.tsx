@@ -44,7 +44,7 @@ const goalData = cardsData.goal as Goal;
 
 function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Profile, "id" | "avatar">) {
   return (
-    <div className="flex flex-col items-start gap-2.5 p-4 bg-white border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
+    <div className="flex flex-col items-start gap-2.5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
       <div className="flex flex-row items-center gap-2.5 w-full">
         <div className="w-14 h-14 rounded-full bg-gray-300 shrink-0" />
         <div className="flex flex-col items-start gap-1 flex-1">
@@ -68,7 +68,7 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Pro
 
 function GoalCard({ title, type, progress, completedResults, totalResults, dueDate }: Omit<Goal, "id">) {
   return (
-    <div className="flex flex-col items-start gap-5 p-4 bg-white border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
+    <div className="flex flex-col items-start gap-5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
       <div className="flex items-start justify-between w-full">
         <div className="flex-1 flex items-center">
           <p className="font-semibold text-sm text-neutral-900 leading-normal tracking-[0.02em]">

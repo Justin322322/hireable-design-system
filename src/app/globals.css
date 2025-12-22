@@ -74,6 +74,7 @@
   --color-button-tertiary-border: var(--button-tertiary-border);
   --color-border-disabled: var(--border-disabled);
   --color-border-focused: var(--border-focused);
+  --color-border-hover: var(--border-hover);
   --color-linkedin: var(--linkedin);
   --color-icon: var(--icon);
   --color-icon-active: var(--icon-active);
@@ -159,7 +160,7 @@
   --button-secondary-foreground: oklch(0.42 0.09 230); /* #006593 - Dark blue */
   
   /* Tertiary (outline) - Figma: #FFFFFF bg, #C3C3C3 border, #212121 text */
-  --button-tertiary-default: oklch(1 0 0); /* White bg */
+  --button-tertiary-default: var(--background); /* White bg */
   --button-tertiary-hover: oklch(0.95 0 0); /* #F2F2F2 - Light gray on hover */
   --button-tertiary-active: oklch(0.95 0 0); /* #F2F2F2 */
   --button-tertiary-foreground: oklch(0.26 0 0); /* #212121 - Near black */
@@ -167,6 +168,7 @@
   
   --border-disabled: oklch(0.95 0 0);  /* #F2F2F2 */
   --border-focused: var(--client);  /* #00A7F8 - Focus ring/border */
+  --border-hover: oklch(0.8 0 0);
 
   /* Icon Colors */
   --icon: oklch(0.26 0 0);  /* #212121 - Default icon color */
@@ -232,6 +234,7 @@
   
   --border-disabled: oklch(0.35 0 0);
   --border-focused: var(--client);  /* #00A7F8 - Focus ring/border */
+  --border-hover: oklch(1 0 0 / 20%);
 
   /* Icon Colors (dark mode) */
   --icon: oklch(0.90 0 0);  /* Light gray for dark mode */

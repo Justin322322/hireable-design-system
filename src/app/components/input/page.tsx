@@ -31,7 +31,7 @@ export default function InputPage() {
             <input
               type="text"
               placeholder="Enter text..."
-              className="flex h-11 w-full max-w-sm rounded-lg border border-input bg-white px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
+              className="flex h-11 w-full max-w-sm rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
             />
           </ComponentPreview>
 
@@ -39,7 +39,7 @@ export default function InputPage() {
             code={`<input
   type="text"
   placeholder="Enter text..."
-  className="flex h-11 w-full rounded-lg border border-input bg-white px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
+  className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
 />`}
             language="tsx"
           />
@@ -53,7 +53,7 @@ export default function InputPage() {
                 id="email"
                 type="email"
                 placeholder="you@example.com"
-                className="flex h-11 w-full rounded-lg border border-input bg-white px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
+                className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
               />
             </div>
           </ComponentPreview>
@@ -67,7 +67,7 @@ export default function InputPage() {
     id="email"
     type="email"
     placeholder="you@example.com"
-    className="flex h-11 w-full rounded-lg border border-input bg-white px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
+    className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
   />
 </div>`}
             language="tsx"
@@ -78,7 +78,7 @@ export default function InputPage() {
               type="text"
               placeholder="Disabled input"
               disabled
-              className="flex h-11 w-full max-w-sm rounded-lg border border-input bg-white px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex h-11 w-full max-w-sm rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             />
           </ComponentPreview>
 
@@ -87,7 +87,7 @@ export default function InputPage() {
   type="text"
   placeholder="Disabled input"
   disabled
-  className="flex h-11 w-full rounded-lg border border-input bg-white px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+  className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
 />`}
             language="tsx"
           />
@@ -100,7 +100,7 @@ export default function InputPage() {
               <input
                 id="error-input"
                 type="text"
-                className="flex h-11 w-full rounded-lg border border-destructive bg-white px-4 py-3 font-secondary text-sm focus-visible:outline-none focus-visible:border-destructive"
+                className="flex h-11 w-full rounded-lg border border-destructive bg-background px-4 py-3 font-secondary text-sm focus-visible:outline-none focus-visible:border-destructive"
               />
               <p className="text-sm text-destructive">Username is required</p>
             </div>
@@ -114,7 +114,7 @@ export default function InputPage() {
   <input
     id="error-input"
     type="text"
-    className="flex h-11 w-full rounded-lg border border-destructive bg-white px-4 py-3 font-secondary text-sm focus-visible:outline-none focus-visible:border-destructive"
+    className="flex h-11 w-full rounded-lg border border-destructive bg-background px-4 py-3 font-secondary text-sm focus-visible:outline-none focus-visible:border-destructive"
   />
   <p className="text-sm text-destructive">Username is required</p>
 </div>`}
@@ -139,7 +139,7 @@ function PasswordInput() {
       <input
         type={showPassword ? "text" : "password"}
         placeholder="Enter password"
-        className="flex h-11 w-full rounded-lg border border-input bg-white px-4 py-3 pr-10 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
+        className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 pr-10 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
       />
       <button
         type="button"
@@ -171,7 +171,7 @@ function PasswordInput() {
                 <input
                   id="amount"
                   type="text"
-                  className="flex h-11 w-full rounded-lg border border-input bg-white pl-12 pr-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
+                  className="flex h-11 w-full rounded-lg border border-input bg-background pl-12 pr-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
                 />
               </div>
             </div>
@@ -186,7 +186,7 @@ function PasswordInput() {
   </span>
   <input
     type="text"
-    className="flex h-11 w-full rounded-lg border border-input bg-white pl-12 pr-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
+    className="flex h-11 w-full rounded-lg border border-input bg-background pl-12 pr-4 py-3 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
   />
 </div>`}
             language="tsx"

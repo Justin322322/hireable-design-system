@@ -46,13 +46,13 @@ export default function TogglePage() {
 
           <CodeBlock
             code={`<Toggle aria-label="Toggle bold">
-  <Bold className="h-4 w-4" />
+  <FormatBoldOutlined sx={{ fontSize: 16 }} />
 </Toggle>
 <Toggle aria-label="Toggle italic">
-  <Italic className="h-4 w-4" />
+  <FormatItalicOutlined sx={{ fontSize: 16 }} />
 </Toggle>
 <Toggle aria-label="Toggle underline">
-  <Underline className="h-4 w-4" />
+  <FormatUnderlinedOutlined sx={{ fontSize: 16 }} />
 </Toggle>`}
             language="tsx"
           />
@@ -70,10 +70,10 @@ export default function TogglePage() {
 
           <CodeBlock
             code={`<Toggle variant="default" aria-label="Default toggle">
-  <Bold className="h-4 w-4" />
+  <FormatBoldOutlined sx={{ fontSize: 16 }} />
 </Toggle>
 <Toggle variant="outline" aria-label="Outline toggle">
-  <Bold className="h-4 w-4" />
+  <FormatBoldOutlined sx={{ fontSize: 16 }} />
 </Toggle>`}
             language="tsx"
           />
@@ -94,13 +94,13 @@ export default function TogglePage() {
 
           <CodeBlock
             code={`<Toggle size="sm" aria-label="Small toggle">
-  <Bold className="h-3 w-3" />
+  <FormatBoldOutlined sx={{ fontSize: 12 }} />
 </Toggle>
 <Toggle size="default" aria-label="Default toggle">
-  <Bold className="h-4 w-4" />
+  <FormatBoldOutlined sx={{ fontSize: 16 }} />
 </Toggle>
 <Toggle size="lg" aria-label="Large toggle">
-  <Bold className="h-5 w-5" />
+  <FormatBoldOutlined sx={{ fontSize: 20 }} />
 </Toggle>`}
             language="tsx"
           />

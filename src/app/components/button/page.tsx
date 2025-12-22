@@ -60,10 +60,10 @@ export default function ButtonPage() {
 <Button size="sm">Small</Button>   // 36px
 
 // Icon-only sizes (circular)
-<Button size="icon-lg" aria-label="Add"><Icon icon="add" size={20} /></Button>
-<Button size="icon-base" aria-label="Add"><Icon icon="add" size={20} /></Button>
-<Button size="icon-md" aria-label="Add"><Icon icon="add" size={20} /></Button>
-<Button size="icon-sm" aria-label="Add"><Icon icon="add" size={20} /></Button>`}
+<Button size="icon-lg" aria-label="Add"><Icon icon="add" size={20} aria-hidden /></Button>
+<Button size="icon-base" aria-label="Add"><Icon icon="add" size={20} aria-hidden /></Button>
+<Button size="icon-md" aria-label="Add"><Icon icon="add" size={20} aria-hidden /></Button>
+<Button size="icon-sm" aria-label="Add"><Icon icon="add" size={20} aria-hidden /></Button>`}
             language="tsx"
           />
 
@@ -270,7 +270,7 @@ export default function ButtonPage() {
             code={`// Tertiary button - text only
 <Button variant="tertiary" size="lg">Enabled</Button>
 
-// Tertiary button - with icon (uses default text-icon color)
+// Tertiary button - with icon
 <Button variant="tertiary" size="lg">
   <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
   Icon + Text

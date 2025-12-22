@@ -313,7 +313,7 @@ function UserRoleCard({ role, title, description, image, variant = "enabled" }: 
         <div className="shrink-0">
           <Image
             src={image}
-            alt={role}
+            alt={title}
             width={140}
             height={140}
             className="h-[140px] w-[140px]"

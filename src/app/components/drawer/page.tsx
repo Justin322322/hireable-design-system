@@ -145,7 +145,7 @@ const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps>(
       {/* Activity Section */}
       <div className="flex flex-row items-center justify-between gap-4 w-full">
         <span className="text-xs text-foreground">{data.activityTitle}</span>
-        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View details">
+        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View candidate profile">
           <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
         </Button>
       </div>
@@ -177,11 +177,14 @@ const ProfileDrawerHeader: React.FC<ProfileDrawerHeaderProps> = ({ onClose }) =>
       </DrawerClose>
     </div>
 
-    <button className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-neutral-100 transition-colors">
+    <button 
+      className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-neutral-100 transition-colors"
+      aria-label="Open profile in a new tab"
+    >
       <span className="hidden text-sm font-medium text-foreground sm:inline-block">
         Open profile in a new tab
       </span>
-      <ExternalLink className="size-4 text-neutral-700" />
+      <ExternalLink className="size-4 text-neutral-700" aria-hidden="true" />
     </button>
   </div>
 );

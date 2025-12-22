@@ -79,7 +79,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="primary" size="icon-lg" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -91,7 +91,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="primary" size="icon-base" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -103,7 +103,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="primary" size="icon-md" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -115,7 +115,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="primary" size="icon-sm" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden />
                 </Button>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function ButtonPage() {
 
 // Primary button - icon only (circular)
 <Button variant="primary" size="icon-lg" aria-label="Add">
-  <Icon icon="add" size={20} className="text-button-primary-foreground" />
+  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden />
 </Button>
 
 // Disabled state
@@ -153,7 +153,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="secondary" size="icon-lg" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -165,7 +165,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="secondary" size="icon-base" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -177,7 +177,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="secondary" size="icon-md" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -189,7 +189,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="secondary" size="icon-sm" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden />
                 </Button>
               </div>
             </div>
@@ -207,7 +207,7 @@ export default function ButtonPage() {
 
 // Secondary button - icon only (circular)
 <Button variant="secondary" size="icon-lg" aria-label="Add">
-  <Icon icon="add" size={20} className="text-button-secondary-foreground" />
+  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden />
 </Button>`}
             language="tsx"
           />
@@ -224,7 +224,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="tertiary" size="icon-lg" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -236,7 +236,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="tertiary" size="icon-base" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -248,7 +248,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="tertiary" size="icon-md" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -260,7 +260,7 @@ export default function ButtonPage() {
                   Icon + Text
                 </Button>
                 <Button variant="tertiary" size="icon-sm" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
                 </Button>
               </div>
             </div>
@@ -278,7 +278,7 @@ export default function ButtonPage() {
 
 // Tertiary button - icon only (circular)
 <Button variant="tertiary" size="icon-lg" aria-label="Add">
-  <Icon icon="add" size={20} className="text-button-tertiary-foreground" />
+  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
 </Button>`}
             language="tsx"
           />

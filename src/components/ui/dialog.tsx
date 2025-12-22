@@ -76,7 +76,7 @@ const DialogFooter = ({
   <div
     className={cn(
       // Figma: gap 8px, flex-row, items-center
-      "flex flex-row items-center gap-2",
+      "flex flex-row items-center justify-end gap-2",
       className
     )}
     {...props}

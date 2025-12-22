@@ -1,7 +1,9 @@
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { ChevronRight } from "lucide-react";
@@ -103,6 +105,56 @@ function GoalCard({ title, type, progress, completedResults, totalResults, dueDa
   );
 }
 
+interface UserRoleCardProps {
+  role: "talent" | "employer";
+  title: string;
+  description: string;
+  image: string;
+  variant?: "enabled" | "hover" | "pressed";
+}
+
+function UserRoleCard({ role, title, description, image, variant = "enabled" }: UserRoleCardProps) {
+  return (
+    <div
+      className={cn(
+        "relative flex w-full max-w-[720px] items-center gap-4 rounded-2xl border p-2 transition-all cursor-pointer",
+        // Height 192px from Figma
+        "h-[192px]",
+        // Dynamic styles based on variant using semantic tokens
+        variant === "enabled" && "border-button-tertiary-border bg-background",
+        variant === "hover" && "border-button-tertiary-border bg-button-tertiary-hover",
+        variant === "pressed" && "border-border-focused bg-button-secondary-default"
+      )}
+    >
+      <div className="flex flex-1 items-center gap-4 rounded-lg bg-background py-0 pl-6 pr-10 h-full">
+        <div className="flex flex-1 flex-col gap-3">
+          <h3 className={cn(
+            "text-xl leading-[150%] tracking-[0.4px] text-foreground",
+            role === "talent" ? "font-nunito font-bold" : "font-secondary font-semibold"
+          )}>
+            {title}
+          </h3>
+          <p className={cn(
+            "text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground",
+            role === "talent" ? "font-nunito" : "font-secondary"
+          )}>
+            {description}
+          </p>
+        </div>
+        <div className="shrink-0">
+          <Image
+            src={image}
+            alt={role}
+            width={140}
+            height={140}
+            className="h-[140px] w-[140px]"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function CardPage() {
   return (
     <div className="container max-w-4xl py-12 px-4 md:px-8">
@@ -124,58 +176,7 @@ export default function CardPage() {
         </TabsList>
 
         <TabsContent value="examples" className="space-y-8">
-          <ComponentPreview title="Basic Card">
-            <div className="flex justify-center">
-              <Card className="w-[350px]">
-                <CardHeader>
-                  <CardTitle>Card Title</CardTitle>
-                  <CardDescription>Card description goes here.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p>Card content with any elements you need.</p>
-                </CardContent>
-                <CardFooter>
-                  <Button>Action</Button>
-                </CardFooter>
-              </Card>
-            </div>
-          </ComponentPreview>
 
-          <CodeBlock
-            code={`<Card>
-  <CardHeader>
-    <CardTitle>Card Title</CardTitle>
-    <CardDescription>Card description goes here.</CardDescription>
-  </CardHeader>
-  <CardContent>
-    <p>Card content with any elements you need.</p>
-  </CardContent>
-  <CardFooter>
-    <Button>Action</Button>
-  </CardFooter>
-</Card>`}
-            language="tsx"
-          />
-
-          <ComponentPreview title="Simple Card">
-            <div className="flex justify-center">
-              <Card className="w-[350px]">
-                <CardHeader>
-                  <CardTitle>Notifications</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Push notifications</span>
-                    <Switch defaultChecked aria-label="Toggle push notifications" />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Email notifications</span>
-                    <Switch aria-label="Toggle email notifications" />
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </ComponentPreview>
 
           <ComponentPreview title="Profile Card">
             <div className="flex justify-center">
@@ -184,33 +185,148 @@ export default function CardPage() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`// Fetch profile data from API
-const [profile, setProfile] = useState<Profile | null>(null);
+            code={`import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
-useEffect(() => {
-  const fetchProfile = async () => {
-    const res = await fetch("/api/profiles/profile-001");
-    const data = await res.json();
-    setProfile(data);
-  };
-  fetchProfile();
-}, []);
-
-// Type Definition
-interface Profile {
-  id: string;
+interface ProfileCardProps {
   name: string;
   role: string;
-  avatar?: string;
   salary: string;
   experience: string;
   activityTitle?: string;
 }
 
-// Usage
-{profile && <ProfileCard {...profile} />}`}
+function ProfileCard({ name, role, salary, experience, activityTitle }: ProfileCardProps) {
+  return (
+    <div className="flex flex-col items-start gap-2.5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
+      <div className="flex flex-row items-center gap-2.5 w-full">
+        <div className="w-14 h-14 rounded-full bg-gray-300 shrink-0" />
+        <div className="flex flex-col items-start gap-1 flex-1">
+          <p className="font-semibold text-sm text-neutral-900 leading-[120%]">{name}</p>
+          <p className="font-normal text-xs text-neutral-900 leading-[120%]">{role}</p>
+        </div>
+      </div>
+      <div className="flex flex-row items-center gap-6 w-full text-xs text-neutral-900">
+        <span>{salary}</span>
+        <span>{experience}</span>
+      </div>
+      <div className="flex flex-row items-center justify-between gap-4 w-full">
+        <span className="text-xs text-neutral-900">{activityTitle}</span>
+        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active">
+          <ChevronRight className="w-3.5 h-3.5" />
+        </Button>
+      </div>
+    </div>
+  );
+}`}
             language="tsx"
           />
+
+          <ComponentPreview title="User Role Selection">
+            <div className="flex flex-col gap-6 w-full max-w-[720px] mx-auto">
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium text-muted-foreground">Example: Remote Talent</h4>
+                <UserRoleCard
+                  role="talent"
+                  title="I'm a Remote Talent"
+                  description="Find global opportunities and work with great teams that fit your style."
+                  image="/images/talent-select.svg"
+                  variant="enabled"
+                />
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium text-muted-foreground">Example: Employer</h4>
+                <UserRoleCard
+                  role="employer"
+                  title="I'm an Employer"
+                  description="Post jobs, manage trials, and hire top remote talent with confidence."
+                  image="/images/employer-select.svg"
+                  variant="enabled"
+                />
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium text-muted-foreground">State: Hover</h4>
+                <UserRoleCard
+                  role="talent"
+                  title="I'm a Remote Talent"
+                  description="Find global opportunities and work with great teams that fit your style."
+                  image="/images/talent-select.svg"
+                  variant="hover"
+                />
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium text-muted-foreground">State: Pressed</h4>
+                <UserRoleCard
+                  role="talent"
+                  title="I'm a Remote Talent"
+                  description="Find global opportunities and work with great teams that fit your style."
+                  image="/images/talent-select.svg"
+                  variant="pressed"
+                />
+              </div>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`import Image from "next/image";
+import { cn } from "@/lib/utils";
+
+interface UserRoleCardProps {
+  role: "talent" | "employer";
+  title: string;
+  description: string;
+  image: string;
+  variant?: "enabled" | "hover" | "pressed";
+}
+
+function UserRoleCard({ role, title, description, image, variant = "enabled" }: UserRoleCardProps) {
+  return (
+    <div
+      className={cn(
+        "relative flex w-full max-w-[720px] items-center gap-4 rounded-2xl border p-2 transition-all cursor-pointer",
+        // Height 192px from Figma
+        "h-[192px]",
+        // Dynamic styles based on variant using semantic tokens
+        variant === "enabled" && "border-button-tertiary-border bg-background",
+        variant === "hover" && "border-button-tertiary-border bg-button-tertiary-hover",
+        variant === "pressed" && "border-border-focused bg-button-secondary-default"
+      )}
+    >
+      <div className="flex flex-1 items-center gap-4 rounded-lg bg-background py-0 pl-6 pr-10 h-full">
+        <div className="flex flex-1 flex-col gap-3">
+          <h3 className={cn(
+            "text-xl leading-[150%] tracking-[0.4px] text-foreground",
+            role === "talent" ? "font-nunito font-bold" : "font-secondary font-semibold"
+          )}>
+            {title}
+          </h3>
+          <p className={cn(
+            "text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground",
+            role === "talent" ? "font-nunito" : "font-secondary"
+          )}>
+            {description}
+          </p>
+        </div>
+        <div className="shrink-0">
+          <Image
+            src={image}
+            alt={role}
+            width={140}
+            height={140}
+            className="h-[140px] w-[140px]"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}`}
+            language="tsx"
+          />
+
+
 
           <ComponentPreview title="Goals Card">
             <div className="flex justify-center">
@@ -219,21 +335,7 @@ interface Profile {
           </ComponentPreview>
 
           <CodeBlock
-            code={`// Fetch goals from API
-const [goals, setGoals] = useState<Goal[]>([]);
-
-useEffect(() => {
-  const fetchGoals = async () => {
-    const res = await fetch("/api/goals");
-    const data = await res.json();
-    setGoals(data);
-  };
-  fetchGoals();
-}, []);
-
-// Type Definition
-interface Goal {
-  id: string;
+            code={`interface GoalCardProps {
   title: string;
   type: "Automatic" | "Manual";
   progress: number;
@@ -242,10 +344,42 @@ interface Goal {
   dueDate: string;
 }
 
-// Usage
-{goals.map((goal) => (
-  <GoalCard key={goal.id} {...goal} />
-))}`}
+function GoalCard({ title, type, progress, completedResults, totalResults, dueDate }: GoalCardProps) {
+  return (
+    <div className="flex flex-col items-start gap-5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
+      <div className="flex items-start justify-between w-full">
+        <div className="flex-1 flex items-center">
+          <p className="font-semibold text-sm text-neutral-900 leading-normal tracking-[0.02em]">
+            {title}
+          </p>
+        </div>
+        <span className="bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded-full text-[10px] text-neutral-600 font-medium whitespace-nowrap">
+          {type}
+        </span>
+      </div>
+      <div className="flex flex-col gap-2 w-full">
+        <div className="flex items-center">
+          <span className="font-semibold text-2xl text-neutral-900 leading-[1.2]">
+            {progress}%
+          </span>
+        </div>
+        <div className="flex items-center w-full h-2">
+          <div className="flex-1 bg-neutral-100 rounded-full h-1.5 overflow-hidden">
+            <div className="bg-client h-full rounded-full" style={{ width: \`\${progress}%\` }} />
+          </div>
+        </div>
+        <div className="flex items-center justify-between w-full">
+          <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
+            {completedResults} of {totalResults} key results completed
+          </span>
+          <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
+            {dueDate}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}`}
             language="tsx"
           />
         </TabsContent>
@@ -284,45 +418,7 @@ interface Goal {
         </TabsContent>
 
         <TabsContent value="api" className="space-y-8">
-          <section>
-            <h2 className="mb-4 text-xl font-semibold">Base Card Components</h2>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b">
-                    <th className="py-3 text-left font-medium">Component</th>
-                    <th className="py-3 text-left font-medium">Description</th>
-                  </tr>
-                </thead>
-                <tbody className="text-muted-foreground">
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">Card</td>
-                    <td className="py-3">Container element</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">CardHeader</td>
-                    <td className="py-3">Header section with title and description</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">CardTitle</td>
-                    <td className="py-3">Title text</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">CardDescription</td>
-                    <td className="py-3">Subtitle or description text</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">CardContent</td>
-                    <td className="py-3">Main content area</td>
-                  </tr>
-                  <tr className="border-b">
-                    <td className="py-3 font-mono text-foreground">CardFooter</td>
-                    <td className="py-3">Footer with actions</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
+
 
           <section>
             <h2 className="mb-4 text-xl font-semibold">Profile Interface</h2>

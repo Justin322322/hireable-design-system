@@ -25,9 +25,9 @@ export const checkboxProps = [
   },
   {
     name: "onChange",
-    type: "(e: ChangeEvent<HTMLInputElement>) => void",
+    type: "(checked: boolean) => void",
     default: "undefined",
-    description: "Callback fired when the checkbox state changes",
+    description: "Callback fired when the checkbox state changes, receives the new checked value",
   },
 ];
 
@@ -57,7 +57,7 @@ export const checkboxStates = [
   },
   {
     name: "Hovered",
-    description: "Hover state with dark border and faint checkmark preview",
+    description: "Hover state with darker border for visual feedback",
     useCase: "Visual feedback on mouse hover",
   },
   {

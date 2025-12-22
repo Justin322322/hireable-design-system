@@ -52,7 +52,7 @@ function ApplicationCard({ company, position, salary, experience, status, posted
   const isMatched = status.includes("MATCHED");
 
   return (
-    <Card className="w-[300px] rounded-[8px] border-[0.75px] border-solid border-neutral-300 bg-white p-[12px]">
+    <Card className="w-[300px] rounded-[8px] border-[0.75px] border-solid border-neutral-300 bg-background p-[12px]">
       <CardContent className="flex flex-col items-start gap-[8px] p-0">
         <div className="flex w-full items-center justify-between">
           <p className="text-[10px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-700">
@@ -98,7 +98,7 @@ function ApplicationCard({ company, position, salary, experience, status, posted
 
 function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Candidate, "id" | "avatar">) {
   return (
-    <Card className="h-[135px] w-[300px] rounded-[6px] border-[0.75px] border-solid border-neutral-300 bg-white">
+    <Card className="h-[135px] w-[300px] rounded-[6px] border-[0.75px] border-solid border-neutral-300 bg-background">
       <CardContent className="flex h-full flex-col items-start gap-[9px] p-[12px]">
         <div className="relative flex w-full items-start justify-between">
           <div className="relative flex h-[40px] flex-1 items-center gap-[8px]">

@@ -117,7 +117,7 @@ const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps>(
     <div
       ref={ref}
       className={cn(
-        "flex flex-col items-start gap-2.5 p-4 bg-white border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer",
+        "flex flex-col items-start gap-2.5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer",
         className
       )}
       {...props}
@@ -273,7 +273,7 @@ const MatchSection: React.FC<{ title: string; children: React.ReactNode }> = ({
 
 const AIMatchCard: React.FC<AIMatchCardProps> = ({ aiMatch, isExpanded, onToggle }) => (
   <div className="w-full">
-    <div className="flex w-full flex-col rounded-lg border border-client bg-white">
+    <div className="flex w-full flex-col rounded-lg border border-client bg-background">
       <div className="flex w-full items-start justify-between p-4">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
@@ -506,7 +506,7 @@ const PersonalMessageSection: React.FC<PersonalMessageSectionProps> = ({ message
 
 // Drawer Footer Component
 const ProfileDrawerFooter: React.FC = () => (
-  <div className="flex flex-col-reverse gap-3 border-t border-neutral-200 bg-white p-4 sm:flex-row sm:items-center">
+  <div className="flex flex-col-reverse gap-3 border-t border-neutral-200 bg-background p-4 sm:flex-row sm:items-center">
     <Button
       variant="outline"
       className="w-full gap-2 border-red-200 text-red-500 hover:bg-red-50 hover:border-red-300 sm:w-auto"
@@ -568,7 +568,7 @@ export default function DrawerPage() {
                     <DrawerTitle>Candidate Profile - {candidateData.name}</DrawerTitle>
                   </VisuallyHidden>
                   
-                  <div className="flex flex-col h-full bg-white overflow-hidden">
+                  <div className="flex flex-col h-full bg-background overflow-hidden">
                     {/* Header */}
                     <ProfileDrawerHeader />
 

@@ -5,7 +5,7 @@ import { Icon } from "@/components/ui/icon";
 import { CodeBlock, ComponentPreview, PropsTable, VariantsTable } from "@/components/docs";
 import { buttonProps, buttonVariants, buttonSizes } from "@/data/api/button";
 
-const BUTTON_VERSION = "v1.1";
+import { VERSION } from "@/lib/version";
 
 export default function ButtonPage() {
   return (
@@ -13,7 +13,7 @@ export default function ButtonPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Button</h1>
-          <span className="text-sm text-muted-foreground">{BUTTON_VERSION}</span>
+          <span className="text-sm text-muted-foreground">{VERSION}</span>
         </div>
         <p className="text-lg text-muted-foreground">
           Buttons trigger actions and events. Use different variants to indicate 

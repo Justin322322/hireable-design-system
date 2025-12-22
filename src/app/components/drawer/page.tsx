@@ -146,7 +146,7 @@ const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps>(
       <div className="flex flex-row items-center justify-between gap-4 w-full">
         <span className="text-xs text-foreground">{data.activityTitle}</span>
         <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View details">
-          <ChevronRight className="w-3.5 h-3.5" aria-hidden />
+          <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
         </Button>
       </div>
     </div>

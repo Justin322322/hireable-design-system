@@ -38,7 +38,7 @@ export function MobileNav() {
           variant="ghost"
           className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
-          <MenuOutlined className="h-6 w-6" />
+          <MenuOutlined className="h-6 w-6 text-icon" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </DrawerTrigger>
@@ -50,7 +50,7 @@ export function MobileNav() {
             className="absolute right-4 top-1/2 -translate-y-1/2 px-2 hover:bg-transparent"
             onClick={() => setOpen(false)}
           >
-            <CloseOutlined className="h-6 w-6" />
+            <CloseOutlined className="h-6 w-6 text-icon" />
             <span className="sr-only">Close Menu</span>
           </Button>
         </DrawerHeader>
@@ -73,7 +73,7 @@ export function MobileNav() {
                           : "text-foreground/80"
                       )}
                     >
-                      <Icon className={cn("size-5", pathname.startsWith(item.href) ? "text-client" : "text-muted-foreground")} />
+                      <Icon className={cn("size-5", pathname.startsWith(item.href) ? "text-icon-active" : "text-icon")} />
                       {item.label}
                     </Link>
                   );
@@ -100,7 +100,7 @@ export function MobileNav() {
                             : "text-foreground/80"
                         )}
                       >
-                        <Icon className={cn("size-5", pathname === item.href ? "text-client" : "text-muted-foreground")} />
+                        <Icon className={cn("size-5", pathname === item.href ? "text-icon-active" : "text-icon")} />
                         {item.label}
                       </Link>
                     );

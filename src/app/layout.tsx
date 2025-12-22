@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { DM_Sans, Inter } from "next/font/google";
+import { DM_Sans, Inter, Nunito_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+import "material-symbols/outlined.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Toaster } from "@/components/ui/toaster";
@@ -15,6 +17,12 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+});
+
+const nunitoSans = Nunito_Sans({
+  variable: "--font-nunito-sans",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -32,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${inter.variable} font-sans antialiased`}>
+      <body className={`${dmSans.variable} ${inter.variable} ${nunitoSans.variable} font-sans antialiased`}>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded-md focus:bg-background focus:p-4 focus:text-foreground focus:shadow-md focus:ring-2 focus:ring-ring"
@@ -51,3 +59,4 @@ export default function RootLayout({
     </html>
   );
 }
+

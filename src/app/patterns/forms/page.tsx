@@ -36,15 +36,15 @@ export default function FormsPatternPage() {
                     <div className="space-y-3 max-w-xs">
                       <div className="space-y-1">
                         <div className="h-3 w-16 bg-neutral-300 rounded" />
-                        <div className="h-9 w-full bg-white border border-neutral-200 rounded-md" />
+                        <div className="h-9 w-full bg-background border border-neutral-200 rounded-md" />
                       </div>
                       <div className="space-y-1">
                         <div className="h-3 w-12 bg-neutral-300 rounded" />
-                        <div className="h-9 w-full bg-white border border-neutral-200 rounded-md" />
+                        <div className="h-9 w-full bg-background border border-neutral-200 rounded-md" />
                       </div>
                       <div className="space-y-1">
                         <div className="h-3 w-20 bg-neutral-300 rounded" />
-                        <div className="h-9 w-full bg-white border border-neutral-200 rounded-md" />
+                        <div className="h-9 w-full bg-background border border-neutral-200 rounded-md" />
                       </div>
                     </div>
                   </div>
@@ -62,14 +62,14 @@ export default function FormsPatternPage() {
                       <p className="text-xs font-medium text-green-600 mb-2">✓ Recommended</p>
                       <div className="space-y-1">
                         <div className="h-3 w-12 bg-neutral-400 rounded" />
-                        <div className="h-8 w-full bg-white border border-neutral-200 rounded-md" />
+                        <div className="h-8 w-full bg-background border border-neutral-200 rounded-md" />
                       </div>
                     </div>
                     <div className="rounded-lg border bg-neutral-50 p-4">
                       <p className="text-xs font-medium text-neutral-500 mb-2">Alternative</p>
                       <div className="flex items-center gap-2">
                         <div className="h-3 w-12 bg-neutral-300 rounded shrink-0" />
-                        <div className="h-8 flex-1 bg-white border border-neutral-200 rounded-md" />
+                        <div className="h-8 flex-1 bg-background border border-neutral-200 rounded-md" />
                       </div>
                     </div>
                   </div>
@@ -87,15 +87,15 @@ export default function FormsPatternPage() {
                       <div className="space-y-2">
                         <p className="text-xs font-semibold text-neutral-600">Personal Info</p>
                         <div className="space-y-2 pl-2 border-l-2 border-blue-200">
-                          <div className="h-8 w-full bg-white border border-neutral-200 rounded-md" />
-                          <div className="h-8 w-full bg-white border border-neutral-200 rounded-md" />
+                          <div className="h-8 w-full bg-background border border-neutral-200 rounded-md" />
+                          <div className="h-8 w-full bg-background border border-neutral-200 rounded-md" />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <p className="text-xs font-semibold text-neutral-600">Contact</p>
                         <div className="space-y-2 pl-2 border-l-2 border-blue-200">
-                          <div className="h-8 w-full bg-white border border-neutral-200 rounded-md" />
-                          <div className="h-8 w-full bg-white border border-neutral-200 rounded-md" />
+                          <div className="h-8 w-full bg-background border border-neutral-200 rounded-md" />
+                          <div className="h-8 w-full bg-background border border-neutral-200 rounded-md" />
                         </div>
                       </div>
                     </div>
@@ -111,13 +111,13 @@ export default function FormsPatternPage() {
                   <p className="text-muted-foreground">Place primary actions on the left, aligned with form fields. Secondary actions (Cancel) go to the right of primary.</p>
                   <div className="rounded-lg border bg-neutral-50 p-4">
                     <div className="space-y-3 max-w-xs">
-                      <div className="h-8 w-full bg-white border border-neutral-200 rounded-md" />
-                      <div className="h-8 w-full bg-white border border-neutral-200 rounded-md" />
+                      <div className="h-8 w-full bg-background border border-neutral-200 rounded-md" />
+                      <div className="h-8 w-full bg-background border border-neutral-200 rounded-md" />
                       <div className="flex gap-2 pt-2">
                         <div className="h-9 w-20 bg-blue-500 rounded-md flex items-center justify-center">
                           <span className="text-xs text-white font-medium">Submit</span>
                         </div>
-                        <div className="h-9 w-20 bg-white border border-neutral-300 rounded-md flex items-center justify-center">
+                        <div className="h-9 w-20 bg-background border border-neutral-300 rounded-md flex items-center justify-center">
                           <span className="text-xs text-neutral-600 font-medium">Cancel</span>
                         </div>
                       </div>

@@ -39,6 +39,13 @@ This workflow uses `eslint-plugin-tailwindcss` to automatically fix Tailwind CSS
 | `leading-[1.25]`    | `leading-tight`             |
 | `leading-[2]`       | `leading-loose`             |
 | `overflow-ellipsis` | `text-ellipsis`             |
+| `top-[1px]`         | `top-px`                    |
+| `z-[1]`             | `z-1`                       |
+| `min-w-[8rem]`      | `min-w-32`                  |
+| `h-[var(--x)]`      | `h-(--x)`                   |
+| `w-[var(--x)]`      | `w-(--x)`                   |
+| `min-w-[var(--x)]`  | `min-w-(--x)`               |
+| `data-[disabled]:*` | `data-disabled:*`           |
 
 ## Configured Rules
 

@@ -28,39 +28,156 @@ export default function AvatarPage() {
         </TabsList>
 
         <TabsContent value="examples" className="space-y-8">
-          <ComponentPreview title="Basic Avatar">
-            <div className="flex items-center gap-4">
-              <Avatar>
-                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-              <Avatar>
-                <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
-                <AvatarFallback>LR</AvatarFallback>
-              </Avatar>
+          {/* Size Variants */}
+          <ComponentPreview title="Sizes">
+            <div className="flex items-center gap-6">
+              <div className="flex flex-col items-center gap-2">
+                <Avatar size="xl">
+                  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                  <AvatarFallback className="text-lg">CN</AvatarFallback>
+                </Avatar>
+                <span className="text-xs text-muted-foreground">X-Large (80px)</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Avatar size="lg">
+                  <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+                  <AvatarFallback>LR</AvatarFallback>
+                </Avatar>
+                <span className="text-xs text-muted-foreground">Large (40px)</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Avatar size="md">
+                  <AvatarImage src="https://github.com/vercel.png" alt="@vercel" />
+                  <AvatarFallback className="text-[10px]">VC</AvatarFallback>
+                </Avatar>
+                <span className="text-xs text-muted-foreground">Medium (24px)</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Avatar size="sm">
+                  <AvatarImage src="https://github.com/rauchg.png" alt="@rauchg" />
+                  <AvatarFallback className="text-[8px]">GR</AvatarFallback>
+                </Avatar>
+                <span className="text-xs text-muted-foreground">Small (16px)</span>
+              </div>
             </div>
           </ComponentPreview>
 
           <CodeBlock
-            code={`<Avatar>
-  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-  <AvatarFallback>CN</AvatarFallback>
+            code={`{/* X-Large - 80px */}
+<Avatar size="xl">
+  <AvatarImage src="/avatar.png" alt="User" />
+  <AvatarFallback className="text-lg">CN</AvatarFallback>
+</Avatar>
+
+{/* Large - 40px (default) */}
+<Avatar size="lg">
+  <AvatarImage src="/avatar.png" alt="User" />
+  <AvatarFallback>LR</AvatarFallback>
+</Avatar>
+
+{/* Medium - 24px */}
+<Avatar size="md">
+  <AvatarImage src="/avatar.png" alt="User" />
+  <AvatarFallback className="text-[10px]">VC</AvatarFallback>
+</Avatar>
+
+{/* Small - 16px */}
+<Avatar size="sm">
+  <AvatarImage src="/avatar.png" alt="User" />
+  <AvatarFallback className="text-[8px]">GR</AvatarFallback>
 </Avatar>`}
             language="tsx"
           />
 
-          <ComponentPreview title="Fallback State">
-            <div className="flex items-center gap-4">
-              <Avatar>
-                <AvatarFallback>JD</AvatarFallback>
-              </Avatar>
+
+          {/* Fallback State */}
+          <ComponentPreview title="Fallback States">
+            <div className="flex items-center gap-6">
+              <div className="flex flex-col items-center gap-2">
+                <Avatar size="xl">
+                  <AvatarFallback className="text-lg">JD</AvatarFallback>
+                </Avatar>
+                <span className="text-xs text-muted-foreground">X-Large</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Avatar size="lg">
+                  <AvatarFallback>AB</AvatarFallback>
+                </Avatar>
+                <span className="text-xs text-muted-foreground">Large</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Avatar size="md">
+                  <AvatarFallback className="text-[10px]">CD</AvatarFallback>
+                </Avatar>
+                <span className="text-xs text-muted-foreground">Medium</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Avatar size="sm">
+                  <AvatarFallback className="text-[8px]">EF</AvatarFallback>
+                </Avatar>
+                <span className="text-xs text-muted-foreground">Small</span>
+              </div>
             </div>
           </ComponentPreview>
 
           <CodeBlock
-            code={`<Avatar>
-  <AvatarFallback>JD</AvatarFallback>
+            code={`{/* Fallback with initials (no image) */}
+<Avatar size="xl">
+  <AvatarFallback className="text-lg">JD</AvatarFallback>
+</Avatar>
+
+<Avatar size="lg">
+  <AvatarFallback>AB</AvatarFallback>
+</Avatar>
+
+<Avatar size="md">
+  <AvatarFallback className="text-[10px]">CD</AvatarFallback>
+</Avatar>
+
+<Avatar size="sm">
+  <AvatarFallback className="text-[8px]">EF</AvatarFallback>
 </Avatar>`}
+            language="tsx"
+          />
+
+          {/* Avatar Group */}
+          <ComponentPreview title="Avatar Group">
+            <div className="flex -space-x-3">
+              <Avatar className="border-2 border-background bg-background">
+                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar className="border-2 border-background bg-background">
+                <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+                <AvatarFallback>LR</AvatarFallback>
+              </Avatar>
+              <Avatar className="border-2 border-background bg-background">
+                <AvatarImage src="https://github.com/vercel.png" alt="@vercel" />
+                <AvatarFallback>VC</AvatarFallback>
+              </Avatar>
+              <Avatar className="border-2 border-background bg-background">
+                <AvatarFallback>+3</AvatarFallback>
+              </Avatar>
+            </div>
+          </ComponentPreview>
+
+
+          <CodeBlock
+            code={`{/* Stacked avatar group with overlap */}
+<div className="flex -space-x-3">
+  <Avatar className="border-2 border-background bg-background">
+    <AvatarImage src="/user1.png" alt="User 1" />
+    <AvatarFallback>U1</AvatarFallback>
+  </Avatar>
+  <Avatar className="border-2 border-background bg-background">
+    <AvatarImage src="/user2.png" alt="User 2" />
+    <AvatarFallback>U2</AvatarFallback>
+  </Avatar>
+  <Avatar className="border-2 border-background bg-background">
+    <AvatarFallback>+3</AvatarFallback>
+  </Avatar>
+</div>`}
+
             language="tsx"
           />
         </TabsContent>
@@ -78,6 +195,7 @@ export default function AvatarPage() {
                     <li>Representing users in comments or lists</li>
                     <li>User profiles in navigation headers</li>
                     <li>Team member lists</li>
+                    <li>Author attribution in content</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -90,9 +208,47 @@ export default function AvatarPage() {
                     <li>Always provide a meaningful fallback (initials or icon)</li>
                     <li>Use clear, high-quality images</li>
                     <li>Ensure avatars are accessible with alt text</li>
+                    <li>Adjust fallback text size for smaller avatars</li>
                   </ul>
                 </CardContent>
               </Card>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Size Selection</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Size</th>
+                    <th className="py-3 text-left font-medium">Dimensions</th>
+                    <th className="py-3 text-left font-medium">Use Case</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">xl</td>
+                    <td className="py-3">80 × 80px</td>
+                    <td className="py-3">Profile pages, large cards</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">lg</td>
+                    <td className="py-3">40 × 40px</td>
+                    <td className="py-3">Default, comments, headers</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">md</td>
+                    <td className="py-3">24 × 24px</td>
+                    <td className="py-3">Inline mentions, compact lists</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">sm</td>
+                    <td className="py-3">16 × 16px</td>
+                    <td className="py-3">Dense data, activity feeds</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </section>
         </TabsContent>
@@ -111,7 +267,7 @@ export default function AvatarPage() {
                 <tbody className="text-muted-foreground">
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">Avatar</td>
-                    <td className="py-3">Root container element</td>
+                    <td className="py-3">Root container element with size variants</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">AvatarImage</td>
@@ -120,6 +276,36 @@ export default function AvatarPage() {
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">AvatarFallback</td>
                     <td className="py-3">Fallback content when image fails</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Avatar Props</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="py-3 text-left font-medium">Prop</th>
+                    <th className="py-3 text-left font-medium">Type</th>
+                    <th className="py-3 text-left font-medium">Default</th>
+                    <th className="py-3 text-left font-medium">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">size</td>
+                    <td className="py-3 font-mono">&quot;xl&quot; | &quot;lg&quot; | &quot;md&quot; | &quot;sm&quot;</td>
+                    <td className="py-3">&quot;lg&quot;</td>
+                    <td className="py-3">Size variant (80px, 40px, 24px, 16px)</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">className</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">Additional CSS classes</td>
                   </tr>
                 </tbody>
               </table>

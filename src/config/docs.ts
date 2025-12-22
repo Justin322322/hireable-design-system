@@ -21,6 +21,8 @@ import RocketLaunchOutlined from "@mui/icons-material/RocketLaunchOutlined";
 import BrushOutlined from "@mui/icons-material/BrushOutlined";
 import AccessibilityNewOutlined from "@mui/icons-material/AccessibilityNewOutlined";
 import ToggleOnOutlined from "@mui/icons-material/ToggleOnOutlined";
+import CheckBoxOutlined from "@mui/icons-material/CheckBoxOutlined";
+import ViewSidebarOutlined from "@mui/icons-material/ViewSidebarOutlined";
 import VerifiedOutlined from "@mui/icons-material/VerifiedOutlined";
 import BarChartOutlined from "@mui/icons-material/BarChartOutlined";
 import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
@@ -30,6 +32,7 @@ import VerticalSplitOutlined from "@mui/icons-material/VerticalSplitOutlined";
 import ViewKanbanOutlined from "@mui/icons-material/ViewKanbanOutlined";
 import StraightenOutlined from "@mui/icons-material/StraightenOutlined";
 import WidgetsOutlined from "@mui/icons-material/WidgetsOutlined";
+import LinkOutlined from "@mui/icons-material/LinkOutlined";
 
 import type { SvgIconComponent } from "@mui/icons-material";
 
@@ -62,6 +65,7 @@ export const sidebarNav: Record<string, NavSection> = {
       { label: "Corners", href: "/style/corners", icon: RoundedCornerOutlined },
       { label: "Icons", href: "/style/icons", icon: EmojiEmotionsOutlined },
       { label: "Motion", href: "/style/motion", icon: AnimationOutlined },
+      { label: "Border Style", href: "/style/border-style", icon: LinkOutlined },
     ],
   },
   components: {
@@ -73,10 +77,12 @@ export const sidebarNav: Record<string, NavSection> = {
       { label: "Input", href: "/components/input", icon: InputOutlined },
       { label: "Select", href: "/components/select", icon: ExpandMoreOutlined },
       { label: "Tabs", href: "/components/tabs", icon: TabOutlined },
-      { label: "Modal", href: "/components/modal", icon: ChatBubbleOutlineOutlined },
+      { label: "Dialogue", href: "/components/dialogue", icon: ChatBubbleOutlineOutlined },
       { label: "Toast", href: "/components/toast", icon: NotificationsOutlined },
       { label: "Badge", href: "/components/badge", icon: VerifiedOutlined },
       { label: "Toggle", href: "/components/toggle", icon: ToggleOnOutlined },
+      { label: "Checkbox", href: "/components/checkbox", icon: CheckBoxOutlined },
+      { label: "Sidebar", href: "/components/sidebar", icon: ViewSidebarOutlined },
       { label: "Avatar", href: "/components/avatar", icon: AccountCircleOutlined },
       { label: "Separator", href: "/components/separator", icon: HorizontalRuleOutlined },
       { label: "Navigation Menu", href: "/components/navigation-menu", icon: MenuOutlined },

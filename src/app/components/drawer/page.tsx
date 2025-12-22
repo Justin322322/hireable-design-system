@@ -30,16 +30,7 @@ import {
   DrawerClose
 } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
-import { 
-  ChevronLeft, 
-  ChevronRight,
-  ExternalLink, 
-  MapPin,
-  Trash2,
-  Sparkles,
-  LinkedinIcon,
-  Globe
-} from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import { VisuallyHidden } from "@/components/ui/visually-hidden";
 
 // Import JSON data (simulates API response)
@@ -117,7 +108,7 @@ const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps>(
     <div
       ref={ref}
       className={cn(
-        "flex flex-col items-start gap-2.5 p-4 bg-white border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer",
+        "flex flex-col items-start gap-2.5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer",
         className
       )}
       {...props}
@@ -126,27 +117,27 @@ const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps>(
       <div className="flex flex-row items-center gap-2.5 w-full">
         <Avatar className="w-14 h-14 shrink-0">
           <AvatarImage src={data.avatar} alt={data.name} />
-          <AvatarFallback className="bg-gray-300">
+          <AvatarFallback className="bg-muted">
             {data.name.split(" ").map(n => n[0]).join("")}
           </AvatarFallback>
         </Avatar>
         <div className="flex flex-col items-start gap-1 flex-1">
-          <p className="font-semibold text-sm text-neutral-900 leading-[120%]">{data.name}</p>
-          <p className="font-normal text-xs text-neutral-900 leading-[120%]">{data.role}</p>
+          <p className="font-semibold text-sm text-foreground leading-[120%]">{data.name}</p>
+          <p className="font-normal text-xs text-foreground leading-[120%]">{data.role}</p>
         </div>
       </div>
 
       {/* Metadata Section */}
-      <div className="flex flex-row items-center gap-6 w-full text-xs text-neutral-900">
+      <div className="flex flex-row items-center gap-6 w-full text-xs text-foreground">
         <span>{data.salary}</span>
         <span>{data.experience}</span>
       </div>
 
       {/* Activity Section */}
       <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-neutral-900">{data.activityTitle}</span>
-        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active">
-          <ChevronRight className="w-3.5 h-3.5" />
+        <span className="text-xs text-foreground">{data.activityTitle}</span>
+        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View candidate profile">
+          <Icon icon="chevron_right" size={16} className="text-white" aria-hidden="true" />
         </Button>
       </div>
     </div>
@@ -167,21 +158,24 @@ const ProfileDrawerHeader: React.FC<ProfileDrawerHeaderProps> = ({ onClose }) =>
           onClick={onClose}
           className="flex items-center gap-2 group"
         >
-          <div className="flex size-8 items-center justify-center rounded-full border border-neutral-300 group-hover:bg-neutral-100 transition-colors">
-            <ChevronLeft className="size-4 text-neutral-700" />
+          <div className="flex size-8 items-center justify-center rounded-full border border-border group-hover:bg-muted transition-colors">
+            <Icon icon="chevron_left" size={16} className="text-icon" />
           </div>
-          <span className="text-sm text-neutral-900">
+          <span className="text-sm text-foreground">
             back
           </span>
         </button>
       </DrawerClose>
     </div>
 
-    <button className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-neutral-100 transition-colors">
-      <span className="hidden text-sm font-medium text-neutral-900 sm:inline-block">
+    <button 
+      className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-muted transition-colors"
+      aria-label="Open profile in a new tab"
+    >
+      <span className="hidden text-sm font-medium text-foreground sm:inline-block">
         Open profile in a new tab
       </span>
-      <ExternalLink className="size-4 text-neutral-700" />
+      <Icon icon="open_in_new" size={16} className="text-icon" aria-hidden="true" />
     </button>
   </div>
 );
@@ -200,7 +194,7 @@ const CandidateHeader: React.FC<CandidateHeaderProps> = ({ data }) => (
 
     <div className="flex flex-col gap-1">
       <div className="flex items-center gap-2">
-        <h1 className="text-xl font-bold tracking-tight text-neutral-900">
+        <h1 className="text-xl font-bold tracking-tight text-foreground">
           {data.name}
         </h1>
         <Badge variant="muted" className="px-2 py-0.5 text-xs rounded-md bg-neutral-100 border-0 normal-case font-medium">
@@ -216,8 +210,8 @@ const CandidateHeader: React.FC<CandidateHeaderProps> = ({ data }) => (
       </p>
 
       <div className="flex items-center gap-1">
-        <MapPin className="size-4 text-neutral-600" />
-        <span className="text-sm text-neutral-500">
+        <Icon icon="location_on" size={16} className="text-muted-foreground" />
+        <span className="text-sm text-muted-foreground">
           {data.location}
         </span>
       </div>
@@ -234,13 +228,13 @@ const JobDetails: React.FC<JobDetailsProps> = ({ application }) => (
   <div className="flex flex-col gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
     <div className="flex items-center gap-2">
       <span className="text-sm text-neutral-500">Applied for:</span>
-      <span className="text-sm font-semibold text-neutral-900">
+      <span className="text-sm font-semibold text-foreground">
         {application.position}
       </span>
     </div>
     <div className="flex items-center gap-2">
       <span className="text-sm text-neutral-500">Applied:</span>
-      <span className="text-sm font-semibold text-neutral-900">
+      <span className="text-sm font-semibold text-foreground">
         {application.appliedDate}
       </span>
     </div>
@@ -273,12 +267,12 @@ const MatchSection: React.FC<{ title: string; children: React.ReactNode }> = ({
 
 const AIMatchCard: React.FC<AIMatchCardProps> = ({ aiMatch, isExpanded, onToggle }) => (
   <div className="w-full">
-    <div className="flex w-full flex-col rounded-lg border border-client bg-white">
+    <div className="flex w-full flex-col rounded-lg border border-client bg-background">
       <div className="flex w-full items-start justify-between p-4">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
-            <Sparkles className="size-4 text-client" />
-            <span className="text-sm font-semibold uppercase tracking-wide text-neutral-900">
+            <Icon icon="auto_awesome" size={16} className="text-client" />
+            <span className="text-sm font-semibold uppercase tracking-wide text-foreground">
               AI Matchmaker
             </span>
           </div>
@@ -342,7 +336,7 @@ const ProfileTabs: React.FC = () => (
     <Button 
       variant="outline" 
       size="sm"
-      className="border-neutral-300 text-neutral-900 font-semibold"
+      className="border-neutral-300 text-foreground font-semibold"
     >
       Resume
     </Button>
@@ -356,7 +350,7 @@ const SectionCard: React.FC<{ title: string; children: React.ReactNode }> = ({
 }) => (
   <Card className="rounded-lg border-neutral-200 shadow-none">
     <div className="flex items-center px-4 pt-4">
-      <span className="text-sm font-semibold text-neutral-900">
+      <span className="text-sm font-semibold text-foreground">
         {title}
       </span>
     </div>
@@ -412,7 +406,7 @@ const EducationSection: React.FC<EducationSectionProps> = ({ education }) => (
         <React.Fragment key={item.id}>
           {i > 0 && <Separator className="bg-neutral-200" />}
           <div className="flex flex-col gap-1">
-            <span className="text-sm font-semibold text-neutral-900">
+            <span className="text-sm font-semibold text-foreground">
               {item.degree}
             </span>
             <div className="flex items-center gap-4">
@@ -442,7 +436,7 @@ const CertificatesSection: React.FC<CertificatesSectionProps> = ({ certificates 
         <React.Fragment key={cert.id}>
           {i > 0 && <Separator className="bg-neutral-200" />}
           <div className="flex flex-col gap-1">
-            <span className="text-sm font-semibold text-neutral-900">
+            <span className="text-sm font-semibold text-foreground">
               {cert.name}
             </span>
             <div className="flex items-center gap-4">
@@ -469,7 +463,7 @@ const LinksSection: React.FC = () => (
         size="sm"
         className="gap-2 border-neutral-300"
       >
-        <LinkedinIcon className="size-4 text-linkedin" />
+        <Icon icon="link" size={16} className="text-linkedin" />
         LinkedIn
       </Button>
       <Button
@@ -477,7 +471,7 @@ const LinksSection: React.FC = () => (
         size="sm"
         className="gap-2 border-neutral-300"
       >
-        <Globe className="size-4 text-neutral-700" />
+        <Icon icon="public" size={16} className="text-icon" />
         Portfolio
       </Button>
     </div>
@@ -492,7 +486,7 @@ interface PersonalMessageSectionProps {
 const PersonalMessageSection: React.FC<PersonalMessageSectionProps> = ({ message }) => (
   <Card className="rounded-lg border-neutral-200 shadow-sm">
     <CardContent className="p-4 flex flex-col gap-3">
-      <span className="text-sm font-semibold text-neutral-900">
+      <span className="text-sm font-semibold text-foreground">
         Personal Message
       </span>
       <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
@@ -506,12 +500,12 @@ const PersonalMessageSection: React.FC<PersonalMessageSectionProps> = ({ message
 
 // Drawer Footer Component
 const ProfileDrawerFooter: React.FC = () => (
-  <div className="flex flex-col-reverse gap-3 border-t border-neutral-200 bg-white p-4 sm:flex-row sm:items-center">
+  <div className="flex flex-col-reverse gap-3 border-t border-neutral-200 bg-background p-4 sm:flex-row sm:items-center">
     <Button
       variant="outline"
       className="w-full gap-2 border-red-200 text-red-500 hover:bg-red-50 hover:border-red-300 sm:w-auto"
     >
-      <Trash2 className="size-4 text-red-500" />
+      <Icon icon="delete" size={16} className="text-red-500" />
       Drop candidate
     </Button>
     <div className="flex flex-1 gap-2">
@@ -568,7 +562,7 @@ export default function DrawerPage() {
                     <DrawerTitle>Candidate Profile - {candidateData.name}</DrawerTitle>
                   </VisuallyHidden>
                   
-                  <div className="flex flex-col h-full bg-white overflow-hidden">
+                  <div className="flex flex-col h-full bg-background overflow-hidden">
                     {/* Header */}
                     <ProfileDrawerHeader />
 

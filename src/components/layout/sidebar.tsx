@@ -42,12 +42,12 @@ export function Sidebar() {
                       : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                   )}
                 >
-                  <Icon 
-                    className={cn(
-                      "h-5 w-5 shrink-0",
-                      isActive ? "text-client" : "text-muted-foreground"
-                    )} 
-                  />
+                <Icon 
+                  className={cn(
+                    "h-5 w-5 shrink-0",
+                    isActive ? "text-icon-active" : "text-icon"
+                  )}
+                />
                   <span>{item.label}</span>
                 </Link>
               </li>

@@ -52,7 +52,7 @@ function ApplicationCard({ company, position, salary, experience, status, posted
   const isMatched = status.includes("MATCHED");
 
   return (
-    <Card className="w-[300px] rounded-[8px] border-[0.75px] border-solid border-neutral-300 bg-white p-[12px]">
+    <Card className="w-[300px] rounded-[8px] border-[0.75px] border-solid border-neutral-300 bg-background p-[12px]">
       <CardContent className="flex flex-col items-start gap-[8px] p-0">
         <div className="flex w-full items-center justify-between">
           <p className="text-[10px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-700">
@@ -62,7 +62,7 @@ function ApplicationCard({ company, position, salary, experience, status, posted
             {postedTime}
           </p>
         </div>
-        <p className="w-full truncate text-[16px] leading-normal font-semibold tracking-[0.2px] text-neutral-900">
+        <p className="w-full truncate text-[16px] leading-normal font-semibold tracking-[0.2px] text-foreground">
           {position}
         </p>
         <div className="flex items-center gap-1.5 text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-700">
@@ -82,7 +82,7 @@ function ApplicationCard({ company, position, salary, experience, status, posted
           </div>
         )}
         <div className="flex w-full items-center justify-between py-[4px]">
-          <p className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-900">
+          <p className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-foreground">
             Activity Title
           </p>
           <button className="bg-client flex h-[20px] w-[20px] items-center justify-center rounded-full">
@@ -98,7 +98,7 @@ function ApplicationCard({ company, position, salary, experience, status, posted
 
 function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Candidate, "id" | "avatar">) {
   return (
-    <Card className="h-[135px] w-[300px] rounded-[6px] border-[0.75px] border-solid border-neutral-300 bg-white">
+    <Card className="h-[135px] w-[300px] rounded-[6px] border-[0.75px] border-solid border-neutral-300 bg-background">
       <CardContent className="flex h-full flex-col items-start gap-[9px] p-[12px]">
         <div className="relative flex w-full items-start justify-between">
           <div className="relative flex h-[40px] flex-1 items-center gap-[8px]">
@@ -108,7 +108,7 @@ function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Can
               </AvatarFallback>
             </Avatar>
             <div className="relative flex flex-1 flex-col items-start gap-[4px]">
-              <div className="text-[14px] leading-[1.2] font-semibold tracking-[0.2px] text-neutral-900">
+              <div className="text-[14px] leading-[1.2] font-semibold tracking-[0.2px] text-foreground">
                 {name}
               </div>
               <div className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-700">
@@ -151,7 +151,7 @@ function KanbanColumn<T>({ data, renderCard }: { data: KanbanColumnData<T>; rend
   return (
     <div className="relative flex flex-col items-start gap-[8px]">
       <div className="relative flex h-[24px] items-center gap-[8px]">
-        <span className="text-[14px] leading-[1.2] font-semibold tracking-[0.2px] text-neutral-900">
+        <span className="text-[14px] leading-[1.2] font-semibold tracking-[0.2px] text-foreground">
           {data.title}
         </span>
         <span className="flex h-[24px] min-w-[24px] items-center justify-center rounded-full bg-neutral-100 px-[8px] text-[12px] leading-[1.2] font-medium text-neutral-600">

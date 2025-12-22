@@ -10,7 +10,13 @@ This workflow uses `eslint-plugin-tailwindcss` to automatically fix Tailwind CSS
 
 // turbo
 
-1. **Auto-fix all Tailwind lint issues:**
+1. **Auto-fix all Tailwind canonical class issues:**
+
+   ```bash
+   bun run fix:tailwind
+   ```
+
+2. **Run ESLint fix (may have limited effect with Tailwind v4):**
    ```bash
    bun run lint:fix
    ```

@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { cva } from "class-variance-authority"
-import { ChevronDownIcon } from "lucide-react"
+import { KeyboardArrowDownOutlined } from "@mui/icons-material"
 
 import { cn } from "@/lib/utils"
 
@@ -74,9 +74,10 @@ function NavigationMenuTrigger({
       {...props}
     >
       {children}{" "}
-      <ChevronDownIcon
+      <KeyboardArrowDownOutlined
         className="relative top-px ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
         aria-hidden="true"
+        sx={{ fontSize: 12 }}
       />
     </NavigationMenuPrimitive.Trigger>
   )
@@ -145,7 +146,7 @@ function NavigationMenuIndicator({
     <NavigationMenuPrimitive.Indicator
       data-slot="navigation-menu-indicator"
       className={cn(
-        "data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
+        "data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-1 flex h-1.5 items-end justify-center overflow-hidden",
         className
       )}
       {...props}

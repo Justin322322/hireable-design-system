@@ -5,6 +5,8 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  // NOTE: eslint-plugin-tailwindcss has limited Tailwind CSS v4 (CSS-first) support.
+  // Use `bun run fix:tailwind` script for canonical class fixes instead.
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

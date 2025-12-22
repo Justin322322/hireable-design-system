@@ -700,11 +700,13 @@ export function ModalLayout({
 <Button size="sm">Small</Button>
 <Button size="default">Default</Button>
 <Button size="lg">Large</Button>
-<Button size="icon"><PlusIcon /></Button>
+<Button size="icon"><Add /></Button>
 
-// With icon
+// With icon (using MUI icons)
+import { Mail } from "@mui/icons-material";
+
 <Button>
-  <MailIcon className="mr-2 h-4 w-4" />
+  <Mail className="mr-2 size-4" />
   Send Email
 </Button>
 

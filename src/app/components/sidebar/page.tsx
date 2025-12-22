@@ -93,7 +93,7 @@ export default function SidebarPage() {
               <p>The sidebar consists of three main sections:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li><strong className="text-foreground">Logo</strong> - Brand logo at the top (72px height)</li>
-                <li><strong className="text-foreground">Navigation Menu</strong> - Role-specific menu items (flex-grow)</li>
+                <li><strong className="text-foreground">Navigation Menu</strong> - Role-specific menu items (grow)</li>
                 <li><strong className="text-foreground">User Profile</strong> - User info with dropdown at the bottom (84px height)</li>
               </ul>
             </div>

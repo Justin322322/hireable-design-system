@@ -120,7 +120,6 @@ function SidebarMenuItemComponent({ item }: { item: SidebarMenuItem }) {
     <button
       type="button"
       className={cn(baseClasses, "w-full text-left cursor-pointer")}
-      aria-expanded={item.expandable ? false : undefined}
     >
       {content}
     </button>

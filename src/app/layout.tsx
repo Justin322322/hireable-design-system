@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Inter, Nunito_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import "material-symbols/outlined.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Toaster } from "@/components/ui/toaster";
@@ -39,14 +40,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Material Symbols font - loaded via link for variable font features */}
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
-        />
-      </head>
       <body className={`${dmSans.variable} ${inter.variable} ${nunitoSans.variable} font-sans antialiased`}>
         <a
           href="#main-content"

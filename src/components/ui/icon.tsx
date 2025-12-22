@@ -85,6 +85,24 @@ export type IconName =
   | "gavel"
   | "verified_user"
   | "shield"
+  | "hourglass_empty"
+  | "credit_card"
+  | "speed"
+  | "error"
+  | "check_circle"
+  | "admin_panel_settings"
+  | "logout"
+  // Location & Maps
+  | "location_on"
+  | "place"
+  // External links
+  | "open_in_new"
+  | "link"
+  // Misc
+  | "delete_forever"
+  | "auto_awesome"
+  | "language"
+  | "public"
 
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** The Material Symbol icon name (from fonts.google.com/icons) */

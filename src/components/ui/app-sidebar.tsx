@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,29 +30,29 @@ export interface AppSidebarProps {
 const talentMenuItems: SidebarMenuItem[] = [
   { icon: "home", label: "Home", href: "#", active: true },
   { icon: "work", label: "Job board", href: "#" },
-  { icon: "chat", label: "Messages", href: "#" },
-  { icon: "schedule", label: "Trials", href: "#" },
+  { icon: "mail", label: "Messages", href: "#" },
+  { icon: "hourglass_empty", label: "Trials", href: "#" },
 ];
 
 const employerMenuItems: SidebarMenuItem[] = [
   { icon: "home", label: "Home", href: "#", active: true },
   { icon: "person_search", label: "Discover Talent", href: "#" },
   { icon: "work", label: "Jobs", href: "#" },
-  { icon: "chat", label: "Messages", href: "#" },
-  { icon: "schedule", label: "Trials", href: "#" },
+  { icon: "mail", label: "Messages", href: "#" },
+  { icon: "hourglass_empty", label: "Trials", href: "#" },
 ];
 
 const adminMenuItems: SidebarMenuItem[] = [
   { icon: "home", label: "Home", href: "#", active: true },
   { icon: "group", label: "User management", expandable: true },
   { icon: "work", label: "Job post management", href: "#" },
-  { icon: "schedule", label: "Trial management", href: "#" },
-  { icon: "payments", label: "Payments & billing", expandable: true },
-  { icon: "bar_chart", label: "Performance & scoring", expandable: true },
-  { icon: "description", label: "Content management", href: "#" },
-  { icon: "shield", label: "Dispute & compliance", href: "#" },
-  { icon: "verified_user", label: "KYC & verification", href: "#" },
-  { icon: "settings", label: "Admin settings", href: "#" },
+  { icon: "hourglass_empty", label: "Trial management", href: "#" },
+  { icon: "credit_card", label: "Payments & billing", expandable: true },
+  { icon: "speed", label: "Performance & scoring", expandable: true },
+  { icon: "edit", label: "Content management", href: "#" },
+  { icon: "error", label: "Dispute & compliance", href: "#" },
+  { icon: "check_circle", label: "KYC & verification", href: "#" },
+  { icon: "admin_panel_settings", label: "Admin settings", href: "#" },
 ];
 
 const userProfiles: Record<string, SidebarUserProfile> = {
@@ -79,16 +80,13 @@ function SidebarMenuItemComponent({ item }: { item: SidebarMenuItem }) {
       <div 
         className={cn(
           "flex items-center justify-center size-6",
-          item.active ? "text-icon-active" : "text-icon"
+          item.active ? "text-client" : "text-icon"
         )}
       >
         <Icon icon={item.icon} size={20} filled={item.active} />
       </div>
       <span 
-        className={cn(
-          "flex-1 text-sm font-secondary leading-[1.2] tracking-[0.2px]",
-          item.active ? "font-semibold text-foreground" : "text-foreground"
-        )}
+        className="flex-1 text-sm font-secondary leading-[1.2] tracking-[0.2px] text-foreground"
       >
         {item.label}
       </span>
@@ -101,8 +99,8 @@ function SidebarMenuItemComponent({ item }: { item: SidebarMenuItem }) {
   const baseClasses = cn(
     "flex items-center gap-2 px-4 py-2 rounded-lg transition-colors",
     item.active 
-      ? "bg-secondary" 
-      : "bg-background hover:bg-button-tertiary-hover"
+      ? "bg-surface-hover" 
+      : "bg-background hover:bg-surface-hover"
   );
 
   // Use Link for navigation, button for expandable items
@@ -130,50 +128,116 @@ function SidebarMenuItemComponent({ item }: { item: SidebarMenuItem }) {
 }
 
 function SidebarProfile({ profile }: { profile: SidebarUserProfile }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const menuRef = React.useRef<HTMLDivElement>(null);
+
+  // Close menu when clicking outside
+  React.useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <button
-      type="button"
-      className="flex items-center gap-2 px-4 py-2 h-[52px] w-full rounded-lg bg-background hover:bg-button-tertiary-hover transition-colors text-left"
-      aria-label="User profile menu"
-      aria-haspopup="menu"
-      aria-expanded={false}
-    >
-      <div className="flex items-center flex-1 gap-2">
-        {profile.avatar ? (
-          <Image
-            src={profile.avatar}
-            alt=""
-            width={36}
-            height={36}
-            className="size-9 rounded-full object-cover"
-            aria-hidden="true"
-          />
-        ) : profile.initials ? (
-          <div 
-            className={cn(
-              "flex items-center justify-center size-9 rounded-full text-[12.6px] font-bold tracking-[0.18px]",
-              profile.initialsColor
-            )}
-            aria-hidden="true"
-          >
-            {profile.initials}
-          </div>
-        ) : (
-          <div className="size-9 rounded-full bg-muted overflow-hidden" aria-hidden="true">
-            <div className="size-full bg-muted" />
-          </div>
+    <div className="relative" ref={menuRef}>
+      <button
+        type="button"
+        className={cn(
+          "flex items-center gap-2 px-4 py-2 h-[52px] w-full rounded-lg transition-colors text-left",
+          isOpen ? "bg-surface-hover" : "bg-background hover:bg-surface-hover"
         )}
-        <div className="flex flex-col gap-1">
-          <span className="text-sm font-semibold font-secondary leading-[1.2] tracking-[0.2px] text-foreground">
-            {profile.name}
-          </span>
-          <span className="text-xs font-secondary leading-[1.2] tracking-[0.2px] text-icon">
-            {profile.email}
-          </span>
+        aria-label="User profile menu"
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div className="flex items-center flex-1 gap-2">
+          {profile.avatar ? (
+            <Image
+              src={profile.avatar}
+              alt=""
+              width={36}
+              height={36}
+              className="size-9 rounded-full object-cover"
+              aria-hidden="true"
+            />
+          ) : profile.initials ? (
+            <div 
+              className={cn(
+                "flex items-center justify-center size-9 rounded-full text-[12.6px] font-bold tracking-[0.18px]",
+                profile.initialsColor
+              )}
+              aria-hidden="true"
+            >
+              {profile.initials}
+            </div>
+          ) : (
+            <div className="size-9 rounded-full bg-muted overflow-hidden" aria-hidden="true">
+              <div className="size-full bg-muted" />
+            </div>
+          )}
+          <div className="flex flex-col gap-1">
+            <span className="text-sm font-semibold font-secondary leading-[1.2] tracking-[0.2px] text-foreground">
+              {profile.name}
+            </span>
+            <span className="text-xs font-secondary leading-[1.2] tracking-[0.2px] text-icon">
+              {profile.email}
+            </span>
+          </div>
         </div>
-      </div>
-      <Icon icon="keyboard_arrow_down" size={20} className="text-foreground" aria-hidden="true" />
-    </button>
+        <Icon 
+          icon={isOpen ? "keyboard_arrow_up" : "keyboard_arrow_down"} 
+          size={20} 
+          className="text-foreground" 
+          aria-hidden="true" 
+        />
+      </button>
+
+      {/* Dropdown Menu */}
+      {isOpen && (
+        <div 
+          className="absolute bottom-full left-0 mb-2 w-[264px] flex flex-col p-2 gap-2 bg-background rounded-lg shadow-[0px_2px_4px_rgba(0,0,0,0.25)]"
+          role="menu"
+        >
+          {/* Profile Option */}
+          <button
+            type="button"
+            className="flex items-center gap-2 px-3 py-2 w-full rounded-lg bg-background hover:bg-surface-hover transition-colors text-left"
+            role="menuitem"
+            onClick={() => setIsOpen(false)}
+          >
+            <div className="flex items-center justify-center size-6 text-icon">
+              <Icon icon="person" size={20} />
+            </div>
+            <span className="text-sm font-secondary leading-[1.2] tracking-[0.2px] text-foreground">
+              Profile
+            </span>
+          </button>
+
+          {/* Divider */}
+          <div className="w-full h-px bg-button-tertiary-border" role="separator" />
+
+          {/* Logout Option */}
+          <button
+            type="button"
+            className="flex items-center gap-2 px-3 py-2 w-full rounded-lg bg-background hover:bg-surface-hover transition-colors text-left"
+            role="menuitem"
+            onClick={() => setIsOpen(false)}
+          >
+            <div className="flex items-center justify-center size-6 text-icon">
+              <Icon icon="logout" size={20} />
+            </div>
+            <span className="text-sm font-secondary leading-[1.2] tracking-[0.2px] text-foreground">
+              Log out
+            </span>
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 

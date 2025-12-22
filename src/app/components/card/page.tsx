@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
-import { ChevronRight } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 import { VERSION } from "@/lib/version";
 
 // Import JSON data (simulates API response)
@@ -46,7 +46,7 @@ const goalData = cardsData.goal as Goal;
 
 function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Profile, "id" | "avatar">) {
   return (
-    <div className="flex flex-col items-start gap-2.5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
+    <div className="flex flex-col items-start gap-2.5 p-4 bg-background border border-border rounded-lg w-96 transition-colors hover:bg-muted hover:border-border cursor-pointer">
       <div className="flex flex-row items-center gap-2.5 w-full">
         <div className="w-14 h-14 rounded-full bg-muted shrink-0" />
         <div className="flex flex-col items-start gap-1 flex-1">
@@ -61,7 +61,7 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Pro
       <div className="flex flex-row items-center justify-between gap-4 w-full">
         <span className="text-xs text-foreground">{activityTitle}</span>
         <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View profile">
-          <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+          <Icon icon="chevron_right" size={16} className="text-white" aria-hidden="true" />
         </Button>
       </div>
     </div>
@@ -70,7 +70,7 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Pro
 
 function GoalCard({ title, type, progress, completedResults, totalResults, dueDate }: Omit<Goal, "id">) {
   return (
-    <div className="flex flex-col items-start gap-5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
+    <div className="flex flex-col items-start gap-5 p-4 bg-background border border-border rounded-lg w-96 transition-colors hover:bg-muted hover:border-border cursor-pointer">
       <div className="flex items-start justify-between w-full">
         <div className="flex-1 flex items-center">
           <p className="font-semibold text-sm text-foreground leading-normal tracking-[0.02em]">

@@ -39,6 +39,8 @@ const semanticColors = [
   { name: "Card", variable: "--card", className: "bg-card", hex: "#FFFFFF" },
   { name: "Accent", variable: "--accent", className: "bg-accent", hex: "#F5F5F5" },
   { name: "Destructive", variable: "--destructive", className: "bg-destructive", hex: "#DC2626" },
+  { name: "Icon", variable: "--icon", className: "bg-icon", hex: "#212121" },
+  { name: "Tertiary Text", variable: "--button-tertiary-foreground", className: "bg-button-tertiary-foreground", hex: "#212121" },
 ];
 
 const borderColors = [

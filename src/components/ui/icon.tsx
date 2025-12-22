@@ -26,6 +26,7 @@ import {
   FavoriteBorderOutlined,
   StarOutlined,
   StarBorderOutlined,
+  BookmarkOutlined,
   BookmarkBorderOutlined,
   // Action icons
   VisibilityOutlined,
@@ -98,7 +99,8 @@ const iconMap = {
   favorite_border: FavoriteBorderOutlined,
   star: StarOutlined,
   star_border: StarBorderOutlined,
-  bookmark: BookmarkBorderOutlined,
+  bookmark: BookmarkOutlined,
+  bookmark_border: BookmarkBorderOutlined,
   // Action icons
   visibility: VisibilityOutlined,
   visibility_off: VisibilityOffOutlined,
@@ -169,6 +171,8 @@ const Icon = React.forwardRef<SVGSVGElement, IconProps>(
       iconKey = "favorite_border" as IconName
     } else if (icon === "star" && !filled) {
       iconKey = "star_border" as IconName
+    } else if (icon === "bookmark" && !filled) {
+      iconKey = "bookmark_border" as IconName
     }
 
     const IconComponent = iconMap[iconKey]

@@ -45,9 +45,9 @@ export default function DialoguePage() {
                   {/* CTA: gap 8px */}
                   <div className="flex flex-row items-center gap-2">
                     {/* Cancel: padding 8px 16px, height 40px, border 1px solid, border-radius 8px */}
-                    <Button variant="outline" className="h-10 px-4 py-2 rounded-lg">Cancel</Button>
+                    <Button type="button" variant="outline" className="h-10 px-4 py-2 rounded-lg">Cancel</Button>
                     {/* Continue: padding 8px 16px, height 40px, bg client, border-radius 8px */}
-                    <Button className="h-10 px-4 py-2 rounded-lg">Continue</Button>
+                    <Button type="button" className="h-10 px-4 py-2 rounded-lg">Continue</Button>
                   </div>
                 </div>
               </CardContent>

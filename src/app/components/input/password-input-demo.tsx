@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Icon } from "@/components/ui/icon"
+import { Input } from "@/components/ui/input"
 
 export function PasswordInputDemo() {
   const [showPassword, setShowPassword] = React.useState(false)
@@ -12,11 +13,11 @@ export function PasswordInputDemo() {
         Password
       </label>
       <div className="relative flex items-center">
-        <input
+        <Input
           id="password"
           type={showPassword ? "text" : "password"}
           placeholder="Enter password"
-          className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 pr-10 font-secondary text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
+          className="pr-10"
         />
         <button
           type="button"

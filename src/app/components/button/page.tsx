@@ -75,11 +75,11 @@ export default function ButtonPage() {
                 <Button variant="primary" size="lg">Enabled</Button>
                 <Button variant="primary" size="lg" disabled>Disabled</Button>
                 <Button variant="primary" size="lg">
-                  <Icon icon="add" size={20} className="text-white" aria-hidden />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden />
                   Icon + Text
                 </Button>
                 <Button variant="primary" size="icon-lg" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-white" />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -87,11 +87,11 @@ export default function ButtonPage() {
                 <Button variant="primary" size="base">Enabled</Button>
                 <Button variant="primary" size="base" disabled>Disabled</Button>
                 <Button variant="primary" size="base">
-                  <Icon icon="add" size={20} className="text-white" aria-hidden />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden />
                   Icon + Text
                 </Button>
                 <Button variant="primary" size="icon-base" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-white" />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -99,11 +99,11 @@ export default function ButtonPage() {
                 <Button variant="primary" size="md">Enabled</Button>
                 <Button variant="primary" size="md" disabled>Disabled</Button>
                 <Button variant="primary" size="md">
-                  <Icon icon="add" size={20} className="text-white" aria-hidden />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden />
                   Icon + Text
                 </Button>
                 <Button variant="primary" size="icon-md" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-white" />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -111,11 +111,11 @@ export default function ButtonPage() {
                 <Button variant="primary" size="sm">Enabled</Button>
                 <Button variant="primary" size="sm" disabled>Disabled</Button>
                 <Button variant="primary" size="sm">
-                  <Icon icon="add" size={20} className="text-white" aria-hidden />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden />
                   Icon + Text
                 </Button>
                 <Button variant="primary" size="icon-sm" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-white" />
+                  <Icon icon="add" size={20} className="text-button-primary-foreground" />
                 </Button>
               </div>
             </div>
@@ -127,13 +127,13 @@ export default function ButtonPage() {
 
 // Primary button - with icon
 <Button variant="primary" size="lg">
-  <Icon icon="add" size={20} className="text-white" aria-hidden />
+  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden />
   Icon + Text
 </Button>
 
 // Primary button - icon only (circular)
 <Button variant="primary" size="icon-lg" aria-label="Add">
-  <Icon icon="add" size={20} className="text-white" />
+  <Icon icon="add" size={20} className="text-button-primary-foreground" />
 </Button>
 
 // Disabled state
@@ -220,11 +220,11 @@ export default function ButtonPage() {
                 <Button variant="tertiary" size="lg">Enabled</Button>
                 <Button variant="tertiary" size="lg" disabled>Disabled</Button>
                 <Button variant="tertiary" size="lg">
-                  <Icon icon="add" size={20} aria-hidden />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
                   Icon + Text
                 </Button>
                 <Button variant="tertiary" size="icon-lg" aria-label="Add">
-                  <Icon icon="add" size={20} />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -232,11 +232,11 @@ export default function ButtonPage() {
                 <Button variant="tertiary" size="base">Enabled</Button>
                 <Button variant="tertiary" size="base" disabled>Disabled</Button>
                 <Button variant="tertiary" size="base">
-                  <Icon icon="add" size={20} aria-hidden />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
                   Icon + Text
                 </Button>
                 <Button variant="tertiary" size="icon-base" aria-label="Add">
-                  <Icon icon="add" size={20} />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -244,11 +244,11 @@ export default function ButtonPage() {
                 <Button variant="tertiary" size="md">Enabled</Button>
                 <Button variant="tertiary" size="md" disabled>Disabled</Button>
                 <Button variant="tertiary" size="md">
-                  <Icon icon="add" size={20} aria-hidden />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
                   Icon + Text
                 </Button>
                 <Button variant="tertiary" size="icon-md" aria-label="Add">
-                  <Icon icon="add" size={20} />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" />
                 </Button>
               </div>
               <div className="flex flex-wrap gap-4 items-center">
@@ -256,11 +256,11 @@ export default function ButtonPage() {
                 <Button variant="tertiary" size="sm">Enabled</Button>
                 <Button variant="tertiary" size="sm" disabled>Disabled</Button>
                 <Button variant="tertiary" size="sm">
-                  <Icon icon="add" size={20} aria-hidden />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
                   Icon + Text
                 </Button>
                 <Button variant="tertiary" size="icon-sm" aria-label="Add">
-                  <Icon icon="add" size={20} />
+                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" />
                 </Button>
               </div>
             </div>
@@ -272,13 +272,13 @@ export default function ButtonPage() {
 
 // Tertiary button - with icon (uses default text-icon color)
 <Button variant="tertiary" size="lg">
-  <Icon icon="add" size={20} aria-hidden />
+  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden />
   Icon + Text
 </Button>
 
 // Tertiary button - icon only (circular)
 <Button variant="tertiary" size="icon-lg" aria-label="Add">
-  <Icon icon="add" size={20} />
+  <Icon icon="add" size={20} className="text-button-tertiary-foreground" />
 </Button>`}
             language="tsx"
           />

@@ -126,7 +126,7 @@ const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps>(
       <div className="flex flex-row items-center gap-2.5 w-full">
         <Avatar className="w-14 h-14 shrink-0">
           <AvatarImage src={data.avatar} alt={data.name} />
-          <AvatarFallback className="bg-gray-300">
+          <AvatarFallback className="bg-muted">
             {data.name.split(" ").map(n => n[0]).join("")}
           </AvatarFallback>
         </Avatar>

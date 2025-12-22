@@ -48,7 +48,7 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Pro
   return (
     <div className="flex flex-col items-start gap-2.5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
       <div className="flex flex-row items-center gap-2.5 w-full">
-        <div className="w-14 h-14 rounded-full bg-gray-300 shrink-0" />
+        <div className="w-14 h-14 rounded-full bg-muted shrink-0" />
         <div className="flex flex-col items-start gap-1 flex-1">
           <p className="font-semibold text-sm text-foreground leading-[120%]">{name}</p>
           <p className="font-normal text-xs text-foreground leading-[120%]">{role}</p>
@@ -60,8 +60,8 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Pro
       </div>
       <div className="flex flex-row items-center justify-between gap-4 w-full">
         <span className="text-xs text-foreground">{activityTitle}</span>
-        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active">
-          <ChevronRight className="w-3.5 h-3.5" />
+        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View profile">
+          <ChevronRight className="w-3.5 h-3.5" aria-hidden />
         </Button>
       </div>
     </div>
@@ -200,7 +200,7 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: ProfileC
   return (
     <div className="flex flex-col items-start gap-2.5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
       <div className="flex flex-row items-center gap-2.5 w-full">
-        <div className="w-14 h-14 rounded-full bg-gray-300 shrink-0" />
+        <div className="w-14 h-14 rounded-full bg-muted shrink-0" />
         <div className="flex flex-col items-start gap-1 flex-1">
           <p className="font-semibold text-sm text-foreground leading-[120%]">{name}</p>
           <p className="font-normal text-xs text-foreground leading-[120%]">{role}</p>

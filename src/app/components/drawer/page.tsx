@@ -131,20 +131,20 @@ const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps>(
           </AvatarFallback>
         </Avatar>
         <div className="flex flex-col items-start gap-1 flex-1">
-          <p className="font-semibold text-sm text-neutral-900 leading-[120%]">{data.name}</p>
-          <p className="font-normal text-xs text-neutral-900 leading-[120%]">{data.role}</p>
+          <p className="font-semibold text-sm text-foreground leading-[120%]">{data.name}</p>
+          <p className="font-normal text-xs text-foreground leading-[120%]">{data.role}</p>
         </div>
       </div>
 
       {/* Metadata Section */}
-      <div className="flex flex-row items-center gap-6 w-full text-xs text-neutral-900">
+      <div className="flex flex-row items-center gap-6 w-full text-xs text-foreground">
         <span>{data.salary}</span>
         <span>{data.experience}</span>
       </div>
 
       {/* Activity Section */}
       <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-neutral-900">{data.activityTitle}</span>
+        <span className="text-xs text-foreground">{data.activityTitle}</span>
         <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active">
           <ChevronRight className="w-3.5 h-3.5" />
         </Button>
@@ -170,7 +170,7 @@ const ProfileDrawerHeader: React.FC<ProfileDrawerHeaderProps> = ({ onClose }) =>
           <div className="flex size-8 items-center justify-center rounded-full border border-neutral-300 group-hover:bg-neutral-100 transition-colors">
             <ChevronLeft className="size-4 text-neutral-700" />
           </div>
-          <span className="text-sm text-neutral-900">
+          <span className="text-sm text-foreground">
             back
           </span>
         </button>
@@ -178,7 +178,7 @@ const ProfileDrawerHeader: React.FC<ProfileDrawerHeaderProps> = ({ onClose }) =>
     </div>
 
     <button className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-neutral-100 transition-colors">
-      <span className="hidden text-sm font-medium text-neutral-900 sm:inline-block">
+      <span className="hidden text-sm font-medium text-foreground sm:inline-block">
         Open profile in a new tab
       </span>
       <ExternalLink className="size-4 text-neutral-700" />
@@ -200,7 +200,7 @@ const CandidateHeader: React.FC<CandidateHeaderProps> = ({ data }) => (
 
     <div className="flex flex-col gap-1">
       <div className="flex items-center gap-2">
-        <h1 className="text-xl font-bold tracking-tight text-neutral-900">
+        <h1 className="text-xl font-bold tracking-tight text-foreground">
           {data.name}
         </h1>
         <Badge variant="muted" className="px-2 py-0.5 text-xs rounded-md bg-neutral-100 border-0 normal-case font-medium">
@@ -234,13 +234,13 @@ const JobDetails: React.FC<JobDetailsProps> = ({ application }) => (
   <div className="flex flex-col gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
     <div className="flex items-center gap-2">
       <span className="text-sm text-neutral-500">Applied for:</span>
-      <span className="text-sm font-semibold text-neutral-900">
+      <span className="text-sm font-semibold text-foreground">
         {application.position}
       </span>
     </div>
     <div className="flex items-center gap-2">
       <span className="text-sm text-neutral-500">Applied:</span>
-      <span className="text-sm font-semibold text-neutral-900">
+      <span className="text-sm font-semibold text-foreground">
         {application.appliedDate}
       </span>
     </div>
@@ -278,7 +278,7 @@ const AIMatchCard: React.FC<AIMatchCardProps> = ({ aiMatch, isExpanded, onToggle
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
             <Sparkles className="size-4 text-client" />
-            <span className="text-sm font-semibold uppercase tracking-wide text-neutral-900">
+            <span className="text-sm font-semibold uppercase tracking-wide text-foreground">
               AI Matchmaker
             </span>
           </div>
@@ -342,7 +342,7 @@ const ProfileTabs: React.FC = () => (
     <Button 
       variant="outline" 
       size="sm"
-      className="border-neutral-300 text-neutral-900 font-semibold"
+      className="border-neutral-300 text-foreground font-semibold"
     >
       Resume
     </Button>
@@ -356,7 +356,7 @@ const SectionCard: React.FC<{ title: string; children: React.ReactNode }> = ({
 }) => (
   <Card className="rounded-lg border-neutral-200 shadow-none">
     <div className="flex items-center px-4 pt-4">
-      <span className="text-sm font-semibold text-neutral-900">
+      <span className="text-sm font-semibold text-foreground">
         {title}
       </span>
     </div>
@@ -412,7 +412,7 @@ const EducationSection: React.FC<EducationSectionProps> = ({ education }) => (
         <React.Fragment key={item.id}>
           {i > 0 && <Separator className="bg-neutral-200" />}
           <div className="flex flex-col gap-1">
-            <span className="text-sm font-semibold text-neutral-900">
+            <span className="text-sm font-semibold text-foreground">
               {item.degree}
             </span>
             <div className="flex items-center gap-4">
@@ -442,7 +442,7 @@ const CertificatesSection: React.FC<CertificatesSectionProps> = ({ certificates 
         <React.Fragment key={cert.id}>
           {i > 0 && <Separator className="bg-neutral-200" />}
           <div className="flex flex-col gap-1">
-            <span className="text-sm font-semibold text-neutral-900">
+            <span className="text-sm font-semibold text-foreground">
               {cert.name}
             </span>
             <div className="flex items-center gap-4">
@@ -492,7 +492,7 @@ interface PersonalMessageSectionProps {
 const PersonalMessageSection: React.FC<PersonalMessageSectionProps> = ({ message }) => (
   <Card className="rounded-lg border-neutral-200 shadow-sm">
     <CardContent className="p-4 flex flex-col gap-3">
-      <span className="text-sm font-semibold text-neutral-900">
+      <span className="text-sm font-semibold text-foreground">
         Personal Message
       </span>
       <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">

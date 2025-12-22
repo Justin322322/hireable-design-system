@@ -67,11 +67,11 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-client" />
             <span className="text-xs text-neutral-600">Overall Progress</span>
-            <span className="text-xs text-neutral-900 font-medium">{payload[0].value}%</span>
+            <span className="text-xs text-foreground font-medium">{payload[0].value}%</span>
           </div>
         </div>
         <div className="bg-background rounded-lg px-3 py-2 shadow-md">
-          <span className="text-xs text-neutral-900">{formatDate(label || "")}</span>
+          <span className="text-xs text-foreground">{formatDate(label || "")}</span>
         </div>
       </div>
     );
@@ -82,7 +82,7 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
 function ProgressChart({ data }: { data: ChartData }) {
   return (
     <div className="w-full bg-background border border-neutral-300 rounded-lg p-4">
-      <h3 className="text-sm font-semibold text-neutral-900 mb-4">{data.title}</h3>
+      <h3 className="text-sm font-semibold text-foreground mb-4">{data.title}</h3>
       <div className="h-[250px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart

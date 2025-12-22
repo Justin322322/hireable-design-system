@@ -50,16 +50,16 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Pro
       <div className="flex flex-row items-center gap-2.5 w-full">
         <div className="w-14 h-14 rounded-full bg-gray-300 shrink-0" />
         <div className="flex flex-col items-start gap-1 flex-1">
-          <p className="font-semibold text-sm text-neutral-900 leading-[120%]">{name}</p>
-          <p className="font-normal text-xs text-neutral-900 leading-[120%]">{role}</p>
+          <p className="font-semibold text-sm text-foreground leading-[120%]">{name}</p>
+          <p className="font-normal text-xs text-foreground leading-[120%]">{role}</p>
         </div>
       </div>
-      <div className="flex flex-row items-center gap-6 w-full text-xs text-neutral-900">
+      <div className="flex flex-row items-center gap-6 w-full text-xs text-foreground">
         <span>{salary}</span>
         <span>{experience}</span>
       </div>
       <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-neutral-900">{activityTitle}</span>
+        <span className="text-xs text-foreground">{activityTitle}</span>
         <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active">
           <ChevronRight className="w-3.5 h-3.5" />
         </Button>
@@ -73,7 +73,7 @@ function GoalCard({ title, type, progress, completedResults, totalResults, dueDa
     <div className="flex flex-col items-start gap-5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
       <div className="flex items-start justify-between w-full">
         <div className="flex-1 flex items-center">
-          <p className="font-semibold text-sm text-neutral-900 leading-normal tracking-[0.02em]">
+          <p className="font-semibold text-sm text-foreground leading-normal tracking-[0.02em]">
             {title}
           </p>
         </div>
@@ -83,7 +83,7 @@ function GoalCard({ title, type, progress, completedResults, totalResults, dueDa
       </div>
       <div className="flex flex-col gap-2 w-full">
         <div className="flex items-center">
-          <span className="font-semibold text-2xl text-neutral-900 leading-[1.2]">
+          <span className="font-semibold text-2xl text-foreground leading-[1.2]">
             {progress}%
           </span>
         </div>
@@ -144,7 +144,7 @@ function UserRoleCard({ role, title, description, image, variant = "enabled" }: 
         <div className="shrink-0">
           <Image
             src={image}
-            alt={role}
+            alt={`${title} illustration`}
             width={140}
             height={140}
             className="h-[140px] w-[140px]"
@@ -202,16 +202,16 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: ProfileC
       <div className="flex flex-row items-center gap-2.5 w-full">
         <div className="w-14 h-14 rounded-full bg-gray-300 shrink-0" />
         <div className="flex flex-col items-start gap-1 flex-1">
-          <p className="font-semibold text-sm text-neutral-900 leading-[120%]">{name}</p>
-          <p className="font-normal text-xs text-neutral-900 leading-[120%]">{role}</p>
+          <p className="font-semibold text-sm text-foreground leading-[120%]">{name}</p>
+          <p className="font-normal text-xs text-foreground leading-[120%]">{role}</p>
         </div>
       </div>
-      <div className="flex flex-row items-center gap-6 w-full text-xs text-neutral-900">
+      <div className="flex flex-row items-center gap-6 w-full text-xs text-foreground">
         <span>{salary}</span>
         <span>{experience}</span>
       </div>
       <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-neutral-900">{activityTitle}</span>
+        <span className="text-xs text-foreground">{activityTitle}</span>
         <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active">
           <ChevronRight className="w-3.5 h-3.5" />
         </Button>
@@ -349,7 +349,7 @@ function GoalCard({ title, type, progress, completedResults, totalResults, dueDa
     <div className="flex flex-col items-start gap-5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer">
       <div className="flex items-start justify-between w-full">
         <div className="flex-1 flex items-center">
-          <p className="font-semibold text-sm text-neutral-900 leading-normal tracking-[0.02em]">
+          <p className="font-semibold text-sm text-foreground leading-normal tracking-[0.02em]">
             {title}
           </p>
         </div>
@@ -359,7 +359,7 @@ function GoalCard({ title, type, progress, completedResults, totalResults, dueDa
       </div>
       <div className="flex flex-col gap-2 w-full">
         <div className="flex items-center">
-          <span className="font-semibold text-2xl text-neutral-900 leading-[1.2]">
+          <span className="font-semibold text-2xl text-foreground leading-[1.2]">
             {progress}%
           </span>
         </div>

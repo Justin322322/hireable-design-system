@@ -1,6 +1,9 @@
 import { toast as sonnerToast } from "sonner";
 import { createElement } from "react";
-import { CheckCircle2, AlertCircle, AlertTriangle, Info } from "lucide-react";
+import CheckCircleOutline from "@mui/icons-material/CheckCircleOutline";
+import ErrorOutline from "@mui/icons-material/ErrorOutline";
+import WarningAmber from "@mui/icons-material/WarningAmber";
+import InfoOutlined from "@mui/icons-material/InfoOutlined";
 
 interface ToastProps {
   title?: string;
@@ -20,25 +23,25 @@ export function useToast() {
       case "success":
         sonnerToast.success(title, {
           ...baseOptions,
-          icon: createElement(CheckCircle2, { className: "h-4 w-4 text-green-600 dark:text-green-400" }),
+          icon: createElement(CheckCircleOutline, { className: "h-4 w-4 text-green-600 dark:text-green-400" }),
         });
         break;
       case "destructive":
         sonnerToast.error(title, {
           ...baseOptions,
-          icon: createElement(AlertCircle, { className: "h-4 w-4 text-red-600 dark:text-red-400" }),
+          icon: createElement(ErrorOutline, { className: "h-4 w-4 text-red-600 dark:text-red-400" }),
         });
         break;
       case "warning":
         sonnerToast.warning(title, {
           ...baseOptions,
-          icon: createElement(AlertTriangle, { className: "h-4 w-4 text-amber-600 dark:text-amber-400" }),
+          icon: createElement(WarningAmber, { className: "h-4 w-4 text-amber-600 dark:text-amber-400" }),
         });
         break;
       case "info":
         sonnerToast.info(title, {
           ...baseOptions,
-          icon: createElement(Info, { className: "h-4 w-4 text-blue-600 dark:text-blue-400" }),
+          icon: createElement(InfoOutlined, { className: "h-4 w-4 text-blue-600 dark:text-blue-400" }),
         });
         break;
       default:

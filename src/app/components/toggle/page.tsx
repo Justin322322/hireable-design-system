@@ -4,7 +4,9 @@ import { Toggle } from "@/components/ui/toggle";
 import { Switch } from "@/components/ui/switch";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
-import { Bold, Italic, Underline } from "lucide-react";
+import FormatBold from "@mui/icons-material/FormatBold";
+import FormatItalic from "@mui/icons-material/FormatItalic";
+import FormatUnderlined from "@mui/icons-material/FormatUnderlined";
 import { VERSION } from "@/lib/version";
 
 export default function TogglePage() {
@@ -33,26 +35,26 @@ export default function TogglePage() {
           <ComponentPreview title="Basic Toggle">
             <div className="flex flex-wrap gap-4">
               <Toggle aria-label="Toggle bold">
-                <Bold className="h-4 w-4" />
+                <FormatBold className="h-4 w-4" />
               </Toggle>
               <Toggle aria-label="Toggle italic">
-                <Italic className="h-4 w-4" />
+                <FormatItalic className="h-4 w-4" />
               </Toggle>
               <Toggle aria-label="Toggle underline">
-                <Underline className="h-4 w-4" />
+                <FormatUnderlined className="h-4 w-4" />
               </Toggle>
             </div>
           </ComponentPreview>
 
           <CodeBlock
             code={`<Toggle aria-label="Toggle bold">
-  <Bold className="h-4 w-4" />
+  <FormatBold className="h-4 w-4" />
 </Toggle>
 <Toggle aria-label="Toggle italic">
-  <Italic className="h-4 w-4" />
+  <FormatItalic className="h-4 w-4" />
 </Toggle>
 <Toggle aria-label="Toggle underline">
-  <Underline className="h-4 w-4" />
+  <FormatUnderlined className="h-4 w-4" />
 </Toggle>`}
             language="tsx"
           />
@@ -60,20 +62,20 @@ export default function TogglePage() {
           <ComponentPreview title="Variants">
             <div className="flex flex-wrap gap-4">
               <Toggle variant="default" aria-label="Default toggle">
-                <Bold className="h-4 w-4" />
+                <FormatBold className="h-4 w-4" />
               </Toggle>
               <Toggle variant="outline" aria-label="Outline toggle">
-                <Bold className="h-4 w-4" />
+                <FormatBold className="h-4 w-4" />
               </Toggle>
             </div>
           </ComponentPreview>
 
           <CodeBlock
             code={`<Toggle variant="default" aria-label="Default toggle">
-  <Bold className="h-4 w-4" />
+  <FormatBold className="h-4 w-4" />
 </Toggle>
 <Toggle variant="outline" aria-label="Outline toggle">
-  <Bold className="h-4 w-4" />
+  <FormatBold className="h-4 w-4" />
 </Toggle>`}
             language="tsx"
           />
@@ -81,26 +83,26 @@ export default function TogglePage() {
           <ComponentPreview title="Sizes">
             <div className="flex flex-wrap items-center gap-4">
               <Toggle size="sm" aria-label="Small toggle">
-                <Bold className="h-3 w-3" />
+                <FormatBold className="h-3 w-3" />
               </Toggle>
               <Toggle size="default" aria-label="Default toggle">
-                <Bold className="h-4 w-4" />
+                <FormatBold className="h-4 w-4" />
               </Toggle>
               <Toggle size="lg" aria-label="Large toggle">
-                <Bold className="h-5 w-5" />
+                <FormatBold className="h-5 w-5" />
               </Toggle>
             </div>
           </ComponentPreview>
 
           <CodeBlock
             code={`<Toggle size="sm" aria-label="Small toggle">
-  <Bold className="h-3 w-3" />
+  <FormatBold className="h-3 w-3" />
 </Toggle>
 <Toggle size="default" aria-label="Default toggle">
-  <Bold className="h-4 w-4" />
+  <FormatBold className="h-4 w-4" />
 </Toggle>
 <Toggle size="lg" aria-label="Large toggle">
-  <Bold className="h-5 w-5" />
+  <FormatBold className="h-5 w-5" />
 </Toggle>`}
             language="tsx"
           />

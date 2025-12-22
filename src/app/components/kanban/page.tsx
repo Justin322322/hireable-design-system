@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { MoreHorizontal } from "lucide-react";
+import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import { VERSION } from "@/lib/version";
 
 // Import JSON data (simulates API response)
@@ -117,7 +117,7 @@ function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Can
             </div>
           </div>
           <button className="flex h-[24px] w-[24px] items-center justify-center text-neutral-400 hover:text-neutral-700">
-            <MoreHorizontal className="h-[20px] w-[20px]" />
+            <MoreHoriz className="h-[20px] w-[20px]" />
           </button>
         </div>
         <div className="relative flex w-full items-center justify-between gap-2">

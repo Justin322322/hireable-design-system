@@ -5,7 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlock } from "@/components/docs/code-block";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircle2, AlertCircle, AlertTriangle, Info, X } from "lucide-react";
+import CheckCircleOutline from "@mui/icons-material/CheckCircleOutline";
+import ErrorOutline from "@mui/icons-material/ErrorOutline";
+import WarningAmber from "@mui/icons-material/WarningAmber";
+import InfoOutlined from "@mui/icons-material/InfoOutlined";
+import Close from "@mui/icons-material/Close";
 
 function ToastDemo() {
   const { toast } = useToast();
@@ -104,7 +108,7 @@ export default function ToastPage() {
                       <p className="text-xs text-muted-foreground">This is a default toast message.</p>
                     </div>
                     <button className="text-muted-foreground hover:text-foreground">
-                      <X className="h-4 w-4" />
+                      <Close className="h-4 w-4" />
                     </button>
                   </div>
                 </CardContent>
@@ -116,13 +120,13 @@ export default function ToastPage() {
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
                   <div className="rounded-lg border border-green-200 bg-green-50 p-4 shadow-lg flex items-start gap-3 w-full max-w-lg dark:bg-green-950 dark:border-green-900">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5" />
+                    <CheckCircleOutline className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5" />
                     <div className="flex-1 text-green-900 dark:text-green-400">
                       <p className="font-medium text-sm">Success</p>
                       <p className="text-xs">Your changes have been saved successfully.</p>
                     </div>
                     <button className="text-green-700 hover:text-green-900 dark:text-green-400">
-                      <X className="h-4 w-4" />
+                      <Close className="h-4 w-4" />
                     </button>
                   </div>
                 </CardContent>
@@ -134,13 +138,13 @@ export default function ToastPage() {
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
                   <div className="rounded-lg border border-red-200 bg-red-50 p-4 shadow-lg flex items-start gap-3 w-full max-w-lg dark:bg-red-950 dark:border-red-900">
-                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5" />
+                    <ErrorOutline className="h-5 w-5 text-red-600 dark:text-red-400 mt-0.5" />
                     <div className="flex-1 text-red-900 dark:text-red-400">
                       <p className="font-medium text-sm">Error</p>
                       <p className="text-xs">Something went wrong. Please try again.</p>
                     </div>
                     <button className="text-red-700 hover:text-red-900 dark:text-red-400">
-                      <X className="h-4 w-4" />
+                      <Close className="h-4 w-4" />
                     </button>
                   </div>
                 </CardContent>
@@ -152,13 +156,13 @@ export default function ToastPage() {
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
                   <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 shadow-lg flex items-start gap-3 w-full max-w-lg dark:bg-amber-950 dark:border-amber-900">
-                    <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5" />
+                    <WarningAmber className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5" />
                     <div className="flex-1 text-amber-900 dark:text-amber-400">
                       <p className="font-medium text-sm">Warning</p>
                       <p className="text-xs">Your subscription is about to expire.</p>
                     </div>
                     <button className="text-amber-700 hover:text-amber-900 dark:text-amber-400">
-                      <X className="h-4 w-4" />
+                      <Close className="h-4 w-4" />
                     </button>
                   </div>
                 </CardContent>
@@ -170,13 +174,13 @@ export default function ToastPage() {
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
                   <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 shadow-lg flex items-start gap-3 w-full max-w-lg dark:bg-blue-950 dark:border-blue-900">
-                    <Info className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
+                    <InfoOutlined className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
                     <div className="flex-1 text-blue-900 dark:text-blue-400">
                       <p className="font-medium text-sm">Information</p>
                       <p className="text-xs">A new version is available for download.</p>
                     </div>
                     <button className="text-blue-700 hover:text-blue-900 dark:text-blue-400">
-                      <X className="h-4 w-4" />
+                      <Close className="h-4 w-4" />
                     </button>
                   </div>
                 </CardContent>

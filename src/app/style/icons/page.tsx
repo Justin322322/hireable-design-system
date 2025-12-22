@@ -1,52 +1,60 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlock } from "@/components/docs/code-block";
-import {
-  Plus,
-  Check,
-  AlertTriangle,
-  Search,
-  Home,
-  Settings,
-  Trash2,
-  Pencil,
-  User,
-  Mail,
-  Bell,
-  Heart,
-  Star,
-  ChevronRight,
-  ArrowRight,
-  X,
-} from "lucide-react";
+import { Icon, IconSize, IconName } from "@/components/ui/icon";
 
-const iconSizes = [
-  { name: "xxs", size: "10px", className: "size-2.5", container: "size-8" },
-  { name: "xs", size: "12px", className: "size-3", container: "size-8" },
-  { name: "sm", size: "16px", className: "size-4", container: "size-10" },
-  { name: "md", size: "20px", className: "size-5", container: "size-10" },
-  { name: "lg", size: "24px", className: "size-6", container: "size-12" },
-  { name: "xl", size: "32px", className: "size-8", container: "size-14" },
-  { name: "xxl", size: "40px", className: "size-10", container: "size-16" },
+const iconSizes: { name: string; size: IconSize; description: string }[] = [
+  { name: "20", size: 20, description: "Compact UI elements" },
+  { name: "24", size: 24, description: "Default size (recommended)" },
+  { name: "40", size: 40, description: "Prominent UI, illustrations" },
+  { name: "48", size: 48, description: "Large displays, hero sections" },
 ];
 
-const sampleIcons = [
-  { icon: Plus, name: "Plus", label: "Add" },
-  { icon: Check, name: "Check", label: "Check" },
-  { icon: AlertTriangle, name: "AlertTriangle", label: "Warning" },
-  { icon: Search, name: "Search", label: "Search" },
-  { icon: Home, name: "Home", label: "Home" },
-  { icon: Settings, name: "Settings", label: "Settings" },
-  { icon: Trash2, name: "Trash2", label: "Delete" },
-  { icon: Pencil, name: "Pencil", label: "Edit" },
-  { icon: User, name: "User", label: "User" },
-  { icon: Mail, name: "Mail", label: "Mail" },
-  { icon: Bell, name: "Bell", label: "Bell" },
-  { icon: Heart, name: "Heart", label: "Heart" },
-  { icon: Star, name: "Star", label: "Star" },
-  { icon: ChevronRight, name: "ChevronRight", label: "Chevron" },
-  { icon: ArrowRight, name: "ArrowRight", label: "Arrow" },
-  { icon: X, name: "X", label: "Close" },
+// Action icons from Material UI
+const sampleIcons: { icon: IconName; label: string }[] = [
+  // Navigation & UI
+  { icon: "close", label: "Close" },
+  { icon: "check", label: "Check" },
+  { icon: "chevron_right", label: "Chevron Right" },
+  { icon: "arrow_forward", label: "Arrow Forward" },
+  // Content
+  { icon: "add", label: "Add" },
+  { icon: "delete", label: "Delete" },
+  { icon: "edit", label: "Edit" },
+  { icon: "search", label: "Search" },
+  { icon: "home", label: "Home" },
+  { icon: "settings", label: "Settings" },
+  // Social & Communication
+  { icon: "person", label: "Person" },
+  { icon: "mail", label: "Mail" },
+  { icon: "notifications", label: "Notifications" },
+  // Toggle/State
+  { icon: "favorite", label: "Favorite" },
+  { icon: "star", label: "Star" },
+  { icon: "bookmark", label: "Bookmark" },
+  // Action Icons
+  { icon: "visibility", label: "Visibility" },
+  { icon: "visibility_off", label: "Visibility Off" },
+  { icon: "warning", label: "Warning" },
+  { icon: "info", label: "Info" },
+  { icon: "help", label: "Help" },
+  { icon: "lock", label: "Lock" },
+  { icon: "lock_open", label: "Lock Open" },
+  { icon: "schedule", label: "Schedule" },
+  { icon: "open_in_new", label: "Open In New" },
+  { icon: "launch", label: "Launch" },
+  { icon: "done", label: "Done" },
+  { icon: "done_all", label: "Done All" },
+  { icon: "refresh", label: "Refresh" },
+  { icon: "content_copy", label: "Copy" },
+  { icon: "print", label: "Print" },
+  { icon: "share", label: "Share" },
+  { icon: "download", label: "Download" },
+  { icon: "upload", label: "Upload" },
+  { icon: "filter_list", label: "Filter" },
+  { icon: "sort", label: "Sort" },
+  { icon: "more_vert", label: "More Vert" },
+  { icon: "more_horiz", label: "More Horiz" },
 ];
 
 export default function IconsPage() {
@@ -54,38 +62,49 @@ export default function IconsPage() {
     <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-12">
         <h1 className="mb-4 text-3xl font-bold">Icons</h1>
-        <p className="text-lg text-muted-foreground">
-          Icons communicate meaning quickly and reinforce actions. We use Lucide React
-          for consistent, accessible iconography across all interfaces.
+        <p className="text-lg text-muted-foreground mb-4">
+          Material 3 icons communicate meaning and reinforce actions. We use MUI Material Icons
+          with M3 optical sizing for consistent iconography.
+        </p>
+        <p className="text-muted-foreground">
+          Browse the complete icon library at{" "}
+          <a 
+            href="https://fonts.google.com/icons" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-client hover:underline font-medium"
+          >
+            Material Symbols and Icons →
+          </a>
         </p>
       </div>
 
       <Tabs defaultValue="sizing" className="space-y-8">
         <TabsList>
           <TabsTrigger value="sizing">Sizing</TabsTrigger>
-          <TabsTrigger value="usage">Usage</TabsTrigger>
+          <TabsTrigger value="fill">Fill</TabsTrigger>
           <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
 
         <TabsContent value="sizing" className="space-y-8">
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Icon Sizes</h2>
+            <h2 className="mb-4 text-xl font-semibold">Material 3 Icon Sizes</h2>
             <p className="mb-6 text-muted-foreground">
-              Use consistent icon sizes that align with the spacing scale.
+              M3 defines four optical sizes that adjust icon detail appropriately.
             </p>
             <div className="space-y-4">
               {iconSizes.map((item) => (
                 <Card key={item.name}>
                   <CardContent className="flex items-center gap-6 py-6">
-                    <div className={`flex items-center justify-center rounded-lg bg-muted ${item.container}`}>
-                      <Plus className={item.className} />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-muted">
+                      <Icon icon="home" size={item.size} />
                     </div>
                     <div className="flex-1">
-                      <p className="font-medium">{item.name}</p>
-                      <p className="text-sm text-muted-foreground">{item.size}</p>
+                      <p className="font-medium">{item.name}dp</p>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
                     </div>
-                    <code className="text-sm bg-muted px-2 py-1 rounded">{item.className}</code>
+                    <code className="text-sm bg-muted px-2 py-1 rounded">size={`{${item.size}}`}</code>
                   </CardContent>
                 </Card>
               ))}
@@ -98,9 +117,9 @@ export default function IconsPage() {
               <CardContent className="py-6">
                 <div className="grid grid-cols-4 sm:grid-cols-8 gap-4">
                   {sampleIcons.map((item) => (
-                    <div key={item.name} className="flex flex-col items-center gap-2">
+                    <div key={item.icon} className="flex flex-col items-center gap-2">
                       <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted">
-                        <item.icon className="size-6 text-neutral-700" />
+                        <Icon icon={item.icon} size={24} className="text-icon" />
                       </div>
                       <span className="text-xs text-muted-foreground text-center">{item.label}</span>
                     </div>
@@ -111,31 +130,98 @@ export default function IconsPage() {
           </section>
         </TabsContent>
 
-        <TabsContent value="usage" className="space-y-8">
+        <TabsContent value="fill" className="space-y-8">
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Usage Guidelines</h2>
-            <div className="space-y-4">
+            <h2 className="mb-4 text-xl font-semibold">Filled vs Outlined</h2>
+            <p className="mb-6 text-muted-foreground">
+              Toggle fill to indicate selection state or visual emphasis.
+            </p>
+            <Card>
+              <CardContent className="py-6">
+                <div className="flex items-center justify-center gap-12">
+                  <div className="flex flex-col items-center gap-2">
+                    <Icon icon="favorite" size={48} filled={false} />
+                    <span className="text-sm text-muted-foreground">Outlined</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <Icon icon="favorite" size={48} filled />
+                    <span className="text-sm text-muted-foreground">Filled</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <div className="mt-6 space-y-4">
               <Card>
-                <CardHeader><CardTitle className="text-lg">Pairing with Text</CardTitle></CardHeader>
-                <CardContent className="text-muted-foreground space-y-3">
-                  <p>When pairing icons with text, use these size combinations:</p>
+                <CardHeader><CardTitle className="text-lg">When to Use Fill</CardTitle></CardHeader>
+                <CardContent className="text-muted-foreground">
                   <ul className="list-disc list-inside space-y-1">
-                    <li>Small text (14px): size-4 (16px) icons</li>
-                    <li>Body text (16px): size-5 (20px) icons</li>
-                    <li>Large text (18px+): size-6 (24px) icons</li>
+                    <li>Selected/active states (e.g., favorited items)</li>
+                    <li>Navigation items for current page</li>
+                    <li>Toggle states (on vs off)</li>
                   </ul>
                 </CardContent>
               </Card>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Active State Colors</h2>
+            <p className="mb-6 text-muted-foreground">
+              Icons use semantic color tokens to indicate default and active states.
+            </p>
+            <Card>
+              <CardContent className="py-6">
+                <div className="flex items-center justify-center gap-12">
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-muted">
+                      <Icon icon="home" size={24} className="text-icon" />
+                    </div>
+                    <div className="text-center">
+                      <span className="block text-sm font-medium">Default</span>
+                      <code className="text-xs text-muted-foreground">text-icon</code>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-muted">
+                      <Icon icon="home" size={24} filled className="text-icon-active" />
+                    </div>
+                    <div className="text-center">
+                      <span className="block text-sm font-medium">Active</span>
+                      <code className="text-xs text-muted-foreground">text-icon-active</code>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <div className="mt-6 space-y-4">
               <Card>
-                <CardHeader><CardTitle className="text-lg">Stroke Width</CardTitle></CardHeader>
-                <CardContent className="text-muted-foreground">
-                  <p>Lucide icons default to a stroke width of 2. You can adjust this with the <code className="text-sm bg-muted px-1 rounded">strokeWidth</code> prop for lighter or bolder appearances.</p>
+                <CardHeader><CardTitle className="text-lg">Color Tokens</CardTitle></CardHeader>
+                <CardContent className="text-muted-foreground space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded bg-icon" />
+                    <div>
+                      <code className="text-sm">--icon</code>
+                      <span className="text-sm ml-2">— Default icon color (#212121 light / light gray dark)</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded bg-icon-active" />
+                    <div>
+                      <code className="text-sm">--icon-active</code>
+                      <span className="text-sm ml-2">— Active icon color (brand blue)</span>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader><CardTitle className="text-lg">Color</CardTitle></CardHeader>
+                <CardHeader><CardTitle className="text-lg">Usage Guidelines</CardTitle></CardHeader>
                 <CardContent className="text-muted-foreground">
-                  <p>Icons inherit the current text color by default. Use Tailwind classes like <code className="text-sm bg-muted px-1 rounded">text-neutral-700</code> or <code className="text-sm bg-muted px-1 rounded">text-primary</code> to apply specific colors.</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Use <code className="text-sm bg-muted px-1 rounded">text-icon</code> for default/inactive icons</li>
+                    <li>Use <code className="text-sm bg-muted px-1 rounded">text-icon-active</code> for selected or active icons</li>
+                    <li>Combine with <code className="text-sm bg-muted px-1 rounded">filled</code> prop for stronger emphasis</li>
+                    <li>Active state typically uses brand color for recognition</li>
+                  </ul>
                 </CardContent>
               </Card>
             </div>
@@ -149,24 +235,18 @@ export default function IconsPage() {
               <Card>
                 <CardHeader><CardTitle className="text-lg">Decorative Icons</CardTitle></CardHeader>
                 <CardContent className="text-muted-foreground">
-                  <p>Icons that are purely decorative (paired with text) should be hidden from screen readers:</p>
+                  <p>Icons paired with text should be hidden from screen readers:</p>
                   <code className="block mt-2 text-sm bg-muted px-2 py-1 rounded">aria-hidden=&quot;true&quot;</code>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader><CardTitle className="text-lg">Meaningful Icons</CardTitle></CardHeader>
                 <CardContent className="text-muted-foreground">
-                  <p>Icons that convey meaning without text need accessible labels:</p>
+                  <p>Icons conveying meaning without text need accessible labels:</p>
                   <ul className="list-disc list-inside space-y-1 mt-2">
                     <li>Use <code className="text-sm bg-muted px-1 rounded">aria-label</code> on the icon or button</li>
                     <li>Or use visually hidden text alongside the icon</li>
                   </ul>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader><CardTitle className="text-lg">Focus States</CardTitle></CardHeader>
-                <CardContent className="text-muted-foreground">
-                  <p>Interactive icons (buttons) must have visible focus indicators that meet WCAG 2.1 requirements.</p>
                 </CardContent>
               </Card>
             </div>
@@ -175,52 +255,22 @@ export default function IconsPage() {
 
         <TabsContent value="code" className="space-y-8">
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Installation</h2>
-            <p className="mb-4 text-muted-foreground">
-              Install Lucide React (v0.561.0):
-            </p>
-            <CodeBlock
-              code={`bun add lucide-react`}
-              language="bash"
-            />
-          </section>
-
-          <section>
             <h2 className="mb-4 text-xl font-semibold">Basic Usage</h2>
             <CodeBlock
-              code={`import { Home, Settings, Trash2 } from "lucide-react";
+              code={`import { Icon } from "@/components/ui/icon";
 
-// Basic usage
-<Home className="size-6" />
-<Settings className="size-6" />
-<Trash2 className="size-6" />
+// Basic usage with M3 sizes
+<Icon icon="home" />
+<Icon icon="home" size={20} />
+<Icon icon="home" size={24} />  // default
+<Icon icon="home" size={40} />
+<Icon icon="home" size={48} />
 
-// With custom size
-<Home className="size-4" />  // 16px
-<Home className="size-5" />  // 20px
-<Home className="size-6" />  // 24px
-<Home className="size-8" />  // 32px
+// Filled variant
+<Icon icon="favorite" filled />
 
-// With color
-<Home className="size-6 text-primary" />
-<Trash2 className="size-6 text-red-500" />`}
-              language="tsx"
-            />
-          </section>
-
-          <section>
-            <h2 className="mb-4 text-xl font-semibold">Stroke Width</h2>
-            <CodeBlock
-              code={`import { Home } from "lucide-react";
-
-// Default stroke width is 2
-<Home className="size-6" />
-
-// Lighter stroke
-<Home className="size-6" strokeWidth={1.5} />
-
-// Bolder stroke
-<Home className="size-6" strokeWidth={2.5} />`}
+// With custom styling
+<Icon icon="home" className="text-primary" />`}
               language="tsx"
             />
           </section>
@@ -229,18 +279,45 @@ export default function IconsPage() {
             <h2 className="mb-4 text-xl font-semibold">Icon Button</h2>
             <CodeBlock
               code={`import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Icon } from "@/components/ui/icon";
 
 // Icon-only button with accessible label
 <Button size="icon" aria-label="Add item">
-  <Plus className="size-4" />
+  <Icon icon="add" size={20} />
 </Button>
 
 // Icon with text
 <Button>
-  <Plus className="size-4 mr-2" aria-hidden="true" />
+  <Icon icon="add" size={20} aria-hidden="true" />
   Add Item
 </Button>`}
+              language="tsx"
+            />
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Available Icons</h2>
+            <p className="mb-4 text-muted-foreground">
+              Current icons in the design system (Action icons from Material UI):
+            </p>
+            <CodeBlock
+              code={`// Available icon names
+type IconName = 
+  // Navigation & UI
+  | "close" | "check" | "chevron_right" | "arrow_forward"
+  | "keyboard_arrow_down" | "keyboard_arrow_up"
+  // Content
+  | "add" | "delete" | "edit" | "search" | "home" | "settings"
+  // Social & Communication
+  | "person" | "mail" | "notifications"
+  // Toggle/State
+  | "favorite" | "star" | "bookmark"
+  // Action Icons
+  | "visibility" | "visibility_off" | "warning" | "info" | "help"
+  | "lock" | "lock_open" | "schedule" | "open_in_new" | "launch"
+  | "done" | "done_all" | "refresh" | "content_copy" | "print"
+  | "share" | "download" | "upload" | "filter_list" | "sort"
+  | "more_vert" | "more_horiz"`}
               language="tsx"
             />
           </section>

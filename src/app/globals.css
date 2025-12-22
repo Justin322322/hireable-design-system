@@ -57,15 +57,26 @@
   --color-button-primary-active: var(--button-primary-active);
   --color-button-primary-foreground: var(--button-primary-foreground);
   --color-button-primary-disabled: var(--button-primary-disabled);
-  --color-button-primary-disabled-foreground: var(--button-primary-disabled-foreground);
+  --color-button-primary-disabled-foreground: var(
+    --button-primary-disabled-foreground
+  );
   --color-button-destructive-default: var(--button-destructive-default);
   --color-button-destructive-hover: var(--button-destructive-hover);
   --color-button-destructive-foreground: var(--button-destructive-foreground);
   --color-button-secondary-default: var(--button-secondary-default);
   --color-button-secondary-hover: var(--button-secondary-hover);
+  --color-button-secondary-active: var(--button-secondary-active);
   --color-button-secondary-foreground: var(--button-secondary-foreground);
+  --color-button-tertiary-default: var(--button-tertiary-default);
+  --color-button-tertiary-hover: var(--button-tertiary-hover);
+  --color-button-tertiary-active: var(--button-tertiary-active);
+  --color-button-tertiary-foreground: var(--button-tertiary-foreground);
+  --color-button-tertiary-border: var(--button-tertiary-border);
   --color-border-disabled: var(--border-disabled);
+  --color-border-focused: var(--border-focused);
   --color-linkedin: var(--linkedin);
+  --color-icon: var(--icon);
+  --color-icon-active: var(--icon-active);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -119,31 +130,47 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* Brand Colors */
-  --client: oklch(0.65 0.19 230);           /* #00A7F8 - Primary brand blue */
-  --client-hover: oklch(0.52 0.15 230);     /* #0085C6 - Hover state (Figma) */
-  --client-active: oklch(0.52 0.15 230);    /* #0085C6 - Active state */
-  --success: oklch(0.64 0.17 145);          /* #27AE60 - Success green */
-  --success-foreground: oklch(1 0 0);       /* White text on success */
-  --warning: oklch(0.83 0.16 85);           /* #F2C94C - Warning amber */
-  --warning-foreground: oklch(0.2 0 0);     /* Dark text on warning */
-  --danger: oklch(0.58 0.22 25);            /* #EB5757 - Danger red */
-  --danger-foreground: oklch(1 0 0);        /* White text on danger */
-  --linkedin: oklch(0.50 0.13 250);         /* #0A66C2 - LinkedIn blue */
+  --client: oklch(0.65 0.19 230); /* #00A7F8 - Primary brand blue */
+  --client-hover: oklch(0.52 0.15 230); /* #0085C6 - Hover state (Figma) */
+  --client-active: oklch(0.52 0.15 230); /* #0085C6 - Active state */
+  --success: oklch(0.64 0.17 145); /* #27AE60 - Success green */
+  --success-foreground: oklch(1 0 0); /* White text on success */
+  --warning: oklch(0.83 0.16 85); /* #F2C94C - Warning amber */
+  --warning-foreground: oklch(0.2 0 0); /* Dark text on warning */
+  --danger: oklch(0.58 0.22 25); /* #EB5757 - Danger red */
+  --danger-foreground: oklch(1 0 0); /* White text on danger */
+  --linkedin: oklch(0.5 0.13 250); /* #0A66C2 - LinkedIn blue */
 
   /* Button Primitives */
-  --button-primary-default: var(--client);
-  --button-primary-hover: var(--client-hover);
-  --button-primary-active: var(--client-active);
-  --button-primary-foreground: oklch(1 0 0);  /* White */
-  --button-primary-disabled: oklch(0.90 0 0);  /* #E5E5E5 */
-  --button-primary-disabled-foreground: oklch(0.65 0 0);  /* Gray text */
+  --button-primary-default: var(--client); /* #00A7F8 */
+  --button-primary-hover: var(--client-hover); /* #0085C6 */
+  --button-primary-active: var(--client-active); /* #0085C6 */
+  --button-primary-foreground: oklch(1 0 0); /* White */
+  --button-primary-disabled: oklch(0.9 0 0); /* #E5E5E5 */
+  --button-primary-disabled-foreground: oklch(0.78 0 0); /* #C3C3C3 */
   --button-destructive-default: var(--danger);
-  --button-destructive-hover: oklch(0.52 0.20 25);  /* Darker red */
-  --button-destructive-foreground: oklch(1 0 0);  /* White */
-  --button-secondary-default: oklch(0.97 0 0);  /* Light gray bg */
-  --button-secondary-hover: oklch(0.92 0 0);  /* Darker gray on hover */
-  --button-secondary-foreground: oklch(0.205 0 0);  /* Dark text */
+  --button-destructive-hover: oklch(0.52 0.2 25); /* Darker red */
+  --button-destructive-foreground: oklch(1 0 0); /* White */
+  
+  /* Secondary (client tint) - Figma: #CCEDFF bg, #006593 text */
+  --button-secondary-default: oklch(0.92 0.04 230); /* #CCEDFF - Light blue tint */
+  --button-secondary-hover: oklch(0.87 0.06 230); /* #99DBFF - Darker tint on hover */
+  --button-secondary-active: oklch(0.87 0.06 230); /* #99DBFF */
+  --button-secondary-foreground: oklch(0.42 0.09 230); /* #006593 - Dark blue */
+  
+  /* Tertiary (outline) - Figma: #FFFFFF bg, #C3C3C3 border, #212121 text */
+  --button-tertiary-default: oklch(1 0 0); /* White bg */
+  --button-tertiary-hover: oklch(0.95 0 0); /* #F2F2F2 - Light gray on hover */
+  --button-tertiary-active: oklch(0.95 0 0); /* #F2F2F2 */
+  --button-tertiary-foreground: oklch(0.26 0 0); /* #212121 - Near black */
+  --button-tertiary-border: oklch(0.78 0 0); /* #C3C3C3 - Gray border */
+  
   --border-disabled: oklch(0.95 0 0);  /* #F2F2F2 */
+  --border-focused: var(--client);  /* #00A7F8 - Focus ring/border */
+
+  /* Icon Colors */
+  --icon: oklch(0.26 0 0);  /* #212121 - Default icon color */
+  --icon-active: var(--client);  /* Blue - Active icon state */
 }
 
 .dark {
@@ -184,15 +211,31 @@
   --button-primary-hover: var(--client-hover);
   --button-primary-active: var(--client-active);
   --button-primary-foreground: oklch(1 0 0);
-  --button-primary-disabled: oklch(0.30 0 0);  /* Dark gray */
-  --button-primary-disabled-foreground: oklch(0.50 0 0);  /* Gray text */
+  --button-primary-disabled: oklch(0.3 0 0); /* Dark gray */
+  --button-primary-disabled-foreground: oklch(0.5 0 0); /* Gray text */
   --button-destructive-default: oklch(0.704 0.191 22.216);
-  --button-destructive-hover: oklch(0.60 0.18 22);
+  --button-destructive-hover: oklch(0.6 0.18 22);
   --button-destructive-foreground: oklch(1 0 0);
-  --button-secondary-default: oklch(0.269 0 0);  /* Dark gray bg */
-  --button-secondary-hover: oklch(0.35 0 0);  /* Lighter gray on hover */
-  --button-secondary-foreground: oklch(0.985 0 0);  /* Light text */
+  
+  /* Secondary (dark mode) */
+  --button-secondary-default: oklch(0.35 0.06 230); /* Darker blue tint */
+  --button-secondary-hover: oklch(0.42 0.08 230);
+  --button-secondary-active: oklch(0.42 0.08 230);
+  --button-secondary-foreground: oklch(0.85 0.06 230); /* Light blue text */
+  
+  /* Tertiary (dark mode) */
+  --button-tertiary-default: oklch(0.25 0 0); /* Dark gray bg */
+  --button-tertiary-hover: oklch(0.32 0 0);
+  --button-tertiary-active: oklch(0.32 0 0);
+  --button-tertiary-foreground: oklch(0.9 0 0); /* Light text */
+  --button-tertiary-border: oklch(0.45 0 0); /* Gray border */
+  
   --border-disabled: oklch(0.35 0 0);
+  --border-focused: var(--client);  /* #00A7F8 - Focus ring/border */
+
+  /* Icon Colors (dark mode) */
+  --icon: oklch(0.90 0 0);  /* Light gray for dark mode */
+  --icon-active: var(--client);  /* Blue - Active icon state */
 }
 
 @layer base {

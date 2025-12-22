@@ -1,9 +1,11 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
 import { CodeBlock, ComponentPreview, PropsTable, VariantsTable } from "@/components/docs";
 import { buttonProps, buttonVariants, buttonSizes } from "@/data/api/button";
-import { VERSION } from "@/lib/version";
+
+const BUTTON_VERSION = "v1.1";
 
 export default function ButtonPage() {
   return (
@@ -11,7 +13,7 @@ export default function ButtonPage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Button</h1>
-          <span className="text-sm text-muted-foreground">{VERSION}</span>
+          <span className="text-sm text-muted-foreground">{BUTTON_VERSION}</span>
         </div>
         <p className="text-lg text-muted-foreground">
           Buttons trigger actions and events. Use different variants to indicate 
@@ -28,58 +30,274 @@ export default function ButtonPage() {
         </TabsList>
 
         <TabsContent value="examples" className="space-y-8">
-          <ComponentPreview title="Variants">
-            <div className="flex flex-wrap gap-4">
-              <Button>Default</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
+          {/* Sizes - First */}
+          <ComponentPreview title="Sizes">
+            <div className="flex flex-wrap items-end gap-4">
+              <div className="text-center">
+                <Button size="lg">Large</Button>
+                <p className="text-xs text-muted-foreground mt-2">48px</p>
+              </div>
+              <div className="text-center">
+                <Button size="base">Base</Button>
+                <p className="text-xs text-muted-foreground mt-2">44px</p>
+              </div>
+              <div className="text-center">
+                <Button size="md">Medium</Button>
+                <p className="text-xs text-muted-foreground mt-2">40px</p>
+              </div>
+              <div className="text-center">
+                <Button size="sm">Small</Button>
+                <p className="text-xs text-muted-foreground mt-2">36px</p>
+              </div>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`// Sizes
+<Button size="lg">Large</Button>   // 48px
+<Button size="base">Base</Button>  // 44px (default)
+<Button size="md">Medium</Button>  // 40px
+<Button size="sm">Small</Button>   // 36px
+
+// Icon-only sizes (circular)
+<Button size="icon-lg" aria-label="Add"><Icon icon="add" size={20} /></Button>
+<Button size="icon-base" aria-label="Add"><Icon icon="add" size={20} /></Button>
+<Button size="icon-md" aria-label="Add"><Icon icon="add" size={20} /></Button>
+<Button size="icon-sm" aria-label="Add"><Icon icon="add" size={20} /></Button>`}
+            language="tsx"
+          />
+
+          {/* Primary Buttons */}
+          <ComponentPreview title="Primary">
+            <div className="space-y-6">
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">48px</span>
+                <Button variant="primary" size="lg">Enabled</Button>
+                <Button variant="primary" size="lg" disabled>Disabled</Button>
+                <Button variant="primary" size="lg">
+                  <Icon icon="add" size={20} className="text-white" aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="primary" size="icon-lg" aria-label="Add">
+                  <Icon icon="add" size={20} className="text-white" />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">44px</span>
+                <Button variant="primary" size="base">Enabled</Button>
+                <Button variant="primary" size="base" disabled>Disabled</Button>
+                <Button variant="primary" size="base">
+                  <Icon icon="add" size={20} className="text-white" aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="primary" size="icon-base" aria-label="Add">
+                  <Icon icon="add" size={20} className="text-white" />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">40px</span>
+                <Button variant="primary" size="md">Enabled</Button>
+                <Button variant="primary" size="md" disabled>Disabled</Button>
+                <Button variant="primary" size="md">
+                  <Icon icon="add" size={20} className="text-white" aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="primary" size="icon-md" aria-label="Add">
+                  <Icon icon="add" size={20} className="text-white" />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">36px</span>
+                <Button variant="primary" size="sm">Enabled</Button>
+                <Button variant="primary" size="sm" disabled>Disabled</Button>
+                <Button variant="primary" size="sm">
+                  <Icon icon="add" size={20} className="text-white" aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="primary" size="icon-sm" aria-label="Add">
+                  <Icon icon="add" size={20} className="text-white" />
+                </Button>
+              </div>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`// Primary button - text only
+<Button variant="primary" size="lg">Enabled</Button>
+
+// Primary button - with icon
+<Button variant="primary" size="lg">
+  <Icon icon="add" size={20} className="text-white" aria-hidden />
+  Icon + Text
+</Button>
+
+// Primary button - icon only (circular)
+<Button variant="primary" size="icon-lg" aria-label="Add">
+  <Icon icon="add" size={20} className="text-white" />
+</Button>
+
+// Disabled state
+<Button variant="primary" size="lg" disabled>Disabled</Button>`}
+            language="tsx"
+          />
+
+          {/* Secondary Buttons */}
+          <ComponentPreview title="Secondary">
+            <div className="space-y-6">
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">48px</span>
+                <Button variant="secondary" size="lg">Enabled</Button>
+                <Button variant="secondary" size="lg" disabled>Disabled</Button>
+                <Button variant="secondary" size="lg">
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="secondary" size="icon-lg" aria-label="Add">
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">44px</span>
+                <Button variant="secondary" size="base">Enabled</Button>
+                <Button variant="secondary" size="base" disabled>Disabled</Button>
+                <Button variant="secondary" size="base">
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="secondary" size="icon-base" aria-label="Add">
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">40px</span>
+                <Button variant="secondary" size="md">Enabled</Button>
+                <Button variant="secondary" size="md" disabled>Disabled</Button>
+                <Button variant="secondary" size="md">
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="secondary" size="icon-md" aria-label="Add">
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">36px</span>
+                <Button variant="secondary" size="sm">Enabled</Button>
+                <Button variant="secondary" size="sm" disabled>Disabled</Button>
+                <Button variant="secondary" size="sm">
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="secondary" size="icon-sm" aria-label="Add">
+                  <Icon icon="add" size={20} className="text-button-secondary-foreground" />
+                </Button>
+              </div>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`// Secondary button - text only
+<Button variant="secondary" size="lg">Enabled</Button>
+
+// Secondary button - with icon
+<Button variant="secondary" size="lg">
+  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden />
+  Icon + Text
+</Button>
+
+// Secondary button - icon only (circular)
+<Button variant="secondary" size="icon-lg" aria-label="Add">
+  <Icon icon="add" size={20} className="text-button-secondary-foreground" />
+</Button>`}
+            language="tsx"
+          />
+
+          {/* Tertiary Buttons */}
+          <ComponentPreview title="Tertiary">
+            <div className="space-y-6">
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">48px</span>
+                <Button variant="tertiary" size="lg">Enabled</Button>
+                <Button variant="tertiary" size="lg" disabled>Disabled</Button>
+                <Button variant="tertiary" size="lg">
+                  <Icon icon="add" size={20} aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="tertiary" size="icon-lg" aria-label="Add">
+                  <Icon icon="add" size={20} />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">44px</span>
+                <Button variant="tertiary" size="base">Enabled</Button>
+                <Button variant="tertiary" size="base" disabled>Disabled</Button>
+                <Button variant="tertiary" size="base">
+                  <Icon icon="add" size={20} aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="tertiary" size="icon-base" aria-label="Add">
+                  <Icon icon="add" size={20} />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">40px</span>
+                <Button variant="tertiary" size="md">Enabled</Button>
+                <Button variant="tertiary" size="md" disabled>Disabled</Button>
+                <Button variant="tertiary" size="md">
+                  <Icon icon="add" size={20} aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="tertiary" size="icon-md" aria-label="Add">
+                  <Icon icon="add" size={20} />
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-4 items-center">
+                <span className="text-xs text-muted-foreground w-12">36px</span>
+                <Button variant="tertiary" size="sm">Enabled</Button>
+                <Button variant="tertiary" size="sm" disabled>Disabled</Button>
+                <Button variant="tertiary" size="sm">
+                  <Icon icon="add" size={20} aria-hidden />
+                  Icon + Text
+                </Button>
+                <Button variant="tertiary" size="icon-sm" aria-label="Add">
+                  <Icon icon="add" size={20} />
+                </Button>
+              </div>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`// Tertiary button - text only
+<Button variant="tertiary" size="lg">Enabled</Button>
+
+// Tertiary button - with icon (uses default text-icon color)
+<Button variant="tertiary" size="lg">
+  <Icon icon="add" size={20} aria-hidden />
+  Icon + Text
+</Button>
+
+// Tertiary button - icon only (circular)
+<Button variant="tertiary" size="icon-lg" aria-label="Add">
+  <Icon icon="add" size={20} />
+</Button>`}
+            language="tsx"
+          />
+
+          {/* Other Variants */}
+          <ComponentPreview title="Other Variants">
+            <div className="flex flex-wrap gap-4 items-center">
+              <Button variant="destructive">Destructive</Button>
               <Button variant="ghost">Ghost</Button>
               <Button variant="link">Link</Button>
-              <Button variant="destructive">Destructive</Button>
             </div>
           </ComponentPreview>
 
           <CodeBlock
-            code={`<Button>Default</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="outline">Outline</Button>
+            code={`<Button variant="destructive">Destructive</Button>
 <Button variant="ghost">Ghost</Button>
-<Button variant="link">Link</Button>
-<Button variant="destructive">Destructive</Button>`}
+<Button variant="link">Link</Button>`}
             language="tsx"
           />
-
-          <ComponentPreview title="Sizes">
-            <div className="flex flex-wrap items-center gap-4">
-              <Button size="sm">Small</Button>
-              <Button size="default">Default</Button>
-              <Button size="lg">Large</Button>
-            </div>
-          </ComponentPreview>
-
-          <CodeBlock
-            code={`<Button size="sm">Small</Button>
-<Button size="default">Default</Button>
-<Button size="lg">Large</Button>`}
-            language="tsx"
-          />
-
-          <CodeBlock
-            code={`<Button>Primary</Button>
-<Button className="hover:bg-client-active">Hover</Button>
-<Button className="bg-client-active hover:bg-client-active">Active</Button>
-<Button disabled>Disabled</Button>`}
-            language="tsx"
-          />
-
-          <ComponentPreview title="States">
-            <div className="flex flex-wrap gap-4">
-              <Button>Primary</Button>
-              <Button className="hover:bg-client-active">Hover</Button>
-              <Button className="bg-client-active hover:bg-client-active">Active</Button>
-              <Button disabled>Disabled</Button>
-            </div>
-          </ComponentPreview>
         </TabsContent>
 
         <TabsContent value="usage" className="space-y-8">
@@ -92,10 +310,10 @@ export default function ButtonPage() {
                 </CardHeader>
                 <CardContent className="text-muted-foreground">
                   <ul className="list-disc list-inside space-y-1">
-                    <li>Use primary buttons for the main action on a page</li>
-                    <li>Use secondary buttons for less important actions</li>
+                    <li>Use <strong>Primary</strong> buttons for the main action on a page</li>
+                    <li>Use <strong>Secondary</strong> buttons for important but secondary actions</li>
+                    <li>Use <strong>Tertiary</strong> buttons for low-emphasis actions</li>
                     <li>Use destructive buttons for delete or remove actions</li>
-                    <li>Keep button labels concise and action-oriented</li>
                   </ul>
                 </CardContent>
               </Card>

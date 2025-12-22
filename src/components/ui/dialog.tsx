@@ -38,7 +38,8 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        // Figma: padding 24px, gap 24px, width 480px, border 1px solid #C3C3C3, border-radius 8px
+        "fixed left-[50%] top-[50%] z-50 flex flex-col items-end w-full max-w-[480px] translate-x-[-50%] translate-y-[-50%] gap-6 border border-input bg-background p-6 rounded-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
         className
       )}
       {...props}
@@ -59,7 +60,8 @@ const DialogHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col space-y-1.5 text-center sm:text-left",
+      // Figma: gap 8px, flex-col, items-start
+      "flex flex-col gap-2 text-left self-stretch",
       className
     )}
     {...props}
@@ -73,7 +75,8 @@ const DialogFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      // Figma: gap 8px, flex-row, items-center
+      "flex flex-row items-center gap-2",
       className
     )}
     {...props}
@@ -88,7 +91,8 @@ const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "text-lg font-semibold leading-none tracking-tight",
+      // Figma: Inter, 600 weight, 20px, line-height 150%, letter-spacing 0.4px
+      "font-secondary text-xl font-semibold leading-[150%] tracking-[0.4px] text-foreground",
       className
     )}
     {...props}
@@ -102,7 +106,11 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn(
+      // Figma: Inter, 400 weight, 14px, line-height 120%, letter-spacing 0.2px
+      "font-secondary text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground",
+      className
+    )}
     {...props}
   />
 ))

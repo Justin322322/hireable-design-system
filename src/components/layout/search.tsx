@@ -90,7 +90,7 @@ export function DocsSearch() {
         onClick={() => setOpen(true)}
         className="relative flex h-9 w-full items-center justify-start gap-2 rounded-lg border bg-muted/50 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted md:w-40 lg:w-64"
       >
-        <SearchOutlined className="h-4 w-4" />
+        <SearchOutlined className="h-4 w-4 text-icon" />
         <span className="hidden lg:inline-flex">Search documentation...</span>
         <span className="inline-flex lg:hidden">Search...</span>
         <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-6 select-none items-center gap-1 rounded border bg-background px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
@@ -102,7 +102,7 @@ export function DocsSearch() {
           <DialogTitle className="sr-only">Search Documentation</DialogTitle>
           <DialogHeader className="p-4 border-b bg-muted/20">
             <div className="flex items-center gap-3">
-              <SearchOutlined className="h-5 w-5 text-muted-foreground" />
+              <SearchOutlined className="h-5 w-5 text-icon" />
               <input
                 className="flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground"
                 placeholder="Type to search documentation..."
@@ -124,7 +124,7 @@ export function DocsSearch() {
                       className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors hover:bg-secondary text-left group"
                     >
                       <div className="flex h-8 w-8 items-center justify-center rounded-md border bg-background group-hover:border-primary/50 transition-colors">
-                        <Icon className="h-4 w-4 text-muted-foreground group-hover:text-client" />
+                        <Icon className="h-4 w-4 text-icon" />
                       </div>
                       <div className="flex flex-col">
                         <span className="font-medium">{item.title}</span>

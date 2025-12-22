@@ -30,6 +30,7 @@ import VerticalSplitOutlined from "@mui/icons-material/VerticalSplitOutlined";
 import ViewKanbanOutlined from "@mui/icons-material/ViewKanbanOutlined";
 import StraightenOutlined from "@mui/icons-material/StraightenOutlined";
 import WidgetsOutlined from "@mui/icons-material/WidgetsOutlined";
+import LinkOutlined from "@mui/icons-material/LinkOutlined";
 
 import type { SvgIconComponent } from "@mui/icons-material";
 
@@ -62,6 +63,7 @@ export const sidebarNav: Record<string, NavSection> = {
       { label: "Corners", href: "/style/corners", icon: RoundedCornerOutlined },
       { label: "Icons", href: "/style/icons", icon: EmojiEmotionsOutlined },
       { label: "Motion", href: "/style/motion", icon: AnimationOutlined },
+      { label: "Border Style", href: "/style/border-style", icon: LinkOutlined },
     ],
   },
   components: {
@@ -73,7 +75,7 @@ export const sidebarNav: Record<string, NavSection> = {
       { label: "Input", href: "/components/input", icon: InputOutlined },
       { label: "Select", href: "/components/select", icon: ExpandMoreOutlined },
       { label: "Tabs", href: "/components/tabs", icon: TabOutlined },
-      { label: "Modal", href: "/components/modal", icon: ChatBubbleOutlineOutlined },
+      { label: "Dialogue", href: "/components/dialogue", icon: ChatBubbleOutlineOutlined },
       { label: "Toast", href: "/components/toast", icon: NotificationsOutlined },
       { label: "Badge", href: "/components/badge", icon: VerifiedOutlined },
       { label: "Toggle", href: "/components/toggle", icon: ToggleOnOutlined },

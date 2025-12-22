@@ -4,18 +4,18 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const inputVariants = cva(
-  "flex w-full rounded-md border bg-transparent transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+  "flex w-full rounded-lg border bg-white font-secondary text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "border-input shadow-sm",
+        default: "border-input",
         filled: "border-transparent bg-muted",
         ghost: "border-transparent hover:bg-accent",
       },
       size: {
-        default: "h-9 px-3 py-1 text-sm",
-        sm: "h-8 px-2 py-1 text-xs",
-        lg: "h-11 px-4 py-2 text-base",
+        default: "h-11 px-4 py-3",
+        sm: "h-9 px-3 py-2 text-xs",
+        lg: "h-12 px-4 py-3 text-base",
       },
     },
     defaultVariants: {

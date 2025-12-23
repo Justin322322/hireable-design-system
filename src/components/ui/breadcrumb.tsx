@@ -7,6 +7,8 @@ import { Icon } from "@/components/ui/icon"
 export interface BreadcrumbItem {
   label: string
   href?: string
+  isEllipsis?: boolean
+  render?: React.ReactNode
 }
 
 export interface BreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
@@ -18,10 +20,14 @@ export interface BreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
 const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
   ({ items, separator = "chevron", maxItems, className, ...props }, ref) => {
     const displayItems = React.useMemo(() => {
-      if (!maxItems || items.length <= maxItems) return items
-      const firstItem = items[0]
-      const lastItems = items.slice(-Math.max(1, maxItems - 2))
-      return [firstItem, { label: "...", href: undefined }, ...lastItems]
+      if (maxItems == null) return items
+      const visibleCount = Math.min(maxItems, items.length)
+      if (maxItems === 0) return []
+      if (items.length <= maxItems) return items
+      const lastItem = items[items.length - 1]
+      if (visibleCount === 1) return [lastItem]
+      if (visibleCount === 2) return [items[0], lastItem]
+      return [items[0], { label: "...", isEllipsis: true }, ...items.slice(-(visibleCount - 2))]
     }, [items, maxItems])
 
     return (
@@ -34,16 +40,22 @@ const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
         <ol className="flex items-center gap-1">
           {displayItems.map((item, index) => {
             const isLast = index === displayItems.length - 1
-            const isEllipsis = item.label === "..."
+            const isEllipsis = item.isEllipsis === true
 
             return (
               <li key={index} className="flex items-center gap-1">
-                {isEllipsis ? (
+                {item.render ? (
+                  item.render
+                ) : isEllipsis ? (
                   <BreadcrumbEllipsis />
                 ) : isLast ? (
                   <BreadcrumbPage>{item.label}</BreadcrumbPage>
                 ) : (
-                  <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+                  item.href ? (
+                    <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+                  ) : (
+                    <BreadcrumbText>{item.label}</BreadcrumbText>
+                  )
                 )}
                 {!isLast && (
                   <BreadcrumbSeparator variant={separator} />
@@ -138,10 +150,31 @@ const BreadcrumbEllipsis = React.forwardRef<HTMLSpanElement, React.HTMLAttribute
 )
 BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis"
 
+interface BreadcrumbTextProps extends React.HTMLAttributes<HTMLSpanElement> {
+  children: React.ReactNode
+}
+
+const BreadcrumbText = React.forwardRef<HTMLSpanElement, BreadcrumbTextProps>(
+  ({ className, children, ...props }, ref) => (
+    <span
+      ref={ref}
+      className={cn(
+        "font-secondary text-sm leading-[1.2] tracking-[0.2px] text-muted-foreground font-normal py-1",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </span>
+  )
+)
+BreadcrumbText.displayName = "BreadcrumbText"
+
 export {
   Breadcrumb,
   BreadcrumbLink,
   BreadcrumbPage,
+  BreadcrumbText,
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 }

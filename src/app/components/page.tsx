@@ -7,7 +7,7 @@ const componentDescriptions: Record<string, string> = {
   "/components/button": "Trigger actions and events with various styles and states.",
   "/components/card": "Container for grouping related content and actions.",
   "/components/input": "Text input fields for forms and data entry.",
-  "/components/select": "Dropdown selection from a list of options.",
+  "/components/dropdown": "Dropdown selection from a list of options.",
   "/components/tabs": "Organize content into switchable panels.",
   "/components/dialogue": "Overlay dialogs for focused interactions.",
   "/components/toast": "Brief notifications that appear temporarily.",

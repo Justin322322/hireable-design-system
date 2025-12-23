@@ -301,6 +301,7 @@ export default function RadioButtonPage() {
                   <RadioGroupItem value="idle-md" size="md" />
                   <RadioGroupItem value="active-md" size="md" />
                 </RadioGroup>
+                <span className="text-xs text-muted-foreground">(hover to see state)</span>
               </div>
               <div className="flex items-center gap-6">
                 <span className="text-xs text-muted-foreground w-12">28px</span>
@@ -308,6 +309,7 @@ export default function RadioButtonPage() {
                   <RadioGroupItem value="idle-lg" size="lg" />
                   <RadioGroupItem value="active-lg" size="lg" />
                 </RadioGroup>
+                <span className="text-xs text-muted-foreground">(hover to see state)</span>
               </div>
               <div className="flex items-center gap-6 pt-2 border-t">
                 <span className="text-xs text-muted-foreground w-12"></span>
@@ -459,7 +461,7 @@ export default function RadioButtonPage() {
                   </span>
                 </div>
                 {/* Focused/Selected State */}
-                <div className="flex flex-row items-center p-6 gap-4 bg-button-primary-default/[0.04] border-[2px] border-border-focused rounded-lg cursor-pointer">
+                <div className="flex flex-row items-center p-6 gap-4 bg-button-primary-default/4 border-2 border-border-focused rounded-lg cursor-pointer">
                   <div className="size-4 rounded-full border border-button-primary-default bg-background flex items-center justify-center shrink-0">
                     <svg width="10" height="10" viewBox="0 0 10 10" className="text-button-primary-default"><circle cx="5" cy="5" r="5" fill="currentColor" /></svg>
                   </div>
@@ -479,8 +481,8 @@ export default function RadioButtonPage() {
 </div>
 
 // Selected state adds:
-// - bg-button-primary-default/[0.04] (light blue background)
-// - border-[2px] border-border-focused (2px blue border)`}
+// - bg-button-primary-default/4 (light blue background)
+// - border-2 border-border-focused (2px blue border)`}
             language="tsx"
           />
         </TabsContent>

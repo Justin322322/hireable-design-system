@@ -1,6 +1,13 @@
 // Dropdown/Select API Documentation Data
 
-export const selectProps = [
+export interface PropDoc {
+  name: string;
+  type: string;
+  default: string;
+  description: string;
+}
+
+export const selectProps: PropDoc[] = [
   { name: "value", type: "string", default: "-", description: "The controlled value of the select" },
   { name: "defaultValue", type: "string", default: "-", description: "The default value" },
   { name: "onValueChange", type: "(value: string) => void", default: "-", description: "Callback when value changes" },

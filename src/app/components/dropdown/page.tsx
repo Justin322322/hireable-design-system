@@ -49,7 +49,7 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Hover</span>
               <div
-                className="flex items-center justify-between w-[300px] h-11 px-4 py-3 bg-background border border-border-focused rounded-lg"
+                className="flex items-center justify-between w-[300px] h-11 px-4 py-3 bg-background border border-border-hover rounded-lg"
               >
                 <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
                   Insert title
@@ -57,7 +57,6 @@ export default function DropdownPage() {
                 <Icon icon="expand_more" size={24} className="text-icon" />
               </div>
             </div>
-
             {/* Active State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Active</span>
@@ -198,9 +197,7 @@ export default function DropdownPage() {
                   <Icon icon="expand_less" size={24} className="text-icon" />
                 </div>
               </div>
-            </div>
-
-            {/* Disabled State */}
+            </div>            {/* Disabled State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Disabled</span>
               <div className="flex flex-col gap-2 w-[300px]">

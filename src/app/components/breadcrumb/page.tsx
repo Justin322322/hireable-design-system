@@ -147,6 +147,78 @@ export default function BreadcrumbPage() {
 />`}
             language="tsx"
           />
+
+          {/* Breadcrumb with Menu */}
+          <ComponentPreview title="Breadcrumb with Menu">
+            <div className="flex flex-col items-center h-[240px] justify-center pb-24">
+              <nav aria-label="Breadcrumb" className="flex items-center gap-1 relative">
+                <ol className="flex items-center gap-1">
+                  {/* Home */}
+                  <li className="flex items-center gap-1">
+                    <a href="#" className="font-secondary text-sm leading-[1.2] tracking-[0.2px] text-muted-foreground hover:text-foreground transition-colors py-1">
+                      Home
+                    </a>
+                    <span role="presentation" aria-hidden="true" className="flex items-center text-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-right text-icon"><path d="m9 18 6-6-6-6"/></svg>
+                    </span>
+                  </li>
+
+                  {/* Ellipsis / Trigger */}
+                  <li className="flex items-center gap-1 relative">
+                    <span role="presentation" aria-hidden="true" className="flex items-center text-icon cursor-pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-more-horizontal"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                    </span>
+                    
+                    {/* Open Menu Simulation */}
+                    <div className="absolute top-[24px] left-1/2 -translate-x-1/2 w-[240px] bg-popover text-popover-foreground border border-input rounded-md shadow-md p-1 z-10 animate-in fade-in zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95">
+                      <div className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none bg-surface-hover text-foreground">
+                        Insert Option
+                      </div>
+                      <div className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-surface-hover hover:text-foreground">
+                        Insert Option
+                      </div>
+                      <div className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-surface-hover hover:text-foreground">
+                        Insert Option
+                      </div>
+                    </div>
+
+                    <span role="presentation" aria-hidden="true" className="flex items-center text-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-right text-icon"><path d="m9 18 6-6-6-6"/></svg>
+                    </span>
+                  </li>
+
+                  {/* Current Page */}
+                  <li className="flex items-center gap-1">
+                    <span aria-current="page" className="font-secondary text-sm leading-[1.2] tracking-[0.2px] text-foreground font-normal py-1">
+                      Current Page
+                    </span>
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`// Breadcrumb with Dropdown Menu
+<Breadcrumb items={[
+  { label: "Home", href: "/" },
+  { 
+    label: "...",
+    render: (
+      <DropdownMenu>
+        <DropdownMenuTrigger><BreadcrumbEllipsis /></DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem>Insert Option</DropdownMenuItem>
+          <DropdownMenuItem>Insert Option</DropdownMenuItem>
+          <DropdownMenuItem>Insert Option</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    )
+  },
+  { label: "Current Page" }
+]} />`}
+            language="tsx"
+          />
         </TabsContent>
 
         <TabsContent value="usage" className="space-y-8">

@@ -31,7 +31,7 @@ const searchData: { title: string; category: string; href: string; icon: SvgIcon
   { title: "Button", category: "Components", href: "/components/button", icon: WidgetsOutlined },
   { title: "Card", category: "Components", href: "/components/card", icon: WidgetsOutlined },
   { title: "Input", category: "Components", href: "/components/input", icon: WidgetsOutlined },
-  { title: "Dropdown", category: "Components", href: "/components/select", icon: WidgetsOutlined },
+  { title: "Dropdown", category: "Components", href: "/components/dropdown", icon: WidgetsOutlined },
   { title: "Tabs", category: "Components", href: "/components/tabs", icon: WidgetsOutlined },
   { title: "Dialog", category: "Components", href: "/components/dialogue", icon: WidgetsOutlined },
   { title: "Toast", category: "Components", href: "/components/toast", icon: WidgetsOutlined },

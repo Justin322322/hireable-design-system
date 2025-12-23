@@ -8,18 +8,6 @@ export function Toaster() {
       position="top-center"
       className="toaster group"
       toastOptions={{
-        style: {
-          height: '56px',
-          padding: '16px 24px 16px 16px',
-          gap: '24px',
-          fontFamily: 'var(--font-dm-sans)',
-          fontSize: '16px',
-          fontWeight: '400',
-          lineHeight: '150%',
-          letterSpacing: '0.2px',
-          borderRadius: '8px',
-          boxShadow: '0px 2px 8px rgba(0,0,0,0.1)',
-        },
         classNames: {
           toast:
             "group toast !flex !items-center !justify-start [&[data-sonner-toast]]:!h-14 [&[data-sonner-toast]]:!py-4 [&[data-sonner-toast]]:!pl-4 [&[data-sonner-toast]]:!pr-6 [&[data-sonner-toast]]:!gap-6 [&[data-sonner-toast]]:!rounded-lg bg-background text-foreground border-border",

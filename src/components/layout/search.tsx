@@ -24,6 +24,7 @@ const searchData: { title: string; category: string; href: string; icon: SvgIcon
   { title: "Corners", category: "Style", href: "/style/corners", icon: DescriptionOutlined },
   { title: "Icons", category: "Style", href: "/style/icons", icon: DescriptionOutlined },
   { title: "Motion", category: "Style", href: "/style/motion", icon: DescriptionOutlined },
+  { title: "Border Style", category: "Style", href: "/style/border-style", icon: DescriptionOutlined },
   
   // Components
   { title: "Overview", category: "Components", href: "/components", icon: WidgetsOutlined },
@@ -32,15 +33,18 @@ const searchData: { title: string; category: string; href: string; icon: SvgIcon
   { title: "Input", category: "Components", href: "/components/input", icon: WidgetsOutlined },
   { title: "Select", category: "Components", href: "/components/select", icon: WidgetsOutlined },
   { title: "Tabs", category: "Components", href: "/components/tabs", icon: WidgetsOutlined },
-  { title: "Modal", category: "Components", href: "/components/modal", icon: WidgetsOutlined },
+  { title: "Dialogue", category: "Components", href: "/components/dialogue", icon: WidgetsOutlined },
   { title: "Toast", category: "Components", href: "/components/toast", icon: WidgetsOutlined },
   { title: "Badge", category: "Components", href: "/components/badge", icon: WidgetsOutlined },
   { title: "Toggle", category: "Components", href: "/components/toggle", icon: WidgetsOutlined },
+  { title: "Checkbox", category: "Components", href: "/components/checkbox", icon: WidgetsOutlined },
+  { title: "Sidebar", category: "Components", href: "/components/sidebar", icon: WidgetsOutlined },
   { title: "Avatar", category: "Components", href: "/components/avatar", icon: WidgetsOutlined },
   { title: "Separator", category: "Components", href: "/components/separator", icon: WidgetsOutlined },
   { title: "Navigation Menu", category: "Components", href: "/components/navigation-menu", icon: WidgetsOutlined },
   { title: "Drawer", category: "Components", href: "/components/drawer", icon: WidgetsOutlined },
   { title: "Chart", category: "Components", href: "/components/chart", icon: WidgetsOutlined },
+  { title: "Kanban", category: "Components", href: "/components/kanban", icon: WidgetsOutlined },
 
   // Patterns
   { title: "Overview", category: "Patterns", href: "/patterns", icon: GridViewOutlined },
@@ -76,7 +80,7 @@ export function DocsSearch() {
     : searchData.filter((item) => 
         item.title.toLowerCase().includes(query.toLowerCase()) ||
         item.category.toLowerCase().includes(query.toLowerCase())
-      ).slice(0, 8);
+      ).slice(0, 20);
 
   const onSelect = (href: string) => {
     setOpen(false);
@@ -146,10 +150,10 @@ export function DocsSearch() {
           </div>
           <div className="flex items-center justify-between border-t bg-muted/50 px-4 py-2 text-[10px] text-muted-foreground">
             <div className="flex gap-4">
-              <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">↑↓</kbd> Navigate</span>
-              <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">Enter</kbd> Select</span>
+              <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">Tab</kbd><kbd className="rounded border bg-background px-1">→</kbd> Navigate</span>
+              <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">↵</kbd> Select</span>
             </div>
-            <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">ESC</kbd> Close</span>
+            <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">Esc</kbd> Close</span>
           </div>
         </DialogContent>
       </Dialog>

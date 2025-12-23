@@ -80,6 +80,15 @@
   --color-icon: var(--icon);
   --color-icon-active: var(--icon-active);
   --color-surface-hover: var(--surface-hover);
+  
+  /* Avatar Colors */
+  --color-avatar-admin-bg: var(--avatar-admin-bg);
+  --color-avatar-admin-foreground: var(--avatar-admin-foreground);
+  
+  /* Neutral replacements for components */
+  --color-neutral-subtle: var(--neutral-subtle);
+  --color-neutral-muted: var(--neutral-muted);
+  --color-text-tertiary: var(--text-tertiary);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -100,151 +109,221 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
 
-  /* Brand Colors */
-  --client: oklch(0.65 0.19 230); /* #00A7F8 - Primary brand blue */
-  --client-hover: oklch(0.52 0.15 230); /* #0085C6 - Hover state (Figma) */
-  --client-active: oklch(0.52 0.15 230); /* #0085C6 - Active state */
-  --success: oklch(0.64 0.17 145); /* #27AE60 - Success green */
-  --success-foreground: oklch(1 0 0); /* White text on success */
-  --warning: oklch(0.83 0.16 85); /* #F2C94C - Warning amber */
-  --warning-foreground: oklch(0.2 0 0); /* Dark text on warning */
-  --danger: oklch(0.58 0.22 25); /* #EB5757 - Danger red */
-  --danger-foreground: oklch(1 0 0); /* White text on danger */
-  --linkedin: oklch(0.5 0.13 250); /* #0A66C2 - LinkedIn blue */
+  /* ═══════════════════════════════════════════════════════════
+     LAYER 1: PRIMITIVES - Single source of truth for raw colors
+     ═══════════════════════════════════════════════════════════ */
+  
+  /* Base Colors */
+  --color-white: oklch(1 0 0);
+  --color-black: oklch(0 0 0);
+  
+  /* Neutral Scale */
+  --color-neutral-50: oklch(0.985 0 0);
+  --color-neutral-100: oklch(0.97 0 0);
+  --color-neutral-200: oklch(0.95 0 0);    /* #F2F2F2 */
+  --color-neutral-300: oklch(0.922 0 0);   /* #E5E5E5 */
+  --color-neutral-400: oklch(0.8 0 0);     /* #C3C3C3 */
+  --color-neutral-500: oklch(0.78 0 0);    /* Disabled text */
+  --color-neutral-600: oklch(0.708 0 0);
+  --color-neutral-650: oklch(0.556 0 0);   /* Muted foreground */
+  --color-neutral-700: oklch(0.5 0 0);     /* #757575 - Tertiary text */
+  --color-neutral-750: oklch(0.45 0 0);    /* #616161 - Icon default */
+  --color-neutral-800: oklch(0.269 0 0);
+  --color-neutral-850: oklch(0.26 0 0);    /* #212121 - Tertiary button text */
+  --color-neutral-900: oklch(0.205 0 0);
+  --color-neutral-950: oklch(0.145 0 0);
 
-  /* Button Primitives */
-  --button-primary-default: var(--client); /* #00A7F8 */
-  --button-primary-hover: var(--client-hover); /* #0085C6 */
-  --button-primary-active: var(--client-active); /* #0085C6 */
-  --button-primary-foreground: oklch(1 0 0); /* White */
-  --button-primary-disabled: oklch(0.9 0 0); /* #E5E5E5 */
-  --button-primary-disabled-foreground: oklch(0.78 0 0); /* #C3C3C3 */
-  --button-destructive-default: var(--danger);
-  --button-destructive-hover: oklch(0.52 0.2 25); /* Darker red */
-  --button-destructive-foreground: oklch(1 0 0); /* White */
-  
-  /* Secondary (client tint) - Figma: #CCEDFF bg, #006593 text */
-  --button-secondary-default: oklch(0.92 0.04 230); /* #CCEDFF - Light blue tint */
-  --button-secondary-hover: oklch(0.87 0.06 230); /* #99DBFF - Darker tint on hover */
-  --button-secondary-active: oklch(0.87 0.06 230); /* #99DBFF */
-  --button-secondary-foreground: oklch(0.42 0.09 230); /* #006593 - Dark blue */
-  
-  /* Tertiary (outline) - Figma: #FFFFFF bg, #C3C3C3 border, #212121 text */
-  --button-tertiary-default: var(--background); /* White bg */
-  --button-tertiary-hover: oklch(0.95 0 0); /* #F2F2F2 - Light gray on hover */
-  --button-tertiary-active: oklch(0.95 0 0); /* #F2F2F2 */
-  --button-tertiary-foreground: oklch(0.26 0 0); /* #212121 - Near black */
-  --button-tertiary-border: oklch(0.80 0 0); /* #C3C3C3 - Gray border */
-  
-  --border-disabled: oklch(0.95 0 0);  /* #F2F2F2 */
-  --border-focused: var(--client);  /* #00A7F8 - Focus ring/border */
-  --border-hover: oklch(0.8 0 0);
+  /* Blue Scale (Brand) */
+  --color-blue-100: oklch(0.92 0.04 230);  /* #CCEDFF - Secondary button bg */
+  --color-blue-200: oklch(0.87 0.06 230);  /* #99DBFF - Secondary hover */
+  --color-blue-500: oklch(0.65 0.19 230);  /* #00A7F8 - Primary brand */
+  --color-blue-600: oklch(0.52 0.15 230);  /* #0085C6 - Primary hover */
+  --color-blue-700: oklch(0.42 0.09 230);  /* #006593 - Secondary text */
+  --color-blue-900: oklch(0.5 0.13 250);   /* #0A66C2 - LinkedIn */
 
-  /* Icon Colors */
-  --icon: oklch(0.45 0 0);  /* #616161 - Default icon color (Figma spec) */
-  --icon-active: var(--client);  /* Blue - Active icon state */
+
+  /* Red Scale */
+  --color-red-500: oklch(0.58 0.22 25);    /* #EB5757 - Danger */
+  --color-red-600: oklch(0.52 0.2 25);     /* Danger hover */
+
+  /* Green Scale */
+  --color-green-500: oklch(0.64 0.17 145); /* #27AE60 - Success */
+
+  /* Amber Scale */
+  --color-amber-400: oklch(0.83 0.16 85);  /* #F2C94C - Warning */
+
+  /* Orange Scale (Avatar) */
+  --color-orange-100: oklch(0.95 0.05 60); /* #FFE5CC - Avatar bg */
+  --color-orange-500: oklch(0.6 0.2 50);   /* #FF8112 - Avatar text */
+
+  /* ═══════════════════════════════════════════════════════════
+     LAYER 2: SEMANTIC - Intent-based tokens (reference primitives)
+     ═══════════════════════════════════════════════════════════ */
   
-  /* Surface Colors */
-  --surface-hover: oklch(0.95 0 0); /* #F2F2F2 - Hover state for surfaces */
+  /* Backgrounds */
+  --bg-base: var(--color-white);
+  --bg-muted: var(--color-neutral-100);
+  --bg-subtle: var(--color-neutral-100);
+  --bg-surface-hover: var(--color-neutral-200);
+  --bg-elevated: var(--color-neutral-50);
+  
+  /* Text */
+  --text-base: var(--color-neutral-950);
+  --text-muted: var(--color-neutral-650);
+  --text-subtle: var(--color-neutral-700);
+  --text-inverted: var(--color-white);
+  --text-disabled: var(--color-neutral-500);
+  
+  /* Borders */
+  --border-base: var(--color-neutral-300);
+  --border-muted: var(--color-neutral-200);
+  --border-strong: var(--color-neutral-400);
+  --border-focus: var(--color-blue-500);
+  --border-inactive: var(--color-neutral-200);
+  
+  /* Brand */
+  --brand-primary: var(--color-blue-500);
+  --brand-primary-hover: var(--color-blue-600);
+  --brand-primary-muted: var(--color-blue-100);
+  --brand-primary-muted-hover: var(--color-blue-200);
+  --brand-primary-text: var(--color-blue-700);
+  
+  /* Status */
+  --status-success: var(--color-green-500);
+  --status-success-text: var(--color-white);
+  --status-warning: var(--color-amber-400);
+  --status-warning-text: var(--color-neutral-900);
+  --status-danger: var(--color-red-500);
+  --status-danger-hover: var(--color-red-600);
+  --status-danger-text: var(--color-white);
+  
+  /* Icons */
+  --icon-default: var(--color-neutral-750);
+  --icon-brand: var(--color-blue-500);
+  
+  /* Chart */
+  --chart-line: var(--color-blue-500);
+  --chart-fill: var(--color-blue-500);
+  --chart-grid: var(--color-neutral-400);
+  --chart-axis-text: var(--color-neutral-700);
+  
+  /* Shadows */
+  --shadow-dropdown: 0px 2px 4px var(--color-black) / 25%;
+
+  /* ═══════════════════════════════════════════════════════════
+     LAYER 3: COMPONENT - Component-specific (reference semantic)
+     ═══════════════════════════════════════════════════════════ */
+  
+  /* Button - Primary */
+  --button-primary-default: var(--brand-primary);
+  --button-primary-hover: var(--brand-primary-hover);
+  --button-primary-active: var(--brand-primary-hover);
+  --button-primary-foreground: var(--text-inverted);
+  --button-primary-disabled: var(--color-neutral-300);
+  --button-primary-disabled-foreground: var(--color-neutral-500);
+  
+  /* Button - Secondary */
+  --button-secondary-default: var(--brand-primary-muted);
+  --button-secondary-hover: var(--brand-primary-muted-hover);
+  --button-secondary-active: var(--brand-primary-muted-hover);
+  --button-secondary-foreground: var(--brand-primary-text);
+  
+  /* Button - Tertiary */
+  --button-tertiary-default: var(--bg-base);
+  --button-tertiary-hover: var(--bg-surface-hover);
+  --button-tertiary-active: var(--bg-surface-hover);
+  --button-tertiary-foreground: var(--color-neutral-850);
+  --button-tertiary-border: var(--border-strong);
+  
+  /* Button - Destructive */
+  --button-destructive-default: var(--status-danger);
+  --button-destructive-hover: var(--status-danger-hover);
+  --button-destructive-foreground: var(--text-inverted);
+  
+  /* Input */
+  --input-border-default: var(--border-base);
+  --input-border-focus: var(--border-focus);
+  --input-border-hover: var(--border-strong);
+  --input-border-disabled: var(--border-inactive);
+  
+  /* Avatar */
+  --avatar-admin-bg: var(--color-orange-100);
+  --avatar-admin-foreground: var(--color-orange-500);
+
+  /* ═══════════════════════════════════════════════════════════
+     BACKWARD COMPATIBILITY ALIASES
+     (Legacy token names referencing new semantic layer)
+     ═══════════════════════════════════════════════════════════ */
+  
+  /* Theme tokens */
+  --background: var(--bg-base);
+  --foreground: var(--text-base);
+  --card: var(--bg-base);
+  --card-foreground: var(--text-base);
+  --popover: var(--bg-base);
+  --popover-foreground: var(--text-base);
+  --primary: var(--color-neutral-900);
+  --primary-foreground: var(--color-neutral-50);
+  --secondary: var(--bg-muted);
+  --secondary-foreground: var(--color-neutral-900);
+  --muted: var(--bg-muted);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--bg-muted);
+  --accent-foreground: var(--color-neutral-900);
+  --destructive: var(--status-danger);
+  --border: var(--border-base);
+  --input: var(--border-base);
+  --ring: var(--color-neutral-600);
+  
+  /* Chart colors - use semantic chart tokens */
+  --chart-1: var(--chart-line);
+  --chart-2: var(--chart-line);
+  --chart-3: var(--chart-line);
+  --chart-4: var(--chart-line);
+  --chart-5: var(--chart-line);
+  
+  /* Sidebar */
+  --sidebar: var(--color-neutral-50);
+  --sidebar-foreground: var(--text-base);
+  --sidebar-primary: var(--color-neutral-900);
+  --sidebar-primary-foreground: var(--color-neutral-50);
+  --sidebar-accent: var(--bg-muted);
+  --sidebar-accent-foreground: var(--color-neutral-900);
+  --sidebar-border: var(--border-base);
+  --sidebar-ring: var(--color-neutral-600);
+
+  /* Brand aliases */
+  --client: var(--brand-primary);
+  --client-hover: var(--brand-primary-hover);
+  --client-active: var(--brand-primary-hover);
+  --success: var(--status-success);
+  --success-foreground: var(--status-success-text);
+  --warning: var(--status-warning);
+  --warning-foreground: var(--status-warning-text);
+  --danger: var(--status-danger);
+  --danger-foreground: var(--status-danger-text);
+  --linkedin: var(--color-blue-900);
+  
+  /* Border aliases */
+  --border-disabled: var(--border-inactive);
+  --border-focused: var(--border-focus);
+  --border-hover: var(--border-strong);
+  
+  /* Icon aliases */
+  --icon: var(--icon-default);
+  --icon-active: var(--icon-brand);
+  
+  /* Surface aliases */
+  --surface-hover: var(--bg-surface-hover);
+  
+  /* Neutral aliases */
+  --neutral-subtle: var(--bg-subtle);
+  --neutral-muted: var(--color-neutral-300);
+  --text-tertiary: var(--text-subtle);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 
-  /* Button Primitives (dark mode) */
-  --button-primary-default: var(--client);
-  --button-primary-hover: var(--client-hover);
-  --button-primary-active: var(--client-active);
-  --button-primary-foreground: oklch(1 0 0);
-  --button-primary-disabled: oklch(0.3 0 0); /* Dark gray */
-  --button-primary-disabled-foreground: oklch(0.5 0 0); /* Gray text */
-  --button-destructive-default: oklch(0.704 0.191 22.216);
-  --button-destructive-hover: oklch(0.6 0.18 22);
-  --button-destructive-foreground: oklch(1 0 0);
-  
-  /* Secondary (dark mode) */
-  --button-secondary-default: oklch(0.35 0.06 230); /* Darker blue tint */
-  --button-secondary-hover: oklch(0.42 0.08 230);
-  --button-secondary-active: oklch(0.42 0.08 230);
-  --button-secondary-foreground: oklch(0.85 0.06 230); /* Light blue text */
-  
-  /* Tertiary (dark mode) */
-  --button-tertiary-default: oklch(0.25 0 0); /* Dark gray bg */
-  --button-tertiary-hover: oklch(0.32 0 0);
-  --button-tertiary-active: oklch(0.32 0 0);
-  --button-tertiary-foreground: oklch(0.9 0 0); /* Light text */
-  --button-tertiary-border: oklch(0.45 0 0); /* Gray border */
-  
-  --border-disabled: oklch(0.35 0 0);
-  --border-focused: var(--client);  /* #00A7F8 - Focus ring/border */
-  --border-hover: oklch(1 0 0 / 20%);
-
-  /* Icon Colors (dark mode) */
-  --icon: oklch(0.90 0 0);  /* Light gray for dark mode */
-  --icon-active: var(--client);  /* Blue - Active icon state */
-}
 
 @layer base {
   * {

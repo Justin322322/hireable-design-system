@@ -33,28 +33,28 @@ export default function AvatarPage() {
             <div className="flex items-center gap-6">
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="xl">
-                  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                  <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
                   <AvatarFallback className="text-lg">CN</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">X-Large (80px)</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="lg">
-                  <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+                  <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
                   <AvatarFallback>LR</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Large (40px)</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="md">
-                  <AvatarImage src="https://github.com/vercel.png" alt="@vercel" />
+                  <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
                   <AvatarFallback className="text-[10px]">VC</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Medium (24px)</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="sm">
-                  <AvatarImage src="https://github.com/rauchg.png" alt="@rauchg" />
+                  <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
                   <AvatarFallback className="text-[8px]">GR</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Small (16px)</span>
@@ -101,19 +101,19 @@ export default function AvatarPage() {
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="lg">
-                  <AvatarFallback>AB</AvatarFallback>
+                  <AvatarFallback>JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Large</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="md">
-                  <AvatarFallback className="text-[10px]">CD</AvatarFallback>
+                  <AvatarFallback className="text-[10px]">JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Medium</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="sm">
-                  <AvatarFallback className="text-[8px]">EF</AvatarFallback>
+                  <AvatarFallback className="text-[8px]">JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Small</span>
               </div>
@@ -144,16 +144,16 @@ export default function AvatarPage() {
           <ComponentPreview title="Avatar Group">
             <div className="flex -space-x-3">
               <Avatar className="border-2 border-background bg-background">
-                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                <AvatarFallback>CN</AvatarFallback>
+                <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
+                <AvatarFallback>JD</AvatarFallback>
               </Avatar>
               <Avatar className="border-2 border-background bg-background">
-                <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
-                <AvatarFallback>LR</AvatarFallback>
+                <AvatarImage src="/images/juan-delacruz.svg" alt="Juan Dela Cruz" />
+                <AvatarFallback>JC</AvatarFallback>
               </Avatar>
               <Avatar className="border-2 border-background bg-background">
-                <AvatarImage src="https://github.com/vercel.png" alt="@vercel" />
-                <AvatarFallback>VC</AvatarFallback>
+                <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
+                <AvatarFallback>JD</AvatarFallback>
               </Avatar>
               <Avatar className="border-2 border-background bg-background">
                 <AvatarFallback>+3</AvatarFallback>

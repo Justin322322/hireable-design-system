@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { DM_Sans, Inter, Nunito_Sans } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import "material-symbols/outlined.css";
 import { SiteHeader } from "@/components/layout/site-header";

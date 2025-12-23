@@ -1,10 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Toggle } from "@/components/ui/toggle";
 import { Switch } from "@/components/ui/switch";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
-import { FormatBoldOutlined, FormatItalicOutlined, FormatUnderlinedOutlined } from "@mui/icons-material";
 import { VERSION } from "@/lib/version";
 
 export default function TogglePage() {
@@ -30,102 +28,6 @@ export default function TogglePage() {
         </TabsList>
 
         <TabsContent value="examples" className="space-y-8">
-          <ComponentPreview title="Basic Toggle">
-            <div className="flex flex-wrap gap-4">
-              <Toggle aria-label="Toggle bold">
-                <FormatBoldOutlined sx={{ fontSize: 16 }} />
-              </Toggle>
-              <Toggle aria-label="Toggle italic">
-                <FormatItalicOutlined sx={{ fontSize: 16 }} />
-              </Toggle>
-              <Toggle aria-label="Toggle underline">
-                <FormatUnderlinedOutlined sx={{ fontSize: 16 }} />
-              </Toggle>
-            </div>
-          </ComponentPreview>
-
-          <CodeBlock
-            code={`<Toggle aria-label="Toggle bold">
-  <FormatBoldOutlined sx={{ fontSize: 16 }} />
-</Toggle>
-<Toggle aria-label="Toggle italic">
-  <FormatItalicOutlined sx={{ fontSize: 16 }} />
-</Toggle>
-<Toggle aria-label="Toggle underline">
-  <FormatUnderlinedOutlined sx={{ fontSize: 16 }} />
-</Toggle>`}
-            language="tsx"
-          />
-
-          <ComponentPreview title="Variants">
-            <div className="flex flex-wrap gap-4">
-              <Toggle variant="default" aria-label="Default toggle">
-                <FormatBoldOutlined sx={{ fontSize: 16 }} />
-              </Toggle>
-              <Toggle variant="outline" aria-label="Outline toggle">
-                <FormatBoldOutlined sx={{ fontSize: 16 }} />
-              </Toggle>
-            </div>
-          </ComponentPreview>
-
-          <CodeBlock
-            code={`<Toggle variant="default" aria-label="Default toggle">
-  <FormatBoldOutlined sx={{ fontSize: 16 }} />
-</Toggle>
-<Toggle variant="outline" aria-label="Outline toggle">
-  <FormatBoldOutlined sx={{ fontSize: 16 }} />
-</Toggle>`}
-            language="tsx"
-          />
-
-          <ComponentPreview title="Sizes">
-            <div className="flex flex-wrap items-center gap-4">
-              <Toggle size="sm" aria-label="Small toggle">
-                <FormatBoldOutlined sx={{ fontSize: 12 }} />
-              </Toggle>
-              <Toggle size="default" aria-label="Default toggle">
-                <FormatBoldOutlined sx={{ fontSize: 16 }} />
-              </Toggle>
-              <Toggle size="lg" aria-label="Large toggle">
-                <FormatBoldOutlined sx={{ fontSize: 20 }} />
-              </Toggle>
-            </div>
-          </ComponentPreview>
-
-          <CodeBlock
-            code={`<Toggle size="sm" aria-label="Small toggle">
-  <FormatBoldOutlined sx={{ fontSize: 12 }} />
-</Toggle>
-<Toggle size="default" aria-label="Default toggle">
-  <FormatBoldOutlined sx={{ fontSize: 16 }} />
-</Toggle>
-<Toggle size="lg" aria-label="Large toggle">
-  <FormatBoldOutlined sx={{ fontSize: 20 }} />
-</Toggle>`}
-            language="tsx"
-          />
-
-          <ComponentPreview title="With Text">
-            <div className="flex flex-wrap gap-4">
-              <Toggle aria-label="Toggle notifications">
-                Notifications
-              </Toggle>
-              <Toggle variant="outline" aria-label="Toggle dark mode">
-                Dark Mode
-              </Toggle>
-            </div>
-          </ComponentPreview>
-
-          <CodeBlock
-            code={`<Toggle aria-label="Toggle notifications">
-  Notifications
-</Toggle>
-<Toggle variant="outline" aria-label="Toggle dark mode">
-  Dark Mode
-</Toggle>`}
-            language="tsx"
-          />
-
           <ComponentPreview title="Notification Settings">
             <div className="space-y-4 max-w-md">
               <div className="flex items-center justify-between">

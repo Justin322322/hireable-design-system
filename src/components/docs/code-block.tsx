@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
 
 interface CodeBlockProps {
   code: string;
@@ -25,9 +26,10 @@ export function CodeBlock({ code, language = "tsx" }: CodeBlockProps) {
         <Button
           variant="ghost"
           size="sm"
-          className="h-7 text-xs"
+          className="h-7 text-xs gap-1"
           onClick={copyToClipboard}
         >
+          <Icon icon={copied ? "check" : "content_copy"} size={16} className="text-icon" />
           {copied ? "Copied!" : "Copy"}
         </Button>
       </div>

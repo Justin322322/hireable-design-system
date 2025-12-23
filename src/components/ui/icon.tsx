@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
  * Following Material Design 3 optical size specifications
  */
 const iconSizes = {
+  14: 14,
   16: 16,
   20: 20,
   24: 24,
@@ -65,7 +66,6 @@ export type IconName =
   | "lock_open"
   | "schedule"
   | "calendar_today"
-  | "open_in_new"
   | "launch"
   | "done"
   | "done_all"
@@ -105,18 +105,22 @@ export type IconName =
   | "auto_awesome"
   | "language"
   | "public"
-
+  // Worktrait icons
+  | "bolt"
+  | "autorenew"
+  | "mark_chat_read"
+  | "handshake"
+  | "forum"
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** The Material Symbol icon name (from fonts.google.com/icons) */
   icon: IconName
-  /** Icon size: 16, 20, 24, 40, or 48 */
+  /** Icon size: 14, 16, 20, 24, 40, or 48 */
   size?: IconSize
   /** Whether the icon is filled */
   filled?: boolean
   /** Icon weight (100-700, default 400) */
   weight?: 100 | 200 | 300 | 400 | 500 | 600 | 700
 }
-
 /**
  * Material Symbols Icon Component
  * 

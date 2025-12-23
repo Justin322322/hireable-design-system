@@ -3,40 +3,119 @@ import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center font-secondary font-normal uppercase tracking-wider transition-colors focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none",
+  "inline-flex items-center justify-center font-secondary font-normal text-xs leading-[120%] tracking-[0.2px] transition-colors",
   {
     variants: {
       variant: {
-        default: "bg-success/15 text-success rounded-[2.57px] px-1.5 text-[6.43px] leading-none h-[12.87px]",
-        secondary: "bg-neutral-subtle text-text-tertiary border border-button-tertiary-border rounded-[5.15px] px-2 text-[7.72px] leading-none h-[19.3px] box-border",
-        destructive:
-          "bg-danger text-danger-foreground shadow rounded-md px-2.5 py-0.5 text-xs font-semibold leading-none h-[19.3px]",
-        outline: "bg-success/10 text-success border border-success rounded-[5.15px] px-2 text-[7.72px] leading-none h-[19.3px] box-border",
-        success: "border-client/60 bg-client/10 text-client/80 shadow-none rounded-md px-2.5 py-0.5 text-xs font-semibold",
-        danger:
-          "border-danger/60 bg-danger/10 text-danger/80 shadow-none rounded-md px-2.5 py-0.5 text-xs font-semibold",
-        warning:
-          "border-warning/60 bg-warning/10 text-warning/80 shadow-none rounded-md px-2.5 py-0.5 text-xs font-semibold",
-        muted: "border-button-tertiary-border bg-muted text-text-tertiary shadow-none rounded-md px-2.5 py-0.5 text-xs font-semibold",
+        default:
+          "bg-[var(--badge-default-bg)] text-[var(--badge-default-text)]",
+        ontrack:
+          "bg-[var(--badge-ontrack-bg)] text-[var(--badge-ontrack-text)]",
+        atrisk: "bg-[var(--badge-atrisk-bg)] text-[var(--badge-atrisk-text)]",
+        offtrack:
+          "bg-[var(--badge-offtrack-bg)] text-[var(--badge-offtrack-text)]",
+        complete:
+          "bg-[var(--badge-complete-bg)] text-[var(--badge-complete-text)]",
+      },
+      shape: {
+        pill: "rounded-full",
+        badge: "rounded",
+      },
+      size: {
+        sm: "h-6 px-2 py-1",
       },
     },
     defaultVariants: {
       variant: "default",
+      shape: "pill",
+      size: "sm",
     },
   }
 );
 
-interface BadgeProps
-  extends
-    React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+const dotColors: Record<string, string> = {
+  default: "bg-[var(--badge-default-text)]",
+  ontrack: "bg-[var(--badge-ontrack-text)]",
+  atrisk: "bg-[var(--badge-atrisk-text)]",
+  offtrack: "bg-[var(--badge-offtrack-text)]",
+  complete: "bg-[var(--badge-complete-text)]",
+};
 
-function Badge({ className, variant, ...props }: BadgeProps) {
+const borderColors: Record<string, string> = {
+  default: "border-[var(--badge-default-border)]",
+  ontrack: "border-[var(--badge-ontrack-border)]",
+  atrisk: "border-[var(--badge-atrisk-border)]",
+  offtrack: "border-[var(--badge-offtrack-border)]",
+  complete: "border-[var(--badge-complete-border)]",
+};
+
+export interface BadgeProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeVariants> {
+  hasDot?: boolean;
+  hasBorder?: boolean;
+  hasRemoveButton?: boolean;
+  onRemove?: () => void;
+}
+
+function Badge({
+  className,
+  variant = "default",
+  shape,
+  size,
+  hasDot,
+  hasBorder,
+  hasRemoveButton,
+  onRemove,
+  children,
+  ...props
+}: BadgeProps) {
+  const variantKey = variant || "default";
+  const dotClass = dotColors[variantKey];
+  const borderClass = hasBorder ? borderColors[variantKey] : "";
+
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    <div
+      className={cn(
+        badgeVariants({ variant, shape, size }),
+        hasBorder && `border-[0.5px] ${borderClass}`,
+        (hasDot || hasRemoveButton) && "flex-row gap-1",
+        className
+      )}
+      {...props}
+    >
+      {hasDot && (
+        <span
+          className={cn("w-1.5 h-1.5 rounded-full opacity-75", dotClass)}
+        />
+      )}
+      <span>{children}</span>
+      {hasRemoveButton && (
+        <button
+          type="button"
+          onClick={onRemove}
+          className="w-3 h-3 flex items-center justify-center text-icon hover:text-icon-active focus:outline-none focus-visible:ring-1 focus-visible:ring-current rounded-sm transition-colors"
+          aria-label="Remove"
+        >          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.5 2.5L9.5 9.5M2.5 9.5L9.5 2.5"
+              stroke="currentColor"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
+      )}
+    </div>
   );
 }
 
 type BadgeVariant = VariantProps<typeof badgeVariants>["variant"];
 
-export { Badge, type BadgeVariant };
+export { Badge, badgeVariants, type BadgeVariant };

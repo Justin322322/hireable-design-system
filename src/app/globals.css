@@ -95,6 +95,31 @@
   --color-toast-info-bg: var(--toast-info-bg);
   --color-toast-warning-bg: var(--toast-warning-bg);
   --color-toast-error-bg: var(--toast-error-bg);
+  
+  /* Worktrait Tag Color Mappings */
+  --color-worktrait-decision: var(--color-worktrait-blue);
+  --color-worktrait-adapt: var(--color-worktrait-pink);
+  --color-worktrait-response: var(--color-worktrait-magenta);
+  --color-worktrait-time: var(--color-worktrait-orange);
+  --color-worktrait-coop: var(--color-worktrait-purple);
+  --color-worktrait-comm: var(--color-worktrait-cyan);
+  
+  /* Status Badge Color Mappings */
+  --color-badge-default-bg: var(--badge-default-bg);
+  --color-badge-default-text: var(--badge-default-text);
+  --color-badge-default-border: var(--badge-default-border);
+  --color-badge-ontrack-bg: var(--badge-ontrack-bg);
+  --color-badge-ontrack-text: var(--badge-ontrack-text);
+  --color-badge-ontrack-border: var(--badge-ontrack-border);
+  --color-badge-atrisk-bg: var(--badge-atrisk-bg);
+  --color-badge-atrisk-text: var(--badge-atrisk-text);
+  --color-badge-atrisk-border: var(--badge-atrisk-border);
+  --color-badge-offtrack-bg: var(--badge-offtrack-bg);
+  --color-badge-offtrack-text: var(--badge-offtrack-text);
+  --color-badge-offtrack-border: var(--badge-offtrack-border);
+  --color-badge-complete-bg: var(--badge-complete-bg);
+  --color-badge-complete-text: var(--badge-complete-text);
+  --color-badge-complete-border: var(--badge-complete-border);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -168,6 +193,14 @@
   --color-orange-100: oklch(0.95 0.05 60); /* #FFE5CC - Avatar bg */
   --color-orange-500: oklch(0.6 0.2 50);   /* #FF8112 - Avatar text */
 
+  /* Worktrait Tag Colors */
+  --color-worktrait-blue: #66C8FF;      /* Decision Making */
+  --color-worktrait-pink: #FF739A;      /* Adaptability */
+  --color-worktrait-magenta: #FF73D1;   /* Responsiveness */
+  --color-worktrait-orange: #FFA366;    /* Time Management */
+  --color-worktrait-purple: #C86BFA;    /* Cooperativeness */
+  --color-worktrait-cyan: #B4FFFF;      /* Communication */
+
   /* ═══════════════════════════════════════════════════════════
      LAYER 2: SEMANTIC - Intent-based tokens (reference primitives)
      ═══════════════════════════════════════════════════════════ */
@@ -214,6 +247,23 @@
   --toast-info-bg: var(--color-blue-50);
   --toast-warning-bg: var(--color-amber-100);
   --toast-error-bg: var(--color-red-100);
+
+  /* Status Badge Colors - Referencing primitives */
+  --badge-default-bg: var(--color-neutral-200);
+  --badge-default-text: var(--color-neutral-750);
+  --badge-default-border: var(--color-neutral-400);
+  --badge-ontrack-bg: oklch(0.96 0.03 230);
+  --badge-ontrack-text: var(--color-blue-500);
+  --badge-ontrack-border: oklch(0.65 0.19 230 / 0.4);
+  --badge-atrisk-bg: oklch(0.97 0.03 60);
+  --badge-atrisk-text: var(--color-orange-500);
+  --badge-atrisk-border: oklch(0.6 0.2 50 / 0.4);
+  --badge-offtrack-bg: oklch(0.97 0.02 25);
+  --badge-offtrack-text: var(--color-red-500);
+  --badge-offtrack-border: var(--color-red-500);
+  --badge-complete-bg: oklch(0.96 0.03 145);
+  --badge-complete-text: var(--color-green-500);
+  --badge-complete-border: oklch(0.64 0.17 145 / 0.4);
   
   /* Icons */
   --icon-default: var(--color-neutral-750);

@@ -22,7 +22,7 @@ export function Sidebar() {
   if (!navSection) return null;
 
   return (
-    <aside className="hidden w-64 shrink-0 border-r bg-muted/30 md:block">
+    <aside className="hidden w-64 shrink-0 border-r bg-background md:block">
       <nav className="sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto p-6">
         <h2 className="mb-4 text-sm font-semibold">{navSection.title}</h2>
         <ul className="space-y-1">
@@ -36,18 +36,22 @@ export function Sidebar() {
                   href={item.href}
                   className={cn(
                     "flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-normal tracking-wide transition-colors",
-                    "font-secondary",
+                    "font-secondary text-foreground",
                     isActive
-                      ? "bg-secondary text-foreground"
-                      : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                      ? "bg-surface-hover"
+                      : "bg-background hover:bg-surface-hover"
                   )}
                 >
-                <Icon 
+                <div 
                   className={cn(
-                    "h-5 w-5 shrink-0",
-                    isActive ? "text-icon-active" : "text-icon"
+                    "flex items-center justify-center size-6",
+                    isActive ? "text-client" : "text-icon"
                   )}
-                />
+                >
+                  <Icon 
+                    className="h-5 w-5 shrink-0"
+                  />
+                </div>
                   <span>{item.label}</span>
                 </Link>
               </li>

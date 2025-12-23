@@ -197,7 +197,7 @@ const CandidateHeader: React.FC<CandidateHeaderProps> = ({ data }) => (
         <h1 className="text-xl font-bold tracking-tight text-foreground">
           {data.name}
         </h1>
-        <Badge variant="muted" className="px-2 py-0.5 text-xs rounded-md bg-neutral-100 border-0 normal-case font-medium">
+        <Badge variant="default" className="px-2 py-0.5 text-xs rounded-md bg-neutral-100 border-0 normal-case font-medium">
           ID: {data.id.split("-")[1]}
         </Badge>
         <Badge className="px-2 py-0.5 text-xs bg-green-50 text-green-700 border-0">
@@ -254,7 +254,7 @@ const MatchSection: React.FC<{ title: string; children: React.ReactNode }> = ({
 }) => (
   <div className="flex flex-col gap-2">
     <Badge 
-      variant="success" 
+      variant="default" 
       className="w-fit px-3 py-1 text-xs uppercase bg-client/10 text-client border-0 rounded-md font-medium"
     >
       {title}
@@ -384,7 +384,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ skills }) => (
       {skills.map((skill, i) => (
         <Badge
           key={i}
-          variant="muted"
+          variant="default"
           className="px-3 py-1 text-xs bg-neutral-100 border-0 normal-case rounded-md font-medium"
         >
           {skill}

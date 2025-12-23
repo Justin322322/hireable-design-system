@@ -26,7 +26,7 @@ function ToastDemo() {
         Default
       </Button>
       <Button
-        className="bg-green-600 hover:bg-green-700 text-white border-none"
+        className="bg-success hover:bg-success/90 active:bg-success/80 text-white border-none focus-visible:ring-success/50"
         onClick={() => toast({
           variant: "success",
           title: "Success",
@@ -46,7 +46,7 @@ function ToastDemo() {
         Destructive
       </Button>
       <Button
-        className="bg-amber-500 hover:bg-amber-600 text-white border-none"
+        className="bg-warning hover:bg-warning/90 active:bg-warning/80 text-foreground border-none focus-visible:ring-warning/50"
         onClick={() => toast({
           variant: "warning",
           title: "Warning",
@@ -56,7 +56,7 @@ function ToastDemo() {
         Warning
       </Button>
       <Button
-        className="bg-blue-500 hover:bg-blue-600 text-white border-none"
+        className="bg-client hover:bg-client-hover active:bg-client-active text-white border-none focus-visible:ring-client/50"
         onClick={() => toast({
           variant: "info",
           title: "Information",
@@ -102,13 +102,10 @@ export default function ToastPage() {
                   <CardTitle className="text-sm font-medium">Default</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
-                  <div className="rounded-lg border bg-background p-4 shadow-lg flex items-start gap-3 w-full max-w-lg">
-                    <div className="flex-1">
-                      <p className="font-medium text-sm">Notification</p>
-                      <p className="text-xs text-muted-foreground">This is a default toast message.</p>
-                    </div>
-                    <button className="text-muted-foreground hover:text-foreground">
-                      <CloseOutlined sx={{ fontSize: 16 }} />
+                  <div className="rounded-lg border bg-background py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
+                    <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Notification</p>
+                    <button className="text-foreground hover:text-foreground/80 shrink-0">
+                      <CloseOutlined sx={{ fontSize: 20 }} />
                     </button>
                   </div>
                 </CardContent>
@@ -116,17 +113,14 @@ export default function ToastPage() {
 
               <Card>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-green-600">Success</CardTitle>
+                  <CardTitle className="text-sm font-medium text-success">Success</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
-                  <div className="rounded-lg border border-green-200 bg-green-50 p-4 shadow-lg flex items-start gap-3 w-full max-w-lg dark:bg-green-950 dark:border-green-900">
-                    <CheckCircleOutlined sx={{ fontSize: 20 }} className="text-green-600 dark:text-green-400 mt-0.5" />
-                    <div className="flex-1 text-green-900 dark:text-green-400">
-                      <p className="font-medium text-sm">Success</p>
-                      <p className="text-xs">Your changes have been saved successfully.</p>
-                    </div>
-                    <button className="text-green-700 hover:text-green-900 dark:text-green-400">
-                      <CloseOutlined sx={{ fontSize: 16 }} />
+                  <div className="rounded-lg bg-toast-success-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
+                    <CheckCircleOutlined sx={{ fontSize: 24 }} className="text-success shrink-0" />
+                    <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Success</p>
+                    <button className="text-foreground hover:text-foreground/80 shrink-0">
+                      <CloseOutlined sx={{ fontSize: 20 }} />
                     </button>
                   </div>
                 </CardContent>
@@ -134,17 +128,14 @@ export default function ToastPage() {
 
               <Card>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-red-600">Error</CardTitle>
+                  <CardTitle className="text-sm font-medium text-danger">Error</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
-                  <div className="rounded-lg border border-red-200 bg-red-50 p-4 shadow-lg flex items-start gap-3 w-full max-w-lg dark:bg-red-950 dark:border-red-900">
-                    <ErrorOutline sx={{ fontSize: 20 }} className="text-red-600 dark:text-red-400 mt-0.5" />
-                    <div className="flex-1 text-red-900 dark:text-red-400">
-                      <p className="font-medium text-sm">Error</p>
-                      <p className="text-xs">Something went wrong. Please try again.</p>
-                    </div>
-                    <button className="text-red-700 hover:text-red-900 dark:text-red-400">
-                      <CloseOutlined sx={{ fontSize: 16 }} />
+                  <div className="rounded-lg bg-toast-error-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
+                    <ErrorOutline sx={{ fontSize: 24 }} className="text-danger shrink-0" />
+                    <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Error</p>
+                    <button className="text-foreground hover:text-foreground/80 shrink-0">
+                      <CloseOutlined sx={{ fontSize: 20 }} />
                     </button>
                   </div>
                 </CardContent>
@@ -152,17 +143,14 @@ export default function ToastPage() {
 
               <Card>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-amber-600">Warning</CardTitle>
+                  <CardTitle className="text-sm font-medium text-warning">Warning</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
-                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 shadow-lg flex items-start gap-3 w-full max-w-lg dark:bg-amber-950 dark:border-amber-900">
-                    <WarningAmberOutlined sx={{ fontSize: 20 }} className="text-amber-600 dark:text-amber-400 mt-0.5" />
-                    <div className="flex-1 text-amber-900 dark:text-amber-400">
-                      <p className="font-medium text-sm">Warning</p>
-                      <p className="text-xs">Your subscription is about to expire.</p>
-                    </div>
-                    <button className="text-amber-700 hover:text-amber-900 dark:text-amber-400">
-                      <CloseOutlined sx={{ fontSize: 16 }} />
+                  <div className="rounded-lg bg-toast-warning-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
+                    <WarningAmberOutlined sx={{ fontSize: 24 }} className="text-warning shrink-0" />
+                    <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Warning</p>
+                    <button className="text-foreground hover:text-foreground/80 shrink-0">
+                      <CloseOutlined sx={{ fontSize: 20 }} />
                     </button>
                   </div>
                 </CardContent>
@@ -170,17 +158,14 @@ export default function ToastPage() {
 
               <Card>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-medium text-blue-600">Info</CardTitle>
+                  <CardTitle className="text-sm font-medium text-client">Info</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
-                  <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 shadow-lg flex items-start gap-3 w-full max-w-lg dark:bg-blue-950 dark:border-blue-900">
-                    <InfoOutlined sx={{ fontSize: 20 }} className="text-blue-600 dark:text-blue-400 mt-0.5" />
-                    <div className="flex-1 text-blue-900 dark:text-blue-400">
-                      <p className="font-medium text-sm">Information</p>
-                      <p className="text-xs">A new version is available for download.</p>
-                    </div>
-                    <button className="text-blue-700 hover:text-blue-900 dark:text-blue-400">
-                      <CloseOutlined sx={{ fontSize: 16 }} />
+                  <div className="rounded-lg bg-toast-info-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
+                    <InfoOutlined sx={{ fontSize: 24 }} className="text-client shrink-0" />
+                    <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Information</p>
+                    <button className="text-foreground hover:text-foreground/80 shrink-0">
+                      <CloseOutlined sx={{ fontSize: 20 }} />
                     </button>
                   </div>
                 </CardContent>
@@ -224,7 +209,7 @@ toast({
             <div className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg text-green-600">Do</CardTitle>
+                  <CardTitle className="text-lg text-success">Do</CardTitle>
                 </CardHeader>
                 <CardContent className="text-muted-foreground">
                   <ul className="list-disc list-inside space-y-1">
@@ -237,7 +222,7 @@ toast({
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg text-red-600">Don&apos;t</CardTitle>
+                  <CardTitle className="text-lg text-danger">Don&apos;t</CardTitle>
                 </CardHeader>
                 <CardContent className="text-muted-foreground">
                   <ul className="list-disc list-inside space-y-1">

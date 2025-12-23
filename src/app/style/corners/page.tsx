@@ -44,7 +44,7 @@ export default function CornersPage() {
                   <div className="w-20 text-sm font-mono text-muted-foreground">{corner.name}</div>
                   <div className="w-16 text-sm text-muted-foreground">{corner.value}</div>
                   <div className="flex-1">
-                    <div className={`h-16 w-32 bg-primary border border-border ${corner.className}`} />
+                    <div className={`h-16 w-32 border-2 border-foreground ${corner.className}`} />
                   </div>
                 </div>
               ))}

@@ -38,7 +38,7 @@ export default function DataDisplayPatternPage() {
                     <tbody>
                       <tr className="border-b">
                         <td className="py-3">John Doe</td>
-                        <td className="py-3"><Badge variant="secondary">Active</Badge></td>
+                        <td className="py-3"><Badge variant="default">Active</Badge></td>
                         <td className="py-3 text-muted-foreground">Admin</td>
                         <td className="py-3 text-right">
                           <button className="text-sm text-primary hover:underline">Edit</button>
@@ -46,7 +46,7 @@ export default function DataDisplayPatternPage() {
                       </tr>
                       <tr className="border-b">
                         <td className="py-3">Jane Smith</td>
-                        <td className="py-3"><Badge variant="secondary">Active</Badge></td>
+                        <td className="py-3"><Badge variant="default">Active</Badge></td>
                         <td className="py-3 text-muted-foreground">Editor</td>
                         <td className="py-3 text-right">
                           <button className="text-sm text-primary hover:underline">Edit</button>
@@ -54,7 +54,7 @@ export default function DataDisplayPatternPage() {
                       </tr>
                       <tr className="border-b">
                         <td className="py-3">Bob Wilson</td>
-                        <td className="py-3"><Badge variant="outline">Inactive</Badge></td>
+                        <td className="py-3"><Badge variant="default" hasBorder>Inactive</Badge></td>
                         <td className="py-3 text-muted-foreground">Viewer</td>
                         <td className="py-3 text-right">
                           <button className="text-sm text-primary hover:underline">Edit</button>
@@ -110,14 +110,14 @@ export default function DataDisplayPatternPage() {
                       <p className="font-medium">Project Beta</p>
                       <p className="text-sm text-muted-foreground">Updated yesterday</p>
                     </div>
-                    <Badge variant="secondary">Complete</Badge>
+                    <Badge variant="default">Complete</Badge>
                   </li>
                   <li className="py-4 flex items-center justify-between">
                     <div>
                       <p className="font-medium">Project Gamma</p>
                       <p className="text-sm text-muted-foreground">Updated 3 days ago</p>
                     </div>
-                    <Badge variant="outline">Pending</Badge>
+                    <Badge variant="default" hasBorder>Pending</Badge>
                   </li>
                 </ul>
               </CardContent>
@@ -138,7 +138,7 @@ export default function DataDisplayPatternPage() {
       <p className="font-medium">Project Beta</p>
       <p className="text-sm text-muted-foreground">Updated yesterday</p>
     </div>
-    <Badge variant="secondary">Complete</Badge>
+    <Badge variant="default">Complete</Badge>
   </li>
 </ul>`}
             language="tsx"

@@ -194,12 +194,12 @@
   --color-orange-500: oklch(0.6 0.2 50);   /* #FF8112 - Avatar text */
 
   /* Worktrait Tag Colors */
-  --color-worktrait-blue: #66C8FF;      /* Decision Making */
-  --color-worktrait-pink: #FF739A;      /* Adaptability */
-  --color-worktrait-magenta: #FF73D1;   /* Responsiveness */
-  --color-worktrait-orange: #FFA366;    /* Time Management */
-  --color-worktrait-purple: #C86BFA;    /* Cooperativeness */
-  --color-worktrait-cyan: #B4FFFF;      /* Communication */
+  --color-worktrait-blue: oklch(0.795 0.1208 235.67);      /* Decision Making */
+  --color-worktrait-pink: oklch(0.7328 0.1737 4.91);       /* Adaptability */
+  --color-worktrait-magenta: oklch(0.7511 0.1989 342.02);  /* Responsiveness */
+  --color-worktrait-orange: oklch(0.7958 0.1337 53.18);    /* Time Management */
+  --color-worktrait-purple: oklch(0.6927 0.2149 312.12);   /* Cooperativeness */
+  --color-worktrait-cyan: oklch(0.9513 0.0735 195.99);     /* Communication */
 
   /* ═══════════════════════════════════════════════════════════
      LAYER 2: SEMANTIC - Intent-based tokens (reference primitives)

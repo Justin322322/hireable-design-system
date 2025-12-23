@@ -1,3 +1,6 @@
+"use client"
+
+import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { WorktraitTag } from "@/components/ui/worktrait-tag";
@@ -7,6 +10,10 @@ import { VERSION } from "@/lib/version";
 import { Icon } from "@/components/ui/icon";
 
 export default function BadgePillsPage() {
+  const handleRemove = () => {
+    toast("Badge removed");
+  };
+
   return (
     <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-8">
@@ -199,11 +206,11 @@ export default function BadgePillsPage() {
           {/* Pill with Border & Remove Button */}
           <ComponentPreview title="Pill with Border & Remove Button">
             <div className="flex flex-wrap items-center gap-4">
-              <Badge shape="pill" hasBorder hasRemoveButton>Badge</Badge>
-              <Badge shape="pill" variant="ontrack" hasBorder hasRemoveButton>Badge</Badge>
-              <Badge shape="pill" variant="atrisk" hasBorder hasRemoveButton>Badge</Badge>
-              <Badge shape="pill" variant="offtrack" hasBorder hasRemoveButton>Badge</Badge>
-              <Badge shape="pill" variant="complete" hasBorder hasRemoveButton>Badge</Badge>
+              <Badge shape="pill" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="pill" variant="ontrack" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="pill" variant="atrisk" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="pill" variant="offtrack" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="pill" variant="complete" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
             </div>
           </ComponentPreview>
 
@@ -282,11 +289,11 @@ export default function BadgePillsPage() {
           {/* Badge with Border & Remove Button */}
           <ComponentPreview title="Badge with Border & Remove Button">
             <div className="flex flex-wrap items-center gap-4">
-              <Badge shape="badge" hasBorder hasRemoveButton>Badge</Badge>
-              <Badge shape="badge" variant="ontrack" hasBorder hasRemoveButton>Badge</Badge>
-              <Badge shape="badge" variant="atrisk" hasBorder hasRemoveButton>Badge</Badge>
-              <Badge shape="badge" variant="offtrack" hasBorder hasRemoveButton>Badge</Badge>
-              <Badge shape="badge" variant="complete" hasBorder hasRemoveButton>Badge</Badge>
+              <Badge shape="badge" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="badge" variant="ontrack" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="badge" variant="atrisk" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="badge" variant="offtrack" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="badge" variant="complete" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
             </div>
           </ComponentPreview>
 

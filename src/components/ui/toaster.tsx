@@ -8,22 +8,32 @@ export function Toaster() {
       position="top-center"
       className="toaster group"
       toastOptions={{
+        style: {
+          height: '56px',
+          padding: '16px 24px 16px 16px',
+          gap: '24px',
+          fontFamily: 'var(--font-dm-sans)',
+          fontSize: '16px',
+          fontWeight: '400',
+          lineHeight: '150%',
+          letterSpacing: '0.2px',
+          borderRadius: '8px',
+          boxShadow: '0px 2px 8px rgba(0,0,0,0.1)',
+        },
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg group-[.toaster]:rounded-lg group-[.toaster]:p-6 group-[.toaster]:flex group-[.toaster]:!items-start group-[.toaster]:gap-4 [&>[data-content]]:!flex-1 [&>[data-content]]:!order-2",
-          title: "group-[.toast]:text-sm group-[.toast]:font-medium",
-          description: "group-[.toast]:text-xs group-[.toast]:text-muted-foreground group-data-[type=success]:!text-inherit group-data-[type=error]:!text-inherit group-data-[type=warning]:!text-inherit group-data-[type=info]:!text-inherit",
-          actionButton:
-            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
-          cancelButton:
-            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
-          icon: "group-[.toast]:!mt-0.5 group-[.toast]:!mr-0 group-[.toast]:shrink-0 group-[.toast]:!order-1 group-[.toast]:!self-start",
-          success: "!bg-green-50 !border-green-200 !text-green-900 dark:!bg-green-950 dark:!border-green-900 dark:!text-green-400",
-          error: "!bg-red-50 !border-red-200 !text-red-900 dark:!bg-red-950 dark:!border-red-900 dark:!text-red-400",
-          warning: "!bg-amber-50 !border-amber-200 !text-amber-900 dark:!bg-amber-950 dark:!border-amber-900 dark:!text-amber-400",
-          info: "!bg-blue-50 !border-blue-200 !text-blue-900 dark:!bg-blue-950 dark:!border-blue-900 dark:!text-blue-400",
+            "group toast !flex !items-center !justify-start [&[data-sonner-toast]]:!h-14 [&[data-sonner-toast]]:!py-4 [&[data-sonner-toast]]:!pl-4 [&[data-sonner-toast]]:!pr-6 [&[data-sonner-toast]]:!gap-6 [&[data-sonner-toast]]:!rounded-lg bg-background text-foreground border-border",
+          title: "!font-primary !font-normal !text-base !leading-[150%] !tracking-[0.2px] !m-0 !p-0 !flex-1",
+          description: "!hidden",
+          actionButton: "bg-primary text-primary-foreground",
+          cancelButton: "bg-muted text-muted-foreground",
+          icon: "[&>svg]:!size-6 [&>svg]:!w-6 [&>svg]:!h-6 !shrink-0 !m-0",
+          success: "!bg-toast-success-bg !border-toast-success-bg !text-foreground",
+          error: "!bg-toast-error-bg !border-toast-error-bg !text-foreground",
+          warning: "!bg-toast-warning-bg !border-toast-warning-bg !text-foreground",
+          info: "!bg-toast-info-bg !border-toast-info-bg !text-foreground",
           closeButton:
-            "!static !order-3 !ml-auto !mt-0.5 !self-start !bg-transparent !border-none !p-0 !text-muted-foreground hover:!text-foreground !transform-none !transition-colors [&>svg]:!h-4 [&>svg]:!w-4 group-data-[type=success]:!text-green-700 group-data-[type=success]:hover:!text-green-900 dark:group-data-[type=success]:text-green-400 group-data-[type=error]:!text-red-700 group-data-[type=error]:hover:!text-red-900 dark:group-data-[type=error]:text-red-400 group-data-[type=warning]:!text-amber-700 group-data-[type=warning]:hover:!text-amber-900 dark:group-data-[type=warning]:text-amber-400 group-data-[type=info]:!text-blue-700 group-data-[type=info]:hover:!text-blue-900 dark:group-data-[type=info]:text-blue-400",
+            "!relative !top-0 !right-0 !left-auto !transform-none !bg-transparent !border-none !p-0 !m-0 !ml-auto !shrink-0 !order-last !text-foreground hover:!text-foreground/80 !transition-colors [&>svg]:!size-5 [&>svg]:!w-5 [&>svg]:!h-5",
         },
       }}
       closeButton

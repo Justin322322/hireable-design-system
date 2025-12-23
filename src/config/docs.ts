@@ -22,8 +22,10 @@ import BrushOutlined from "@mui/icons-material/BrushOutlined";
 import AccessibilityNewOutlined from "@mui/icons-material/AccessibilityNewOutlined";
 import ToggleOnOutlined from "@mui/icons-material/ToggleOnOutlined";
 import CheckBoxOutlined from "@mui/icons-material/CheckBoxOutlined";
+import RadioButtonCheckedOutlined from "@mui/icons-material/RadioButtonCheckedOutlined";
 import ViewSidebarOutlined from "@mui/icons-material/ViewSidebarOutlined";
 import VerifiedOutlined from "@mui/icons-material/VerifiedOutlined";
+import NavigateNextOutlined from "@mui/icons-material/NavigateNextOutlined";
 import BarChartOutlined from "@mui/icons-material/BarChartOutlined";
 import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
 import HorizontalRuleOutlined from "@mui/icons-material/HorizontalRuleOutlined";
@@ -75,13 +77,15 @@ export const sidebarNav: Record<string, NavSection> = {
       { label: "Button", href: "/components/button", icon: SmartButtonOutlined },
       { label: "Card", href: "/components/card", icon: CreditCardOutlined },
       { label: "Input", href: "/components/input", icon: InputOutlined },
-      { label: "Select", href: "/components/select", icon: ExpandMoreOutlined },
+      { label: "Dropdown", href: "/components/dropdown", icon: ExpandMoreOutlined },
       { label: "Tabs", href: "/components/tabs", icon: TabOutlined },
       { label: "Dialogue", href: "/components/dialogue", icon: ChatBubbleOutlineOutlined },
       { label: "Toast", href: "/components/toast", icon: NotificationsOutlined },
       { label: "Badge", href: "/components/badge", icon: VerifiedOutlined },
+      { label: "Breadcrumb", href: "/components/breadcrumb", icon: NavigateNextOutlined },
       { label: "Toggle", href: "/components/toggle", icon: ToggleOnOutlined },
       { label: "Checkbox", href: "/components/checkbox", icon: CheckBoxOutlined },
+      { label: "Radio Group/Button", href: "/components/radio-button", icon: RadioButtonCheckedOutlined },
       { label: "Sidebar", href: "/components/sidebar", icon: ViewSidebarOutlined },
       { label: "Avatar", href: "/components/avatar", icon: AccountCircleOutlined },
       { label: "Separator", href: "/components/separator", icon: HorizontalRuleOutlined },

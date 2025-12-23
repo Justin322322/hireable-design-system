@@ -29,6 +29,8 @@ export type IconName =
   | "keyboard_arrow_up"
   | "chevron_right"
   | "chevron_left"
+  | "expand_more"
+  | "expand_less"
   | "arrow_forward"
   | "arrow_back"
   // Content

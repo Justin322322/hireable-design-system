@@ -172,9 +172,9 @@ export default function IconsPage() {
             <Card>
               <CardContent className="py-6">
                 <div className="flex items-center justify-center gap-6">
-                  {[100, 300, 400, 500, 700].map((w) => (
+                  {([100, 300, 400, 500, 700] as const).map((w) => (
                     <div key={w} className="flex flex-col items-center gap-2">
-                      <Icon icon="settings" size={40} weight={w as 100 | 300 | 400 | 500 | 700} />
+                      <Icon icon="settings" size={40} weight={w} />
                       <span className="text-xs text-muted-foreground">{w}</span>
                     </div>
                   ))}

@@ -33,7 +33,7 @@ const searchData: { title: string; category: string; href: string; icon: SvgIcon
   { title: "Input", category: "Components", href: "/components/input", icon: WidgetsOutlined },
   { title: "Select", category: "Components", href: "/components/select", icon: WidgetsOutlined },
   { title: "Tabs", category: "Components", href: "/components/tabs", icon: WidgetsOutlined },
-  { title: "Dialogue", category: "Components", href: "/components/dialogue", icon: WidgetsOutlined },
+  { title: "Dialog", category: "Components", href: "/components/dialogue", icon: WidgetsOutlined },
   { title: "Toast", category: "Components", href: "/components/toast", icon: WidgetsOutlined },
   { title: "Badge", category: "Components", href: "/components/badge", icon: WidgetsOutlined },
   { title: "Toggle", category: "Components", href: "/components/toggle", icon: WidgetsOutlined },
@@ -62,6 +62,7 @@ const searchData: { title: string; category: string; href: string; icon: SvgIcon
 export function DocsSearch() {
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
   const router = useRouter();
 
   React.useEffect(() => {
@@ -82,10 +83,29 @@ export function DocsSearch() {
         item.category.toLowerCase().includes(query.toLowerCase())
       ).slice(0, 20);
 
+  React.useEffect(() => {
+    setSelectedIndex(0);
+  }, [query]);
+
   const onSelect = (href: string) => {
     setOpen(false);
     setQuery("");
     router.push(href);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (filteredData.length === 0) return;
+
+    if (e.key === "ArrowDown" || e.key === "Tab") {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev + 1) % filteredData.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev - 1 + filteredData.length) % filteredData.length);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      onSelect(filteredData[selectedIndex].href);
+    }
   };
 
   return (
@@ -112,22 +132,34 @@ export function DocsSearch() {
                 placeholder="Type to search documentation..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                aria-autocomplete="list"
+                aria-controls="search-results"
+                aria-activedescendant={filteredData.length > 0 ? `result-${selectedIndex}` : undefined}
                 autoFocus
               />
             </div>
           </DialogHeader>
           <div className="max-h-[450px] overflow-y-auto p-2">
             {filteredData.length > 0 ? (
-              <div className="space-y-1">
-                {filteredData.map((item) => {
+              <div className="space-y-1" role="listbox" id="search-results">
+                {filteredData.map((item, index) => {
                   const Icon = item.icon;
+                  const isSelected = index === selectedIndex;
                   return (
                     <button
                       key={item.href}
+                      id={`result-${index}`}
+                      role="option"
+                      aria-selected={isSelected}
                       onClick={() => onSelect(item.href)}
-                      className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors hover:bg-secondary text-left group"
+                      className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors text-left group ${
+                        isSelected ? "bg-secondary" : "hover:bg-secondary"
+                      }`}
                     >
-                      <div className="flex h-8 w-8 items-center justify-center rounded-md border bg-background group-hover:border-primary/50 transition-colors">
+                      <div className={`flex h-8 w-8 items-center justify-center rounded-md border transition-colors ${
+                        isSelected ? "bg-background border-primary/50" : "bg-background group-hover:border-primary/50"
+                      }`}>
                         <Icon className="h-4 w-4 text-icon" />
                       </div>
                       <div className="flex flex-col">

@@ -34,28 +34,28 @@ export default function AvatarPage() {
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="xl">
                   <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
-                  <AvatarFallback className="text-lg">CN</AvatarFallback>
+                  <AvatarFallback className="text-lg">JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">X-Large (80px)</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="lg">
                   <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
-                  <AvatarFallback>LR</AvatarFallback>
+                  <AvatarFallback>JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Large (40px)</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="md">
                   <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
-                  <AvatarFallback className="text-[10px]">VC</AvatarFallback>
+                  <AvatarFallback className="text-[10px]">JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Medium (24px)</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="sm">
                   <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
-                  <AvatarFallback className="text-[8px]">GR</AvatarFallback>
+                  <AvatarFallback className="text-[8px]">JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Small (16px)</span>
               </div>

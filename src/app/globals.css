@@ -117,6 +117,7 @@
   /* Base Colors */
   --color-white: oklch(1 0 0);
   --color-black: oklch(0 0 0);
+  --color-black-25: oklch(0 0 0 / 0.25);
   
   /* Neutral Scale */
   --color-neutral-50: oklch(0.985 0 0);
@@ -209,7 +210,7 @@
   --chart-axis-text: var(--color-neutral-700);
   
   /* Shadows */
-  --shadow-dropdown: 0px 2px 4px var(--color-black) / 25%;
+  --shadow-dropdown: 0px 2px 4px var(--color-black-25);
 
   /* ═══════════════════════════════════════════════════════════
      LAYER 3: COMPONENT - Component-specific (reference semantic)

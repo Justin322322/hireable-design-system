@@ -116,7 +116,7 @@ function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Can
               </div>
             </div>
           </div>
-          <button className="flex h-6 w-6 items-center justify-center text-icon hover:text-foreground">
+          <button aria-label="More options" className="flex h-6 w-6 items-center justify-center text-icon hover:text-foreground">
             <MoreHorizOutlined sx={{ fontSize: 20 }} />
           </button>
         </div>
@@ -136,7 +136,7 @@ function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Can
           <div className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-icon">
             Activity Title
           </div>
-          <button className="flex h-6 w-6 items-center justify-center rounded-full bg-neutral-subtle text-icon">
+          <button aria-label="Open details" className="flex h-6 w-6 items-center justify-center rounded-full bg-neutral-subtle text-icon">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

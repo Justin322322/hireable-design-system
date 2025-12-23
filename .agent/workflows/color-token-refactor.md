@@ -55,6 +55,7 @@ Intent-based usage referencing primitives.
 --text-primary: var(--color-neutral-900);
 --text-on-primary: var(--color-white);
 --border-default: var(--color-neutral-200);
+--bg-primary-hover: var(--color-blue-600);
 --border-focused: var(--color-blue-500);
 ```
 
@@ -66,7 +67,7 @@ Component-specific needs referencing semantic or base tokens.
 /* Pattern: --{component}-{variant}-{property} */
 --button-primary-bg: var(--bg-primary);
 --button-primary-text: var(--text-on-primary);
---button-primary-bg-hover: var(--color-blue-600);
+--button-primary-bg-hover: var(--bg-primary-hover);
 --input-border: var(--border-default);
 --input-border-focus: var(--border-focused);
 ```

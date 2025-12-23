@@ -5,7 +5,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlock } from "@/components/docs/code-block";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { CheckCircleOutlined, ErrorOutline, WarningAmberOutlined, InfoOutlined, CloseOutlined } from "@mui/icons-material";
+import CheckCircleOutlined from "@mui/icons-material/CheckCircleOutlined";
+import ErrorOutline from "@mui/icons-material/ErrorOutline";
+import WarningAmberOutlined from "@mui/icons-material/WarningAmberOutlined";
+import InfoOutlined from "@mui/icons-material/InfoOutlined";
+import CloseOutlined from "@mui/icons-material/CloseOutlined";
 
 function ToastDemo() {
   const { toast } = useToast();

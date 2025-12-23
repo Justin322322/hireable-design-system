@@ -2,7 +2,9 @@
 
 import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
-import { CheckOutlined, KeyboardArrowDownOutlined, KeyboardArrowUpOutlined } from "@mui/icons-material"
+import CheckOutlined from "@mui/icons-material/CheckOutlined"
+import KeyboardArrowDownOutlined from "@mui/icons-material/KeyboardArrowDownOutlined"
+import KeyboardArrowUpOutlined from "@mui/icons-material/KeyboardArrowUpOutlined"
 
 import { cn } from "@/lib/utils"
 

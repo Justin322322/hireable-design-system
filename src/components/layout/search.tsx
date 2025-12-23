@@ -78,12 +78,16 @@ export function DocsSearch() {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const filteredData = query === "" 
-    ? [] 
-    : searchData.filter((item) => 
-        item.title.toLowerCase().includes(query.toLowerCase()) ||
-        item.category.toLowerCase().includes(query.toLowerCase())
-      ).slice(0, 20);
+  const filteredData = React.useMemo(() => {
+    if (query === "") return [];
+    const lowerQuery = query.toLowerCase();
+    return searchData
+      .filter((item) => 
+        item.title.toLowerCase().includes(lowerQuery) ||
+        item.category.toLowerCase().includes(lowerQuery)
+      )
+      .slice(0, 20);
+  }, [query]);
 
   React.useEffect(() => {
     setSelectedIndex(0);

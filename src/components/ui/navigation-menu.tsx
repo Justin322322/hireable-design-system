@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { cva } from "class-variance-authority"
-import { KeyboardArrowDownOutlined } from "@mui/icons-material"
+import KeyboardArrowDownOutlined from "@mui/icons-material/KeyboardArrowDownOutlined"
 
 import { cn } from "@/lib/utils"
 

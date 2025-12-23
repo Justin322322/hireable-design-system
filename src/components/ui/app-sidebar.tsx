@@ -130,8 +130,10 @@ function SidebarProfile({ profile }: { profile: SidebarUserProfile }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const menuRef = React.useRef<HTMLDivElement>(null);
 
-  // Close menu when clicking outside
+  // Close menu when clicking outside - only attach listener when menu is open
   React.useEffect(() => {
+    if (!isOpen) return;
+    
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsOpen(false);
@@ -139,7 +141,7 @@ function SidebarProfile({ profile }: { profile: SidebarUserProfile }) {
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [isOpen]);
 
   return (
     <div className="relative" ref={menuRef}>

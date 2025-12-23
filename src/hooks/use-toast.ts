@@ -1,6 +1,9 @@
 import { toast as sonnerToast } from "sonner";
 import { createElement } from "react";
-import { CheckCircleOutlined, ErrorOutline, WarningAmberOutlined, InfoOutlined } from "@mui/icons-material";
+import CheckCircleOutlined from "@mui/icons-material/CheckCircleOutlined";
+import ErrorOutline from "@mui/icons-material/ErrorOutline";
+import WarningAmberOutlined from "@mui/icons-material/WarningAmberOutlined";
+import InfoOutlined from "@mui/icons-material/InfoOutlined";
 
 interface ToastProps {
   title?: string;

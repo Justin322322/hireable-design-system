@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { MoreHorizOutlined } from "@mui/icons-material";
+import MoreHorizOutlined from "@mui/icons-material/MoreHorizOutlined";
 import { VERSION } from "@/lib/version";
 
 // Import JSON data (simulates API response)

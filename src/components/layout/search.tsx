@@ -64,6 +64,8 @@ export function DocsSearch() {
   const [query, setQuery] = React.useState("");
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const router = useRouter();
+  const listRef = React.useRef<HTMLDivElement>(null);
+  const itemRefs = React.useRef<(HTMLButtonElement | null)[]>([]);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -115,6 +117,15 @@ export function DocsSearch() {
     }
   };
 
+  React.useEffect(() => {
+    if (itemRefs.current[selectedIndex]) {
+      itemRefs.current[selectedIndex]?.scrollIntoView({
+        block: "nearest",
+        behavior: "smooth",
+      });
+    }
+  }, [selectedIndex]);
+
   return (
     <>
       <button
@@ -147,7 +158,7 @@ export function DocsSearch() {
               />
             </div>
           </DialogHeader>
-          <div className="max-h-[450px] overflow-y-auto p-2">
+            <div className="max-h-[450px] overflow-y-auto p-2" ref={listRef}>
             {filteredData.length > 0 ? (
               <div className="space-y-1" role="listbox" id="search-results">
                 {filteredData.map((item, index) => {
@@ -156,6 +167,7 @@ export function DocsSearch() {
                   return (
                     <button
                       key={item.href}
+                      ref={(el) => { itemRefs.current[index] = el; }}
                       id={`result-${index}`}
                       role="option"
                       aria-selected={isSelected}

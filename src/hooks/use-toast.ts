@@ -23,25 +23,25 @@ export function useToast() {
       case "success":
         sonnerToast.success(title, {
           ...baseOptions,
-          icon: createElement(CheckCircleOutlined, { sx: { fontSize: 16 }, className: "text-green-600 dark:text-green-400" }),
+          icon: createElement(CheckCircleOutlined, { sx: { fontSize: 24 }, className: "text-success" }),
         });
         break;
       case "destructive":
         sonnerToast.error(title, {
           ...baseOptions,
-          icon: createElement(ErrorOutline, { sx: { fontSize: 16 }, className: "text-red-600 dark:text-red-400" }),
+          icon: createElement(ErrorOutline, { sx: { fontSize: 24 }, className: "text-danger" }),
         });
         break;
       case "warning":
         sonnerToast.warning(title, {
           ...baseOptions,
-          icon: createElement(WarningAmberOutlined, { sx: { fontSize: 16 }, className: "text-amber-600 dark:text-amber-400" }),
+          icon: createElement(WarningAmberOutlined, { sx: { fontSize: 24 }, className: "text-warning" }),
         });
         break;
       case "info":
         sonnerToast.info(title, {
           ...baseOptions,
-          icon: createElement(InfoOutlined, { sx: { fontSize: 16 }, className: "text-blue-600 dark:text-blue-400" }),
+          icon: createElement(InfoOutlined, { sx: { fontSize: 24 }, className: "text-client" }),
         });
         break;
       default:

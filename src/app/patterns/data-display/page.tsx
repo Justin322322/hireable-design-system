@@ -38,7 +38,7 @@ export default function DataDisplayPatternPage() {
                     <tbody>
                       <tr className="border-b">
                         <td className="py-3">John Doe</td>
-                        <td className="py-3"><Badge variant="default">Active</Badge></td>
+                        <td className="py-3"><Badge variant="ontrack">Active</Badge></td>
                         <td className="py-3 text-muted-foreground">Admin</td>
                         <td className="py-3 text-right">
                           <button className="text-sm text-primary hover:underline">Edit</button>
@@ -46,7 +46,7 @@ export default function DataDisplayPatternPage() {
                       </tr>
                       <tr className="border-b">
                         <td className="py-3">Jane Smith</td>
-                        <td className="py-3"><Badge variant="default">Active</Badge></td>
+                        <td className="py-3"><Badge variant="ontrack">Active</Badge></td>
                         <td className="py-3 text-muted-foreground">Editor</td>
                         <td className="py-3 text-right">
                           <button className="text-sm text-primary hover:underline">Edit</button>
@@ -54,7 +54,7 @@ export default function DataDisplayPatternPage() {
                       </tr>
                       <tr className="border-b">
                         <td className="py-3">Bob Wilson</td>
-                        <td className="py-3"><Badge variant="default" hasBorder>Inactive</Badge></td>
+                        <td className="py-3"><Badge variant="default">Inactive</Badge></td>
                         <td className="py-3 text-muted-foreground">Viewer</td>
                         <td className="py-3 text-right">
                           <button className="text-sm text-primary hover:underline">Edit</button>
@@ -103,21 +103,21 @@ export default function DataDisplayPatternPage() {
                       <p className="font-medium">Project Alpha</p>
                       <p className="text-sm text-muted-foreground">Updated 2 hours ago</p>
                     </div>
-                    <Badge>In Progress</Badge>
+                    <Badge variant="atrisk">In Progress</Badge>
                   </li>
                   <li className="py-4 flex items-center justify-between">
                     <div>
                       <p className="font-medium">Project Beta</p>
                       <p className="text-sm text-muted-foreground">Updated yesterday</p>
                     </div>
-                    <Badge variant="default">Complete</Badge>
+                    <Badge variant="complete">Complete</Badge>
                   </li>
                   <li className="py-4 flex items-center justify-between">
                     <div>
                       <p className="font-medium">Project Gamma</p>
                       <p className="text-sm text-muted-foreground">Updated 3 days ago</p>
                     </div>
-                    <Badge variant="default" hasBorder>Pending</Badge>
+                    <Badge variant="offtrack">Pending</Badge>
                   </li>
                 </ul>
               </CardContent>

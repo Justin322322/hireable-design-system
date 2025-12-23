@@ -12,7 +12,7 @@ export function Toaster() {
           toast:
             "group toast !flex !items-center !justify-start [&[data-sonner-toast]]:!h-14 [&[data-sonner-toast]]:!py-4 [&[data-sonner-toast]]:!pl-4 [&[data-sonner-toast]]:!pr-6 [&[data-sonner-toast]]:!gap-6 [&[data-sonner-toast]]:!rounded-lg bg-background text-foreground border-border",
           title: "!font-primary !font-normal !text-base !leading-[150%] !tracking-[0.2px] !m-0 !p-0 !flex-1",
-          description: "!hidden",
+
           actionButton: "bg-primary text-primary-foreground",
           cancelButton: "bg-muted text-muted-foreground",
           icon: "[&>svg]:!size-6 [&>svg]:!w-6 [&>svg]:!h-6 !shrink-0 !m-0",

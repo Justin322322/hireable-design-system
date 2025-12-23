@@ -91,40 +91,40 @@ function ProgressChart({ data }: { data: ChartData }) {
           >
             <defs>
               <linearGradient id="progressGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#00A7F8" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="#00A7F8" stopOpacity={0} />
+                <stop offset="5%" stopColor="var(--chart-fill)" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="var(--chart-fill)" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid stroke="#C3C3C3" strokeWidth={0.5} vertical={false} />
+            <CartesianGrid stroke="var(--chart-grid)" strokeWidth={0.5} vertical={false} />
             <XAxis
               dataKey="date"
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12, fill: "#757575" }}
+              tick={{ fontSize: 12, fill: "var(--chart-axis-text)" }}
               dy={10}
             />
             <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 12, fill: "#757575" }}
+              tick={{ fontSize: 12, fill: "var(--chart-axis-text)" }}
               domain={[0, 100]}
               ticks={[0, 20, 40, 60, 80, 100]}
               label={{
                 value: "Progress (%)",
                 angle: -90,
                 position: "insideLeft",
-                style: { fontSize: 12, fill: "#757575" },
+                style: { fontSize: 12, fill: "var(--chart-axis-text)" },
               }}
             />
             <Tooltip content={<CustomTooltip />} />
             <Area
               type="monotone"
               dataKey="progress"
-              stroke="#00A7F8"
+              stroke="var(--chart-line)"
               strokeWidth={2}
               fill="url(#progressGradient)"
               dot={false}
-              activeDot={{ fill: "#fff", stroke: "#00A7F8", strokeWidth: 2, r: 6 }}
+              activeDot={{ fill: "#fff", stroke: "var(--chart-line)", strokeWidth: 2, r: 6 }}
             />
           </AreaChart>
         </ResponsiveContainer>

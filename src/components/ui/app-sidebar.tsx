@@ -70,7 +70,7 @@ const userProfiles: Record<string, SidebarUserProfile> = {
     name: "Admin",
     email: "hello@hireable.com",
     initials: "AD",
-    initialsColor: "bg-[#FFE5CC] text-[#FF8112]",
+    initialsColor: "bg-avatar-admin-bg text-avatar-admin-foreground",
   },
 };
 
@@ -199,7 +199,7 @@ function SidebarProfile({ profile }: { profile: SidebarUserProfile }) {
       {/* Dropdown Menu */}
       {isOpen && (
         <div 
-          className="absolute bottom-full left-0 mb-2 w-[264px] flex flex-col p-2 gap-2 bg-background rounded-lg shadow-[0px_2px_4px_rgba(0,0,0,0.25)]"
+          className="absolute bottom-full left-0 mb-2 w-[264px] flex flex-col p-2 gap-2 bg-background rounded-lg shadow-md"
           role="menu"
         >
           {/* Profile Option */}

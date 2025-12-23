@@ -24,6 +24,7 @@ const searchData: { title: string; category: string; href: string; icon: SvgIcon
   { title: "Corners", category: "Style", href: "/style/corners", icon: DescriptionOutlined },
   { title: "Icons", category: "Style", href: "/style/icons", icon: DescriptionOutlined },
   { title: "Motion", category: "Style", href: "/style/motion", icon: DescriptionOutlined },
+  { title: "Border Style", category: "Style", href: "/style/border-style", icon: DescriptionOutlined },
   
   // Components
   { title: "Overview", category: "Components", href: "/components", icon: WidgetsOutlined },
@@ -32,15 +33,18 @@ const searchData: { title: string; category: string; href: string; icon: SvgIcon
   { title: "Input", category: "Components", href: "/components/input", icon: WidgetsOutlined },
   { title: "Select", category: "Components", href: "/components/select", icon: WidgetsOutlined },
   { title: "Tabs", category: "Components", href: "/components/tabs", icon: WidgetsOutlined },
-  { title: "Modal", category: "Components", href: "/components/modal", icon: WidgetsOutlined },
+  { title: "Dialog", category: "Components", href: "/components/dialogue", icon: WidgetsOutlined },
   { title: "Toast", category: "Components", href: "/components/toast", icon: WidgetsOutlined },
   { title: "Badge", category: "Components", href: "/components/badge", icon: WidgetsOutlined },
   { title: "Toggle", category: "Components", href: "/components/toggle", icon: WidgetsOutlined },
+  { title: "Checkbox", category: "Components", href: "/components/checkbox", icon: WidgetsOutlined },
+  { title: "Sidebar", category: "Components", href: "/components/sidebar", icon: WidgetsOutlined },
   { title: "Avatar", category: "Components", href: "/components/avatar", icon: WidgetsOutlined },
   { title: "Separator", category: "Components", href: "/components/separator", icon: WidgetsOutlined },
   { title: "Navigation Menu", category: "Components", href: "/components/navigation-menu", icon: WidgetsOutlined },
   { title: "Drawer", category: "Components", href: "/components/drawer", icon: WidgetsOutlined },
   { title: "Chart", category: "Components", href: "/components/chart", icon: WidgetsOutlined },
+  { title: "Kanban", category: "Components", href: "/components/kanban", icon: WidgetsOutlined },
 
   // Patterns
   { title: "Overview", category: "Patterns", href: "/patterns", icon: GridViewOutlined },
@@ -58,7 +62,10 @@ const searchData: { title: string; category: string; href: string; icon: SvgIcon
 export function DocsSearch() {
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
   const router = useRouter();
+  const listRef = React.useRef<HTMLDivElement>(null);
+  const itemRefs = React.useRef<(HTMLButtonElement | null)[]>([]);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -76,13 +83,48 @@ export function DocsSearch() {
     : searchData.filter((item) => 
         item.title.toLowerCase().includes(query.toLowerCase()) ||
         item.category.toLowerCase().includes(query.toLowerCase())
-      ).slice(0, 8);
+      ).slice(0, 20);
+
+  React.useEffect(() => {
+    setSelectedIndex(0);
+  }, [query]);
 
   const onSelect = (href: string) => {
     setOpen(false);
     setQuery("");
     router.push(href);
   };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (filteredData.length === 0) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev + 1) % filteredData.length);
+    } else if (e.key === "Tab") {
+      e.preventDefault();
+      if (e.shiftKey) {
+        setSelectedIndex((prev) => (prev - 1 + filteredData.length) % filteredData.length);
+      } else {
+        setSelectedIndex((prev) => (prev + 1) % filteredData.length);
+      }
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev - 1 + filteredData.length) % filteredData.length);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      onSelect(filteredData[selectedIndex].href);
+    }
+  };
+
+  React.useEffect(() => {
+    if (itemRefs.current[selectedIndex]) {
+      itemRefs.current[selectedIndex]?.scrollIntoView({
+        block: "nearest",
+        behavior: "smooth",
+      });
+    }
+  }, [selectedIndex]);
 
   return (
     <>
@@ -108,22 +150,35 @@ export function DocsSearch() {
                 placeholder="Type to search documentation..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                aria-autocomplete="list"
+                aria-controls="search-results"
+                aria-activedescendant={filteredData.length > 0 ? `result-${selectedIndex}` : undefined}
                 autoFocus
               />
             </div>
           </DialogHeader>
-          <div className="max-h-[450px] overflow-y-auto p-2">
+            <div className="max-h-[450px] overflow-y-auto p-2" ref={listRef}>
             {filteredData.length > 0 ? (
-              <div className="space-y-1">
-                {filteredData.map((item) => {
+              <div className="space-y-1" role="listbox" id="search-results">
+                {filteredData.map((item, index) => {
                   const Icon = item.icon;
+                  const isSelected = index === selectedIndex;
                   return (
                     <button
                       key={item.href}
+                      ref={(el) => { itemRefs.current[index] = el; }}
+                      id={`result-${index}`}
+                      role="option"
+                      aria-selected={isSelected}
                       onClick={() => onSelect(item.href)}
-                      className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors hover:bg-secondary text-left group"
+                      className={`flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors text-left group ${
+                        isSelected ? "bg-secondary" : "hover:bg-secondary"
+                      }`}
                     >
-                      <div className="flex h-8 w-8 items-center justify-center rounded-md border bg-background group-hover:border-primary/50 transition-colors">
+                      <div className={`flex h-8 w-8 items-center justify-center rounded-md border transition-colors ${
+                        isSelected ? "bg-background border-primary/50" : "bg-background group-hover:border-primary/50"
+                      }`}>
                         <Icon className="h-4 w-4 text-icon" />
                       </div>
                       <div className="flex flex-col">
@@ -146,10 +201,10 @@ export function DocsSearch() {
           </div>
           <div className="flex items-center justify-between border-t bg-muted/50 px-4 py-2 text-[10px] text-muted-foreground">
             <div className="flex gap-4">
-              <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">↑↓</kbd> Navigate</span>
-              <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">Enter</kbd> Select</span>
+              <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">Tab</kbd><kbd className="rounded border bg-background px-1">→</kbd> Navigate</span>
+              <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">↵</kbd> Select</span>
             </div>
-            <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">ESC</kbd> Close</span>
+            <span className="flex items-center gap-1"><kbd className="rounded border bg-background px-1">Esc</kbd> Close</span>
           </div>
         </DialogContent>
       </Dialog>

@@ -52,20 +52,20 @@ function ApplicationCard({ company, position, salary, experience, status, posted
   const isMatched = status.includes("MATCHED");
 
   return (
-    <Card className="w-[300px] rounded-[8px] border-[0.75px] border-solid border-neutral-300 bg-background p-[12px]">
+    <Card className="w-[300px] rounded-lg border border-button-tertiary-border bg-background p-3">
       <CardContent className="flex flex-col items-start gap-[8px] p-0">
         <div className="flex w-full items-center justify-between">
-          <p className="text-[10px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-700">
+          <p className="text-[10px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground">
             {company}
           </p>
-          <p className="text-[10px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-700">
+          <p className="text-[10px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground">
             {postedTime}
           </p>
         </div>
         <p className="w-full truncate text-[16px] leading-normal font-semibold tracking-[0.2px] text-foreground">
           {position}
         </p>
-        <div className="flex items-center gap-1.5 text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-700">
+        <div className="flex items-center gap-1.5 text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground">
           <span>{salary}</span>
           <span>•</span>
           <span>{experience}</span>
@@ -98,12 +98,12 @@ function ApplicationCard({ company, position, salary, experience, status, posted
 
 function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Candidate, "id" | "avatar">) {
   return (
-    <Card className="h-[135px] w-[300px] rounded-[6px] border-[0.75px] border-solid border-neutral-300 bg-background">
+    <Card className="h-[135px] w-[300px] rounded-md border border-button-tertiary-border bg-background">
       <CardContent className="flex h-full flex-col items-start gap-[9px] p-[12px]">
         <div className="relative flex w-full items-start justify-between">
           <div className="relative flex h-[40px] flex-1 items-center gap-[8px]">
             <Avatar className="h-[40px] w-[40px]">
-              <AvatarFallback className="bg-neutral-200 text-[14px] font-medium text-neutral-700">
+              <AvatarFallback className="bg-neutral-muted text-[14px] font-medium text-muted-foreground">
                 {name.split(" ").map(n => n[0]).join("")}
               </AvatarFallback>
             </Avatar>
@@ -111,17 +111,17 @@ function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Can
               <div className="text-[14px] leading-[1.2] font-semibold tracking-[0.2px] text-foreground">
                 {name}
               </div>
-              <div className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-700">
+              <div className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground">
                 {role}
               </div>
             </div>
           </div>
-          <button className="flex h-[24px] w-[24px] items-center justify-center text-neutral-400 hover:text-neutral-700">
+          <button aria-label="More options" className="flex h-6 w-6 items-center justify-center text-icon hover:text-foreground">
             <MoreHorizOutlined sx={{ fontSize: 20 }} />
           </button>
         </div>
         <div className="relative flex w-full items-center justify-between gap-2">
-          <div className="flex items-center gap-[6px] text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-700">
+          <div className="flex items-center gap-1.5 text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground">
             <span>{salary}</span>
             <span>•</span>
             <span>{experience}</span>
@@ -133,12 +133,12 @@ function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Can
           )}
         </div>
         <div className="relative mt-auto flex w-full items-center justify-between">
-          <div className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-neutral-300">
+          <div className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-icon">
             Activity Title
           </div>
-          <button className="flex h-[24px] w-[24px] items-center justify-center rounded-full bg-neutral-100">
+          <button aria-label="Open details" className="flex h-6 w-6 items-center justify-center rounded-full bg-neutral-subtle text-icon">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M4.5 3L7.5 6L4.5 9" stroke="#9e9e9e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
@@ -154,11 +154,11 @@ function KanbanColumn<T>({ data, renderCard }: { data: KanbanColumnData<T>; rend
         <span className="text-[14px] leading-[1.2] font-semibold tracking-[0.2px] text-foreground">
           {data.title}
         </span>
-        <span className="flex h-[24px] min-w-[24px] items-center justify-center rounded-full bg-neutral-100 px-[8px] text-[12px] leading-[1.2] font-medium text-neutral-600">
+        <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-neutral-subtle px-2 text-[12px] leading-[1.2] font-medium text-muted-foreground">
           {data.count}
         </span>
       </div>
-      <div className="relative z-0 flex w-[316px] flex-col items-start gap-[8px] overflow-hidden rounded-[8px] bg-neutral-100 p-[8px]">
+      <div className="relative z-0 flex w-[316px] flex-col items-start gap-2 overflow-hidden rounded-lg bg-neutral-subtle p-2">
         {data.items.map((item, idx) => (
           <div key={idx}>{renderCard(item)}</div>
         ))}

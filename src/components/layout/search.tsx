@@ -96,9 +96,16 @@ export function DocsSearch() {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (filteredData.length === 0) return;
 
-    if (e.key === "ArrowDown" || e.key === "Tab") {
+    if (e.key === "ArrowDown") {
       e.preventDefault();
       setSelectedIndex((prev) => (prev + 1) % filteredData.length);
+    } else if (e.key === "Tab") {
+      e.preventDefault();
+      if (e.shiftKey) {
+        setSelectedIndex((prev) => (prev - 1 + filteredData.length) % filteredData.length);
+      } else {
+        setSelectedIndex((prev) => (prev + 1) % filteredData.length);
+      }
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       setSelectedIndex((prev) => (prev - 1 + filteredData.length) % filteredData.length);

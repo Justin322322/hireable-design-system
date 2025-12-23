@@ -11,6 +11,16 @@ const iconSizes: { name: string; size: IconSize; description: string }[] = [
   { name: "48", size: 48, description: "Large displays, hero sections" },
 ];
 
+const iconWeights: { name: string; weight: 100 | 200 | 300 | 400 | 500 | 600 | 700; description: string }[] = [
+  { name: "Thin", weight: 100, description: "Ultra light, decorative use" },
+  { name: "Extra Light", weight: 200, description: "Very light weight" },
+  { name: "Light", weight: 300, description: "Light weight, subtle emphasis" },
+  { name: "Regular", weight: 400, description: "Default weight (recommended)" },
+  { name: "Medium", weight: 500, description: "Slightly heavier than regular" },
+  { name: "Semi Bold", weight: 600, description: "Bold emphasis" },
+  { name: "Bold", weight: 700, description: "Maximum emphasis" },
+];
+
 // Action icons from Material UI
 const sampleIcons: { icon: IconName; label: string }[] = [
   // Navigation & UI
@@ -83,6 +93,7 @@ export default function IconsPage() {
       <Tabs defaultValue="sizing" className="space-y-8">
         <TabsList>
           <TabsTrigger value="sizing">Sizing</TabsTrigger>
+          <TabsTrigger value="weight">Weight</TabsTrigger>
           <TabsTrigger value="fill">Fill</TabsTrigger>
           <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
@@ -128,6 +139,64 @@ export default function IconsPage() {
                 </div>
               </CardContent>
             </Card>
+          </section>
+        </TabsContent>
+
+        <TabsContent value="weight" className="space-y-8">
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Icon Weights</h2>
+            <p className="mb-6 text-muted-foreground">
+              Material Symbols support variable weight from 100 (thin) to 700 (bold). 
+              Use weight to create visual hierarchy and emphasis.
+            </p>
+            <div className="space-y-4">
+              {iconWeights.map((item) => (
+                <Card key={item.name}>
+                  <CardContent className="flex items-center gap-6 py-6">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-muted">
+                      <Icon icon="home" size={24} weight={item.weight} />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-medium">{item.name}</p>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
+                    <code className="text-sm bg-muted px-2 py-1 rounded">weight={`{${item.weight}}`}</code>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Weight Comparison</h2>
+            <Card>
+              <CardContent className="py-6">
+                <div className="flex items-center justify-center gap-6">
+                  {[100, 300, 400, 500, 700].map((w) => (
+                    <div key={w} className="flex flex-col items-center gap-2">
+                      <Icon icon="settings" size={40} weight={w as 100 | 300 | 400 | 500 | 700} />
+                      <span className="text-xs text-muted-foreground">{w}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          <section>
+            <div className="space-y-4">
+              <Card>
+                <CardHeader><CardTitle className="text-lg">When to Use Different Weights</CardTitle></CardHeader>
+                <CardContent className="text-muted-foreground">
+                  <ul className="list-disc list-inside space-y-1">
+                    <li><strong>100-300:</strong> Decorative elements, light themes, large icons</li>
+                    <li><strong>400:</strong> Default for most UI icons</li>
+                    <li><strong>500-600:</strong> Emphasis, active states, important actions</li>
+                    <li><strong>700:</strong> Maximum emphasis, alerts, critical states</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
           </section>
         </TabsContent>
 

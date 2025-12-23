@@ -1,83 +1,32 @@
 import Link from "next/link";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { sidebarNav } from "@/config/docs";
 
-const components = [
-  {
-    title: "Badge",
-    description: "Highlight important information and show status indicators.",
-    href: "/components/badge",
-  },
-  {
-    title: "Button",
-    description: "Trigger actions and events with various styles and states.",
-    href: "/components/button",
-  },
-  {
-    title: "Card",
-    description: "Container for grouping related content and actions.",
-    href: "/components/card",
-  },
-  {
-    title: "Input",
-    description: "Text input fields for forms and data entry.",
-    href: "/components/input",
-  },
-  {
-    title: "Select",
-    description: "Dropdown selection from a list of options.",
-    href: "/components/select",
-  },
-  {
-    title: "Tabs",
-    description: "Organize content into switchable panels.",
-    href: "/components/tabs",
-  },
-  {
-    title: "Toggle",
-    description: "Two-state button for on/off and binary choices.",
-    href: "/components/toggle",
-  },
-  {
-    title: "Modal",
-    description: "Overlay dialogs for focused interactions.",
-    href: "/components/modal",
-  },
-  {
-    title: "Toast",
-    description: "Brief notifications that appear temporarily.",
-    href: "/components/toast",
-  },
-  {
-    title: "Avatar",
-    description: "Visual representation of a user or entity.",
-    href: "/components/avatar",
-  },
-  {
-    title: "Separator",
-    description: "Visual divider between content sections.",
-    href: "/components/separator",
-  },
-  {
-    title: "Navigation Menu",
-    description: "List of links for site navigation.",
-    href: "/components/navigation-menu",
-  },
-  {
-    title: "Drawer",
-    description: "A panel that slides in from the edge of the screen.",
-    href: "/components/drawer",
-  },
-  {
-    title: "Chart",
-    description: "Data visualizations for trends and comparisons.",
-    href: "/components/chart",
-  },
-  {
-    title: "Kanban",
-    description: "Board layout for workflow and pipeline visualization.",
-    href: "/components/kanban",
-  },
-];
+// Component descriptions mapped by href
+const componentDescriptions: Record<string, string> = {
+  "/components/button": "Trigger actions and events with various styles and states.",
+  "/components/card": "Container for grouping related content and actions.",
+  "/components/input": "Text input fields for forms and data entry.",
+  "/components/select": "Dropdown selection from a list of options.",
+  "/components/tabs": "Organize content into switchable panels.",
+  "/components/dialogue": "Overlay dialogs for focused interactions.",
+  "/components/toast": "Brief notifications that appear temporarily.",
+  "/components/badge": "Highlight important information and show status indicators.",
+  "/components/toggle": "Two-state button for on/off and binary choices.",
+  "/components/checkbox": "Selection control for multiple choices.",
+  "/components/sidebar": "Collapsible navigation panel for app layouts.",
+  "/components/avatar": "Visual representation of a user or entity.",
+  "/components/separator": "Visual divider between content sections.",
+  "/components/navigation-menu": "List of links for site navigation.",
+  "/components/drawer": "A panel that slides in from the edge of the screen.",
+  "/components/chart": "Data visualizations for trends and comparisons.",
+  "/components/kanban": "Board layout for workflow and pipeline visualization.",
+};
+
+// Get all component items except the "Overview" entry
+const components = sidebarNav.components.items.filter(
+  (item) => item.href !== "/components"
+);
 
 export default function ComponentsPage() {
   return (
@@ -90,17 +39,23 @@ export default function ComponentsPage() {
         </p>
       </div>
 
-      <div className="grid gap-4">
-        {components.map((component) => (
-          <Link key={component.href} href={component.href}>
-            <Card className="transition-colors hover:bg-muted/50">
-              <CardHeader>
-                <CardTitle className="text-lg">{component.title}</CardTitle>
-                <CardDescription>{component.description}</CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
-        ))}
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {components.map((component) => {
+          const Icon = component.icon;
+          return (
+            <Link key={component.href} href={component.href} className="h-full">
+              <Card className="h-full transition-colors hover:bg-muted/50">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <Icon className="size-5 shrink-0 text-icon" />
+                    {component.label}
+                  </CardTitle>
+                  <CardDescription>{componentDescriptions[component.href]}</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

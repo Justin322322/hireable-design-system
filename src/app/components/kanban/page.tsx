@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import MoreHorizOutlined from "@mui/icons-material/MoreHorizOutlined";
+import { Icon } from "@/components/ui/icon";
 import { VERSION } from "@/lib/version";
 
 // Import JSON data (simulates API response)
@@ -117,7 +117,7 @@ function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Can
             </div>
           </div>
           <button aria-label="More options" className="flex h-6 w-6 items-center justify-center text-icon hover:text-foreground">
-            <MoreHorizOutlined sx={{ fontSize: 20 }} />
+            <Icon icon="more_horiz" size={20} />
           </button>
         </div>
         <div className="relative flex w-full items-center justify-between gap-2">

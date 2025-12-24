@@ -1,12 +1,7 @@
 "use client";
 
 import * as React from "react";
-import SearchOutlined from "@mui/icons-material/SearchOutlined";
-import DescriptionOutlined from "@mui/icons-material/DescriptionOutlined";
-import WidgetsOutlined from "@mui/icons-material/WidgetsOutlined";
-import GridViewOutlined from "@mui/icons-material/GridViewOutlined";
-import MenuBookOutlined from "@mui/icons-material/MenuBookOutlined";
-import type { SvgIconComponent } from "@mui/icons-material";
+import { Icon, type IconName } from "@/components/ui/icon";
 import { useRouter } from "next/navigation";
 import {
   Dialog,
@@ -15,50 +10,50 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const searchData: { title: string; category: string; href: string; icon: SvgIconComponent }[] = [
+const searchData: { title: string; category: string; href: string; iconName: IconName }[] = [
   // Style
-  { title: "Overview", category: "Style", href: "/style", icon: DescriptionOutlined },
-  { title: "Typography", category: "Style", href: "/style/typography", icon: DescriptionOutlined },
-  { title: "Color", category: "Style", href: "/style/color", icon: DescriptionOutlined },
-  { title: "Spacing", category: "Style", href: "/style/spacing", icon: DescriptionOutlined },
-  { title: "Corners", category: "Style", href: "/style/corners", icon: DescriptionOutlined },
-  { title: "Icons", category: "Style", href: "/style/icons", icon: DescriptionOutlined },
-  { title: "Motion", category: "Style", href: "/style/motion", icon: DescriptionOutlined },
-  { title: "Border Style", category: "Style", href: "/style/border-style", icon: DescriptionOutlined },
+  { title: "Overview", category: "Style", href: "/style", iconName: "description" },
+  { title: "Typography", category: "Style", href: "/style/typography", iconName: "description" },
+  { title: "Color", category: "Style", href: "/style/color", iconName: "description" },
+  { title: "Spacing", category: "Style", href: "/style/spacing", iconName: "description" },
+  { title: "Corners", category: "Style", href: "/style/corners", iconName: "description" },
+  { title: "Icons", category: "Style", href: "/style/icons", iconName: "description" },
+  { title: "Motion", category: "Style", href: "/style/motion", iconName: "description" },
+  { title: "Border Style", category: "Style", href: "/style/border-style", iconName: "description" },
   
   // Components
-  { title: "Overview", category: "Components", href: "/components", icon: WidgetsOutlined },
-  { title: "Button", category: "Components", href: "/components/button", icon: WidgetsOutlined },
-  { title: "Card", category: "Components", href: "/components/card", icon: WidgetsOutlined },
-  { title: "Input", category: "Components", href: "/components/input", icon: WidgetsOutlined },
-  { title: "Dropdown", category: "Components", href: "/components/dropdown", icon: WidgetsOutlined },
-  { title: "Tabs", category: "Components", href: "/components/tabs", icon: WidgetsOutlined },
-  { title: "Dialog", category: "Components", href: "/components/dialogue", icon: WidgetsOutlined },
-  { title: "Toast", category: "Components", href: "/components/toast", icon: WidgetsOutlined },
-  { title: "Badge", category: "Components", href: "/components/badge", icon: WidgetsOutlined },
-  { title: "Breadcrumb", category: "Components", href: "/components/breadcrumb", icon: WidgetsOutlined },
-  { title: "Toggle", category: "Components", href: "/components/toggle", icon: WidgetsOutlined },
-  { title: "Checkbox", category: "Components", href: "/components/checkbox", icon: WidgetsOutlined },
-  { title: "Radio Group/Button", category: "Components", href: "/components/radio-button", icon: WidgetsOutlined },
-  { title: "Sidebar", category: "Components", href: "/components/sidebar", icon: WidgetsOutlined },
-  { title: "Avatar", category: "Components", href: "/components/avatar", icon: WidgetsOutlined },
-  { title: "Separator", category: "Components", href: "/components/separator", icon: WidgetsOutlined },
-  { title: "Navigation Menu", category: "Components", href: "/components/navigation-menu", icon: WidgetsOutlined },
-  { title: "Drawer", category: "Components", href: "/components/drawer", icon: WidgetsOutlined },
-  { title: "Chart", category: "Components", href: "/components/chart", icon: WidgetsOutlined },
-  { title: "Kanban", category: "Components", href: "/components/kanban", icon: WidgetsOutlined },
+  { title: "Overview", category: "Components", href: "/components", iconName: "widgets" },
+  { title: "Button", category: "Components", href: "/components/button", iconName: "widgets" },
+  { title: "Card", category: "Components", href: "/components/card", iconName: "widgets" },
+  { title: "Input", category: "Components", href: "/components/input", iconName: "widgets" },
+  { title: "Dropdown", category: "Components", href: "/components/dropdown", iconName: "widgets" },
+  { title: "Tabs", category: "Components", href: "/components/tabs", iconName: "widgets" },
+  { title: "Dialog", category: "Components", href: "/components/dialogue", iconName: "widgets" },
+  { title: "Toast", category: "Components", href: "/components/toast", iconName: "widgets" },
+  { title: "Badge", category: "Components", href: "/components/badge", iconName: "widgets" },
+  { title: "Breadcrumb", category: "Components", href: "/components/breadcrumb", iconName: "widgets" },
+  { title: "Toggle", category: "Components", href: "/components/toggle", iconName: "widgets" },
+  { title: "Checkbox", category: "Components", href: "/components/checkbox", iconName: "widgets" },
+  { title: "Radio Group/Button", category: "Components", href: "/components/radio-button", iconName: "widgets" },
+  { title: "Sidebar", category: "Components", href: "/components/sidebar", iconName: "widgets" },
+  { title: "Avatar", category: "Components", href: "/components/avatar", iconName: "widgets" },
+  { title: "Separator", category: "Components", href: "/components/separator", iconName: "widgets" },
+  { title: "Navigation Menu", category: "Components", href: "/components/navigation-menu", iconName: "widgets" },
+  { title: "Drawer", category: "Components", href: "/components/drawer", iconName: "widgets" },
+  { title: "Chart", category: "Components", href: "/components/chart", iconName: "widgets" },
+  { title: "Kanban", category: "Components", href: "/components/kanban", iconName: "widgets" },
 
   // Patterns
-  { title: "Overview", category: "Patterns", href: "/patterns", icon: GridViewOutlined },
-  { title: "Forms", category: "Patterns", href: "/patterns/forms", icon: GridViewOutlined },
-  { title: "Navigation", category: "Patterns", href: "/patterns/navigation", icon: GridViewOutlined },
-  { title: "Data Display", category: "Patterns", href: "/patterns/data-display", icon: GridViewOutlined },
+  { title: "Overview", category: "Patterns", href: "/patterns", iconName: "grid_view" },
+  { title: "Forms", category: "Patterns", href: "/patterns/forms", iconName: "grid_view" },
+  { title: "Navigation", category: "Patterns", href: "/patterns/navigation", iconName: "grid_view" },
+  { title: "Data Display", category: "Patterns", href: "/patterns/data-display", iconName: "grid_view" },
 
   // Resources
-  { title: "Overview", category: "Resources", href: "/resources", icon: MenuBookOutlined },
-  { title: "Getting Started", category: "Resources", href: "/resources/getting-started", icon: MenuBookOutlined },
-  { title: "Design Tokens", category: "Resources", href: "/resources/design-tokens", icon: MenuBookOutlined },
-  { title: "Accessibility", category: "Resources", href: "/resources/accessibility", icon: MenuBookOutlined },
+  { title: "Overview", category: "Resources", href: "/resources", iconName: "menu_book" },
+  { title: "Getting Started", category: "Resources", href: "/resources/getting-started", iconName: "menu_book" },
+  { title: "Design Tokens", category: "Resources", href: "/resources/design-tokens", iconName: "menu_book" },
+  { title: "Accessibility", category: "Resources", href: "/resources/accessibility", iconName: "menu_book" },
 ];
 
 export function DocsSearch() {
@@ -138,7 +133,7 @@ export function DocsSearch() {
         onClick={() => setOpen(true)}
         className="relative flex h-9 w-full items-center justify-start gap-2 rounded-lg border bg-muted/50 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted md:w-40 lg:w-64"
       >
-        <SearchOutlined className="h-4 w-4 text-icon" />
+        <Icon icon="search" size={16} className="text-icon" />
         <span className="hidden lg:inline-flex">Search documentation...</span>
         <span className="inline-flex lg:hidden">Search...</span>
         <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-6 select-none items-center gap-1 rounded border bg-background px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
@@ -150,7 +145,7 @@ export function DocsSearch() {
           <DialogTitle className="sr-only">Search Documentation</DialogTitle>
           <DialogHeader className="p-4 border-b bg-muted/20">
             <div className="flex items-center gap-3">
-              <SearchOutlined className="h-5 w-5 text-icon" />
+              <Icon icon="search" size={20} className="text-icon" />
               <input
                 className="flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground"
                 placeholder="Type to search documentation..."
@@ -168,7 +163,6 @@ export function DocsSearch() {
             {filteredData.length > 0 ? (
               <div className="space-y-1" role="listbox" id="search-results">
                 {filteredData.map((item, index) => {
-                  const Icon = item.icon;
                   const isSelected = index === selectedIndex;
                   return (
                     <button
@@ -185,7 +179,7 @@ export function DocsSearch() {
                       <div className={`flex h-8 w-8 items-center justify-center rounded-md border transition-colors ${
                         isSelected ? "bg-background border-primary/50" : "bg-background group-hover:border-primary/50"
                       }`}>
-                        <Icon className="h-4 w-4 text-icon" />
+                        <Icon icon={item.iconName} size={16} className="text-icon" />
                       </div>
                       <div className="flex flex-col">
                         <span className="font-medium">{item.title}</span>

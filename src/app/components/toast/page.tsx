@@ -5,11 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CodeBlock } from "@/components/docs/code-block";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import CheckCircleOutlined from "@mui/icons-material/CheckCircleOutlined";
-import ErrorOutline from "@mui/icons-material/ErrorOutline";
-import WarningAmberOutlined from "@mui/icons-material/WarningAmberOutlined";
-import InfoOutlined from "@mui/icons-material/InfoOutlined";
-import CloseOutlined from "@mui/icons-material/CloseOutlined";
+import { Icon } from "@/components/ui/icon";
 
 function ToastDemo() {
   const { toast } = useToast();
@@ -105,7 +101,7 @@ export default function ToastPage() {
                   <div className="rounded-lg border bg-background py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
                     <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Notification</p>
                     <button className="text-foreground hover:text-foreground/80 shrink-0">
-                      <CloseOutlined sx={{ fontSize: 20 }} />
+                      <Icon icon="close" size={20} />
                     </button>
                   </div>
                 </CardContent>
@@ -117,10 +113,10 @@ export default function ToastPage() {
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
                   <div className="rounded-lg bg-toast-success-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
-                    <CheckCircleOutlined sx={{ fontSize: 24 }} className="text-success shrink-0" />
+                    <Icon icon="check_circle" size={24} className="text-success shrink-0" />
                     <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Success</p>
                     <button className="text-foreground hover:text-foreground/80 shrink-0">
-                      <CloseOutlined sx={{ fontSize: 20 }} />
+                      <Icon icon="close" size={20} />
                     </button>
                   </div>
                 </CardContent>
@@ -132,10 +128,10 @@ export default function ToastPage() {
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
                   <div className="rounded-lg bg-toast-error-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
-                    <ErrorOutline sx={{ fontSize: 24 }} className="text-danger shrink-0" />
+                    <Icon icon="error" size={24} className="text-danger shrink-0" />
                     <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Error</p>
                     <button className="text-foreground hover:text-foreground/80 shrink-0">
-                      <CloseOutlined sx={{ fontSize: 20 }} />
+                      <Icon icon="close" size={20} />
                     </button>
                   </div>
                 </CardContent>
@@ -147,10 +143,10 @@ export default function ToastPage() {
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
                   <div className="rounded-lg bg-toast-warning-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
-                    <WarningAmberOutlined sx={{ fontSize: 24 }} className="text-warning shrink-0" />
+                    <Icon icon="warning" size={24} className="text-warning shrink-0" />
                     <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Warning</p>
                     <button className="text-foreground hover:text-foreground/80 shrink-0">
-                      <CloseOutlined sx={{ fontSize: 20 }} />
+                      <Icon icon="close" size={20} />
                     </button>
                   </div>
                 </CardContent>
@@ -162,10 +158,10 @@ export default function ToastPage() {
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
                   <div className="rounded-lg bg-toast-info-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
-                    <InfoOutlined sx={{ fontSize: 24 }} className="text-client shrink-0" />
+                    <Icon icon="info" size={24} className="text-client shrink-0" />
                     <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Information</p>
                     <button className="text-foreground hover:text-foreground/80 shrink-0">
-                      <CloseOutlined sx={{ fontSize: 20 }} />
+                      <Icon icon="close" size={20} />
                     </button>
                   </div>
                 </CardContent>

@@ -3,8 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import MenuOutlined from "@mui/icons-material/MenuOutlined";
-import CloseOutlined from "@mui/icons-material/CloseOutlined";
+import { Icon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -38,11 +37,11 @@ export function MobileNav() {
           variant="ghost"
           className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
-          <MenuOutlined className="h-6 w-6 text-icon" />
+          <Icon icon="menu" size={24} className="text-icon" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </DrawerTrigger>
-      <DrawerContent className="flex flex-col h-full pr-0">
+      <DrawerContent className="flex flex-col h-full pr-0" showCloseButton={false}>
         <DrawerHeader className="relative flex-none border-b px-6 py-4">
           <DrawerTitle className="text-left text-xl">Navigation</DrawerTitle>
           <Button
@@ -50,7 +49,7 @@ export function MobileNav() {
             className="absolute right-4 top-1/2 -translate-y-1/2 px-2 hover:bg-transparent"
             onClick={() => setOpen(false)}
           >
-            <CloseOutlined className="h-6 w-6 text-icon" />
+            <Icon icon="close" size={24} className="text-icon" />
             <span className="sr-only">Close Menu</span>
           </Button>
         </DrawerHeader>
@@ -60,7 +59,7 @@ export function MobileNav() {
               <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground/70">Main Sections</h4>
               <div className="flex flex-col gap-1 text-lg">
                 {mainNav.map((item) => {
-                  const Icon = item.icon;
+                  const NavIcon = item.icon;
                   return (
                     <Link
                       key={item.href}
@@ -73,7 +72,7 @@ export function MobileNav() {
                           : "text-foreground/80"
                       )}
                     >
-                      <Icon className={cn("size-5", pathname.startsWith(item.href) ? "text-icon-active" : "text-icon")} />
+                      <NavIcon className={cn("size-5", pathname.startsWith(item.href) ? "text-icon-active" : "text-icon")} />
                       {item.label}
                     </Link>
                   );
@@ -87,7 +86,7 @@ export function MobileNav() {
                 </h4>
                 <div className="flex flex-col gap-1 text-lg">
                   {currentSidebarNav.items.map((item) => {
-                    const Icon = item.icon;
+                    const NavIcon = item.icon;
                     return (
                       <Link
                         key={item.href}
@@ -100,7 +99,7 @@ export function MobileNav() {
                             : "text-foreground/80"
                         )}
                       >
-                        <Icon className={cn("size-5", pathname === item.href ? "text-icon-active" : "text-icon")} />
+                        <NavIcon className={cn("size-5", pathname === item.href ? "text-icon-active" : "text-icon")} />
                         {item.label}
                       </Link>
                     );

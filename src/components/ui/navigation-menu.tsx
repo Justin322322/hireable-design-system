@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { cva } from "class-variance-authority"
-import KeyboardArrowDownOutlined from "@mui/icons-material/KeyboardArrowDownOutlined"
+import { Icon } from "@/components/ui/icon"
 
 import { cn } from "@/lib/utils"
 
@@ -74,10 +74,11 @@ function NavigationMenuTrigger({
       {...props}
     >
       {children}{" "}
-      <KeyboardArrowDownOutlined
-        className="relative top-px ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
+      <Icon
+        icon="keyboard_arrow_down"
+        size={14}
+        className="relative top-px ml-1 transition duration-300 group-data-[state=open]:rotate-180"
         aria-hidden="true"
-        sx={{ fontSize: 12 }}
       />
     </NavigationMenuPrimitive.Trigger>
   )

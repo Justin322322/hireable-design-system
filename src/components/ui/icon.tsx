@@ -34,6 +34,8 @@ export type IconName =
   | "expand_less"
   | "arrow_forward"
   | "arrow_back"
+  | "navigate_next"
+  | "menu"
   // Content
   | "add"
   | "delete"
@@ -43,17 +45,24 @@ export type IconName =
   | "settings"
   | "work"
   | "description"
+  | "text_fields"
+  | "input"
   // Social & Communication
   | "person"
   | "person_search"
   | "group"
   | "mail"
   | "chat"
+  | "chat_bubble"
   | "notifications"
+  | "account_circle"
   // Toggle/State
   | "favorite"
   | "star"
   | "bookmark"
+  | "toggle_on"
+  | "check_box"
+  | "radio_button_checked"
   // Action icons
   | "visibility"
   | "visibility_off"
@@ -86,6 +95,7 @@ export type IconName =
   | "bar_chart"
   | "gavel"
   | "verified_user"
+  | "verified"
   | "shield"
   | "hourglass_empty"
   | "credit_card"
@@ -97,6 +107,7 @@ export type IconName =
   // Location & Maps
   | "location_on"
   | "place"
+  | "explore"
   // External links
   | "open_in_new"
   | "link"
@@ -111,6 +122,30 @@ export type IconName =
   | "mark_chat_read"
   | "handshake"
   | "forum"
+  // Design/Style icons
+  | "palette"
+  | "space_bar"
+  | "rounded_corner"
+  | "emoji_emotions"
+  | "animation"
+  | "brush"
+  | "straighten"
+  // Component/Layout icons
+  | "grid_view"
+  | "widgets"
+  | "smart_button"
+  | "tab"
+  | "layers"
+  | "table_chart"
+  | "view_sidebar"
+  | "view_kanban"
+  | "vertical_split"
+  | "horizontal_rule"
+  // Documentation/Info icons
+  | "menu_book"
+  | "rocket_launch"
+  | "accessibility_new"
+
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** The Material Symbol icon name (from fonts.google.com/icons) */
   icon: IconName

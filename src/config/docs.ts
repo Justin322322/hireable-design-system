@@ -1,47 +1,10 @@
-import DescriptionOutlined from "@mui/icons-material/DescriptionOutlined";
-import TextFieldsOutlined from "@mui/icons-material/TextFieldsOutlined";
-import PaletteOutlined from "@mui/icons-material/PaletteOutlined";
-import SpaceBarOutlined from "@mui/icons-material/SpaceBarOutlined";
-import RoundedCornerOutlined from "@mui/icons-material/RoundedCornerOutlined";
-import EmojiEmotionsOutlined from "@mui/icons-material/EmojiEmotionsOutlined";
-import AnimationOutlined from "@mui/icons-material/AnimationOutlined";
-import GridViewOutlined from "@mui/icons-material/GridViewOutlined";
-import SmartButtonOutlined from "@mui/icons-material/SmartButtonOutlined";
-import CreditCardOutlined from "@mui/icons-material/CreditCardOutlined";
-import ExpandMoreOutlined from "@mui/icons-material/ExpandMoreOutlined";
-import TabOutlined from "@mui/icons-material/TabOutlined";
-import ChatBubbleOutlineOutlined from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import NotificationsOutlined from "@mui/icons-material/NotificationsOutlined";
-import LayersOutlined from "@mui/icons-material/LayersOutlined";
-import InputOutlined from "@mui/icons-material/InputOutlined";
-import ExploreOutlined from "@mui/icons-material/ExploreOutlined";
-import TableChartOutlined from "@mui/icons-material/TableChartOutlined";
-import MenuBookOutlined from "@mui/icons-material/MenuBookOutlined";
-import RocketLaunchOutlined from "@mui/icons-material/RocketLaunchOutlined";
-import BrushOutlined from "@mui/icons-material/BrushOutlined";
-import AccessibilityNewOutlined from "@mui/icons-material/AccessibilityNewOutlined";
-import ToggleOnOutlined from "@mui/icons-material/ToggleOnOutlined";
-import CheckBoxOutlined from "@mui/icons-material/CheckBoxOutlined";
-import RadioButtonCheckedOutlined from "@mui/icons-material/RadioButtonCheckedOutlined";
-import ViewSidebarOutlined from "@mui/icons-material/ViewSidebarOutlined";
-import VerifiedOutlined from "@mui/icons-material/VerifiedOutlined";
-import NavigateNextOutlined from "@mui/icons-material/NavigateNextOutlined";
-import BarChartOutlined from "@mui/icons-material/BarChartOutlined";
-import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
-import HorizontalRuleOutlined from "@mui/icons-material/HorizontalRuleOutlined";
-import MenuOutlined from "@mui/icons-material/MenuOutlined";
-import VerticalSplitOutlined from "@mui/icons-material/VerticalSplitOutlined";
-import ViewKanbanOutlined from "@mui/icons-material/ViewKanbanOutlined";
-import StraightenOutlined from "@mui/icons-material/StraightenOutlined";
-import WidgetsOutlined from "@mui/icons-material/WidgetsOutlined";
-import LinkOutlined from "@mui/icons-material/LinkOutlined";
-
-import type { SvgIconComponent } from "@mui/icons-material";
+import * as React from "react";
+import { Icon, type IconName } from "@/components/ui/icon";
 
 export interface NavItem {
   label: string;
   href: string;
-  icon: SvgIconComponent;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 export interface NavSection {
@@ -49,68 +12,126 @@ export interface NavSection {
   items: NavItem[];
 }
 
+// Helper function to create icon components from icon names
+function createIconComponent(iconName: IconName): React.ComponentType<{ className?: string }> {
+  const IconComponent = ({ className }: { className?: string }) => 
+    React.createElement(Icon, { icon: iconName, size: 20, className });
+  IconComponent.displayName = `NavIcon_${iconName}`;
+  return IconComponent;
+}
+
+// Icon mappings
+const icons = {
+  // Main nav
+  straighten: createIconComponent("straighten"),
+  widgets: createIconComponent("widgets"),
+  gridView: createIconComponent("grid_view"),
+  menuBook: createIconComponent("menu_book"),
+  
+  // Style
+  description: createIconComponent("description"),
+  textFields: createIconComponent("text_fields"),
+  palette: createIconComponent("palette"),
+  spaceBar: createIconComponent("space_bar"),
+  roundedCorner: createIconComponent("rounded_corner"),
+  emojiEmotions: createIconComponent("emoji_emotions"),
+  animation: createIconComponent("animation"),
+  link: createIconComponent("link"),
+  
+  // Components
+  smartButton: createIconComponent("smart_button"),
+  creditCard: createIconComponent("credit_card"),
+  input: createIconComponent("input"),
+  expandMore: createIconComponent("expand_more"),
+  tab: createIconComponent("tab"),
+  chatBubble: createIconComponent("chat_bubble"),
+  notifications: createIconComponent("notifications"),
+  verified: createIconComponent("verified"),
+  navigateNext: createIconComponent("navigate_next"),
+  toggleOn: createIconComponent("toggle_on"),
+  checkBox: createIconComponent("check_box"),
+  radioButtonChecked: createIconComponent("radio_button_checked"),
+  viewSidebar: createIconComponent("view_sidebar"),
+  accountCircle: createIconComponent("account_circle"),
+  horizontalRule: createIconComponent("horizontal_rule"),
+  menu: createIconComponent("menu"),
+  verticalSplit: createIconComponent("vertical_split"),
+  barChart: createIconComponent("bar_chart"),
+  viewKanban: createIconComponent("view_kanban"),
+  
+  // Patterns
+  layers: createIconComponent("layers"),
+  explore: createIconComponent("explore"),
+  tableChart: createIconComponent("table_chart"),
+  
+  // Resources
+  rocketLaunch: createIconComponent("rocket_launch"),
+  brush: createIconComponent("brush"),
+  accessibilityNew: createIconComponent("accessibility_new"),
+};
+
 export const mainNav: NavItem[] = [
-  { label: "Style", href: "/style", icon: StraightenOutlined },
-  { label: "Components", href: "/components", icon: WidgetsOutlined },
-  { label: "Patterns", href: "/patterns", icon: GridViewOutlined },
-  { label: "Resources", href: "/resources", icon: MenuBookOutlined },
+  { label: "Style", href: "/style", icon: icons.straighten },
+  { label: "Components", href: "/components", icon: icons.widgets },
+  { label: "Patterns", href: "/patterns", icon: icons.gridView },
+  { label: "Resources", href: "/resources", icon: icons.menuBook },
 ];
 
 export const sidebarNav: Record<string, NavSection> = {
   style: {
     title: "Style",
     items: [
-      { label: "Overview", href: "/style", icon: DescriptionOutlined },
-      { label: "Typography", href: "/style/typography", icon: TextFieldsOutlined },
-      { label: "Color", href: "/style/color", icon: PaletteOutlined },
-      { label: "Spacing", href: "/style/spacing", icon: SpaceBarOutlined },
-      { label: "Corners", href: "/style/corners", icon: RoundedCornerOutlined },
-      { label: "Icons", href: "/style/icons", icon: EmojiEmotionsOutlined },
-      { label: "Motion", href: "/style/motion", icon: AnimationOutlined },
-      { label: "Border Style", href: "/style/border-style", icon: LinkOutlined },
+      { label: "Overview", href: "/style", icon: icons.description },
+      { label: "Typography", href: "/style/typography", icon: icons.textFields },
+      { label: "Color", href: "/style/color", icon: icons.palette },
+      { label: "Spacing", href: "/style/spacing", icon: icons.spaceBar },
+      { label: "Corners", href: "/style/corners", icon: icons.roundedCorner },
+      { label: "Icons", href: "/style/icons", icon: icons.emojiEmotions },
+      { label: "Motion", href: "/style/motion", icon: icons.animation },
+      { label: "Border Style", href: "/style/border-style", icon: icons.link },
     ],
   },
   components: {
     title: "Components",
     items: [
-      { label: "Overview", href: "/components", icon: GridViewOutlined },
-      { label: "Button", href: "/components/button", icon: SmartButtonOutlined },
-      { label: "Card", href: "/components/card", icon: CreditCardOutlined },
-      { label: "Input", href: "/components/input", icon: InputOutlined },
-      { label: "Dropdown", href: "/components/dropdown", icon: ExpandMoreOutlined },
-      { label: "Tabs", href: "/components/tabs", icon: TabOutlined },
-      { label: "Dialogue", href: "/components/dialogue", icon: ChatBubbleOutlineOutlined },
-      { label: "Toast", href: "/components/toast", icon: NotificationsOutlined },
-      { label: "Badge", href: "/components/badge", icon: VerifiedOutlined },
-      { label: "Breadcrumb", href: "/components/breadcrumb", icon: NavigateNextOutlined },
-      { label: "Toggle", href: "/components/toggle", icon: ToggleOnOutlined },
-      { label: "Checkbox", href: "/components/checkbox", icon: CheckBoxOutlined },
-      { label: "Radio Group/Button", href: "/components/radio-button", icon: RadioButtonCheckedOutlined },
-      { label: "Sidebar", href: "/components/sidebar", icon: ViewSidebarOutlined },
-      { label: "Avatar", href: "/components/avatar", icon: AccountCircleOutlined },
-      { label: "Separator", href: "/components/separator", icon: HorizontalRuleOutlined },
-      { label: "Navigation Menu", href: "/components/navigation-menu", icon: MenuOutlined },
-      { label: "Drawer", href: "/components/drawer", icon: VerticalSplitOutlined },
-      { label: "Chart", href: "/components/chart", icon: BarChartOutlined },
-      { label: "Kanban", href: "/components/kanban", icon: ViewKanbanOutlined },
+      { label: "Overview", href: "/components", icon: icons.gridView },
+      { label: "Button", href: "/components/button", icon: icons.smartButton },
+      { label: "Card", href: "/components/card", icon: icons.creditCard },
+      { label: "Input", href: "/components/input", icon: icons.input },
+      { label: "Dropdown", href: "/components/dropdown", icon: icons.expandMore },
+      { label: "Tabs", href: "/components/tabs", icon: icons.tab },
+      { label: "Dialogue", href: "/components/dialogue", icon: icons.chatBubble },
+      { label: "Toast", href: "/components/toast", icon: icons.notifications },
+      { label: "Badge", href: "/components/badge", icon: icons.verified },
+      { label: "Breadcrumb", href: "/components/breadcrumb", icon: icons.navigateNext },
+      { label: "Toggle", href: "/components/toggle", icon: icons.toggleOn },
+      { label: "Checkbox", href: "/components/checkbox", icon: icons.checkBox },
+      { label: "Radio Group/Button", href: "/components/radio-button", icon: icons.radioButtonChecked },
+      { label: "Sidebar", href: "/components/sidebar", icon: icons.viewSidebar },
+      { label: "Avatar", href: "/components/avatar", icon: icons.accountCircle },
+      { label: "Separator", href: "/components/separator", icon: icons.horizontalRule },
+      { label: "Navigation Menu", href: "/components/navigation-menu", icon: icons.menu },
+      { label: "Drawer", href: "/components/drawer", icon: icons.verticalSplit },
+      { label: "Chart", href: "/components/chart", icon: icons.barChart },
+      { label: "Kanban", href: "/components/kanban", icon: icons.viewKanban },
     ],
   },
   patterns: {
     title: "Patterns",
     items: [
-      { label: "Overview", href: "/patterns", icon: LayersOutlined },
-      { label: "Forms", href: "/patterns/forms", icon: InputOutlined },
-      { label: "Navigation", href: "/patterns/navigation", icon: ExploreOutlined },
-      { label: "Data Display", href: "/patterns/data-display", icon: TableChartOutlined },
+      { label: "Overview", href: "/patterns", icon: icons.layers },
+      { label: "Forms", href: "/patterns/forms", icon: icons.input },
+      { label: "Navigation", href: "/patterns/navigation", icon: icons.explore },
+      { label: "Data Display", href: "/patterns/data-display", icon: icons.tableChart },
     ],
   },
   resources: {
     title: "Resources",
     items: [
-      { label: "Overview", href: "/resources", icon: MenuBookOutlined },
-      { label: "Getting Started", href: "/resources/getting-started", icon: RocketLaunchOutlined },
-      { label: "Design Tokens", href: "/resources/design-tokens", icon: BrushOutlined },
-      { label: "Accessibility", href: "/resources/accessibility", icon: AccessibilityNewOutlined },
+      { label: "Overview", href: "/resources", icon: icons.menuBook },
+      { label: "Getting Started", href: "/resources/getting-started", icon: icons.rocketLaunch },
+      { label: "Design Tokens", href: "/resources/design-tokens", icon: icons.brush },
+      { label: "Accessibility", href: "/resources/accessibility", icon: icons.accessibilityNew },
     ],
   },
 };

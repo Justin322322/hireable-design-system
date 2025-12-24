@@ -1,9 +1,6 @@
 import { toast as sonnerToast } from "sonner";
 import { createElement } from "react";
-import CheckCircleOutlined from "@mui/icons-material/CheckCircleOutlined";
-import ErrorOutline from "@mui/icons-material/ErrorOutline";
-import WarningAmberOutlined from "@mui/icons-material/WarningAmberOutlined";
-import InfoOutlined from "@mui/icons-material/InfoOutlined";
+import { Icon } from "@/components/ui/icon";
 
 interface ToastProps {
   title?: string;
@@ -23,25 +20,25 @@ export function useToast() {
       case "success":
         sonnerToast.success(title, {
           ...baseOptions,
-          icon: createElement(CheckCircleOutlined, { sx: { fontSize: 24 }, className: "text-success" }),
+          icon: createElement(Icon, { icon: "check_circle", size: 24, className: "text-success" }),
         });
         break;
       case "destructive":
         sonnerToast.error(title, {
           ...baseOptions,
-          icon: createElement(ErrorOutline, { sx: { fontSize: 24 }, className: "text-danger" }),
+          icon: createElement(Icon, { icon: "error", size: 24, className: "text-danger" }),
         });
         break;
       case "warning":
         sonnerToast.warning(title, {
           ...baseOptions,
-          icon: createElement(WarningAmberOutlined, { sx: { fontSize: 24 }, className: "text-warning" }),
+          icon: createElement(Icon, { icon: "warning", size: 24, className: "text-warning" }),
         });
         break;
       case "info":
         sonnerToast.info(title, {
           ...baseOptions,
-          icon: createElement(InfoOutlined, { sx: { fontSize: 24 }, className: "text-client" }),
+          icon: createElement(Icon, { icon: "info", size: 24, className: "text-client" }),
         });
         break;
       default:

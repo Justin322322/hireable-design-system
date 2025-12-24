@@ -1,117 +1,143 @@
 "use client";
 
 import * as React from "react";
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/icon";
 
-export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "onChange"> {
-  size?: "sm" | "md" | "lg";
+export type CheckboxSize = "sm" | "md" | "lg";
+
+const sizeConfig = {
+  sm: {
+    box: "size-4 rounded-[3.2px]",
+    iconSize: 16 as const,
+    gap: "gap-2",
+    labelText: "text-sm font-secondary leading-[1.2] tracking-[0.2px]",
+  },
+  md: {
+    box: "size-6 rounded",
+    iconSize: 20 as const,
+    gap: "gap-2",
+    labelText: "text-base font-nunito leading-normal tracking-[0.2px]",
+  },
+  lg: {
+    box: "size-7 rounded",
+    iconSize: 24 as const,
+    gap: "gap-3",
+    labelText: "text-base font-nunito leading-normal tracking-[0.2px]",
+  },
+};
+
+export interface CheckboxProps
+  extends Omit<
+    React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
+    "onChange"
+  > {
+  size?: CheckboxSize;
   label?: string;
-  checked?: boolean;
-  disabled?: boolean;
-  className?: string;
+  /** @deprecated Use onCheckedChange instead. Kept for backward compatibility. */
   onChange?: (checked: boolean) => void;
 }
 
-const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, size = "sm", label, disabled, checked, onChange, id, ...props }, ref) => {
+const Checkbox = React.forwardRef<
+  React.ElementRef<typeof CheckboxPrimitive.Root>,
+  CheckboxProps
+>(
+  (
+    {
+      className,
+      size = "sm",
+      label,
+      disabled,
+      checked,
+      defaultChecked,
+      onCheckedChange,
+      onChange,
+      id,
+      ...props
+    },
+    ref
+  ) => {
     const generatedId = React.useId();
     const checkboxId = id || generatedId;
+    const config = sizeConfig[size];
 
-    const sizeClasses = {
-      sm: "size-4 rounded-[3.2px]",
-      md: "size-6 rounded",
-      lg: "size-7 rounded",
+    // Handle both onCheckedChange (Radix) and onChange (legacy) callbacks
+    const handleCheckedChange = (
+      value: CheckboxPrimitive.CheckedState
+    ) => {
+      onCheckedChange?.(value);
+      // Legacy callback support - only pass boolean (ignore indeterminate)
+      if (onChange && typeof value === "boolean") {
+        onChange(value);
+      }
     };
 
-    const iconSizes = {
-      sm: 16,
-      md: 20,
-      lg: 24,
-    };
-
-    const gapClasses = {
-      sm: "gap-2",
-      md: "gap-2",
-      lg: "gap-3",
-    };
-
-    const labelClasses = {
-      sm: "text-sm font-secondary leading-[1.2] tracking-[0.2px]",
-      md: "text-base font-nunito leading-normal tracking-[0.2px]",
-      lg: "text-base font-nunito leading-normal tracking-[0.2px]",
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      onChange?.(e.target.checked);
-    };
-
-    return (
-      <label
-        htmlFor={checkboxId}
+    const checkboxElement = (
+      <CheckboxPrimitive.Root
+        ref={ref}
+        id={checkboxId}
+        checked={checked}
+        defaultChecked={defaultChecked}
+        disabled={disabled}
+        onCheckedChange={handleCheckedChange}
         className={cn(
-          "inline-flex items-center cursor-pointer",
-          gapClasses[size],
-          disabled && "cursor-not-allowed opacity-70",
+          // Base styles
+          "peer relative shrink-0 flex items-center justify-center transition-colors",
+          config.box,
+          // Idle state (unchecked)
+          "border border-button-tertiary-border bg-background",
+          "hover:border-border-hover",
+          // Focus state
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focused focus-visible:ring-offset-2",
+          // Checked state
+          "data-[state=checked]:bg-button-primary-default data-[state=checked]:border-button-primary-default",
+          "data-[state=indeterminate]:bg-button-primary-default data-[state=indeterminate]:border-button-primary-default",
+          // Disabled states
+          "disabled:cursor-not-allowed",
+          "disabled:data-[state=unchecked]:bg-muted disabled:data-[state=unchecked]:border-border-disabled",
+          "disabled:data-[state=checked]:bg-button-primary-disabled disabled:data-[state=checked]:border-button-primary-disabled",
+          "disabled:data-[state=indeterminate]:bg-button-primary-disabled disabled:data-[state=indeterminate]:border-button-primary-disabled",
           className
         )}
+        {...props}
       >
-        {/* Hidden native checkbox for accessibility */}
-        <input
-          ref={ref}
-          type="checkbox"
-          id={checkboxId}
-          checked={checked}
-          disabled={disabled}
-          onChange={handleChange}
-          className="sr-only peer"
-          {...props}
-        />
-        
-        {/* Visual checkbox */}
-        <div
+        <CheckboxPrimitive.Indicator
           className={cn(
-            "relative shrink-0 flex items-center justify-center transition-colors",
-            sizeClasses[size],
-            // Idle state (unchecked)
-            !checked && !disabled && "bg-background border border-button-tertiary-border hover:border-border-hover",
-            // Active/Checked state
-            checked && !disabled && "bg-button-primary-default",
-            // Disabled states
-            disabled && !checked && "bg-muted border border-border-disabled",
-            disabled && checked && "bg-button-primary-disabled",
-            // Focus ring (from peer)
-            "peer-focus-visible:ring-2 peer-focus-visible:ring-border-focused peer-focus-visible:ring-offset-2"
+            "flex items-center justify-center text-button-primary-foreground",
+            "data-[disabled]:text-button-primary-disabled-foreground"
           )}
-          aria-hidden="true"
         >
-          {checked && (
-            <Icon
-              icon="check"
-              size={iconSizes[size] as 16 | 20 | 24}
-              className={cn(
-                // Checked state
-                !disabled && "text-button-primary-foreground",
-                // Disabled state
-                disabled && "text-button-primary-disabled-foreground"
-              )}
-            />
-          )}
-        </div>
+          <Icon icon="check" size={config.iconSize} />
+        </CheckboxPrimitive.Indicator>
+      </CheckboxPrimitive.Root>
+    );
 
-        {/* Label text */}
-        {label && (
-          <span
-            className={cn(
-              labelClasses[size],
-              !disabled && "text-foreground",
-              disabled && "text-button-primary-disabled-foreground"
-            )}
-          >
-            {label}
-          </span>
+    if (!label) {
+      return checkboxElement;
+    }
+
+    return (
+      <div
+        className={cn(
+          "inline-flex items-center cursor-pointer",
+          config.gap,
+          disabled && "cursor-not-allowed opacity-70"
         )}
-      </label>
+      >
+        {checkboxElement}
+        <label
+          htmlFor={checkboxId}
+          className={cn(
+            config.labelText,
+            "cursor-pointer",
+            !disabled && "text-foreground",
+            disabled && "text-button-primary-disabled-foreground cursor-not-allowed"
+          )}
+        >
+          {label}
+        </label>
+      </div>
     );
   }
 );

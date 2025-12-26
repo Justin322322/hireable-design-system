@@ -1,5 +1,5 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, Button, CardHeader, Input } from "@/components/ui";
+
 import { CodeBlock } from "@/components/docs/code-block";
 
 export default function GettingStartedPage() {
@@ -16,7 +16,6 @@ export default function GettingStartedPage() {
         <TabsList>
           <TabsTrigger value="installation">Installation</TabsTrigger>
           <TabsTrigger value="usage">Usage</TabsTrigger>
-          <TabsTrigger value="theming">Theming</TabsTrigger>
         </TabsList>
 
         <TabsContent value="installation" className="space-y-8">
@@ -34,17 +33,60 @@ export default function GettingStartedPage() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Install Dependencies</h2>
+            <h2 className="mb-4 text-xl font-semibold">Copy Components</h2>
+            <p className="mb-4 text-muted-foreground">
+              This design system uses a copy-paste approach (similar to shadcn/ui). Copy the components you need directly into your project:
+            </p>
             <CodeBlock
-              code={`bun add @hireable/design-system`}
+              code={`# Copy the components folder to your project
+cp -r src/components/ui your-project/src/components/
+
+# Copy the utility functions
+cp src/lib/utils.ts your-project/src/lib/`}
               language="bash"
+            />
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Install Peer Dependencies</h2>
+            <p className="mb-4 text-muted-foreground">
+              Install the required dependencies for the components:
+            </p>
+            <CodeBlock
+              code={`# Core utilities
+bun add clsx tailwind-merge class-variance-authority
+
+# Radix UI primitives (install as needed)
+bun add @radix-ui/react-dialog @radix-ui/react-tabs @radix-ui/react-select
+
+# Optional: animations
+bun add framer-motion`}
+              language="bash"
+            />
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Configure Path Aliases</h2>
+            <p className="mb-4 text-muted-foreground">
+              Set up the <code className="text-sm bg-muted px-1 rounded">@/</code> path alias in your tsconfig.json:
+            </p>
+            <CodeBlock
+              code={`{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}`}
+              language="json"
             />
           </section>
 
           <section>
             <h2 className="mb-4 text-xl font-semibold">Configure Tailwind</h2>
             <p className="mb-4 text-muted-foreground">
-              Add the design system to your Tailwind configuration:
+              Make sure your Tailwind configuration includes the component paths:
             </p>
             <CodeBlock
               code={`// tailwind.config.ts
@@ -53,7 +95,6 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@hireable/design-system/**/*.js",
   ],
   theme: {
     extend: {},
@@ -71,9 +112,9 @@ export default config;`}
           <section>
             <h2 className="mb-4 text-xl font-semibold">Import Components</h2>
             <CodeBlock
-              code={`import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+              code={`
+
+
 
 export function MyComponent() {
   return (
@@ -105,40 +146,7 @@ import "@/app/globals.css";`}
           </section>
         </TabsContent>
 
-        <TabsContent value="theming" className="space-y-8">
-          <section>
-            <h2 className="mb-4 text-xl font-semibold">CSS Variables</h2>
-            <p className="mb-4 text-muted-foreground">
-              Customize the design system by overriding CSS variables:
-            </p>
-            <CodeBlock
-              code={`:root {
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --radius: 0.5rem;
-}
 
-.dark {
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-}`}
-              language="css"
-            />
-          </section>
-
-          <section>
-            <h2 className="mb-4 text-xl font-semibold">Dark Mode</h2>
-            <p className="mb-4 text-muted-foreground">
-              Toggle dark mode by adding the <code className="text-sm bg-muted px-1 rounded">dark</code> class to the HTML element:
-            </p>
-            <CodeBlock
-              code={`<html className="dark">
-  ...
-</html>`}
-              language="html"
-            />
-          </section>
-        </TabsContent>
       </Tabs>
     </div>
   );

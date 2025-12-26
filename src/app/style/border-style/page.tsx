@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui";
 import { CodeBlock } from "@/components/docs/code-block";
 
 export default function BorderStylePage() {

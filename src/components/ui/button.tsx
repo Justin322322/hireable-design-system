@@ -9,15 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Primary - Figma: #00A7F8 bg, white text
+        // Primary - uses --button-primary-default bg, white text
         default:
           "bg-button-primary-default text-button-primary-foreground shadow hover:bg-button-primary-hover active:bg-button-primary-active disabled:bg-button-primary-disabled disabled:text-button-primary-disabled-foreground disabled:shadow-none",
         primary:
           "bg-button-primary-default text-button-primary-foreground shadow hover:bg-button-primary-hover active:bg-button-primary-active disabled:bg-button-primary-disabled disabled:text-button-primary-disabled-foreground disabled:shadow-none",
-        // Secondary - Figma: #CCEDFF bg, #006593 text
+        // Secondary - uses --button-secondary-default bg, --button-secondary-foreground text
         secondary:
           "bg-button-secondary-default text-button-secondary-foreground shadow-sm hover:bg-button-secondary-hover active:bg-button-secondary-active disabled:bg-button-primary-disabled disabled:text-button-primary-disabled-foreground",
-        // Tertiary - Figma: white bg, #C3C3C3 border, #212121 text
+        // Tertiary - uses --button-tertiary-default bg, --button-tertiary-border, --button-tertiary-foreground text
         tertiary:
           "bg-button-tertiary-default text-button-tertiary-foreground border border-button-tertiary-border shadow-sm hover:bg-button-tertiary-hover active:bg-button-tertiary-active disabled:bg-button-primary-disabled disabled:text-button-primary-disabled-foreground disabled:border-transparent",
         // Legacy variants for backward compatibility

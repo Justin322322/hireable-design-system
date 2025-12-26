@@ -145,6 +145,8 @@ export type IconName =
   | "menu_book"
   | "rocket_launch"
   | "accessibility_new"
+  | "subject"
+  | "note_alt"
 
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** The Material Symbol icon name (from fonts.google.com/icons) */

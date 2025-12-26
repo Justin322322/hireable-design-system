@@ -1,7 +1,7 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, CardHeader, CardTitle, Icon, IconSize, IconName, Button } from "@/components/ui";
+
 import { CodeBlock } from "@/components/docs/code-block";
-import { Icon, IconSize, IconName } from "@/components/ui/icon";
+
 
 const iconSizes: { name: string; size: IconSize; description: string }[] = [
   { name: "16", size: 16, description: "Small UI elements, badges" },
@@ -327,7 +327,7 @@ export default function IconsPage() {
           <section>
             <h2 className="mb-4 text-xl font-semibold">Basic Usage</h2>
             <CodeBlock
-              code={`import { Icon } from "@/components/ui/icon";
+              code={`
 
 // Basic usage with M3 sizes
 <Icon icon="home" />
@@ -348,8 +348,8 @@ export default function IconsPage() {
           <section>
             <h2 className="mb-4 text-xl font-semibold">Icon Button</h2>
             <CodeBlock
-              code={`import { Button } from "@/components/ui/button";
-import { Icon } from "@/components/ui/icon";
+              code={`
+
 
 // Icon-only button with accessible label
 <Button size="icon" aria-label="Add item">

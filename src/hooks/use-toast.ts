@@ -1,6 +1,6 @@
 import { toast as sonnerToast } from "sonner";
 import { createElement } from "react";
-import { Icon } from "@/components/ui/icon";
+import { Icon } from "@/components/ui";
 
 interface ToastProps {
   title?: string;

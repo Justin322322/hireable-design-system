@@ -3,16 +3,10 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Icon } from "@/components/ui/icon";
+import { Icon, Button, Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+
+
 import { mainNav, sidebarNav } from "@/config/docs";
 
 export function MobileNav() {
@@ -85,7 +79,8 @@ export function MobileNav() {
                   {currentSidebarNav.title}
                 </h4>
                 <div className="flex flex-col gap-1 text-lg">
-                  {currentSidebarNav.items.map((item) => {
+                  {/* Render top-level items (e.g., Overview) */}
+                  {currentSidebarNav.items?.map((item) => {
                     const NavIcon = item.icon;
                     return (
                       <Link
@@ -104,6 +99,33 @@ export function MobileNav() {
                       </Link>
                     );
                   })}
+                  {/* Render grouped items (e.g., component categories) */}
+                  {currentSidebarNav.groups?.map((group) => (
+                    <div key={group.category} className="mt-4">
+                      <h5 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/50 mb-2 px-3">
+                        {group.category}
+                      </h5>
+                      {group.items.map((item) => {
+                        const NavIcon = item.icon;
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setOpen(false)}
+                            className={cn(
+                              "flex w-full items-center gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-muted",
+                              pathname === item.href
+                                ? "bg-secondary font-semibold text-client"
+                                : "text-foreground/80"
+                            )}
+                          >
+                            <NavIcon className={cn("size-5", pathname === item.href ? "text-icon-active" : "text-icon")} />
+                            {item.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  ))}
                 </div>
               </div>
             )}

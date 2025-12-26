@@ -1,34 +1,27 @@
 import Link from "next/link";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { sidebarNav } from "@/config/docs";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui";
+import { sidebarNav, type NavItem } from "@/config/docs";
 
-// Component descriptions mapped by href
-const componentDescriptions: Record<string, string> = {
-  "/components/button": "Trigger actions and events with various styles and states.",
-  "/components/card": "Container for grouping related content and actions.",
-  "/components/input": "Text input fields for forms and data entry.",
-  "/components/dropdown": "Dropdown selection from a list of options.",
-  "/components/tabs": "Organize content into switchable panels.",
-  "/components/dialogue": "Overlay dialogs for focused interactions.",
-  "/components/toast": "Brief notifications that appear temporarily.",
-  "/components/badge": "Highlight important information and show status indicators.",
-  "/components/breadcrumb": "Navigation trail showing the user's location in the site hierarchy.",
-  "/components/toggle": "Two-state button for on/off and binary choices.",
-  "/components/checkbox": "Selection control for multiple choices.",
-  "/components/radio-button": "Single selection from a set of mutually exclusive options.",
-  "/components/sidebar": "Collapsible navigation panel for app layouts.",
-  "/components/avatar": "Visual representation of a user or entity.",
-  "/components/separator": "Visual divider between content sections.",
-  "/components/navigation-menu": "List of links for site navigation.",
-  "/components/drawer": "A panel that slides in from the edge of the screen.",
-  "/components/chart": "Data visualizations for trends and comparisons.",
-  "/components/kanban": "Board layout for workflow and pipeline visualization.",
-};
+const componentsSection = sidebarNav.components;
 
-// Get all component items except the "Overview" entry
-const components = sidebarNav.components.items.filter(
-  (item) => item.href !== "/components"
-);
+function ComponentCard({ component }: { component: NavItem }) {
+  const Icon = component.icon;
+  return (
+    <Link href={component.href} className="h-full">
+      <Card className="h-full transition-colors hover:bg-muted/50">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-lg">
+            <Icon className="size-5 shrink-0 text-icon" />
+            {component.label}
+          </CardTitle>
+          <CardDescription>
+            {component.description || ""}
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    </Link>
+  );
+}
 
 export default function ComponentsPage() {
   return (
@@ -41,24 +34,17 @@ export default function ComponentsPage() {
         </p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-        {components.map((component) => {
-          const Icon = component.icon;
-          return (
-            <Link key={component.href} href={component.href} className="h-full">
-              <Card className="h-full transition-colors hover:bg-muted/50">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg">
-                    <Icon className="size-5 shrink-0 text-icon" />
-                    {component.label}
-                  </CardTitle>
-                  <CardDescription>{componentDescriptions[component.href]}</CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
-          );
-        })}
-      </div>
+      {/* Render grouped components by category */}
+      {componentsSection.groups?.map((group) => (
+        <section key={group.category} className="mb-10">
+          <h2 className="mb-4 text-xl font-semibold">{group.category}</h2>
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {group.items.map((component) => (
+              <ComponentCard key={component.href} component={component} />
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   );
 }

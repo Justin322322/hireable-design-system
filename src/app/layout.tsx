@@ -4,7 +4,7 @@ import "./globals.css";
 import "material-symbols/outlined.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Sidebar } from "@/components/layout/sidebar";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",

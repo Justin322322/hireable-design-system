@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { Icon, IconName } from "@/components/ui/icon";
+import { Icon, IconName } from "@/components/ui";
 
 export interface SidebarMenuItem {
   icon: IconName;
@@ -74,7 +74,8 @@ const userProfiles: Record<string, SidebarUserProfile> = {
   },
 };
 
-function SidebarMenuItemComponent({ item }: { item: SidebarMenuItem }) {
+
+function SidebarMenuItemComponent({ item, isCollapsed }: { item: SidebarMenuItem, isCollapsed: boolean }) {
   const content = (
     <>
       <div 
@@ -85,22 +86,25 @@ function SidebarMenuItemComponent({ item }: { item: SidebarMenuItem }) {
       >
         <Icon icon={item.icon} size={20} filled={item.active} />
       </div>
-      <span 
-        className="flex-1 text-sm font-secondary leading-[1.2] tracking-[0.2px] text-foreground"
-      >
-        {item.label}
-      </span>
-      {item.expandable && (
-        <Icon icon="keyboard_arrow_down" size={20} className="text-foreground" aria-hidden="true" />
+      {!isCollapsed && (
+        <span 
+          className="flex-1 text-sm font-secondary leading-[1.2] tracking-[0.2px] text-foreground truncate"
+        >
+          {item.label}
+        </span>
+      )}
+      {!isCollapsed && item.expandable && (
+        <Icon icon="keyboard_arrow_down" size={20} className="text-foreground shrink-0" aria-hidden="true" />
       )}
     </>
   );
 
   const baseClasses = cn(
-    "flex items-center gap-2 px-4 py-2 rounded-lg transition-colors",
+    "flex items-center gap-2 px-4 py-2 rounded-lg transition-colors h-10",
     item.active 
       ? "bg-surface-hover" 
-      : "bg-background hover:bg-surface-hover"
+      : "bg-background hover:bg-surface-hover",
+    isCollapsed && "justify-center px-2"
   );
 
   // Use Link for navigation, button for expandable items
@@ -110,6 +114,7 @@ function SidebarMenuItemComponent({ item }: { item: SidebarMenuItem }) {
         href={item.href}
         className={baseClasses}
         aria-current={item.active ? "page" : undefined}
+        title={isCollapsed ? item.label : undefined}
       >
         {content}
       </Link>
@@ -120,13 +125,14 @@ function SidebarMenuItemComponent({ item }: { item: SidebarMenuItem }) {
     <button
       type="button"
       className={cn(baseClasses, "w-full text-left cursor-pointer")}
+      title={isCollapsed ? item.label : undefined}
     >
       {content}
     </button>
   );
 }
 
-function SidebarProfile({ profile }: { profile: SidebarUserProfile }) {
+function SidebarProfile({ profile, isCollapsed }: { profile: SidebarUserProfile, isCollapsed: boolean }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const menuRef = React.useRef<HTMLDivElement>(null);
 
@@ -149,27 +155,29 @@ function SidebarProfile({ profile }: { profile: SidebarUserProfile }) {
         type="button"
         className={cn(
           "flex items-center gap-2 px-4 py-2 h-[52px] w-full rounded-lg transition-colors text-left",
-          isOpen ? "bg-surface-hover" : "bg-background hover:bg-surface-hover"
+          isOpen ? "bg-surface-hover" : "bg-background hover:bg-surface-hover",
+          isCollapsed && "justify-center px-0"
         )}
         aria-label="User profile menu"
         aria-haspopup="menu"
         aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
+        title={isCollapsed ? profile.name : undefined}
       >
-        <div className="flex items-center flex-1 gap-2">
+        <div className={cn("flex items-center gap-2", isCollapsed ? "justify-center" : "flex-1")}>
           {profile.avatar ? (
             <Image
               src={profile.avatar}
               alt=""
               width={36}
               height={36}
-              className="size-9 rounded-full object-cover"
+              className="size-9 rounded-full object-cover shrink-0"
               aria-hidden="true"
             />
           ) : profile.initials ? (
             <div 
               className={cn(
-                "flex items-center justify-center size-9 rounded-full text-[12.6px] font-bold tracking-[0.18px]",
+                "flex items-center justify-center size-9 rounded-full text-[12.6px] font-bold tracking-[0.18px] shrink-0",
                 profile.initialsColor
               )}
               aria-hidden="true"
@@ -177,31 +185,38 @@ function SidebarProfile({ profile }: { profile: SidebarUserProfile }) {
               {profile.initials}
             </div>
           ) : (
-            <div className="size-9 rounded-full bg-muted overflow-hidden" aria-hidden="true">
+            <div className="size-9 rounded-full bg-muted overflow-hidden shrink-0" aria-hidden="true">
               <div className="size-full bg-muted" />
             </div>
           )}
-          <div className="flex flex-col gap-1">
-            <span className="text-sm font-semibold font-secondary leading-[1.2] tracking-[0.2px] text-foreground">
-              {profile.name}
-            </span>
-            <span className="text-xs font-secondary leading-[1.2] tracking-[0.2px] text-icon">
-              {profile.email}
-            </span>
-          </div>
+          {!isCollapsed && (
+            <div className="flex flex-col gap-1 overflow-hidden">
+              <span className="text-sm font-semibold font-secondary leading-[1.2] tracking-[0.2px] text-foreground truncate">
+                {profile.name}
+              </span>
+              <span className="text-xs font-secondary leading-[1.2] tracking-[0.2px] text-icon truncate">
+                {profile.email}
+              </span>
+            </div>
+          )}
         </div>
-        <Icon 
-          icon={isOpen ? "keyboard_arrow_up" : "keyboard_arrow_down"} 
-          size={20} 
-          className="text-foreground" 
-          aria-hidden="true" 
-        />
+        {!isCollapsed && (
+          <Icon 
+            icon={isOpen ? "keyboard_arrow_up" : "keyboard_arrow_down"} 
+            size={20} 
+            className="text-foreground shrink-0" 
+            aria-hidden="true" 
+          />
+        )}
       </button>
 
       {/* Dropdown Menu */}
       {isOpen && (
         <div 
-          className="absolute bottom-full left-0 mb-2 w-[264px] flex flex-col p-2 gap-2 bg-background rounded-lg shadow-md"
+          className={cn(
+            "absolute bottom-full left-0 mb-2 w-[264px] flex flex-col p-2 gap-2 bg-background rounded-lg shadow-md border border-border z-50",
+            isCollapsed && "left-full ml-2 bottom-0"
+          )}
           role="menu"
         >
           {/* Profile Option */}
@@ -243,6 +258,8 @@ function SidebarProfile({ profile }: { profile: SidebarUserProfile }) {
 }
 
 function AppSidebar({ variant = "talent", className }: AppSidebarProps) {
+  const [isCollapsed, setIsCollapsed] = React.useState(false);
+
   const menuItems = variant === "talent" 
     ? talentMenuItems 
     : variant === "employer" 
@@ -254,56 +271,69 @@ function AppSidebar({ variant = "talent", className }: AppSidebarProps) {
   return (
     <nav
       className={cn(
-        "flex flex-col w-[280px] h-full bg-background border-r border-button-tertiary-border",
+        "flex flex-col h-full bg-background border-r border-button-tertiary-border transition-all duration-300 ease-in-out relative",
+        isCollapsed ? "w-[80px]" : "w-[280px]",
         className
       )}
       aria-label={`${variant} navigation`}
     >
       {/* Logo */}
-      <div className="flex flex-col items-start justify-center px-6 pt-6 pb-4">
-        <div className="flex items-center gap-2 h-8">
+      <div className={cn(
+        "flex flex-col justify-center pt-6 pb-4 transition-all duration-300",
+        isCollapsed ? "items-center px-0" : "items-start px-6"
+      )}>
+        <div className="flex items-center gap-2 h-8 overflow-hidden">
           <Image
             src="/Logo.svg"
             alt="Hireable"
             width={24}
             height={24}
+            className="shrink-0"
           />
-          <Image
-            src="/Logo-name.svg"
-            alt=""
-            width={82}
-            height={17}
-            aria-hidden="true"
-          />
+          <div className={cn("transition-all duration-300 origin-left", isCollapsed ? "w-0 opacity-0 scale-x-0" : "w-[82px] opacity-100 scale-x-100")}>
+            <Image
+              src="/Logo-name.svg"
+              alt=""
+              width={82}
+              height={17}
+              aria-hidden="true"
+              className="shrink-0"
+            />
+          </div>
         </div>
       </div>
 
       {/* Navigation Menu */}
-      <div className="flex-1 flex flex-col relative">
+      <div className="flex-1 flex flex-col relative w-full overflow-hidden">
         <ul className="flex flex-col gap-2 p-2" role="list">
           {menuItems.map((item, index) => (
             <li key={index}>
-              <SidebarMenuItemComponent item={item} />
+              <SidebarMenuItemComponent item={item} isCollapsed={isCollapsed} />
             </li>
           ))}
         </ul>
-
-        {/* Collapse Button */}
-        <button
-          type="button"
-          className="absolute right-[-12px] bottom-2 flex items-center justify-center size-6 rounded-lg bg-surface-hover hover:bg-button-tertiary-hover transition-colors"
-          aria-label="Collapse sidebar"
-        >
-          <Icon icon="chevron_left" size={16} className="text-foreground" aria-hidden="true" />
-        </button>
       </div>
 
       {/* User Profile */}
-      <div className="flex flex-col px-2 py-4">
-        <SidebarProfile profile={profile} />
+      <div className="flex flex-col px-2 py-4 w-full">
+        <SidebarProfile profile={profile} isCollapsed={isCollapsed} />
       </div>
+
+      {/* Collapse Button */}
+      <button
+        type="button"
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        className="group absolute -right-3 bottom-[92px] flex size-6 items-center justify-center rounded-lg border border-border bg-surface-hover text-foreground shadow-sm transition-all hover:bg-button-tertiary-hover cursor-pointer z-50"
+        aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+      >
+        <Icon 
+          icon={isCollapsed ? "chevron_right" : "chevron_left"} 
+          size={16} 
+          className="text-foreground transition-colors group-hover:text-client" 
+          aria-hidden="true" 
+        />
+      </button>
     </nav>
   );
 }
-
 export { AppSidebar, SidebarMenuItemComponent, SidebarProfile };

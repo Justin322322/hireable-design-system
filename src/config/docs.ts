@@ -1,15 +1,23 @@
 import * as React from "react";
-import { Icon, type IconName } from "@/components/ui/icon";
+import { Icon, type IconName } from "@/components/ui";
 
 export interface NavItem {
   label: string;
   href: string;
   icon: React.ComponentType<{ className?: string }>;
+  description?: string;
+  fieldNotes?: string;
+}
+
+export interface NavGroup {
+  category: string;
+  items: NavItem[];
 }
 
 export interface NavSection {
   title: string;
-  items: NavItem[];
+  items?: NavItem[];
+  groups?: NavGroup[];
 }
 
 // Helper function to create icon components from icon names
@@ -58,6 +66,8 @@ const icons = {
   verticalSplit: createIconComponent("vertical_split"),
   barChart: createIconComponent("bar_chart"),
   viewKanban: createIconComponent("view_kanban"),
+  subject: createIconComponent("subject"),
+  noteAlt: createIconComponent("note_alt"),
   
   // Patterns
   layers: createIconComponent("layers"),
@@ -95,25 +105,59 @@ export const sidebarNav: Record<string, NavSection> = {
     title: "Components",
     items: [
       { label: "Overview", href: "/components", icon: icons.gridView },
-      { label: "Button", href: "/components/button", icon: icons.smartButton },
-      { label: "Card", href: "/components/card", icon: icons.creditCard },
-      { label: "Input", href: "/components/input", icon: icons.input },
-      { label: "Dropdown", href: "/components/dropdown", icon: icons.expandMore },
-      { label: "Tabs", href: "/components/tabs", icon: icons.tab },
-      { label: "Dialogue", href: "/components/dialogue", icon: icons.chatBubble },
-      { label: "Toast", href: "/components/toast", icon: icons.notifications },
-      { label: "Badge", href: "/components/badge", icon: icons.verified },
-      { label: "Breadcrumb", href: "/components/breadcrumb", icon: icons.navigateNext },
-      { label: "Toggle", href: "/components/toggle", icon: icons.toggleOn },
-      { label: "Checkbox", href: "/components/checkbox", icon: icons.checkBox },
-      { label: "Radio Group/Button", href: "/components/radio-button", icon: icons.radioButtonChecked },
-      { label: "Sidebar", href: "/components/sidebar", icon: icons.viewSidebar },
-      { label: "Avatar", href: "/components/avatar", icon: icons.accountCircle },
-      { label: "Separator", href: "/components/separator", icon: icons.horizontalRule },
-      { label: "Navigation Menu", href: "/components/navigation-menu", icon: icons.menu },
-      { label: "Drawer", href: "/components/drawer", icon: icons.verticalSplit },
-      { label: "Chart", href: "/components/chart", icon: icons.barChart },
-      { label: "Kanban", href: "/components/kanban", icon: icons.viewKanban },
+    ],
+    groups: [
+      {
+        category: "Actions",
+        items: [
+          { label: "Button", href: "/components/button", icon: icons.smartButton, description: "Trigger actions and events with various styles and states.", fieldNotes: "" },
+          { label: "Toggle", href: "/components/toggle", icon: icons.toggleOn, description: "Two-state button for on/off and binary choices.", fieldNotes: "" },
+        ],
+      },
+      {
+        category: "Forms",
+        items: [
+          { label: "Input", href: "/components/input", icon: icons.input, description: "Text input fields for forms and data entry.", fieldNotes: "" },
+          { label: "Checkbox", href: "/components/checkbox", icon: icons.checkBox, description: "Selection control for multiple choices.", fieldNotes: "" },
+          { label: "Radio Group/Button", href: "/components/radio-button", icon: icons.radioButtonChecked, description: "Single selection from a set of mutually exclusive options.", fieldNotes: "" },
+          { label: "Dropdown", href: "/components/dropdown", icon: icons.expandMore, description: "Dropdown selection from a list of options.", fieldNotes: "" },
+        ],
+      },
+      {
+        category: "Display",
+        items: [
+          { label: "Card", href: "/components/card", icon: icons.creditCard, description: "Container for grouping related content and actions.", fieldNotes: "" },
+          { label: "Badge", href: "/components/badge", icon: icons.verified, description: "Highlight important information and show status indicators.", fieldNotes: "" },
+          { label: "Avatar", href: "/components/avatar", icon: icons.accountCircle, description: "Visual representation of a user or entity.", fieldNotes: "" },
+          { label: "Separator", href: "/components/separator", icon: icons.horizontalRule, description: "Visual divider between content sections.", fieldNotes: "" },
+          { label: "Description Box", href: "/components/description-box", icon: icons.subject, description: "Display component or feature descriptions.", fieldNotes: "" },
+          { label: "Field Notes", href: "/components/field-notes", icon: icons.noteAlt, description: "Contextual notes and annotations for form fields.", fieldNotes: "" },
+        ],
+      },
+      {
+        category: "Feedback",
+        items: [
+          { label: "Dialogue", href: "/components/dialogue", icon: icons.chatBubble, description: "Overlay dialogs for focused interactions.", fieldNotes: "" },
+          { label: "Toast", href: "/components/toast", icon: icons.notifications, description: "Brief notifications that appear temporarily.", fieldNotes: "" },
+          { label: "Drawer", href: "/components/drawer", icon: icons.verticalSplit, description: "A panel that slides in from the edge of the screen.", fieldNotes: "" },
+        ],
+      },
+      {
+        category: "Navigation",
+        items: [
+          { label: "Tabs", href: "/components/tabs", icon: icons.tab, description: "Organize content into switchable panels.", fieldNotes: "" },
+          { label: "Breadcrumb", href: "/components/breadcrumb", icon: icons.navigateNext, description: "Navigation trail showing the user's location in the site hierarchy.", fieldNotes: "" },
+          { label: "Sidebar", href: "/components/sidebar", icon: icons.viewSidebar, description: "Collapsible navigation panel for app layouts.", fieldNotes: "" },
+          { label: "Navigation Menu", href: "/components/navigation-menu", icon: icons.menu, description: "List of links for site navigation.", fieldNotes: "" },
+        ],
+      },
+      {
+        category: "Data",
+        items: [
+          { label: "Chart", href: "/components/chart", icon: icons.barChart, description: "Data visualizations for trends and comparisons.", fieldNotes: "" },
+          { label: "Kanban", href: "/components/kanban", icon: icons.viewKanban, description: "Board layout for workflow and pipeline visualization.", fieldNotes: "" },
+        ],
+      },
     ],
   },
   patterns: {

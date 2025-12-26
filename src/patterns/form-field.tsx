@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useId } from "react"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
+import { Label, Input } from "@/components/ui";
+
 import { cn } from "@/lib/utils"
 
 export interface FormFieldProps extends React.ComponentProps<"div"> {

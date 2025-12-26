@@ -1,60 +1,71 @@
 "use client";
 
 import * as React from "react";
-import { Icon, type IconName } from "@/components/ui/icon";
+import { Icon, Dialog, DialogContent, DialogHeader, DialogTitle, type IconName } from "@/components/ui";
 import { useRouter } from "next/navigation";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 
-const searchData: { title: string; category: string; href: string; iconName: IconName }[] = [
-  // Style
-  { title: "Overview", category: "Style", href: "/style", iconName: "description" },
-  { title: "Typography", category: "Style", href: "/style/typography", iconName: "description" },
-  { title: "Color", category: "Style", href: "/style/color", iconName: "description" },
-  { title: "Spacing", category: "Style", href: "/style/spacing", iconName: "description" },
-  { title: "Corners", category: "Style", href: "/style/corners", iconName: "description" },
-  { title: "Icons", category: "Style", href: "/style/icons", iconName: "description" },
-  { title: "Motion", category: "Style", href: "/style/motion", iconName: "description" },
-  { title: "Border Style", category: "Style", href: "/style/border-style", iconName: "description" },
-  
-  // Components
-  { title: "Overview", category: "Components", href: "/components", iconName: "widgets" },
-  { title: "Button", category: "Components", href: "/components/button", iconName: "widgets" },
-  { title: "Card", category: "Components", href: "/components/card", iconName: "widgets" },
-  { title: "Input", category: "Components", href: "/components/input", iconName: "widgets" },
-  { title: "Dropdown", category: "Components", href: "/components/dropdown", iconName: "widgets" },
-  { title: "Tabs", category: "Components", href: "/components/tabs", iconName: "widgets" },
-  { title: "Dialog", category: "Components", href: "/components/dialogue", iconName: "widgets" },
-  { title: "Toast", category: "Components", href: "/components/toast", iconName: "widgets" },
-  { title: "Badge", category: "Components", href: "/components/badge", iconName: "widgets" },
-  { title: "Breadcrumb", category: "Components", href: "/components/breadcrumb", iconName: "widgets" },
-  { title: "Toggle", category: "Components", href: "/components/toggle", iconName: "widgets" },
-  { title: "Checkbox", category: "Components", href: "/components/checkbox", iconName: "widgets" },
-  { title: "Radio Group/Button", category: "Components", href: "/components/radio-button", iconName: "widgets" },
-  { title: "Sidebar", category: "Components", href: "/components/sidebar", iconName: "widgets" },
-  { title: "Avatar", category: "Components", href: "/components/avatar", iconName: "widgets" },
-  { title: "Separator", category: "Components", href: "/components/separator", iconName: "widgets" },
-  { title: "Navigation Menu", category: "Components", href: "/components/navigation-menu", iconName: "widgets" },
-  { title: "Drawer", category: "Components", href: "/components/drawer", iconName: "widgets" },
-  { title: "Chart", category: "Components", href: "/components/chart", iconName: "widgets" },
-  { title: "Kanban", category: "Components", href: "/components/kanban", iconName: "widgets" },
+import { sidebarNav, type NavItem, type NavSection } from "@/config/docs";
 
-  // Patterns
-  { title: "Overview", category: "Patterns", href: "/patterns", iconName: "grid_view" },
-  { title: "Forms", category: "Patterns", href: "/patterns/forms", iconName: "grid_view" },
-  { title: "Navigation", category: "Patterns", href: "/patterns/navigation", iconName: "grid_view" },
-  { title: "Data Display", category: "Patterns", href: "/patterns/data-display", iconName: "grid_view" },
+// Icon mapping for each section category
+const sectionIcons: Record<string, IconName> = {
+  style: "description",
+  components: "widgets",
+  patterns: "grid_view",
+  resources: "menu_book",
+};
 
-  // Resources
-  { title: "Overview", category: "Resources", href: "/resources", iconName: "menu_book" },
-  { title: "Getting Started", category: "Resources", href: "/resources/getting-started", iconName: "menu_book" },
-  { title: "Design Tokens", category: "Resources", href: "/resources/design-tokens", iconName: "menu_book" },
-  { title: "Accessibility", category: "Resources", href: "/resources/accessibility", iconName: "menu_book" },
-];
+interface SearchItem {
+  title: string;
+  category: string;
+  subcategory?: string;
+  href: string;
+  iconName: IconName;
+  description?: string;
+}
+
+// Dynamically generate search data from sidebarNav config
+function generateSearchData(): SearchItem[] {
+  const searchItems: SearchItem[] = [];
+
+  Object.entries(sidebarNav).forEach(([sectionKey, section]: [string, NavSection]) => {
+    const iconName = sectionIcons[sectionKey] || "description";
+    const categoryName = section.title;
+
+    // Add standalone items
+    if (section.items) {
+      section.items.forEach((item: NavItem) => {
+        searchItems.push({
+          title: item.label,
+          category: categoryName,
+          href: item.href,
+          iconName,
+          description: item.description,
+        });
+      });
+    }
+
+    // Add grouped items (like component categories)
+    if (section.groups) {
+      section.groups.forEach((group) => {
+        group.items.forEach((item: NavItem) => {
+          searchItems.push({
+            title: item.label,
+            category: categoryName,
+            subcategory: group.category,
+            href: item.href,
+            iconName,
+            description: item.description,
+          });
+        });
+      });
+    }
+  });
+
+  return searchItems;
+}
+
+// Generate search data once at module load
+const searchData = generateSearchData();
 
 export function DocsSearch() {
   const [open, setOpen] = React.useState(false);
@@ -81,7 +92,9 @@ export function DocsSearch() {
     return searchData
       .filter((item) => 
         item.title.toLowerCase().includes(lowerQuery) ||
-        item.category.toLowerCase().includes(lowerQuery)
+        item.category.toLowerCase().includes(lowerQuery) ||
+        (item.subcategory && item.subcategory.toLowerCase().includes(lowerQuery)) ||
+        (item.description && item.description.toLowerCase().includes(lowerQuery))
       )
       .slice(0, 20);
   }, [query]);
@@ -183,7 +196,9 @@ export function DocsSearch() {
                       </div>
                       <div className="flex flex-col">
                         <span className="font-medium">{item.title}</span>
-                        <span className="text-xs text-muted-foreground">{item.category}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {item.category}{item.subcategory && ` › ${item.subcategory}`}
+                        </span>
                       </div>
                     </button>
                   );

@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui";
-import { CodeBlock } from "@/components/docs/code-block";
 
 export default function BorderStylePage() {
   return (
@@ -14,7 +13,7 @@ export default function BorderStylePage() {
       <div className="space-y-12">
         {/* TEXT_Text Link */}
         <section>
-          <h2 className="mb-4 text-xl font-semibold">TEXT_Text Link</h2>
+          <h2 className="mb-4 text-xl font-semibold">Text Link</h2>
           <p className="mb-6 text-muted-foreground">
             Text links use the client brand color for clickable content.
           </p>
@@ -43,17 +42,11 @@ export default function BorderStylePage() {
               </div>
             </CardContent>
           </Card>
-          <div className="mt-4">
-            <CodeBlock
-              code={`<a className="text-client hover:underline">Link</a>`}
-              language="tsx"
-            />
-          </div>
         </section>
 
         {/* BORDER_Hover */}
         <section>
-          <h2 className="mb-4 text-xl font-semibold">BORDER_Hover</h2>
+          <h2 className="mb-4 text-xl font-semibold">Border Hover</h2>
           <p className="mb-6 text-muted-foreground">
             Border hover state for interactive elements.
           </p>
@@ -78,17 +71,11 @@ export default function BorderStylePage() {
               </div>
             </CardContent>
           </Card>
-          <div className="mt-4">
-            <CodeBlock
-              code={`<input className="border border-input hover:border-border-hover focus-visible:border-border-focused" />`}
-              language="tsx"
-            />
-          </div>
         </section>
 
         {/* BORDER_Focused */}
         <section>
-          <h2 className="mb-4 text-xl font-semibold">BORDER_Focused</h2>
+          <h2 className="mb-4 text-xl font-semibold">Border Focused</h2>
           <p className="mb-6 text-muted-foreground">
             Focus border state uses the client brand color.
           </p>
@@ -113,15 +100,6 @@ export default function BorderStylePage() {
               </div>
             </CardContent>
           </Card>
-          <div className="mt-4">
-            <CodeBlock
-              code={`<input className="border border-input focus-visible:outline-none focus-visible:border-border-focused" />
-
-// CSS token
---border-focused: var(--client);  /* #00A7F8 */`}
-              language="tsx"
-            />
-          </div>
         </section>
       </div>
     </div>

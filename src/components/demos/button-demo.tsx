@@ -9,8 +9,6 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-  Text,
-  buttonVariants,
 } from "@/components/ui";
 
 

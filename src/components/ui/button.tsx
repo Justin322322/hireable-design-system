@@ -20,13 +20,16 @@ const buttonVariants = cva(
         // Tertiary - uses --button-tertiary-default bg, --button-tertiary-border, --button-tertiary-foreground text
         tertiary:
           "bg-button-tertiary-default text-button-tertiary-foreground border border-button-tertiary-border shadow-sm hover:bg-button-tertiary-hover active:bg-button-tertiary-active disabled:bg-button-primary-disabled disabled:text-button-primary-disabled-foreground disabled:border-transparent",
+        // Client - blue #00A7F8 style for CTAs and upload buttons
+        client:
+          "bg-client text-white shadow hover:bg-client-hover active:bg-client-active disabled:bg-button-primary-disabled disabled:text-button-primary-disabled-foreground disabled:shadow-none",
         // Legacy variants for backward compatibility
         destructive:
           "bg-button-destructive-default text-button-destructive-foreground shadow-sm hover:bg-button-destructive-hover",
         outline:
           "border border-button-tertiary-border bg-button-tertiary-default text-button-tertiary-foreground shadow-sm hover:bg-button-tertiary-hover",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-client underline-offset-4 hover:underline",
+        link: "text-client underline-offset-4 disabled:text-muted-foreground disabled:opacity-50",
       },
       size: {
         // Figma: Large = 48px, padding 8px 20px, font-size 16px

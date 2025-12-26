@@ -11,6 +11,8 @@ import {
   Select,
   SelectItem,
   SelectTrigger,
+  SelectContent,
+  SelectValue,
   Tabs,
   TabsContent,
   TabsList,
@@ -48,74 +50,65 @@ export default function DropdownPage() {
             {/* Default State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Default</span>
-              <div
-                className="flex items-center justify-between w-[300px] h-11 px-4 py-3 bg-background border border-input rounded-lg"
-              >
-                <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
-                  Insert title
-                </span>
-                <Icon icon="expand_more" size={24} className="text-icon" />
-              </div>
+              <Select>
+                <SelectTrigger className="w-[300px] pointer-events-none" tabIndex={-1}>
+                  <SelectValue placeholder="Insert title" />
+                </SelectTrigger>
+              </Select>
             </div>
             {/* Hover State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Hover</span>
-              <div
-                className="flex items-center justify-between w-[300px] h-11 px-4 py-3 bg-background border border-border-hover rounded-lg"
-              >
-                <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
-                  Insert title
-                </span>
-                <Icon icon="expand_more" size={24} className="text-icon" />
-              </div>
+              <Select>
+                <SelectTrigger className="w-[300px] pointer-events-none border-border-hover" tabIndex={-1}>
+                  <SelectValue placeholder="Insert title" />
+                </SelectTrigger>
+              </Select>
             </div>
             {/* Active State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Active</span>
-              <div
-                className="flex items-center justify-between w-[300px] h-11 px-4 py-3 bg-background border border-input rounded-lg"
-              >
-                <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
-                  Selected option
-                </span>
-                <Icon icon="expand_more" size={24} className="text-icon" />
-              </div>
+              <Select defaultValue="selected">
+                <SelectTrigger className="w-[300px] pointer-events-none border-input" tabIndex={-1}>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="selected">Selected option</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             {/* Focused State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Focused</span>
-              <div
-                className="flex items-center justify-between w-[300px] h-11 px-4 py-3 bg-background border border-border-focused rounded-lg"
-              >
-                <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
-                  Selected option
-                </span>
-                <Icon icon="expand_less" size={24} className="text-icon" />
-              </div>
+              <Select defaultValue="selected">
+                <SelectTrigger className="w-[300px] pointer-events-none border-border-focused" tabIndex={-1}>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="selected">Selected option</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             {/* Disabled State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Disabled</span>
-              <div
-                className="flex items-center justify-between w-[300px] h-11 px-4 py-3 bg-background border border-border-disabled rounded-lg"
-              >
-                <span className="font-secondary text-sm text-neutral-muted tracking-[0.2px]">
-                  Insert title
-                </span>
-                <Icon icon="expand_more" size={24} className="text-neutral-muted" />
-              </div>
+              <Select disabled>
+                <SelectTrigger className="w-[300px]" tabIndex={-1}>
+                  <SelectValue placeholder="Insert title" />
+                </SelectTrigger>
+              </Select>
             </div>
             {/* Error State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Error</span>
-              <div
-                className="flex items-center justify-between w-[300px] h-11 px-4 py-3 bg-background border border-destructive rounded-lg"
-              >
-                <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
-                  Selected option
-                </span>
-                <Icon icon="expand_more" size={24} className="text-icon" />
-              </div>
+              <Select defaultValue="selected">
+                <SelectTrigger className="w-[300px] pointer-events-none border-destructive" tabIndex={-1}>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="selected">Selected option</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </ComponentPreview>
@@ -146,101 +139,81 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Default</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-foreground tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-input rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
-                    Insert title
-                  </span>
-                  <Icon icon="expand_more" size={24} className="text-icon" />
-                </div>
+                <Label>Dropdown title</Label>
+                <Select>
+                  <SelectTrigger className="pointer-events-none" tabIndex={-1}>
+                    <SelectValue placeholder="Insert title" />
+                  </SelectTrigger>
+                </Select>
               </div>
             </div>
             {/* Hover State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Hover</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-foreground tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-border-hover rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
-                    Insert title
-                  </span>
-                  <Icon icon="expand_more" size={24} className="text-icon" />
-                </div>
+                <Label>Dropdown title</Label>
+                <Select>
+                  <SelectTrigger className="pointer-events-none border-border-hover" tabIndex={-1}>
+                    <SelectValue placeholder="Insert title" />
+                  </SelectTrigger>
+                </Select>
               </div>
             </div>
             {/* Active State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Active</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-foreground tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-input rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
-                    Selected option
-                  </span>
-                  <Icon icon="expand_more" size={24} className="text-icon" />
-                </div>
+                <Label>Dropdown title</Label>
+                <Select defaultValue="selected">
+                  <SelectTrigger className="pointer-events-none border-input" tabIndex={-1}>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="selected">Selected option</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
             {/* Focused State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Focused</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-foreground tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-border-focused rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
-                    Selected option
-                  </span>
-                  <Icon icon="expand_less" size={24} className="text-icon" />
-                </div>
+                <Label>Dropdown title</Label>
+                <Select defaultValue="selected">
+                  <SelectTrigger className="pointer-events-none border-border-focused" tabIndex={-1}>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="selected">Selected option</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-            </div>            {/* Disabled State */}
+            </div>
+            {/* Disabled State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Disabled</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-neutral-muted tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-border-disabled rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-neutral-muted tracking-[0.2px]">
-                    Insert title
-                  </span>
-                  <Icon icon="expand_more" size={24} className="text-neutral-muted" />
-                </div>
+                <Label className="text-neutral-muted">Dropdown title</Label>
+                <Select disabled>
+                  <SelectTrigger tabIndex={-1}>
+                    <SelectValue placeholder="Insert title" />
+                  </SelectTrigger>
+                </Select>
               </div>
             </div>
             {/* Error State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Error</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-foreground tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-destructive rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
-                    Selected option
-                  </span>
-                  <Icon icon="expand_more" size={24} className="text-icon" />
-                </div>
+                <Label>Dropdown title</Label>
+                <Select defaultValue="selected">
+                  <SelectTrigger className="pointer-events-none border-destructive" tabIndex={-1}>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="selected">Selected option</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           </div>
@@ -274,17 +247,12 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Default</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-foreground tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-input rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
-                    Insert title
-                  </span>
-                  <Icon icon="expand_more" size={24} className="text-icon" />
-                </div>
+                <Label>Dropdown title</Label>
+                <Select>
+                  <SelectTrigger className="pointer-events-none" tabIndex={-1}>
+                    <SelectValue placeholder="Insert title" />
+                  </SelectTrigger>
+                </Select>
                 <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
                   Helper text
                 </span>
@@ -294,17 +262,12 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Hover</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-foreground tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-border-hover rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
-                    Insert title
-                  </span>
-                  <Icon icon="expand_more" size={24} className="text-icon" />
-                </div>
+                <Label>Dropdown title</Label>
+                <Select>
+                  <SelectTrigger className="pointer-events-none border-border-hover" tabIndex={-1}>
+                    <SelectValue placeholder="Insert title" />
+                  </SelectTrigger>
+                </Select>
                 <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
                   Helper text
                 </span>
@@ -314,17 +277,15 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Active</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-foreground tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-input rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
-                    Selected option
-                  </span>
-                  <Icon icon="expand_more" size={24} className="text-icon" />
-                </div>
+                <Label>Dropdown title</Label>
+                <Select defaultValue="selected">
+                  <SelectTrigger className="pointer-events-none border-input" tabIndex={-1}>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="selected">Selected option</SelectItem>
+                  </SelectContent>
+                </Select>
                 <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
                   Helper text
                 </span>
@@ -334,34 +295,30 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Focused</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-foreground tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-border-focused rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
-                    Selected option
-                  </span>
-                  <Icon icon="expand_less" size={24} className="text-icon" />
-                </div>
+                <Label>Dropdown title</Label>
+                <Select defaultValue="selected">
+                  <SelectTrigger className="pointer-events-none border-border-focused" tabIndex={-1}>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="selected">Selected option</SelectItem>
+                  </SelectContent>
+                </Select>
+                <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
+                  Helper text
+                </span>
               </div>
             </div>
             {/* Disabled State */}
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Disabled</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-neutral-muted tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-border-disabled rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-neutral-muted tracking-[0.2px]">
-                    Insert title
-                  </span>
-                  <Icon icon="expand_more" size={24} className="text-neutral-muted" />
-                </div>
+                <Label className="text-neutral-muted">Dropdown title</Label>
+                <Select disabled>
+                  <SelectTrigger tabIndex={-1}>
+                    <SelectValue placeholder="Insert title" />
+                  </SelectTrigger>
+                </Select>
                 <span className="font-secondary text-sm text-neutral-muted tracking-[0.2px]">
                   Helper text
                 </span>
@@ -371,17 +328,15 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Error</span>
               <div className="flex flex-col gap-2 w-[300px]">
-                <label className="font-secondary text-sm font-semibold text-foreground tracking-[0.2px]">
-                  Dropdown title
-                </label>
-                <div
-                  className="flex items-center justify-between h-11 px-4 py-3 bg-background border border-destructive rounded-lg"
-                >
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
-                    Selected option
-                  </span>
-                  <Icon icon="expand_more" size={24} className="text-icon" />
-                </div>
+                <Label>Dropdown title</Label>
+                <Select defaultValue="selected">
+                  <SelectTrigger className="pointer-events-none border-destructive" tabIndex={-1}>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="selected">Selected option</SelectItem>
+                  </SelectContent>
+                </Select>
                 <span className="font-secondary text-sm text-destructive tracking-[0.2px]">
                   This field is required
                 </span>
@@ -790,7 +745,7 @@ export default function DropdownPage() {
               </Card>
             </div>
           </section>
-</TabsContent>
+        </TabsContent>
         <TabsContent value="api" className="space-y-8">
           <PropsTable title="Select Props" props={selectProps} />
           <PropsTable title="SelectTrigger Props" props={selectTriggerProps} />

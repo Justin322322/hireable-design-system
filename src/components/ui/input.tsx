@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
@@ -30,13 +32,31 @@ export interface InputProps
     VariantProps<typeof inputVariants> {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, variant, size, ...props }, ref) => {
+  ({ className, type, min, onKeyDown, ...props }, ref) => {
+    const { variant, size, ...inputProps } = props
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      // Prevent negative signs if type is number and min >= 0
+      if (
+        type === "number" &&
+        min !== undefined &&
+        !isNaN(Number(min)) &&
+        Number(min) >= 0 &&
+        (e.key === "-" || e.key === "Minus")
+      ) {
+        e.preventDefault()
+      }
+      onKeyDown?.(e)
+    }
+
     return (
       <input
         type={type}
+        min={min}
         className={cn(inputVariants({ variant, size, className }))}
         ref={ref}
-        {...props}
+        onKeyDown={handleKeyDown}
+        {...inputProps}
       />
     )
   }

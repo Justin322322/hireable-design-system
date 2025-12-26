@@ -23,7 +23,7 @@ import TabsDemo from "@/components/demos/tabs-demo";
 import ToastDemo from "@/components/demos/toast-demo";
 import ToggleDemo from "@/components/demos/toggle-demo";
 
-export const componentRegistry: Record<string, React.ComponentType<object>> = {
+export const componentRegistry: Record<string, React.ComponentType<object> | ((props: object) => Promise<React.JSX.Element>)> = {
   "avatar": AvatarDemo,
   "badge": BadgeDemo,
   "breadcrumb": BreadcrumbDemo,

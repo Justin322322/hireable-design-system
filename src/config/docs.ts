@@ -138,6 +138,7 @@ export const sidebarNav: Record<string, NavSection> = {
         category: "Feedback",
         items: [
           { label: "Dialog", href: "/components/dialog", icon: icons.chatBubble, description: "Overlay dialogs for focused interactions.", fieldNotes: "" },
+          { label: "Modal", href: "/components/modal", icon: icons.chatBubble, description: "Modals for file uploads and focused tasks.", fieldNotes: "" },
           { label: "Toast", href: "/components/toast", icon: icons.notifications, description: "Brief notifications that appear temporarily.", fieldNotes: "" },
           { label: "Drawer", href: "/components/drawer", icon: icons.verticalSplit, description: "A panel that slides in from the edge of the screen.", fieldNotes: "" },
         ],

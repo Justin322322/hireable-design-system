@@ -1,11 +1,20 @@
 
+import { promises as fs } from "fs";
+import path from "path";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
-import { Card, CardContent, CardHeader, CardTitle, Icon, Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui";
+import { Card, CardContent, CardHeader, CardTitle, FieldNote, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui";
 import { VERSION } from "@/lib/version";
-import { PasswordInputDemo } from "./password-input-demo";
+import PasswordInput from "./password-input-demo";
+import CurrencyInput from "./currency-input-demo";
 
-export default function InputPage() {
+export default async function InputPage() {
+  const passwordDemoPath = path.join(process.cwd(), "src/components/demos/password-input-demo.tsx");
+  const currencyDemoPath = path.join(process.cwd(), "src/components/demos/currency-input-demo.tsx");
+  
+  const passwordDemoCode = await fs.readFile(passwordDemoPath, "utf-8");
+  const currencyDemoCode = await fs.readFile(currencyDemoPath, "utf-8");
+
   return (
     <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-8">
@@ -27,181 +36,107 @@ export default function InputPage() {
 
         <TabsContent value="examples" className="space-y-8">
           <ComponentPreview title="Default Input">
-            <input
+            <Input
               type="text"
               placeholder="Enter text..."
-              className="flex h-11 w-full max-w-sm rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm transition-colors hover:border-border-hover placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
+              className="max-w-sm"
             />
           </ComponentPreview>
 
           <CodeBlock
-            code={`<input
-  type="text"
-  placeholder="Enter text..."
-  className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm transition-colors hover:border-border-hover placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
-/>`}
+            code={`import { Input } from "@/components/ui";
+
+<Input type="text" placeholder="Enter text..." />`}
             language="tsx"
           />
 
           <ComponentPreview title="With Label">
             <div className="space-y-2 max-w-sm">
-              <label htmlFor="email" className="text-sm font-medium">
+              <Label htmlFor="email">
                 Email
-              </label>
-              <input
+              </Label>
+              <Input
                 id="email"
                 type="email"
                 placeholder="you@example.com"
-                className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm transition-colors hover:border-border-hover placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
               />
             </div>
           </ComponentPreview>
 
           <CodeBlock
-            code={`<div className="space-y-2">
-  <label htmlFor="email" className="text-sm font-medium">
-    Email
-  </label>
-  <input
+            code={`import { Input, Label } from "@/components/ui";
+
+<div className="space-y-2">
+  <Label htmlFor="email">Email</Label>
+  <Input
     id="email"
     type="email"
     placeholder="you@example.com"
-    className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm transition-colors hover:border-border-hover placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
   />
 </div>`}
             language="tsx"
           />
 
           <ComponentPreview title="Disabled">
-            <input
+            <Input
               type="text"
               placeholder="Disabled input"
               disabled
-              className="flex h-11 w-full max-w-sm rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+              className="max-w-sm"
             />
           </ComponentPreview>
 
           <CodeBlock
-            code={`<input
-  type="text"
-  placeholder="Disabled input"
-  disabled
-  className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 font-secondary text-sm placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
-/>`}
+            code={`import { Input } from "@/components/ui";
+
+<Input type="text" placeholder="Disabled input" disabled />`}
             language="tsx"
           />
 
           <ComponentPreview title="With Error">
             <div className="space-y-2 max-w-sm">
-              <label htmlFor="error-input" className="text-sm font-medium">
+              <Label htmlFor="error-input">
                 Username
-              </label>
-              <input
+              </Label>
+              <Input
                 id="error-input"
                 type="text"
-                className="flex h-11 w-full rounded-lg border border-destructive bg-background px-4 py-3 font-secondary text-sm focus-visible:outline-none focus-visible:border-destructive"
+                className="border-destructive focus-visible:border-destructive"
               />
-              <p className="text-sm text-destructive">Username is required</p>
+              <FieldNote variant="error">Username is required</FieldNote>
             </div>
           </ComponentPreview>
 
           <CodeBlock
-            code={`<div className="space-y-2">
-  <label htmlFor="error-input" className="text-sm font-medium">
-    Username
-  </label>
-  <input
+            code={`import { Input, Label, FieldNote } from "@/components/ui";
+
+<div className="space-y-2">
+  <Label htmlFor="error-input">Username</Label>
+  <Input
     id="error-input"
     type="text"
-    className="flex h-11 w-full rounded-lg border border-destructive bg-background px-4 py-3 font-secondary text-sm focus-visible:outline-none focus-visible:border-destructive"
+    className="border-destructive focus-visible:border-destructive"
   />
-  <p className="text-sm text-destructive">Username is required</p>
+  <FieldNote variant="error">Username is required</FieldNote>
 </div>`}
             language="tsx"
           />
 
           <ComponentPreview title="Password">
-            <PasswordInputDemo />
+            <PasswordInput />
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Icon,
-  Input,
-  Label,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui";
-
-"use client"
-
-import { Card, CardContent, CardHeader, CardTitle, Icon } from "@/components/ui";
-
-import { useState } from "react"
-function PasswordInput() {
-  const [showPassword, setShowPassword] = useState(false)
-  return (
-    <div className="relative flex items-center">
-      <input
-        type={showPassword ? "text" : "password"}
-        placeholder="Enter password"
-        className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-3 pr-10 font-secondary text-sm transition-colors hover:border-border-hover placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
-      />
-      <button
-        type="button"
-        onClick={() => setShowPassword(!showPassword)}
-        className="absolute right-4 flex h-4 w-4 items-center justify-center text-icon"
-        aria-label={showPassword ? "Hide password" : "Show password"}
-      >
-        <Icon 
-          icon={showPassword ? "visibility_off" : "visibility"} 
-          size={20} 
-          className="text-icon" 
-        />
-      </button>
-    </div>
-  )
-}
-`}
+            code={passwordDemoCode}
             language="tsx"
           />
 
           <ComponentPreview title="Currency (Left Icon)">
-            <div className="space-y-2 max-w-sm">
-              <label htmlFor="amount" className="text-sm font-medium">
-                Amount
-              </label>
-              <div className="relative flex items-center">
-                <span className="absolute left-4 flex items-center justify-center text-icon">
-                  <Icon icon="attach_money" size={20} className="text-icon" />
-                </span>
-                <input
-                  id="amount"
-                  type="text"
-                  className="flex h-11 w-full rounded-lg border border-input bg-background pl-12 pr-4 py-3 font-secondary text-sm transition-colors hover:border-border-hover placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
-                />
-              </div>
-            </div>
+            <CurrencyInput />
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Icon } from "@/components/ui";
-
-<div className="relative flex items-center">
-  <span className="absolute left-4 flex items-center justify-center text-icon">
-    <Icon icon="attach_money" size={20} className="text-icon" />
-  </span>
-  <input
-    type="text"
-    className="flex h-11 w-full rounded-lg border border-input bg-background pl-12 pr-4 py-3 font-secondary text-sm transition-colors hover:border-border-hover placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-border-focused"
-  />
-</div>`}
+            code={currencyDemoCode}
             language="tsx"
           />
         </TabsContent>

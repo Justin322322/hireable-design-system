@@ -48,61 +48,65 @@ const goalData = cardsData.goal as Goal;
 // ============================================================================
 function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Profile, "id" | "avatar">) {
   return (
-    <div className="flex flex-col items-start gap-2.5 p-4 bg-background border border-border rounded-lg w-96 transition-colors hover:bg-muted hover:border-border cursor-pointer">
-      <div className="flex flex-row items-center gap-2.5 w-full">
-        <div className="w-14 h-14 rounded-full bg-muted shrink-0" />
-        <div className="flex flex-col items-start gap-1 flex-1">
-          <p className="font-semibold text-sm text-foreground leading-[120%]">{name}</p>
-          <p className="font-normal text-xs text-foreground leading-[120%]">{role}</p>
+    <Card className="w-96 cursor-pointer transition-colors hover:bg-muted hover:border-border">
+      <CardContent className="flex flex-col items-start gap-2.5 p-4">
+        <div className="flex flex-row items-center gap-2.5 w-full">
+          <div className="w-14 h-14 rounded-full bg-muted shrink-0" />
+          <div className="flex flex-col items-start gap-1 flex-1">
+            <p className="font-semibold text-sm text-foreground leading-[120%]">{name}</p>
+            <p className="font-normal text-xs text-foreground leading-[120%]">{role}</p>
+          </div>
         </div>
-      </div>
-      <div className="flex flex-row items-center gap-6 w-full text-xs text-foreground">
-        <span>{salary}</span>
-        <span>{experience}</span>
-      </div>
-      <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-foreground">{activityTitle || "—"}</span>
-        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View profile">
-          <Icon icon="chevron_right" size={16} className="text-white" aria-hidden="true" />
-        </Button>
-      </div>
-    </div>
+        <div className="flex flex-row items-center gap-6 w-full text-xs text-foreground">
+          <span>{salary}</span>
+          <span>{experience}</span>
+        </div>
+        <div className="flex flex-row items-center justify-between gap-4 w-full">
+          <span className="text-xs text-foreground">{activityTitle || "—"}</span>
+          <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View profile">
+            <Icon icon="chevron_right" size={16} className="text-white" aria-hidden="true" />
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
 function GoalCard({ title, type, progress, completedResults, totalResults, dueDate }: Omit<Goal, "id">) {
   return (
-    <div className="flex flex-col items-start gap-5 p-4 bg-background border border-border rounded-lg w-96 transition-colors hover:bg-muted hover:border-border cursor-pointer">
-      <div className="flex items-start justify-between w-full">
-        <div className="flex-1 flex items-center">
-          <p className="font-semibold text-sm text-foreground leading-normal tracking-[0.02em]">
-            {title}
-          </p>
-        </div>
-        <span className="bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded-full text-[10px] text-neutral-600 font-medium whitespace-nowrap">
-          {type}
-        </span>
-      </div>
-      <div className="flex flex-col gap-2 w-full">
-        <div className="flex items-center">
-          <span className="font-semibold text-2xl text-foreground leading-[1.2]">
-            {progress}%
+    <Card className="w-96 cursor-pointer transition-colors hover:bg-muted hover:border-border">
+      <CardContent className="flex flex-col items-start gap-5 p-4">
+        <div className="flex items-start justify-between w-full">
+          <div className="flex-1 flex items-center">
+            <p className="font-semibold text-sm text-foreground leading-normal tracking-[0.02em]">
+              {title}
+            </p>
+          </div>
+          <span className="bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded-full text-[10px] text-neutral-600 font-medium whitespace-nowrap">
+            {type}
           </span>
         </div>
-        <div className="flex items-center w-full h-2">
-          <div className="flex-1 bg-neutral-100 rounded-full h-1.5 overflow-hidden">
-            <div className="bg-client h-full rounded-full" style={{ width: `${progress}%` }} />
+        <div className="flex flex-col gap-2 w-full">
+          <div className="flex items-center">
+            <span className="font-semibold text-2xl text-foreground leading-[1.2]">
+              {progress}%
+            </span>
+          </div>
+          <div className="flex items-center w-full h-2">
+            <div className="flex-1 bg-neutral-100 rounded-full h-1.5 overflow-hidden">
+              <div className="bg-client h-full rounded-full" style={{ width: `${progress}%` }} />
+            </div>
+          </div>
+          <div className="flex items-center justify-between w-full">
+            <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
+              {completedResults} of {totalResults} key results completed
+            </span>
+            <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
+              {dueDate}
+            </span>
           </div>
         </div>
-        <div className="flex items-center justify-between w-full">
-          <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
-            {completedResults} of {totalResults} key results completed
-          </span>
-          <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
-            {dueDate}
-          </span>
-        </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
 interface UserRoleCardProps {

@@ -16,6 +16,53 @@ import {
 
 import { CodeBlock } from "@/components/docs/code-block";
 import { useToast } from "@/hooks";
+import type { IconName } from "@/components/ui/icon";
+
+interface StaticToastProps {
+  variant?: "default" | "success" | "destructive" | "warning" | "info";
+  title: string;
+  icon?: IconName;
+}
+
+function StaticToast({ variant = "default", title, icon }: StaticToastProps) {
+  const styles = {
+    default: {
+      bg: "bg-background border",
+      iconColor: "text-foreground",
+    },
+    success: {
+      bg: "bg-toast-success-bg",
+      iconColor: "text-success",
+    },
+    destructive: {
+      bg: "bg-toast-error-bg",
+      iconColor: "text-danger",
+    },
+    warning: {
+      bg: "bg-toast-warning-bg",
+      iconColor: "text-warning",
+    },
+    info: {
+      bg: "bg-toast-info-bg",
+      iconColor: "text-client",
+    },
+  };
+
+  const currentStyle = styles[variant] || styles.default;
+
+  return (
+    <div className={`rounded-lg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14 ${currentStyle.bg}`}>
+      {icon && <Icon icon={icon} size={24} className={`${currentStyle.iconColor} shrink-0`} />}
+      <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">
+        {title}
+      </p>
+      <Button variant="ghost" size="icon-sm" className="text-foreground hover:text-foreground/80 shrink-0 h-5 w-5">
+        <Icon icon="close" size={20} />
+      </Button>
+    </div>
+  );
+}
+
 function ToastDemo() {
   const { toast } = useToast();
   return (
@@ -102,12 +149,7 @@ export default function ToastPage() {
                   <CardTitle className="text-sm font-medium">Default</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
-                  <div className="rounded-lg border bg-background py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
-                    <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Notification</p>
-                    <button className="text-foreground hover:text-foreground/80 shrink-0">
-                      <Icon icon="close" size={20} />
-                    </button>
-                  </div>
+                  <StaticToast title="Notification" />
                 </CardContent>
               </Card>
               <Card>
@@ -115,13 +157,7 @@ export default function ToastPage() {
                   <CardTitle className="text-sm font-medium text-success">Success</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
-                  <div className="rounded-lg bg-toast-success-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
-                    <Icon icon="check_circle" size={24} className="text-success shrink-0" />
-                    <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Success</p>
-                    <button className="text-foreground hover:text-foreground/80 shrink-0">
-                      <Icon icon="close" size={20} />
-                    </button>
-                  </div>
+                  <StaticToast variant="success" title="Success" icon="check_circle" />
                 </CardContent>
               </Card>
               <Card>
@@ -129,13 +165,7 @@ export default function ToastPage() {
                   <CardTitle className="text-sm font-medium text-danger">Error</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
-                  <div className="rounded-lg bg-toast-error-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
-                    <Icon icon="error" size={24} className="text-danger shrink-0" />
-                    <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Error</p>
-                    <button className="text-foreground hover:text-foreground/80 shrink-0">
-                      <Icon icon="close" size={20} />
-                    </button>
-                  </div>
+                  <StaticToast variant="destructive" title="Error" icon="error" />
                 </CardContent>
               </Card>
               <Card>
@@ -143,13 +173,7 @@ export default function ToastPage() {
                   <CardTitle className="text-sm font-medium text-warning">Warning</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
-                  <div className="rounded-lg bg-toast-warning-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
-                    <Icon icon="warning" size={24} className="text-warning shrink-0" />
-                    <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Warning</p>
-                    <button className="text-foreground hover:text-foreground/80 shrink-0">
-                      <Icon icon="close" size={20} />
-                    </button>
-                  </div>
+                  <StaticToast variant="warning" title="Warning" icon="warning" />
                 </CardContent>
               </Card>
               <Card>
@@ -157,20 +181,13 @@ export default function ToastPage() {
                   <CardTitle className="text-sm font-medium text-client">Info</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center p-6">
-                  <div className="rounded-lg bg-toast-info-bg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14">
-                    <Icon icon="info" size={24} className="text-client shrink-0" />
-                    <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">Information</p>
-                    <button className="text-foreground hover:text-foreground/80 shrink-0">
-                      <Icon icon="close" size={20} />
-                    </button>
-                  </div>
+                  <StaticToast variant="info" title="Information" icon="info" />
                 </CardContent>
               </Card>
             </div>
           </section>
           <CodeBlock
             code={`import { Button } from "@/components/ui";
-
 
 function MyComponent() {
   const { toast } = useToast();

@@ -84,6 +84,7 @@ export type IconName =
   | "print"
   | "share"
   | "download"
+  | "download_2"
   | "upload"
   | "cloud_upload"
   | "cloud_download"

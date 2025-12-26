@@ -1,0 +1,40 @@
+"use client"
+
+import * as React from "react"
+import { Icon } from "./icon"
+import { Input, type InputProps } from "./input"
+import { cn } from "@/lib/utils"
+
+export type PasswordInputProps = Omit<InputProps, "type">
+
+const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
+  ({ className, ...props }, ref) => {
+    const [showPassword, setShowPassword] = React.useState(false)
+
+    return (
+      <div className="relative flex items-center">
+        <Input
+          type={showPassword ? "text" : "password"}
+          className={cn("pr-10", className)}
+          ref={ref}
+          {...props}
+        />
+        <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="absolute right-4 flex h-4 w-4 items-center justify-center text-icon hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          aria-label={showPassword ? "Hide password" : "Show password"}
+        >
+          <Icon
+            icon={showPassword ? "visibility_off" : "visibility"}
+            size={20}
+            className="text-icon"
+          />
+        </button>
+      </div>
+    )
+  }
+)
+PasswordInput.displayName = "PasswordInput"
+
+export { PasswordInput }

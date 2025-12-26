@@ -126,7 +126,7 @@ export default function ButtonPage() {
             </div>
           </ComponentPreview>
           <CodeBlock
-            code={`import { Button, Icon, Text } from "@/components/ui";
+            code={`import { Button, Icon } from "@/components/ui";
 
 // Primary button - text only
 <Button variant="primary" size="lg">Enabled</Button>
@@ -197,7 +197,7 @@ export default function ButtonPage() {
             </div>
           </ComponentPreview>
           <CodeBlock
-            code={`import { Button, Icon, Text } from "@/components/ui";
+            code={`import { Button, Icon } from "@/components/ui";
 
 // Secondary button - text only
 <Button variant="secondary" size="lg">Enabled</Button>
@@ -266,7 +266,7 @@ export default function ButtonPage() {
             </div>
           </ComponentPreview>
           <CodeBlock
-            code={`import { Button, Icon, Text } from "@/components/ui";
+            code={`import { Button, Icon } from "@/components/ui";
 
 // Tertiary button - text only
 <Button variant="tertiary" size="lg">Enabled</Button>
@@ -278,6 +278,67 @@ export default function ButtonPage() {
 // Tertiary button - icon only (circular)
 <Button variant="tertiary" size="icon-lg" aria-label="Add">
   <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
+</Button>`}
+            language="tsx"
+          />
+          {/* Text Link */}
+          <ComponentPreview title="Text Link">
+            <div className="space-y-6">
+              <div className="grid grid-cols-[48px_120px_100px_1fr] gap-4 items-center">
+                <span className="text-xs text-muted-foreground">48px</span>
+                <Button variant="link" size="lg" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
+                <Button variant="link" size="lg" disabled className="justify-start px-0"><span>Disabled</span></Button>
+                <Button variant="link" size="lg" className="justify-start px-0">
+                  <Icon icon="open_in_new" size={20} aria-hidden="true" />
+                  <span className="hover:underline">External Link</span>
+                </Button>
+              </div>
+              <div className="grid grid-cols-[48px_120px_100px_1fr] gap-4 items-center">
+                <span className="text-xs text-muted-foreground">44px</span>
+                <Button variant="link" size="base" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
+                <Button variant="link" size="base" disabled className="justify-start px-0"><span>Disabled</span></Button>
+                <Button variant="link" size="base" className="justify-start px-0">
+                  <Icon icon="open_in_new" size={20} aria-hidden="true" />
+                  <span className="hover:underline">External Link</span>
+                </Button>
+              </div>
+              <div className="grid grid-cols-[48px_120px_100px_1fr] gap-4 items-center">
+                <span className="text-xs text-muted-foreground">40px</span>
+                <Button variant="link" size="md" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
+                <Button variant="link" size="md" disabled className="justify-start px-0"><span>Disabled</span></Button>
+                <Button variant="link" size="md" className="justify-start px-0">
+                  <Icon icon="open_in_new" size={20} aria-hidden="true" />
+                  <span className="hover:underline">External Link</span>
+                </Button>
+              </div>
+              <div className="grid grid-cols-[48px_120px_100px_1fr] gap-4 items-center">
+                <span className="text-xs text-muted-foreground">36px</span>
+                <Button variant="link" size="sm" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
+                <Button variant="link" size="sm" disabled className="justify-start px-0"><span>Disabled</span></Button>
+                <Button variant="link" size="sm" className="justify-start px-0">
+                  <Icon icon="open_in_new" size={16} aria-hidden="true" />
+                  <span className="hover:underline">External Link</span>
+                </Button>
+              </div>
+            </div>
+          </ComponentPreview>
+          <CodeBlock
+            code={`import { Button, Icon } from "@/components/ui";
+
+// Text link - with zero padding for alignment
+<Button variant="link" size="lg" className="justify-start px-0">
+  <span className="hover:underline">Text Link</span>
+</Button>
+
+// Text link - with icon
+<Button variant="link" size="lg" className="justify-start px-0">
+  <Icon icon="open_in_new" size={20} aria-hidden="true" />
+  <span className="hover:underline">External Link</span>
+</Button>
+
+// Text link - disabled
+<Button variant="link" size="lg" disabled className="justify-start px-0">
+  <span>Disabled</span>
 </Button>`}
             language="tsx"
           />

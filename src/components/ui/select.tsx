@@ -3,6 +3,7 @@
 import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
 import { Icon } from "@/components/ui";
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
@@ -12,16 +13,32 @@ const SelectGroup = SelectPrimitive.Group
 
 const SelectValue = SelectPrimitive.Value
 
+
+
+const selectTriggerVariants = cva(
+  "flex w-full items-center justify-between whitespace-nowrap rounded-md border border-input bg-transparent font-secondary text-sm ring-offset-background placeholder:text-muted-foreground hover:border-border-hover focus:outline-none focus-visible:border-border-focused disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+  {
+    variants: {
+      size: {
+        default: "h-11 px-4 py-3",
+        sm: "h-9 px-3 py-2 text-xs",
+        lg: "h-12 px-4 py-3 text-base",
+      },
+    },
+    defaultVariants: {
+      size: "default",
+    },
+  }
+)
+
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> &
+    VariantProps<typeof selectTriggerVariants>
+>(({ className, children, size, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
-    className={cn(
-      "flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background placeholder:text-muted-foreground hover:border-border-hover focus:outline-none focus-visible:border-border-focused disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
-      className
-    )}
+    className={cn(selectTriggerVariants({ size, className }))}
     {...props}
   >
     {children}

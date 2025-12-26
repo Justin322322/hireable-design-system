@@ -49,8 +49,12 @@ export default function DescriptionBoxDemo() {
                 <div className="space-y-2">
                   <span className="text-xs text-muted-foreground">Enabled</span>
                   <span className="block font-secondary text-sm font-semibold leading-[120%] tracking-[0.2px] text-foreground">Description</span>
-                  <div className="flex w-full min-h-[131px] p-4 rounded-lg border border-input bg-background">
-                    <span className="font-secondary text-sm text-text-tertiary">Write description here</span>
+                  <div className="w-full">
+                    <Textarea 
+                      placeholder="Write description here" 
+                      className="min-h-[131px]"
+                      readOnly
+                    />
                   </div>
                 </div>
                 
@@ -58,8 +62,12 @@ export default function DescriptionBoxDemo() {
                 <div className="space-y-2">
                   <span className="text-xs text-muted-foreground">Hover</span>
                   <span className="block font-secondary text-sm font-semibold leading-[120%] tracking-[0.2px] text-foreground">Description</span>
-                  <div className="flex w-full min-h-[131px] p-4 rounded-lg border border-foreground bg-background">
-                    <span className="font-secondary text-sm text-text-tertiary">Write description here</span>
+                  <div className="w-full">
+                    <Textarea 
+                      placeholder="Write description here" 
+                      className="min-h-[131px] border-foreground hover:border-foreground"
+                      readOnly
+                    />
                   </div>
                 </div>
                 
@@ -67,8 +75,12 @@ export default function DescriptionBoxDemo() {
                 <div className="space-y-2">
                   <span className="text-xs text-muted-foreground">Focused</span>
                   <span className="block font-secondary text-sm font-semibold leading-[120%] tracking-[0.2px] text-foreground">Description</span>
-                  <div className="flex w-full min-h-[131px] p-4 rounded-lg border border-border-focused bg-background">
-                    <span className="font-secondary text-sm text-text-tertiary">Write description here</span>
+                  <div className="w-full">
+                    <Textarea 
+                      placeholder="Write description here" 
+                      className="min-h-[131px] border-border-focused"
+                      readOnly
+                    />
                   </div>
                 </div>
                 
@@ -76,8 +88,12 @@ export default function DescriptionBoxDemo() {
                 <div className="space-y-2">
                   <span className="text-xs text-muted-foreground">Filled</span>
                   <span className="block font-secondary text-sm font-semibold leading-[120%] tracking-[0.2px] text-foreground">Description</span>
-                  <div className="flex w-full min-h-[131px] p-4 rounded-lg border border-input bg-background">
-                    <span className="font-secondary text-sm text-foreground">Lorem Ipsum Dolor sit Amet</span>
+                  <div className="w-full">
+                    <Textarea 
+                      defaultValue="Lorem Ipsum Dolor sit Amet" 
+                      className="min-h-[131px]"
+                      readOnly
+                    />
                   </div>
                 </div>
                 
@@ -85,8 +101,12 @@ export default function DescriptionBoxDemo() {
                 <div className="space-y-2">
                   <span className="text-xs text-muted-foreground">Disabled</span>
                   <span className="block font-secondary text-sm font-semibold leading-[120%] tracking-[0.2px] text-neutral-muted">Description</span>
-                  <div className="flex w-full min-h-[131px] p-4 rounded-lg border border-input bg-background">
-                    <span className="font-secondary text-sm text-neutral-muted">Write description here</span>
+                  <div className="w-full">
+                    <Textarea 
+                      placeholder="Write description here" 
+                      className="min-h-[131px] cursor-not-allowed"
+                      disabled
+                    />
                   </div>
                 </div>
               </div>

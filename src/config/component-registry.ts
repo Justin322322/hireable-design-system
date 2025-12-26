@@ -7,7 +7,7 @@ import ButtonDemo from "@/components/demos/button-demo";
 import CardDemo from "@/components/demos/card-demo";
 import ChartDemo from "@/components/demos/chart-demo";
 import CheckboxDemo from "@/components/demos/checkbox-demo";
-import DialogueDemo from "@/components/demos/dialogue-demo";
+import DialogDemo from "@/components/demos/dialog-demo";
 import DrawerDemo from "@/components/demos/drawer-demo";
 import DropdownDemo from "@/components/demos/dropdown-demo";
 import DescriptionBoxDemo from "@/components/demos/description-box-demo";
@@ -31,7 +31,7 @@ export const componentRegistry: Record<string, React.ComponentType<object>> = {
   "card": CardDemo,
   "chart": ChartDemo,
   "checkbox": CheckboxDemo,
-  "dialogue": DialogueDemo,
+  "dialog": DialogDemo,
   "drawer": DrawerDemo,
   "dropdown": DropdownDemo,
   "input": InputDemo,

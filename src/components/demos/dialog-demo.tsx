@@ -11,7 +11,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  Stack,
   Tabs,
   TabsContent,
   TabsList,
@@ -21,16 +20,16 @@ import {
 
 import { CodeBlock } from "@/components/docs/code-block";
 import { VERSION } from "@/lib/version";
-export default function DialoguePage() {
+export default function DialogPage() {
   return (
     <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <h1 className="text-3xl font-bold">Dialogue</h1>
+          <h1 className="text-3xl font-bold">Dialog</h1>
           <span className="text-sm text-muted-foreground">{VERSION}</span>
         </div>
         <p className="text-lg text-muted-foreground">
-          Dialogues display content in a layer above the page. Use for confirmations and focused tasks that require user attention.
+          Dialogs display content in a layer above the page. Use for confirmations and focused tasks that require user attention.
         </p>
       </div>
       <Tabs defaultValue="examples" className="space-y-8">
@@ -41,11 +40,11 @@ export default function DialoguePage() {
         </TabsList>
         <TabsContent value="examples" className="space-y-8">
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Confirmation Dialogue</h2>
+            <h2 className="mb-4 text-xl font-semibold">Confirmation Dialog</h2>
             <Card>
               <CardContent className="py-6">
                 <div className="flex flex-col items-center justify-center py-6">
-                  <p className="text-sm text-muted-foreground mb-4">Click button to show dialogue</p>
+                  <p className="text-sm text-muted-foreground mb-4">Click button to show dialog</p>
                   <Dialog>
                     <DialogTrigger asChild>
                       <Button variant="outline">Leave Page</Button>
@@ -113,7 +112,7 @@ export default function DialoguePage() {
                     <li>Use for confirmation dialogs (delete, discard changes)</li>
                     <li>Use for focused forms or tasks</li>
                     <li>Use when content requires immediate attention</li>
-                    <li>Provide a clear way to close the dialogue</li>
+                    <li>Provide a clear way to close the dialog</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -124,9 +123,9 @@ export default function DialoguePage() {
                 <CardContent className="text-muted-foreground">
                   <ul className="list-disc list-inside space-y-1">
                     <li>Use for non-critical information</li>
-                    <li>Stack multiple dialogues</li>
+                    <li>Stack multiple dialogs</li>
                     <li>Use for long-form content</li>
-                    <li>Open dialogues without user action</li>
+                    <li>Open dialogs without user action</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -151,11 +150,11 @@ export default function DialoguePage() {
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">DialogTrigger</td>
-                    <td className="py-3">Element that opens the dialogue</td>
+                    <td className="py-3">Element that opens the dialog</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">DialogContent</td>
-                    <td className="py-3">Dialogue content container</td>
+                    <td className="py-3">Dialog content container</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">DialogHeader</td>
@@ -163,11 +162,11 @@ export default function DialoguePage() {
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">DialogTitle</td>
-                    <td className="py-3">Dialogue title</td>
+                    <td className="py-3">Dialog title</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">DialogDescription</td>
-                    <td className="py-3">Dialogue description</td>
+                    <td className="py-3">Dialog description</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">DialogFooter</td>

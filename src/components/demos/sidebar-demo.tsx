@@ -36,7 +36,7 @@ export default function SidebarPage() {
         <TabsContent value="examples" className="space-y-8">
           {/* Talent Sidebar */}
           <ComponentPreview title="Talent Sidebar">
-            <div className="border border-border rounded-lg overflow-hidden h-[982px] flex">
+            <div className="border border-border rounded-lg overflow-auto h-[982px] max-h-[80vh] flex bg-background">
               <div className="shrink-0 h-full">
                 <AppSidebar variant="talent" />
               </div>
@@ -54,7 +54,7 @@ export default function SidebarPage() {
           />
           {/* Employer Sidebar */}
           <ComponentPreview title="Employer Sidebar">
-            <div className="border border-border rounded-lg overflow-hidden h-[982px] flex">
+            <div className="border border-border rounded-lg overflow-auto h-[982px] max-h-[80vh] flex bg-background">
               <div className="shrink-0 h-full">
                 <AppSidebar variant="employer" />
               </div>
@@ -72,7 +72,7 @@ export default function SidebarPage() {
           />
           {/* Admin Sidebar */}
           <ComponentPreview title="Admin Sidebar">
-            <div className="border border-border rounded-lg overflow-hidden h-[982px] flex">
+            <div className="border border-border rounded-lg overflow-auto h-[982px] max-h-[80vh] flex bg-background">
               <div className="shrink-0 h-full">
                 <AppSidebar variant="admin" />
               </div>

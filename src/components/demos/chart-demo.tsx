@@ -62,8 +62,7 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
       return dateStr;
     };
     return (
-      <div className="flex flex-col items-center gap-20">
-        <div className="bg-background rounded-lg px-3 py-2 shadow-md">
+      <div className="flex flex-col items-center gap-2">        <div className="bg-background rounded-lg px-3 py-2 shadow-md">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-client" />
             <span className="text-xs text-neutral-600">Overall Progress</span>

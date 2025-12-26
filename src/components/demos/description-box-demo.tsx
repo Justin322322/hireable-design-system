@@ -39,12 +39,11 @@ export default function DescriptionBoxPage() {
     <CardTitle className="text-sm font-medium">Description</CardTitle>
   </CardHeader>
   <CardContent className="text-sm text-muted-foreground">
-    This component provides a consistent way to display descriptions.
+    This component provides a consistent way to display descriptions across your application.
   </CardContent>
 </Card>`}
             language="tsx"
           />
-
           <ComponentPreview title="Empty State">
             <Card>
               <CardHeader>

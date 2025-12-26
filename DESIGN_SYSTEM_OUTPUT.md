@@ -141,7 +141,7 @@ All demos are in `src/components/demos/` and registered in [component-registry.t
 | Card Demo         | [card-demo.tsx](src/components/demos/card-demo.tsx)                       | `/components/card`            |
 | Chart Demo        | [chart-demo.tsx](src/components/demos/chart-demo.tsx)                     | `/components/chart`           |
 | Checkbox Demo     | [checkbox-demo.tsx](src/components/demos/checkbox-demo.tsx)               | `/components/checkbox`        |
-| Dialogue Demo     | [dialogue-demo.tsx](src/components/demos/dialogue-demo.tsx)               | `/components/dialogue`        |
+| Dialog Demo       | [dialog-demo.tsx](src/components/demos/dialog-demo.tsx)                   | `/components/dialog`          |
 | Drawer Demo       | [drawer-demo.tsx](src/components/demos/drawer-demo.tsx)                   | `/components/drawer`          |
 | Dropdown Demo     | [dropdown-demo.tsx](src/components/demos/dropdown-demo.tsx)               | `/components/dropdown`        |
 | Input Demo        | [input-demo.tsx](src/components/demos/input-demo.tsx)                     | `/components/input`           |

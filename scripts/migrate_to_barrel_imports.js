@@ -20,9 +20,8 @@ const SKIP_PATTERNS = [
 ];
 
 // Regex patterns for detecting individual imports
-const UI_IMPORT_PATTERN = /from\s+["']@\/components\/ui\/([a-z-]+)["']/g;
-const HOOK_IMPORT_PATTERN = /from\s+["']@\/hooks\/(use-[a-z-]+)["']/g;
-
+const UI_IMPORT_PATTERN = /from\s+["']@\/components\/ui\/([a-zA-Z0-9-]+)["']/g;
+const HOOK_IMPORT_PATTERN = /from\s+["']@\/hooks\/(use-[a-zA-Z0-9-]+)["']/g;
 function shouldSkip(filePath) {
   return SKIP_PATTERNS.some(pattern => filePath.includes(pattern));
 }
@@ -55,8 +54,7 @@ function processFile(filePath) {
   let match;
   
   // Collect all individual UI imports
-  const uiImportLines = content.match(/import\s*\{[^}]+\}\s*from\s*["']@\/components\/ui\/[a-z-]+["'];?/g) || [];
-  
+  const uiImportLines = content.match(/import\s*\{[^}]+\}\s*from\s*["']@\/components\/ui\/[a-zA-Z0-9-]+["'];?/g) || [];  
   if (uiImportLines.length > 0) {
     // Extract all imported items
     const allImports = new Set();
@@ -89,17 +87,23 @@ function processFile(filePath) {
       
       const newImport = `import { ${importParts.join(', ')} } from "@/components/ui";`;
       
-      // Remove old imports and add new one
-      let firstImportRemoved = false;
-      for (const line of uiImportLines) {
-        if (!firstImportRemoved) {
-          content = content.replace(line, newImport);
-          firstImportRemoved = true;
+      // Remove individual imports and insert consolidated barrel import
+      const fileLines = content.split('\n');
+      const updatedLines = [];
+      let firstAdded = false;
+      const uiImportRegex = /import\s*\{[^}]+\}\s*from\s*["']@\/components\/ui\/[a-zA-Z0-9-]+["'];?/;
+
+      for (const line of fileLines) {
+        if (uiImportRegex.test(line)) {
+          if (!firstAdded) {
+            updatedLines.push(newImport);
+            firstAdded = true;
+          }
         } else {
-          content = content.replace(line + '\n', '');
-          content = content.replace(line, '');
+          updatedLines.push(line);
         }
       }
+      content = updatedLines.join('\n');
       
       modified = true;
       changes.push(`Consolidated ${uiImportLines.length} UI imports → barrel`);
@@ -107,8 +111,7 @@ function processFile(filePath) {
   }
   
   // Handle hook imports
-  const hookImportLines = content.match(/import\s*\{[^}]+\}\s*from\s*["']@\/hooks\/use-[a-z-]+["'];?/g) || [];
-  
+  const hookImportLines = content.match(/import\s*\{[^}]+\}\s*from\s*["']@\/hooks\/use-[a-zA-Z0-9-]+["'];?/g) || [];  
   if (hookImportLines.length > 0) {
     const allHookImports = new Set();
     const allHookTypeImports = new Set();
@@ -138,16 +141,23 @@ function processFile(filePath) {
       
       const newImport = `import { ${importParts.join(', ')} } from "@/hooks";`;
       
-      let firstImportRemoved = false;
-      for (const line of hookImportLines) {
-        if (!firstImportRemoved) {
-          content = content.replace(line, newImport);
-          firstImportRemoved = true;
+      // Remove individual imports and insert consolidated barrel import
+      const hookLines = content.split('\n');
+      const updatedHookLines = [];
+      let firstHookAdded = false;
+      const hookImportRegex = /import\s*\{[^}]+\}\s*from\s*["']@\/hooks\/use-[a-zA-Z0-9-]+["'];?/;
+
+      for (const line of hookLines) {
+        if (hookImportRegex.test(line)) {
+          if (!firstHookAdded) {
+            updatedHookLines.push(newImport);
+            firstHookAdded = true;
+          }
         } else {
-          content = content.replace(line + '\n', '');
-          content = content.replace(line, '');
+          updatedHookLines.push(line);
         }
       }
+      content = updatedHookLines.join('\n');
       
       modified = true;
       changes.push(`Consolidated ${hookImportLines.length} hook imports → barrel`);

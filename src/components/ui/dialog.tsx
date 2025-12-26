@@ -38,7 +38,7 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        // Figma: padding 24px, gap 24px, width 480px, border 1px solid --border-default, border-radius 8px
+        // Figma: padding 24px, gap 24px, width 480px, border 1px solid border-input (--input → --border-base), border-radius 8px
         "fixed left-[50%] top-[50%] z-50 flex flex-col w-full max-w-[480px] translate-x-[-50%] translate-y-[-50%] gap-6 border border-input bg-background p-6 rounded-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-bottom-[48%] data-[state=open]:slide-in-from-bottom-[48%]",
         className
       )}

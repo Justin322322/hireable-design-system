@@ -4,51 +4,6 @@ const path = require('path');
 const demosDir = path.join(process.cwd(), 'src/components/demos');
 const files = fs.readdirSync(demosDir).filter(f => f.endsWith('.tsx'));
 
-function fixImportsInText(text, isCodeBlock = false) {
-    // Regex for legacy imports: import { ... } from "@/components/ui/..."
-    const legacyRegex = /import\s+\{([^}]+)\}\s+from\s+"@\/components\/ui\/[^"]+";/g;
-    
-    if (!legacyRegex.test(text)) return text;
-    
-    // Collect all symbols
-    const symbols = new Set();
-    const matches = [...text.matchAll(legacyRegex)];
-    matches.forEach(m => {
-        m[1].split(',').forEach(s => {
-            const trimmed = s.trim().replace(/\n/g, '');
-            if (trimmed) symbols.add(trimmed);
-        });
-    });
-    
-    const sortedSymbols = [...symbols].sort();
-    
-    // Construct new import statement
-    let newImport;
-    if (sortedSymbols.length > 4 || isCodeBlock) {
-         // Multiline for codeblocks or many imports
-         newImport = `import {\n  ${sortedSymbols.join(',\n  ')},\n} from "@/components/ui";`;
-    } else {
-         newImport = `import { ${sortedSymbols.join(', ')} } from "@/components/ui";`;
-    }
-    
-    // Remove old imports
-    let newText = text.replace(legacyRegex, '');
-    
-    // Clean up excessive newlines (3+ newlines -> 2)
-    newText = newText.replace(/(\r?\n\s*){3,}/g, '\n\n');
-    
-    // Insert new import
-    if (isCodeBlock) {
-        // For code blocks, just put at top
-        return `${newImport}\n${newText.trim()}`;
-    } else {
-        // For top-level, try to insert after "use client" or at top
-        if (newText.includes('"use client"')) {
-            return newText.replace(/("use client";?)/, `$1\n${newImport}`);
-        }
-        return `${newImport}\n${newText}`;
-    }
-}
 
 files.forEach(file => {
     const filePath = path.join(demosDir, file);

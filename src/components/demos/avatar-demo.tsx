@@ -361,6 +361,12 @@ export default function AvatarPage() {
                     <td className="py-3">600</td>
                     <td className="py-3">Delay before showing fallback (ms)</td>
                   </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">className</td>
+                    <td className="py-3 font-mono">string</td>
+                    <td className="py-3">-</td>
+                    <td className="py-3">CSS className(s) applied to the AvatarFallback element</td>
+                  </tr>
                 </tbody>
               </table>
             </div>

@@ -4,15 +4,11 @@ import {
   CardHeader,
   CardTitle,
   Checkbox,
-  Label,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-  Toggle,
 } from "@/components/ui";
-
-
 import { CodeBlock, ComponentPreview, PropsTable, VariantsTable } from "@/components/docs";
 import { checkboxProps, checkboxSizes, checkboxStates } from "@/data/api/checkbox";
 import { VERSION } from "@/lib/version";

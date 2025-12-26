@@ -73,11 +73,15 @@ export function Sidebar() {
   const renderGroup = (group: NavGroup) => {
     const isCollapsed = isGroupCollapsed(group);
     const hasActiveItem = group.items.some((item) => pathname === item.href);
+    // Sanitize category for use in HTML id (lowercase, replace spaces with hyphens)
+    const panelId = `group-${group.category.toLowerCase().replace(/\s+/g, '-')}-panel`;
 
     return (
       <div key={group.category} className="mt-4">
         <button
           onClick={() => toggleGroup(group.category)}
+          aria-expanded={!isCollapsed}
+          aria-controls={panelId}
           className={cn(
             "flex w-full items-center justify-between px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors rounded-lg",
             "hover:bg-surface-hover",
@@ -92,6 +96,7 @@ export function Sidebar() {
           />
         </button>
         <div
+          id={panelId}
           className={cn(
             "overflow-hidden transition-all duration-200 ease-in-out",
             isCollapsed ? "max-h-0 opacity-0" : "max-h-96 opacity-100"

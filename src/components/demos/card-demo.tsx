@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Button,
   Card,
   CardContent,
@@ -62,7 +61,7 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Pro
         <span>{experience}</span>
       </div>
       <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-foreground">{activityTitle}</span>
+        <span className="text-xs text-foreground">{activityTitle || "—"}</span>
         <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View profile">
           <Icon icon="chevron_right" size={16} className="text-white" aria-hidden="true" />
         </Button>
@@ -203,7 +202,7 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: ProfileC
         <span>{experience}</span>
       </div>
       <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-foreground">{activityTitle}</span>
+        <span className="text-xs text-foreground">{activityTitle || "—"}</span>
         <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View profile">
           <Icon icon="chevron_right" size={16} className="text-white" aria-hidden="true" />
         </Button>
@@ -298,7 +297,7 @@ function UserRoleCard({ role, title, description, image, variant = "enabled" }: 
         <div className="shrink-0">
           <Image
             src={image}
-            alt={title}
+            alt={\`\${title} illustration\`}
             width={140}
             height={140}
             className="h-[140px] w-[140px]"

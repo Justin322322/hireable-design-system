@@ -114,10 +114,9 @@ import { Button, Input, Card } from "@/components/ui";
 
 ---
 
-## Ongoing Improvement Roadmap
+## Improvement Roadmap (Completed ✅)
 
 - [x] Create barrel exports (`src/components/ui/index.ts`)
 - [x] Flatten demo page structure (dynamic `[slug]` routing)
 - [x] Update `DESIGN_SYSTEM_OUTPUT.md` to reference (not duplicate)
-- [ ] Add component documentation inline via JSDoc
-- [ ] Migrate all imports to use barrel exports
+- [x] Migrate all imports to use barrel exports

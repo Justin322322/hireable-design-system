@@ -96,6 +96,16 @@
   --color-toast-warning-bg: var(--toast-warning-bg);
   --color-toast-error-bg: var(--toast-error-bg);
   
+  /* Field Note Tokens */
+  --color-fieldnote-info-bg: var(--fieldnote-info-bg);
+  --color-fieldnote-info-text: var(--fieldnote-info-text);
+  --color-fieldnote-warning-bg: var(--fieldnote-warning-bg);
+  --color-fieldnote-warning-text: var(--fieldnote-warning-text);
+  --color-fieldnote-success-bg: var(--fieldnote-success-bg);
+  --color-fieldnote-success-text: var(--fieldnote-success-text);
+  --color-fieldnote-error-bg: var(--fieldnote-error-bg);
+  --color-fieldnote-error-text: var(--fieldnote-error-text);
+  
   /* Worktrait Tag Color Mappings */
   --color-worktrait-decision: var(--color-worktrait-blue);
   --color-worktrait-adapt: var(--color-worktrait-pink);
@@ -247,6 +257,16 @@
   --toast-info-bg: var(--color-blue-50);
   --toast-warning-bg: var(--color-amber-100);
   --toast-error-bg: var(--color-red-100);
+  
+  /* Field Note Colors */
+  --fieldnote-info-bg: var(--color-blue-50);
+  --fieldnote-info-text: oklch(0.30 0.08 230);      /* #003049 */
+  --fieldnote-warning-bg: var(--color-amber-100);
+  --fieldnote-warning-text: oklch(0.52 0.12 85);    /* #8E6F12 */
+  --fieldnote-success-bg: var(--color-green-100);
+  --fieldnote-success-text: oklch(0.45 0.12 145);   /* #386641 */
+  --fieldnote-error-bg: var(--color-red-100);
+  --fieldnote-error-text: oklch(0.30 0.15 25);      /* #6A040F */
 
   /* Status Badge Colors - Referencing primitives */
   --badge-default-bg: var(--color-neutral-200);

@@ -1,4 +1,4 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, CardHeader, CardTitle, Icon, IconSize, IconName, Button } from "@/components/ui";
+import { Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, CardHeader, CardTitle, Icon, IconSize, IconName } from "@/components/ui";
 
 import { CodeBlock } from "@/components/docs/code-block";
 

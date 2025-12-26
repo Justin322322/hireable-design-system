@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle, Tabs, TabsContent, TabsList, TabsTrigger, FieldNote, Icon } from "@/components/ui";
+import { Card, CardContent, CardHeader, CardTitle, Tabs, TabsContent, TabsList, TabsTrigger, FieldNote } from "@/components/ui";
 import { CodeBlock, ComponentPreview, PropsTable, VariantsTable } from "@/components/docs";
 import { VERSION } from "@/lib/version";
 

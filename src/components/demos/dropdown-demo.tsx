@@ -17,7 +17,6 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-  Text,
 } from "@/components/ui";
 
 

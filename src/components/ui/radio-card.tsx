@@ -48,7 +48,7 @@ export interface RadioCardProps extends React.ButtonHTMLAttributes<HTMLButtonEle
  * ```
  */
 const RadioCard = React.forwardRef<HTMLButtonElement, RadioCardProps>(
-  ({ className, value, title, description, selected, onSelect, ...props }, ref) => (
+  ({ className, title, description, selected, onSelect, ...props }, ref) => (
     <button
       ref={ref}
       type="button"

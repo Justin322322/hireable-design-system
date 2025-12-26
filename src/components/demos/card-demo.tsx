@@ -1,24 +1,26 @@
+"use client";
+
 import {
-  Button,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  Icon,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/ui";
 
-
-import Image from "next/image";
-import { cn } from "@/lib/utils";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { VERSION } from "@/lib/version";
+
+// Import extracted patterns
+import { ProfileCard, GoalCard, UserRoleCard } from "@/patterns/cards";
+
 // Import JSON data (simulates API response)
 import cardsData from "@/data/cards.json";
+
 // ============================================================================
 // TYPE DEFINITIONS - Backend-ready interfaces
 // ============================================================================
@@ -43,120 +45,8 @@ interface Goal {
 // Cast imported JSON to typed data
 const profileData = cardsData.profile as Profile;
 const goalData = cardsData.goal as Goal;
-// ============================================================================
-// COMPONENTS
-// ============================================================================
-function ProfileCard({ name, role, salary, experience, activityTitle }: Omit<Profile, "id" | "avatar">) {
-  return (
-    <Card className="w-96 cursor-pointer transition-colors hover:bg-muted hover:border-border">
-      <CardContent className="flex flex-col items-start gap-2.5 p-4">
-        <div className="flex flex-row items-center gap-2.5 w-full">
-          <div className="w-14 h-14 rounded-full bg-muted shrink-0" />
-          <div className="flex flex-col items-start gap-1 flex-1">
-            <p className="font-semibold text-sm text-foreground leading-[120%]">{name}</p>
-            <p className="font-normal text-xs text-foreground leading-[120%]">{role}</p>
-          </div>
-        </div>
-        <div className="flex flex-row items-center gap-6 w-full text-xs text-foreground">
-          <span>{salary}</span>
-          <span>{experience}</span>
-        </div>
-        <div className="flex flex-row items-center justify-between gap-4 w-full">
-          <span className="text-xs text-foreground">{activityTitle || "—"}</span>
-          <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View profile">
-            <Icon icon="chevron_right" size={16} className="text-white" aria-hidden="true" />
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-function GoalCard({ title, type, progress, completedResults, totalResults, dueDate }: Omit<Goal, "id">) {
-  return (
-    <Card className="w-96 cursor-pointer transition-colors hover:bg-muted hover:border-border">
-      <CardContent className="flex flex-col items-start gap-5 p-4">
-        <div className="flex items-start justify-between w-full">
-          <div className="flex-1 flex items-center">
-            <p className="font-semibold text-sm text-foreground leading-normal tracking-[0.02em]">
-              {title}
-            </p>
-          </div>
-          <span className="bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded-full text-[10px] text-neutral-600 font-medium whitespace-nowrap">
-            {type}
-          </span>
-        </div>
-        <div className="flex flex-col gap-2 w-full">
-          <div className="flex items-center">
-            <span className="font-semibold text-2xl text-foreground leading-[1.2]">
-              {progress}%
-            </span>
-          </div>
-          <div className="flex items-center w-full h-2">
-            <div className="flex-1 bg-neutral-100 rounded-full h-1.5 overflow-hidden">
-              <div className="bg-client h-full rounded-full" style={{ width: `${progress}%` }} />
-            </div>
-          </div>
-          <div className="flex items-center justify-between w-full">
-            <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
-              {completedResults} of {totalResults} key results completed
-            </span>
-            <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
-              {dueDate}
-            </span>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-interface UserRoleCardProps {
-  role: "talent" | "employer";
-  title: string;
-  description: string;
-  image: string;
-  variant?: "enabled" | "hover" | "pressed";
-}
-function UserRoleCard({ role, title, description, image, variant = "enabled" }: UserRoleCardProps) {
-  return (
-    <div
-      className={cn(
-        "relative flex w-full max-w-[720px] items-center gap-4 rounded-2xl border p-2 transition-all cursor-pointer",
-        // Height 192px from Figma
-        "h-[192px]",
-        // Dynamic styles based on variant using semantic tokens
-        variant === "enabled" && "border-button-tertiary-border bg-background",
-        variant === "hover" && "border-button-tertiary-border bg-button-tertiary-hover",
-        variant === "pressed" && "border-border-focused bg-button-secondary-default"
-      )}
-    >
-      <div className="flex flex-1 items-center gap-4 rounded-lg bg-background py-0 pl-6 pr-10 h-full">
-        <div className="flex flex-1 flex-col gap-3">
-          <h3 className={cn(
-            "text-xl leading-[150%] tracking-[0.4px] text-foreground",
-            role === "talent" ? "font-nunito font-bold" : "font-secondary font-semibold"
-          )}>
-            {title}
-          </h3>
-          <p className={cn(
-            "text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground",
-            role === "talent" ? "font-nunito" : "font-secondary"
-          )}>
-            {description}
-          </p>
-        </div>
-        <div className="shrink-0">
-          <Image
-            src={image}
-            alt={`${title} illustration`}
-            width={140}
-            height={140}
-            className="h-[140px] w-[140px]"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
+// Note: ProfileCard, GoalCard, and UserRoleCard are now imported from @/patterns/cards
+// This demonstrates the extracted, reusable patterns in action
 export default function CardPage() {
   return (
     <div className="container max-w-4xl py-12 px-4 md:px-8">
@@ -178,42 +68,35 @@ export default function CardPage() {
         <TabsContent value="examples" className="space-y-8">
 <ComponentPreview title="Profile Card">
             <div className="flex justify-center">
-              <ProfileCard {...profileData} />
+              <ProfileCard
+                name={profileData.name}
+                role={profileData.role}
+                metadata={[
+                  { value: profileData.salary },
+                  { value: profileData.experience }
+                ]}
+                footer={{
+                  label: profileData.activityTitle,
+                  action: { onClick: () => console.log("View profile") }
+                }}
+              />
             </div>
           </ComponentPreview>
           <CodeBlock
-            code={`import { Button, Icon } from "@/components/ui";
+            code={`import { ProfileCard } from "@/patterns/cards";
 
-interface ProfileCardProps {
-  name: string;
-  role: string;
-  salary: string;
-  experience: string;
-  activityTitle?: string;
-}
-function ProfileCard({ name, role, salary, experience, activityTitle }: ProfileCardProps) {
-  return (
-    <div className="flex flex-col items-start gap-2.5 p-4 bg-background border border-border rounded-lg w-96 transition-colors hover:bg-muted hover:border-border cursor-pointer">
-      <div className="flex flex-row items-center gap-2.5 w-full">
-        <div className="w-14 h-14 rounded-full bg-muted shrink-0" />
-        <div className="flex flex-col items-start gap-1 flex-1">
-          <p className="font-semibold text-sm text-foreground leading-[120%]">{name}</p>
-          <p className="font-normal text-xs text-foreground leading-[120%]">{role}</p>
-        </div>
-      </div>
-      <div className="flex flex-row items-center gap-6 w-full text-xs text-foreground">
-        <span>{salary}</span>
-        <span>{experience}</span>
-      </div>
-      <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-foreground">{activityTitle || "—"}</span>
-        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View profile">
-          <Icon icon="chevron_right" size={16} className="text-white" aria-hidden="true" />
-        </Button>
-      </div>
-    </div>
-  );
-}`}
+<ProfileCard
+  name="Sarah Johnson"
+  role="Senior Product Designer"
+  metadata={[
+    { value: "$100k - $130k" },
+    { value: "8+ years" }
+  ]}
+  footer={{
+    label: "Last active 1 hour ago",
+    action: { onClick: () => viewProfile() }
+  }}
+/>`}
             language="tsx"
           />
           <ComponentPreview title="User Role Selection">
@@ -221,27 +104,24 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: ProfileC
               <div className="space-y-4">
                 <h4 className="text-sm font-medium text-muted-foreground">Example: Remote Talent</h4>
                 <UserRoleCard
-                  role="talent"
                   title="I'm a Remote Talent"
                   description="Find global opportunities and work with great teams that fit your style."
                   image="/images/talent-select.svg"
-                  variant="enabled"
+                  titleFont="primary"
                 />
               </div>
               <div className="space-y-4">
                 <h4 className="text-sm font-medium text-muted-foreground">Example: Employer</h4>
                 <UserRoleCard
-                  role="employer"
                   title="I'm an Employer"
                   description="Post jobs, manage trials, and hire top remote talent with confidence."
                   image="/images/employer-select.svg"
-                  variant="enabled"
+                  titleFont="secondary"
                 />
               </div>
               <div className="space-y-4">
                 <h4 className="text-sm font-medium text-muted-foreground">State: Hover</h4>
                 <UserRoleCard
-                  role="talent"
                   title="I'm a Remote Talent"
                   description="Find global opportunities and work with great teams that fit your style."
                   image="/images/talent-select.svg"
@@ -249,120 +129,52 @@ function ProfileCard({ name, role, salary, experience, activityTitle }: ProfileC
                 />
               </div>
               <div className="space-y-4">
-                <h4 className="text-sm font-medium text-muted-foreground">State: Pressed</h4>
+                <h4 className="text-sm font-medium text-muted-foreground">State: Selected</h4>
                 <UserRoleCard
-                  role="talent"
                   title="I'm a Remote Talent"
                   description="Find global opportunities and work with great teams that fit your style."
                   image="/images/talent-select.svg"
-                  variant="pressed"
+                  selected={true}
                 />
               </div>
             </div>
           </ComponentPreview>
           <CodeBlock
-            code={`import Image from "next/image";
-import { cn } from "@/lib/utils";
-interface UserRoleCardProps {
-  role: "talent" | "employer";
-  title: string;
-  description: string;
-  image: string;
-  variant?: "enabled" | "hover" | "pressed";
-}
-function UserRoleCard({ role, title, description, image, variant = "enabled" }: UserRoleCardProps) {
-  return (
-    <div
-      className={cn(
-        "relative flex w-full max-w-[720px] items-center gap-4 rounded-2xl border p-2 transition-all cursor-pointer",
-        // Height 192px from Figma
-        "h-[192px]",
-        // Dynamic styles based on variant using semantic tokens
-        variant === "enabled" && "border-button-tertiary-border bg-background",
-        variant === "hover" && "border-button-tertiary-border bg-button-tertiary-hover",
-        variant === "pressed" && "border-border-focused bg-button-secondary-default"
-      )}
-    >
-      <div className="flex flex-1 items-center gap-4 rounded-lg bg-background py-0 pl-6 pr-10 h-full">
-        <div className="flex flex-1 flex-col gap-3">
-          <h3 className={cn(
-            "text-xl leading-[150%] tracking-[0.4px] text-foreground",
-            role === "talent" ? "font-nunito font-bold" : "font-secondary font-semibold"
-          )}>
-            {title}
-          </h3>
-          <p className={cn(
-            "text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground",
-            role === "talent" ? "font-nunito" : "font-secondary"
-          )}>
-            {description}
-          </p>
-        </div>
-        <div className="shrink-0">
-          <Image
-            src={image}
-            alt={\`\${title} illustration\`}
-            width={140}
-            height={140}
-            className="h-[140px] w-[140px]"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}`}
+            code={`import { UserRoleCard } from "@/patterns/cards";
+
+<UserRoleCard
+  title="I'm a Remote Talent"
+  description="Find global opportunities."
+  image="/images/talent-select.svg"
+  onClick={() => selectRole('talent')}
+/>`}
             language="tsx"
           />
 <ComponentPreview title="Goals Card">
             <div className="flex justify-center">
-              <GoalCard {...goalData} />
+              <GoalCard
+                title={goalData.title}
+                badge={{ label: goalData.type }}
+                progress={goalData.progress}
+                metrics={[
+                  { label: "key results completed", current: goalData.completedResults, total: goalData.totalResults },
+                  { label: "Due", value: goalData.dueDate }
+                ]}
+              />
             </div>
           </ComponentPreview>
           <CodeBlock
-            code={`interface GoalCardProps {
-  title: string;
-  type: "Automatic" | "Manual";
-  progress: number;
-  completedResults: number;
-  totalResults: number;
-  dueDate: string;
-}
-function GoalCard({ title, type, progress, completedResults, totalResults, dueDate }: GoalCardProps) {
-  return (
-    <div className="flex flex-col items-start gap-5 p-4 bg-background border border-border rounded-lg w-96 transition-colors hover:bg-muted hover:border-border cursor-pointer">
-      <div className="flex items-start justify-between w-full">
-        <div className="flex-1 flex items-center">
-          <p className="font-semibold text-sm text-foreground leading-normal tracking-[0.02em]">
-            {title}
-          </p>
-        </div>
-        <span className="bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded-full text-[10px] text-neutral-600 font-medium whitespace-nowrap">
-          {type}
-        </span>
-      </div>
-      <div className="flex flex-col gap-2 w-full">
-        <div className="flex items-center">
-          <span className="font-semibold text-2xl text-foreground leading-[1.2]">
-            {progress}%
-          </span>
-        </div>
-        <div className="flex items-center w-full h-2">
-          <div className="flex-1 bg-neutral-100 rounded-full h-1.5 overflow-hidden">
-            <div className="bg-client h-full rounded-full" style={{ width: \`\${progress}%\` }} />
-          </div>
-        </div>
-        <div className="flex items-center justify-between w-full">
-          <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
-            {completedResults} of {totalResults} key results completed
-          </span>
-          <span className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]">
-            {dueDate}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}`}
+            code={`import { GoalCard } from "@/patterns/cards";
+
+<GoalCard
+  title="Increase user engagement by 25%"
+  badge={{ label: "Automatic" }}
+  progress={68}
+  metrics={[
+    { label: "key results completed", current: 3, total: 5 },
+    { label: "Due", value: "Dec 31, 2024" }
+  ]}
+/>`}
             language="tsx"
           />
         </TabsContent>

@@ -1,11 +1,9 @@
 import {
   Breadcrumb,
-  BreadcrumbPage,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  Separator,
   Tabs,
   TabsContent,
   TabsList,

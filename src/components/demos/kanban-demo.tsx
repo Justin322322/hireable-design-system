@@ -1,23 +1,23 @@
+"use client";
+
 import {
-  Avatar,
-  AvatarFallback,
-  Badge,
-  Button,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  Icon,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/ui";
 
-
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
 import { VERSION } from "@/lib/version";
+
+// Import extracted patterns
+import { ApplicationCard, CandidateCard, KanbanColumn } from "@/patterns/kanban";
+
 // Import JSON data (simulates API response)
 import kanbanData from "@/data/kanban.json";
 // ============================================================================
@@ -50,121 +50,9 @@ interface KanbanColumnData<T> {
 // Cast imported JSON to typed data
 const applicationsColumnData = kanbanData.applicationsColumn as KanbanColumnData<Application>;
 const candidatesColumnData = kanbanData.candidatesColumn as KanbanColumnData<Candidate>;
-// ============================================================================
-// COMPONENTS
-// ============================================================================
-function ApplicationCard({ company, position, salary, experience, status, postedTime }: Omit<Application, "id">) {
-  const isMatched = status.includes("MATCHED");
-  return (
-    <Card className="w-[300px] rounded-lg border border-button-tertiary-border bg-background p-3">
-      <CardContent className="flex flex-col items-start gap-[8px] p-0">
-        <div className="flex w-full items-center justify-between">
-          <p className="text-[10px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground">
-            {company}
-          </p>
-          <p className="text-[10px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground">
-            {postedTime}
-          </p>
-        </div>
-        <p className="w-full truncate text-[16px] leading-normal font-semibold tracking-[0.2px] text-foreground">
-          {position}
-        </p>
-        <div className="flex items-center gap-1.5 text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground">
-          <span>{salary}</span>
-          <span>•</span>
-          <span>{experience}</span>
-        </div>
-        {status && (
-          <Badge
-            variant={isMatched ? "ontrack" : "default"}
-            className="px-[8px] py-[4px] text-[12px] leading-[1.2] font-normal tracking-[0.3px]"
-          >
-            {status}
-          </Badge>
-        )}
-        <div className="flex w-full items-center justify-between py-[4px]">
-          <p className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-foreground">
-            Activity Title
-          </p>
-          <Button size="icon" className="bg-client hover:bg-client-active flex h-[20px] w-[20px] items-center justify-center rounded-full p-0">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M4.5 3L7.5 6L4.5 9" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-function CandidateCard({ name, role, salary, experience, matchStatus }: Omit<Candidate, "id" | "avatar">) {
-  return (
-    <Card className="h-[135px] w-[300px] rounded-md border border-button-tertiary-border bg-background">
-      <CardContent className="flex h-full flex-col items-start gap-[9px] p-[12px]">
-        <div className="relative flex w-full items-start justify-between">
-          <div className="relative flex h-[40px] flex-1 items-center gap-[8px]">
-            <Avatar className="h-[40px] w-[40px]">
-              <AvatarFallback className="bg-neutral-muted text-[14px] font-medium text-muted-foreground">
-                {name.split(" ").map(n => n[0]).join("")}
-              </AvatarFallback>
-            </Avatar>
-            <div className="relative flex flex-1 flex-col items-start gap-[4px]">
-              <div className="text-[14px] leading-[1.2] font-semibold tracking-[0.2px] text-foreground">
-                {name}
-              </div>
-              <div className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground">
-                {role}
-              </div>
-            </div>
-          </div>
-          <Button variant="ghost" size="icon" aria-label="More options" className="flex h-6 w-6 items-center justify-center text-icon hover:text-foreground">
-            <Icon icon="more_horiz" size={20} />
-          </Button>
-        </div>
-        <div className="relative flex w-full items-center justify-between gap-2">
-          <div className="flex items-center gap-1.5 text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground">
-            <span>{salary}</span>
-            <span>•</span>
-            <span>{experience}</span>
-          </div>
-          {matchStatus && (
-            <Badge variant="ontrack" shape="badge" className="px-[6px] py-[3px] text-[10px] leading-[1.2] font-semibold tracking-[0.2px] uppercase">
-              {matchStatus}
-            </Badge>
-          )}
-        </div>
-        <div className="relative mt-auto flex w-full items-center justify-between">
-          <div className="text-[12px] leading-[1.2] font-normal tracking-[0.2px] text-icon">
-            Activity Title
-          </div>
-          <Button size="icon" variant="ghost" aria-label="Open details" className="flex h-6 w-6 items-center justify-center rounded-full bg-neutral-subtle text-icon hover:bg-neutral-subtle/80 hover:text-foreground">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M4.5 3L7.5 6L4.5 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-function KanbanColumn<T>({ data, renderCard }: { data: KanbanColumnData<T>; renderCard: (item: T) => React.ReactNode }) {
-  return (
-    <div className="relative flex flex-col items-start gap-[8px]">
-      <div className="relative flex h-[24px] items-center gap-[8px]">
-        <span className="text-[14px] leading-[1.2] font-semibold tracking-[0.2px] text-foreground">
-          {data.title}
-        </span>
-        <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-neutral-subtle px-2 text-[12px] leading-[1.2] font-medium text-muted-foreground">
-          {data.count}
-        </span>
-      </div>
-      <div className="relative z-0 flex w-[316px] flex-col items-start gap-2 overflow-hidden rounded-lg bg-neutral-subtle p-2">
-        {data.items.map((item, idx) => (
-          <div key={idx}>{renderCard(item)}</div>
-        ))}
-      </div>
-    </div>
-  );
-}
+
+// Note: ApplicationCard, CandidateCard, and KanbanColumn are now imported from @/patterns/kanban
+// This demonstrates the extracted, reusable patterns in action
 export default function KanbanPage() {
   return (
     <div className="container max-w-4xl py-12 px-4 md:px-8">
@@ -187,64 +75,56 @@ export default function KanbanPage() {
           <ComponentPreview title="Job Applications Column">
             <div className="flex justify-center p-4">
               <KanbanColumn
-                data={applicationsColumnData}
-                renderCard={(app) => <ApplicationCard {...app} />}
+                title={applicationsColumnData.title}
+                items={applicationsColumnData.items}
+                renderItem={(app) => (
+                  <ApplicationCard
+                    company={app.company}
+                    position={app.position}
+                    metadata={[{ value: app.salary }, { value: app.experience }]}
+                    badge={{ label: app.status, matched: app.status.includes("MATCHED") }}
+                    timestamp={app.postedTime}
+                    footer={{ label: "Activity Title", action: { onClick: () => {} } }}
+                  />
+                )}
+                keyExtractor={(app) => app.id}
               />
             </div>
           </ComponentPreview>
           <ComponentPreview title="Candidates Column (Profile Cards)">
             <div className="flex justify-center p-4">
               <KanbanColumn
-                data={candidatesColumnData}
-                renderCard={(candidate) => <CandidateCard {...candidate} />}
+                title={candidatesColumnData.title}
+                items={candidatesColumnData.items}
+                renderItem={(candidate) => (
+                  <CandidateCard
+                    name={candidate.name}
+                    role={candidate.role}
+                    metadata={[{ value: candidate.salary }, { value: candidate.experience }]}
+                    badge={candidate.matchStatus ? { label: candidate.matchStatus, variant: "ontrack" } : undefined}
+                    footer={{ label: "Activity Title", actions: { menu: { onClick: () => {} }, details: { onClick: () => {} } } }}
+                  />
+                )}
+                keyExtractor={(candidate) => candidate.id}
               />
             </div>
           </ComponentPreview>
           <CodeBlock
-            code={`// Fetch kanban data from API
-const [columns, setColumns] = useState<KanbanColumnData<Application>[]>([]);
-const [loading, setLoading] = useState(true);
-useEffect(() => {
-  const fetchKanban = async () => {
-    const res = await fetch("/api/kanban/applications");
-    const data = await res.json();
-    setColumns(data.columns);
-    setLoading(false);
-  };
-  fetchKanban();
-}, []);
-// KanbanColumn Component
-function KanbanColumn<T>({ 
-  data, 
-  renderCard 
-}: { 
-  data: KanbanColumnData<T>; 
-  renderCard: (item: T) => React.ReactNode;
-}) {
-  return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2">
-        <span className="text-sm font-semibold">{data.title}</span>
-        <span className="rounded-full bg-neutral-100 px-2 text-xs">
-          {data.count}
-        </span>
-      </div>
-      <div className="flex flex-col gap-2 rounded-lg bg-neutral-100 p-2">
-        {data.items.map((item) => renderCard(item))}
-      </div>
-    </div>
-  );
-}
-// Usage
-{loading ? <Skeleton /> : (
-  columns.map((column) => (
-    <KanbanColumn
-      key={column.id}
-      data={column}
-      renderCard={(app) => <ApplicationCard {...app} />}
+            code={`import { KanbanColumn, ApplicationCard } from "@/patterns/kanban";
+
+<KanbanColumn
+  title="Applied"
+  items={applications}
+  renderItem={(app) => (
+    <ApplicationCard
+      company={app.company}
+      position={app.position}
+      metadata={[{ value: app.salary }, { value: app.experience }]}
+      badge={{ label: app.status }}
+      timestamp={app.postedTime}
     />
-  ))
-)}`}
+  )}
+/>`}
             language="tsx"
           />
         </TabsContent>

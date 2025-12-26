@@ -66,13 +66,78 @@ export default function GettingStartedPage() {
         </Card>
       </div>
 
-      <Tabs defaultValue="installation" className="space-y-8">
+      <Tabs defaultValue="whats-included" className="space-y-8">
         <TabsList>
+          <TabsTrigger value="whats-included">What&apos;s Included</TabsTrigger>
           <TabsTrigger value="installation">Installation</TabsTrigger>
           <TabsTrigger value="usage">Usage</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="installation" className="space-y-8">
+        <TabsContent value="whats-included" className="space-y-8">
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Package Contents</h2>
+            <p className="mb-4 text-muted-foreground">
+              The downloaded ZIP contains a complete, production-ready design system in Next.js format:
+            </p>
+            <CodeBlock
+              code={`hireable-design-system/
+├── src/
+│   ├── components/ui/       # 30+ UI components
+│   ├── hooks/               # Custom React hooks
+│   ├── lib/                 # Utility functions
+│   ├── patterns/            # Composite patterns
+│   └── app/
+│       └── globals.css      # Design tokens
+├── public/
+│   ├── icons/               # Icon assets
+│   ├── images/              # Image assets
+│   ├── Logo.svg
+│   ├── Logo-name.svg
+│   └── auth-pillars.svg
+└── README.md`}
+              language="bash"
+            />
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Folder Structure</h2>
+            <Card>
+              <CardContent className="pt-6 space-y-4">
+                <div>
+                  <h3 className="font-semibold mb-2">src/components/ui/</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Core UI primitives (Button, Input, Card, Dialog, etc.) - All components use design tokens, 
+                    fully accessible with ARIA attributes, and TypeScript with full type safety.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">src/hooks/</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Custom React hooks: useDisclosure (modal/drawer state), useToggle (boolean state), useToast (notifications)
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">src/patterns/</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Composite components built from UI primitives: cards, drawers, modals, kanban, form-field, modal-layout
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">src/app/globals.css</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Design tokens (CSS variables) - SOURCE OF TRUTH. 3-layer token architecture with light/dark mode support.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">public/</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Static assets: icons, images, logos (Logo.svg, Logo-name.svg, auth-pillars.svg)
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </section>
+
           <section>
             <h2 className="mb-4 text-xl font-semibold">Prerequisites</h2>
             <Card>
@@ -85,32 +150,41 @@ export default function GettingStartedPage() {
               </CardContent>
             </Card>
           </section>
+        </TabsContent>
 
+        <TabsContent value="installation" className="space-y-8">
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Copy Components</h2>
+            <h2 className="mb-4 text-xl font-semibold">Option 1: Copy to Existing Next.js Project</h2>
             <p className="mb-4 text-muted-foreground">
-              This design system uses a copy-paste approach (similar to shadcn/ui). 
-              Use the <strong>Download All Components</strong> button above to get everything at once, 
-              or copy individual folders manually:
+              Extract the downloaded ZIP and copy folders to your existing project:
             </p>
             <CodeBlock
-              code={`# Extract the downloaded ZIP to your project
-# OR copy folders manually:
+              code={`# Copy src folder contents
+cp -r src/* your-project/src/
 
-# Copy the components folder to your project
-cp -r src/components/ui your-project/src/components/
-
-# Copy hooks
-cp -r src/hooks your-project/src/
-
-# Copy the utility functions
-cp src/lib/utils.ts your-project/src/lib/`}
+# Copy public assets
+cp -r public/* your-project/public/`}
               language="bash"
+            />
+            <p className="mt-4 text-muted-foreground">
+              Then import globals.css in your layout:
+            </p>
+            <CodeBlock
+              code={`// app/layout.tsx
+import "@/app/globals.css"`}
+              language="tsx"
             />
           </section>
 
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Install Peer Dependencies</h2>
+            <h2 className="mb-4 text-xl font-semibold">Option 2: Start Fresh</h2>
+            <p className="mb-4 text-muted-foreground">
+              Extract the ZIP to your project root - the folder structure is ready to use!
+            </p>
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Install Dependencies</h2>
             <p className="mb-4 text-muted-foreground">
               Install the required dependencies for the components:
             </p>
@@ -119,10 +193,29 @@ cp src/lib/utils.ts your-project/src/lib/`}
 bun add clsx tailwind-merge class-variance-authority
 
 # Radix UI primitives (install as needed)
-bun add @radix-ui/react-dialog @radix-ui/react-tabs @radix-ui/react-select
+bun add @radix-ui/react-dialog @radix-ui/react-dropdown-menu
+bun add @radix-ui/react-tabs @radix-ui/react-select
+bun add @radix-ui/react-checkbox @radix-ui/react-radio-group
+bun add @radix-ui/react-switch @radix-ui/react-label
+bun add @radix-ui/react-avatar @radix-ui/react-separator
+bun add @radix-ui/react-navigation-menu @radix-ui/react-slot
+bun add @radix-ui/react-accordion @radix-ui/react-progress
+bun add @radix-ui/react-toggle @radix-ui/react-visually-hidden
+
+# Drawer component
+bun add vaul
+
+# Toast notifications
+bun add sonner
 
 # Optional: animations
-bun add framer-motion`}
+bun add framer-motion
+
+# Optional: drag and drop (for Kanban)
+bun add @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities
+
+# Optional: charts
+bun add recharts`}
               language="bash"
             />
           </section>
@@ -130,7 +223,7 @@ bun add framer-motion`}
           <section>
             <h2 className="mb-4 text-xl font-semibold">Configure Path Aliases</h2>
             <p className="mb-4 text-muted-foreground">
-              Set up the <code className="text-sm bg-muted px-1 rounded">@/</code> path alias in your tsconfig.json:
+              Ensure your tsconfig.json has the <code className="text-sm bg-muted px-1 rounded">@/</code> alias:
             </p>
             <CodeBlock
               code={`{
@@ -146,17 +239,18 @@ bun add framer-motion`}
           </section>
 
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Configure Tailwind</h2>
+            <h2 className="mb-4 text-xl font-semibold">Configure Tailwind CSS</h2>
             <p className="mb-4 text-muted-foreground">
-              Make sure your Tailwind configuration includes the component paths:
+              Make sure your tailwind.config.ts includes the component paths:
             </p>
             <CodeBlock
-              code={`// tailwind.config.ts
-import type { Config } from "tailwindcss";
+              code={`import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./src/patterns/**/*.{js,ts,jsx,tsx}",
+    "./src/app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
@@ -172,21 +266,27 @@ export default config;`}
 
         <TabsContent value="usage" className="space-y-8">
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Import Components</h2>
+            <h2 className="mb-4 text-xl font-semibold">Import Components from Barrel Exports</h2>
             <CodeBlock
-              code={`
-
-
+              code={`import { Button, Input, Card, CardHeader, CardContent } from "@/components/ui";
+import { useDisclosure, useToast } from "@/hooks";
+import { FormField } from "@/patterns";
 
 export function MyComponent() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  
   return (
     <Card>
       <CardHeader>
         <h2>Welcome</h2>
       </CardHeader>
       <CardContent>
-        <Input placeholder="Enter your name" />
-        <Button>Submit</Button>
+        <FormField label="Email" helperText="We'll never share your email">
+          <Input type="email" placeholder="m@example.com" />
+        </FormField>
+        <Button variant="primary" onClick={onOpen}>
+          Submit
+        </Button>
       </CardContent>
     </Card>
   );
@@ -196,19 +296,45 @@ export function MyComponent() {
           </section>
 
           <section>
-            <h2 className="mb-4 text-xl font-semibold">Import Styles</h2>
-            <p className="mb-4 text-muted-foreground">
-              Import the global styles in your app entry point:
-            </p>
+            <h2 className="mb-4 text-xl font-semibold">Use Patterns for Complex Components</h2>
             <CodeBlock
-              code={`// app/layout.tsx or pages/_app.tsx
-import "@/app/globals.css";`}
+              code={`import { ProfileCard, GoalCard } from "@/patterns/cards";
+import { CandidateProfileDrawer } from "@/patterns/drawers";
+import { UploadPhotoModal } from "@/patterns/modals";`}
               language="tsx"
             />
           </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Design Tokens</h2>
+            <p className="mb-4 text-muted-foreground">
+              All components use CSS variables from globals.css. Never use hardcoded colors - always use design tokens for consistency:
+            </p>
+            <CodeBlock
+              code={`/* Example tokens */
+--color-primary: #00A7F8;
+--color-background: #FFFFFF;
+--button-primary-default: var(--color-primary);
+--spacing-4: 1rem;`}
+              language="css"
+            />
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Accessibility</h2>
+            <Card>
+              <CardContent className="pt-6 text-muted-foreground">
+                <p className="mb-2">All components follow WCAG 2.1 AA standards:</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Proper ARIA attributes</li>
+                  <li>Keyboard navigation</li>
+                  <li>Focus management</li>
+                  <li>Screen reader support</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </section>
         </TabsContent>
-
-
       </Tabs>
     </div>
   );

@@ -13,17 +13,40 @@ import {
   DrawerContent,
   DrawerTitle,
   DrawerTrigger,
+  FieldNote,
   Icon,
+  Input,
+  Label,
   Separator,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
+  Textarea,
   VisuallyHidden,
 } from "@/components/ui";
 
 import * as React from "react";
 import { useState } from "react";
+
+// DnD Kit imports
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import Image from "next/image";
 
 import { 
@@ -551,11 +574,454 @@ const ProfileDrawerFooter: React.FC = () => (
 );
 
 // ============================================================================
+// STATIC CREATE OBJECTIVE DRAWER
+// ============================================================================
+
+// Radio Card Component for Update Method selection
+interface RadioCardProps {
+  title: string;
+  description: string;
+  selected?: boolean;
+}
+
+const RadioCard: React.FC<RadioCardProps> = ({ title, description, selected = false }) => (
+  <div
+    className={cn(
+      "box-border flex flex-col items-start p-1 gap-2.5 flex-1 border rounded-lg cursor-pointer transition-colors",
+      selected ? "border-client" : "border-neutral-300 hover:border-neutral-400"
+    )}
+  >
+    <div className="flex flex-col items-start p-4 gap-1 w-full bg-background rounded">
+      <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+        {title}
+      </span>
+      <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+        {description}
+      </span>
+    </div>
+  </div>
+);
+
+// Static Create Objective Drawer - Default state (no selection)
+const CreateObjectiveDrawerStatic: React.FC = () => (
+  <div className="relative w-full max-w-[800px] h-[700px] bg-background border border-neutral-200 rounded-lg shadow-lg overflow-hidden flex flex-col">
+    {/* Header */}
+    <div className="box-border flex flex-row justify-between items-start px-6 py-4 w-full h-16 border-b border-neutral-300 shrink-0">
+      <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+        Create Objective
+      </span>
+      <button className="flex items-center justify-center p-1 w-8 h-8 bg-background rounded-full hover:bg-muted transition-colors">
+        <Icon icon="close" size={24} className="text-muted-foreground" />
+      </button>
+    </div>
+
+    {/* Container - Scrollable content */}
+    <div className="flex flex-col items-start p-4 gap-8 flex-1 overflow-y-auto">
+      {/* Objective Title Input */}
+      <Input
+        size="lg"
+        placeholder="Write objective title"
+        className="w-full h-14"
+      />
+
+      {/* Description Box */}
+      <div className="flex flex-col items-start gap-2 w-full">
+        <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+          Description
+        </Label>
+        <Textarea
+          placeholder="Write description here"
+          className="w-full min-h-[131px]"
+        />
+      </div>
+
+      {/* Update Method Section */}
+      <div className="flex flex-col items-start gap-6 w-full">
+        {/* Radiocard Option */}
+        <div className="flex flex-col items-start gap-4 w-full">
+          <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+            Update method
+          </Label>
+          
+          {/* Radio Cards - 2 column layout - No selection by default */}
+          <div className="flex flex-row items-center gap-4 w-full">
+            <RadioCard
+              title="Automatic"
+              description="Automatically track the progress of your objective from connected Key results"
+            />
+            <RadioCard
+              title="Manual"
+              description="Manually track the progress of your objective from the current to target value."
+            />
+          </div>
+        </div>
+
+        {/* Field Note - Info variant */}
+        <FieldNote variant="info">
+          If your objective is not measurable (e.g. qualitative outcomes or binary tasks), you may skip selecting a measurement type. The goal will be tracked using status updates only (Not Started, In Progress, Completed).
+        </FieldNote>
+      </div>
+    </div>
+
+    {/* CTA Footer */}
+    <div className="flex flex-row justify-end items-center px-6 py-4 gap-3 w-full border-t border-neutral-200 bg-background shrink-0">
+      <Button variant="outline" className="border-neutral-300">
+        Cancel
+      </Button>
+      <Button className="bg-client hover:bg-client-hover text-white font-medium">
+        Save objective
+      </Button>
+    </div>
+  </div>
+);
+
+// Key Results Progress Bar Component
+const KeyResultsProgress: React.FC<{ current: number; total: number }> = ({ current, total }) => (
+  <div className="flex flex-row items-center gap-3">
+    <Icon icon="account_tree" size={20} className="text-muted-foreground" />
+    <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-muted-foreground">
+      Key Results
+    </span>
+    <span className="text-sm leading-[120%] tracking-[0.2px] text-muted-foreground">
+      {current} / {total}
+    </span>
+    <div className="w-[120px] h-2 bg-neutral-100 rounded-full overflow-hidden">
+      <div 
+        className="h-full bg-client rounded-full" 
+        style={{ width: `${(current / total) * 100}%` }}
+      />
+    </div>
+  </div>
+);
+
+// Key Result interface for DnD
+interface KeyResult {
+  id: string;
+  title: string;
+  badgeText: string;
+}
+
+// Default key results data
+const defaultKeyResults: KeyResult[] = [
+  { id: "kr-1", title: "Increase quarterly sales by 20%", badgeText: "Percent" },
+  { id: "kr-2", title: "Complete user research interviews", badgeText: "Number" },
+];
+
+// Sortable Key Result Item Component
+interface SortableKeyResultItemProps {
+  id: string;
+  title: string;
+  badgeText?: string;
+}
+
+const SortableKeyResultItem: React.FC<SortableKeyResultItemProps> = ({ id, title, badgeText }) => {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
+
+  const style = {
+    // Restrict movement to Y-axis only (no horizontal drift)
+    transform: transform ? `translate3d(0, ${transform.y}px, 0)` : undefined,
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+    zIndex: isDragging ? 1000 : 1,
+  };
+
+  return (
+    <div 
+      ref={setNodeRef} 
+      style={style}
+      className={cn(
+        "flex flex-row items-center p-1 gap-6 w-full bg-background rounded hover:bg-neutral-50 transition-colors group",
+        isDragging && "shadow-lg bg-white"
+      )}
+    >
+      <div className="flex flex-row items-center gap-2 flex-1">
+        <button
+          {...attributes}
+          {...listeners}
+          className="flex items-center justify-center cursor-grab active:cursor-grabbing touch-none p-1"
+        >
+          <Icon icon="drag_indicator" size={20} className="text-muted-foreground group-hover:text-foreground" />
+        </button>
+        <div className="flex flex-row items-center gap-2.5 flex-1">
+          <span className="text-sm leading-normal tracking-[0.2px] text-foreground">
+            {title}
+          </span>
+          {badgeText && (
+            <Badge variant="default" className="px-2 py-0.5 text-xs bg-neutral-100 text-muted-foreground rounded-full font-normal">
+              {badgeText}
+            </Badge>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Static Draggable List Item Component (for static previews)
+interface DraggableListItemProps {
+  title: string;
+  badgeText?: string;
+}
+
+const DraggableListItem: React.FC<DraggableListItemProps> = ({ title, badgeText }) => (
+  <div className="flex flex-row items-center p-1 gap-6 w-full bg-background rounded hover:bg-neutral-50 cursor-grab transition-colors group">
+    <div className="flex flex-row items-center gap-2 flex-1">
+      <Icon icon="drag_indicator" size={20} className="text-muted-foreground group-hover:text-foreground shrink-0" />
+      <div className="flex flex-row items-center gap-2.5 flex-1 py-2 px-2 rounded">
+        <span className="text-sm leading-[120%] tracking-[0.2px] text-foreground">
+          {title}
+        </span>
+        {badgeText && (
+          <Badge variant="default" className="px-2 py-0.5 text-xs bg-neutral-100 text-muted-foreground rounded-full font-normal">
+            {badgeText}
+          </Badge>
+        )}
+      </div>
+    </div>
+  </div>
+);
+
+// Static Create Objective Drawer - Automatic selected state with Key Results
+const CreateObjectiveDrawerAutomaticSelected: React.FC = () => (
+  <div className="relative w-full max-w-[800px] h-auto min-h-[700px] bg-background border border-neutral-200 rounded-lg shadow-lg overflow-hidden flex flex-col">
+    {/* Header */}
+    <div className="box-border flex flex-row justify-between items-start px-6 py-4 w-full h-16 border-b border-neutral-300 shrink-0">
+      <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+        Create Objective
+      </span>
+      <button className="flex items-center justify-center p-1 w-8 h-8 bg-background rounded-full hover:bg-muted transition-colors">
+        <Icon icon="close" size={24} className="text-muted-foreground" />
+      </button>
+    </div>
+
+    {/* Container - Scrollable content */}
+    <div className="flex flex-col items-start p-4 gap-8 flex-1 overflow-y-auto">
+      {/* Objective Title Input */}
+      <Input
+        size="lg"
+        placeholder="Write objective title"
+        className="w-full h-14"
+      />
+
+      {/* Description Box */}
+      <div className="flex flex-col items-start gap-2 w-full">
+        <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+          Description
+        </Label>
+        <Textarea
+          placeholder="Write description here"
+          className="w-full min-h-[131px]"
+        />
+      </div>
+
+      {/* Update Method Section */}
+      <div className="flex flex-col items-start gap-6 w-full">
+        {/* Radiocard Option */}
+        <div className="flex flex-col items-start gap-4 w-full">
+          <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+            Update method
+          </Label>
+          
+          {/* Radio Cards - Automatic selected */}
+          <div className="flex flex-row items-center gap-4 w-full">
+            <RadioCard
+              title="Automatic"
+              description="Automatically track the progress of your objective from connected Key results"
+              selected
+            />
+            <RadioCard
+              title="Manual"
+              description="Manually track the progress of your objective from the current to target value."
+            />
+          </div>
+        </div>
+
+        {/* Key Results Section - Visible when Automatic is selected */}
+        <div className="flex flex-col items-start gap-4 w-full">
+          <KeyResultsProgress current={1} total={3} />
+          
+          {/* Draggable List Items */}
+          <div className="flex flex-col gap-1 w-full">
+            <DraggableListItem title="Increase quarterly sales by 20%" badgeText="Percent" />
+            <DraggableListItem title="Complete user research interviews" badgeText="Number" />
+          </div>
+          
+          {/* Add Key Result Button - Using Button component with secondary styling */}
+          <Button 
+            variant="secondary"
+            size="md"
+            className="gap-2 bg-[#CCEDFF] hover:bg-[#B8E4FF] text-[#006593]"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 1V13M1 7H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Add Key result
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    {/* CTA Footer */}
+    <div className="flex flex-row justify-end items-center px-6 py-4 gap-3 w-full border-t border-neutral-200 bg-background shrink-0">
+      <Button variant="outline" className="border-neutral-300">
+        Cancel
+      </Button>
+      <Button className="bg-client hover:bg-client-hover text-white font-medium">
+        Save objective
+      </Button>
+    </div>
+  </div>
+);
+
+// Static Create Objective Drawer - Manual selected state with value inputs
+const CreateObjectiveDrawerManualSelected: React.FC = () => (
+  <div className="relative w-full max-w-[800px] h-auto min-h-[700px] bg-background border border-neutral-200 rounded-lg shadow-lg overflow-hidden flex flex-col">
+    {/* Header */}
+    <div className="box-border flex flex-row justify-between items-start px-6 py-4 w-full h-16 border-b border-neutral-300 shrink-0">
+      <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+        Create Objective
+      </span>
+      <button className="flex items-center justify-center p-1 w-8 h-8 bg-background rounded-full hover:bg-muted transition-colors">
+        <Icon icon="close" size={24} className="text-muted-foreground" />
+      </button>
+    </div>
+
+    {/* Container - Scrollable content */}
+    <div className="flex flex-col items-start p-4 gap-8 flex-1 overflow-y-auto">
+      {/* Objective Title Input */}
+      <Input
+        size="lg"
+        placeholder="Write objective title"
+        className="w-full h-14"
+      />
+
+      {/* Description Box */}
+      <div className="flex flex-col items-start gap-2 w-full">
+        <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+          Description
+        </Label>
+        <Textarea
+          placeholder="Write description here"
+          className="w-full min-h-[131px]"
+        />
+      </div>
+
+      {/* Update Method Section */}
+      <div className="flex flex-col items-start gap-6 w-full">
+        {/* Radiocard Option */}
+        <div className="flex flex-col items-start gap-4 w-full">
+          <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+            Update method
+          </Label>
+          
+          {/* Radio Cards - Manual selected */}
+          <div className="flex flex-row items-center gap-4 w-full">
+            <RadioCard
+              title="Automatic"
+              description="Automatically track the progress of your objective from connected Key results"
+            />
+            <RadioCard
+              title="Manual"
+              description="Manually track the progress of your objective from the current to target value."
+              selected
+            />
+          </div>
+        </div>
+
+        {/* Value Inputs Section - Visible when Manual is selected */}
+        <div className="flex flex-row items-start gap-4 w-full">
+          {/* Unit Type Dropdown */}
+          <div className="flex flex-col items-start gap-2 flex-1">
+            <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+              Unit type
+            </Label>
+            <div className="flex flex-row justify-between items-center px-4 py-3 gap-2 w-full h-11 bg-background border border-neutral-300 rounded-lg">
+              <span className="text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                Percent
+              </span>
+              <Icon icon="expand_more" size={24} className="text-foreground" />
+            </div>
+          </div>
+
+          {/* Divider - Vertically centered with input fields */}
+          <div className="flex flex-col justify-center items-center self-stretch pt-[25px]">
+            <div className="w-4 h-px bg-neutral-300" />
+          </div>
+
+          {/* Current Value Input */}
+          <div className="flex flex-col items-start gap-2 flex-1">
+            <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+              Current value
+            </Label>
+            <Input
+              placeholder="0"
+              className="w-full h-11"
+            />
+          </div>
+
+          {/* Target Value Input */}
+          <div className="flex flex-col items-start gap-2 flex-1">
+            <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+              Target value
+            </Label>
+            <Input
+              placeholder="100"
+              className="w-full h-11"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* CTA Footer */}
+    <div className="flex flex-row justify-end items-center px-6 py-4 gap-3 w-full border-t border-neutral-200 bg-background shrink-0">
+      <Button variant="outline" className="border-neutral-300">
+        Cancel
+      </Button>
+      <Button className="bg-client hover:bg-client-hover text-white font-medium">
+        Save objective
+      </Button>
+    </div>
+  </div>
+);
+
+// ============================================================================
 // MAIN PAGE COMPONENT
 // ============================================================================
 
+
 export default function DrawerPage() {
   const [isAICardExpanded, setIsAICardExpanded] = useState(false);
+  const [updateMethod, setUpdateMethod] = useState<"automatic" | "manual" | null>(null);
+  const [keyResults, setKeyResults] = useState<KeyResult[]>(defaultKeyResults);
+
+  // DnD sensors configuration
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  // Handle drag end for reordering
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    
+    if (over && active.id !== over.id) {
+      setKeyResults((items) => {
+        const oldIndex = items.findIndex((item) => item.id === active.id);
+        const newIndex = items.findIndex((item) => item.id === over.id);
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+  };
 
   return (
     <div className="container max-w-4xl py-12 px-4 md:px-8">
@@ -577,6 +1043,7 @@ export default function DrawerPage() {
         </TabsList>
 
         <TabsContent value="examples" className="space-y-8">
+          {/* Interactive Candidate Profile Drawer */}
           <ComponentPreview title="Candidate Profile Drawer">
             <div className="flex flex-col items-center gap-3">
               <p className="text-sm text-muted-foreground">
@@ -629,42 +1096,349 @@ export default function DrawerPage() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui";
+            code={`import { Drawer, DrawerContent, DrawerTitle, DrawerTrigger, VisuallyHidden } from "@/components/ui";
 
-// Fetch candidate data from API
-const [candidate, setCandidate] = useState<CandidateProfile | null>(null);
-const [loading, setLoading] = useState(false);
+// Candidate Profile Drawer Example
+export function CandidateProfileDrawer({ candidateId }: { candidateId: string }) {
+  const [candidate, setCandidate] = useState<CandidateProfile | null>(null);
+  const [loading, setLoading] = useState(false);
 
-const fetchCandidate = async (id: string) => {
-  setLoading(true);
-  const res = await fetch(\`/api/candidates/\${id}\`);
-  const data = await res.json();
-  setCandidate(data);
-  setLoading(false);
-};
+  const fetchCandidate = async (id: string) => {
+    setLoading(true);
+    const res = await fetch(\`/api/candidates/\${id}\`);
+    const data = await res.json();
+    setCandidate(data);
+    setLoading(false);
+  };
 
-// Usage
-<Drawer onOpenChange={(open) => open && fetchCandidate("94821")}>
-  <DrawerTrigger asChild>
-    <CandidateCard data={candidatePreview} />
-  </DrawerTrigger>
-  <DrawerContent>
-    {loading ? (
-      <LoadingSpinner />
-    ) : candidate && (
-      <>
-        <CandidateHeader data={candidate} />
-        <JobDetails application={candidate.application} />
-        <AIMatchCard aiMatch={candidate.aiMatch} />
-        <AboutSection about={candidate.about} />
-        <SkillsSection skills={candidate.skills} />
-        <EducationSection education={candidate.education} />
-        <CertificatesSection certificates={candidate.certificates} />
-        <PersonalMessageSection message={candidate.personalMessage} />
-      </>
-    )}
-  </DrawerContent>
-</Drawer>`}
+  return (
+    <Drawer onOpenChange={(open) => open && fetchCandidate(candidateId)}>
+      <DrawerTrigger asChild>
+        <CandidateCard candidateId={candidateId} />
+      </DrawerTrigger>
+      <DrawerContent className="sm:max-w-4xl p-0" showCloseButton={false}>
+        <VisuallyHidden>
+          <DrawerTitle>Candidate Profile</DrawerTitle>
+        </VisuallyHidden>
+        
+        {loading ? (
+          <LoadingSpinner />
+        ) : candidate && (
+          <div className="flex flex-col h-full">
+            <ProfileDrawerHeader />
+            <div className="flex-1 overflow-y-auto">
+              <CandidateHeader data={candidate} />
+              <AIMatchCard aiMatch={candidate.aiMatch} />
+              <AboutSection about={candidate.about} />
+              <SkillsSection skills={candidate.skills} />
+            </div>
+            <ProfileDrawerFooter />
+          </div>
+        )}
+      </DrawerContent>
+    </Drawer>
+  );
+}`}
+            language="tsx"
+          />
+
+          {/* Interactive Create Objective Drawer */}
+          <ComponentPreview title="Create Objective Drawer (Interactive)">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Click the button below to open the Create Objective drawer
+              </p>
+              <Drawer onOpenChange={(open) => !open && setUpdateMethod(null)}>
+                <DrawerTrigger asChild>
+                  <Button>Create Objective</Button>
+                </DrawerTrigger>
+                <DrawerContent className="sm:max-w-[800px] p-0" showCloseButton={false}>
+                  <VisuallyHidden>
+                    <DrawerTitle>Create Objective</DrawerTitle>
+                  </VisuallyHidden>
+
+                  <div className="flex flex-col h-full bg-background overflow-hidden">
+                    {/* Header */}
+                    <div className="box-border flex flex-row justify-between items-start px-6 py-4 w-full h-16 border-b border-neutral-300 shrink-0">
+                      <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+                        Create Objective
+                      </span>
+                      <DrawerClose asChild>
+                        <button className="flex items-center justify-center p-1 w-8 h-8 bg-background rounded-full hover:bg-muted transition-colors">
+                          <Icon icon="close" size={24} className="text-muted-foreground" />
+                        </button>
+                      </DrawerClose>
+                    </div>
+
+                    {/* Container - Scrollable content */}
+                    <div className="flex flex-col items-start p-4 gap-8 flex-1 overflow-y-auto">
+                      {/* Objective Title Input */}
+                      <Input
+                        size="lg"
+                        placeholder="Write objective title"
+                        className="w-full h-14"
+                      />
+
+                      {/* Description Box */}
+                      <div className="flex flex-col items-start gap-2 w-full">
+                        <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                          Description
+                        </Label>
+                        <Textarea
+                          placeholder="Write description here"
+                          className="w-full min-h-[131px]"
+                        />
+                      </div>
+
+                      {/* Update Method Section */}
+                      <div className="flex flex-col items-start gap-6 w-full">
+                        {/* Radiocard Option */}
+                        <div className="flex flex-col items-start gap-4 w-full">
+                          <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                            Update method
+                          </Label>
+                          
+                          {/* Clickable Radio Cards */}
+                          <div className="flex flex-row items-center gap-4 w-full">
+                            <div 
+                              className="flex-1 cursor-pointer"
+                              onClick={() => setUpdateMethod("automatic")}
+                            >
+                              <RadioCard
+                                title="Automatic"
+                                description="Automatically track the progress of your objective from connected Key results"
+                                selected={updateMethod === "automatic"}
+                              />
+                            </div>
+                            <div 
+                              className="flex-1 cursor-pointer"
+                              onClick={() => setUpdateMethod("manual")}
+                            >
+                              <RadioCard
+                                title="Manual"
+                                description="Manually track the progress of your objective from the current to target value."
+                                selected={updateMethod === "manual"}
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Conditional content based on selection */}
+                        {updateMethod === "automatic" && (
+                          <div className="flex flex-col items-start gap-4 w-full">
+                            <KeyResultsProgress current={keyResults.length} total={3} />
+                            <DndContext
+                              sensors={sensors}
+                              collisionDetection={closestCenter}
+                              onDragEnd={handleDragEnd}
+                            >
+                              <SortableContext
+                                items={keyResults.map((kr) => kr.id)}
+                                strategy={verticalListSortingStrategy}
+                              >
+                                <div className="flex flex-col gap-1 w-full">
+                                  {keyResults.map((keyResult) => (
+                                    <SortableKeyResultItem
+                                      key={keyResult.id}
+                                      id={keyResult.id}
+                                      title={keyResult.title}
+                                      badgeText={keyResult.badgeText}
+                                    />
+                                  ))}
+                                </div>
+                              </SortableContext>
+                            </DndContext>
+                            <Button 
+                              variant="secondary"
+                              size="md"
+                              className="gap-2 bg-[#CCEDFF] hover:bg-[#B8E4FF] text-[#006593]"
+                              onClick={() => {
+                                const newId = `kr-${Date.now()}`;
+                                setKeyResults([...keyResults, { id: newId, title: "New key result", badgeText: "Percent" }]);
+                              }}
+                            >
+                              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1V13M1 7H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                              Add Key result
+                            </Button>
+                          </div>
+                        )}
+
+                        {updateMethod === "manual" && (
+                          <div className="flex flex-row items-start gap-4 w-full">
+                            {/* Unit Type Dropdown */}
+                            <div className="flex flex-col items-start gap-2 flex-1">
+                              <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                                Unit type
+                              </Label>
+                              <div className="flex flex-row justify-between items-center px-4 py-3 gap-2 w-full h-11 bg-background border border-neutral-300 rounded-lg">
+                                <span className="text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                                  Percent
+                                </span>
+                                <Icon icon="expand_more" size={24} className="text-foreground" />
+                              </div>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="flex flex-col justify-center items-center self-stretch pt-[25px]">
+                              <div className="w-4 h-px bg-neutral-300" />
+                            </div>
+
+                            {/* Current Value Input */}
+                            <div className="flex flex-col items-start gap-2 flex-1">
+                              <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                                Current value
+                              </Label>
+                              <Input placeholder="0" className="w-full h-11" />
+                            </div>
+
+                            {/* Target Value Input */}
+                            <div className="flex flex-col items-start gap-2 flex-1">
+                              <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                                Target value
+                              </Label>
+                              <Input placeholder="100" className="w-full h-11" />
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Field Note - Show when no selection or Automatic */}
+                        {updateMethod !== "manual" && (
+                          <FieldNote variant="info">
+                            If your objective is not measurable (e.g. qualitative outcomes or binary tasks), you may skip selecting a measurement type. The goal will be tracked using status updates only (Not Started, In Progress, Completed).
+                          </FieldNote>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* CTA Footer */}
+                    <div className="flex flex-row justify-end items-center px-6 py-4 gap-3 w-full border-t border-neutral-200 bg-background shrink-0">
+                      <DrawerClose asChild>
+                        <Button variant="outline" className="border-neutral-300">
+                          Cancel
+                        </Button>
+                      </DrawerClose>
+                      <Button className="bg-client hover:bg-client-hover text-white font-medium">
+                        Save objective
+                      </Button>
+                    </div>
+                  </div>
+                </DrawerContent>
+              </Drawer>
+            </div>
+          </ComponentPreview>
+
+          <ComponentPreview title="Create Objective Drawer - Default">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Default state with no update method selected. Shows input fields, radio cards, and info field note.
+              </p>
+              <CreateObjectiveDrawerStatic />
+            </div>
+          </ComponentPreview>
+
+          <ComponentPreview title="Create Objective Drawer - Automatic Selected">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Automatic update method selected. Shows Key Results section with progress bar and draggable list items.
+              </p>
+              <CreateObjectiveDrawerAutomaticSelected />
+            </div>
+          </ComponentPreview>
+
+          <ComponentPreview title="Create Objective Drawer - Manual Selected">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Manual update method selected. Shows Unit type dropdown, Current value, and Target value input fields.
+              </p>
+              <CreateObjectiveDrawerManualSelected />
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`import { 
+  Drawer, 
+  DrawerContent, 
+  DrawerTrigger, 
+  DrawerClose,
+  Button,
+  Input,
+  Textarea,
+  Label,
+  FieldNote,
+  Icon
+} from "@/components/ui";
+
+// Create Objective Drawer Example
+export function CreateObjectiveDrawer() {
+  const [updateMethod, setUpdateMethod] = useState<"automatic" | "manual" | null>(null);
+
+  return (
+    <Drawer>
+      <DrawerTrigger asChild>
+        <Button>Create Objective</Button>
+      </DrawerTrigger>
+      <DrawerContent className="sm:max-w-[800px] p-0">
+        {/* Header */}
+        <div className="flex justify-between items-center px-6 py-4 border-b">
+          <span className="font-semibold text-xl">Create Objective</span>
+          <DrawerClose asChild>
+            <button className="p-1 rounded-full hover:bg-muted">
+              <Icon icon="close" size={24} />
+            </button>
+          </DrawerClose>
+        </div>
+
+        {/* Form Content */}
+        <div className="flex flex-col p-4 gap-8 overflow-y-auto">
+          <Input size="lg" placeholder="Write objective title" />
+
+          <div className="flex flex-col gap-2">
+            <Label>Description</Label>
+            <Textarea placeholder="Write description here" />
+          </div>
+
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
+              <Label>Update method</Label>
+              <div className="flex gap-4">
+                <RadioCard
+                  title="Automatic"
+                  description="Track from connected Key results"
+                  selected={updateMethod === "automatic"}
+                  onClick={() => setUpdateMethod("automatic")}
+                />
+                <RadioCard
+                  title="Manual"
+                  description="Track from current to target value"
+                  selected={updateMethod === "manual"}
+                  onClick={() => setUpdateMethod("manual")}
+                />
+              </div>
+            </div>
+
+            {/* Show Key Results section when Automatic is selected */}
+            {updateMethod === "automatic" && (
+              <KeyResultsSection />
+            )}
+
+            <FieldNote variant="info">
+              Skip measurement type for qualitative outcomes. 
+              Status updates only: Not Started, In Progress, Completed.
+            </FieldNote>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="flex justify-end gap-3 px-6 py-4 border-t">
+          <Button variant="outline">Cancel</Button>
+          <Button>Save objective</Button>
+        </div>
+      </DrawerContent>
+    </Drawer>
+  );
+}`}
             language="tsx"
           />
         </TabsContent>

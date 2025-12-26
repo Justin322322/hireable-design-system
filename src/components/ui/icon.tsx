@@ -147,6 +147,9 @@ export type IconName =
   | "accessibility_new"
   | "subject"
   | "note_alt"
+  // Hierarchy/Organization icons
+  | "account_tree"
+  | "drag_indicator"
 
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** The Material Symbol icon name (from fonts.google.com/icons) */

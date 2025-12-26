@@ -1,6 +1,47 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent } from "@/components/ui";
+"use client";
+
+import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, Button, Icon } from "@/components/ui";
 
 import { CodeBlock } from "@/components/docs/code-block";
+
+function DownloadButton() {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownload = async () => {
+    setIsDownloading(true);
+    try {
+      const response = await fetch("/api/download-components");
+      if (!response.ok) throw new Error("Download failed");
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "hireable-design-system.zip";
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      a.remove();
+    } catch (error) {
+      console.error("Download error:", error);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  return (
+    <Button 
+      onClick={handleDownload} 
+      disabled={isDownloading}
+      size="lg"
+      className="gap-2"
+    >
+      <Icon icon={isDownloading ? "autorenew" : "download"} className={isDownloading ? "animate-spin" : ""} />
+      {isDownloading ? "Downloading..." : "Download All Components"}
+    </Button>
+  );
+}
 
 export default function GettingStartedPage() {
   return (
@@ -10,6 +51,19 @@ export default function GettingStartedPage() {
         <p className="text-lg text-muted-foreground">
           Everything you need to start using the Hireable Design System in your project.
         </p>
+        
+        {/* Quick Download Section */}
+        <Card className="mt-6 bg-muted/50">
+          <CardContent className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
+            <div>
+              <h3 className="font-semibold text-lg">Quick Start</h3>
+              <p className="text-sm text-muted-foreground">
+                Download all components, hooks, and utilities as a ZIP file.
+              </p>
+            </div>
+            <DownloadButton />
+          </CardContent>
+        </Card>
       </div>
 
       <Tabs defaultValue="installation" className="space-y-8">
@@ -35,11 +89,19 @@ export default function GettingStartedPage() {
           <section>
             <h2 className="mb-4 text-xl font-semibold">Copy Components</h2>
             <p className="mb-4 text-muted-foreground">
-              This design system uses a copy-paste approach (similar to shadcn/ui). Copy the components you need directly into your project:
+              This design system uses a copy-paste approach (similar to shadcn/ui). 
+              Use the <strong>Download All Components</strong> button above to get everything at once, 
+              or copy individual folders manually:
             </p>
             <CodeBlock
-              code={`# Copy the components folder to your project
+              code={`# Extract the downloaded ZIP to your project
+# OR copy folders manually:
+
+# Copy the components folder to your project
 cp -r src/components/ui your-project/src/components/
+
+# Copy hooks
+cp -r src/hooks your-project/src/
 
 # Copy the utility functions
 cp src/lib/utils.ts your-project/src/lib/`}

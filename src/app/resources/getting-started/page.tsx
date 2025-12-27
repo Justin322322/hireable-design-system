@@ -189,34 +189,52 @@ import "@/app/globals.css"`}
               Install the required dependencies for the components:
             </p>
             <CodeBlock
-              code={`# Core utilities
+              code={`# Core utilities (REQUIRED)
 bun add clsx tailwind-merge class-variance-authority
 
-# Radix UI primitives (install as needed)
-bun add @radix-ui/react-dialog @radix-ui/react-dropdown-menu
-bun add @radix-ui/react-tabs @radix-ui/react-select
-bun add @radix-ui/react-checkbox @radix-ui/react-radio-group
-bun add @radix-ui/react-switch @radix-ui/react-label
-bun add @radix-ui/react-avatar @radix-ui/react-separator
-bun add @radix-ui/react-navigation-menu @radix-ui/react-slot
-bun add @radix-ui/react-accordion @radix-ui/react-progress
-bun add @radix-ui/react-toggle @radix-ui/react-visually-hidden
+# Material Symbols font (REQUIRED for icons)
+bun add material-symbols
 
-# Drawer component
+# Radix UI primitives (REQUIRED for most components)
+bun add @radix-ui/react-dialog @radix-ui/react-tabs @radix-ui/react-select
+bun add @radix-ui/react-checkbox @radix-ui/react-radio-group @radix-ui/react-switch
+bun add @radix-ui/react-label @radix-ui/react-avatar @radix-ui/react-separator
+bun add @radix-ui/react-navigation-menu @radix-ui/react-slot @radix-ui/react-toggle
+bun add @radix-ui/react-accordion @radix-ui/react-progress @radix-ui/react-visually-hidden
+
+# Drawer component (REQUIRED for drawers)
 bun add vaul
 
-# Toast notifications
+# Toast notifications (REQUIRED for toasts)
 bun add sonner
 
-# Optional: animations
+# Form handling (RECOMMENDED)
+bun add react-hook-form @hookform/resolvers zod
+
+# Animations (RECOMMENDED)
 bun add framer-motion
 
-# Optional: drag and drop (for Kanban)
+# Drag and drop (OPTIONAL - for Kanban, sortable lists)
 bun add @dnd-kit/core @dnd-kit/sortable @dnd-kit/utilities
 
-# Optional: charts
+# Charts (OPTIONAL - for data visualization)
 bun add recharts`}
               language="bash"
+            />
+          </section>
+
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Configure Material Symbols Font</h2>
+            <p className="mb-4 text-muted-foreground">
+              Import the Material Symbols font in your layout.tsx:
+            </p>
+            <CodeBlock
+              code={`// app/layout.tsx
+import "material-symbols";
+
+// The Icon component will now work with all Material Symbols icons
+// Browse icons at: https://fonts.google.com/icons`}
+              language="tsx"
             />
           </section>
 

@@ -2,13 +2,15 @@
 
 import * as React from "react";
 import {
-  Badge,
   Button,
   Card,
   CardContent,
+  DraggableListItem,
+  FieldNote,
   Icon,
   Input,
   Label,
+  ProgressIndicator,
   RadioCard,
   Select,
   SelectContent,
@@ -21,7 +23,6 @@ import {
   TabsList,
   TabsTrigger,
   Textarea,
-  FieldNote,
 } from "@/components/ui";
 
 import { 
@@ -54,42 +55,6 @@ const candidateData = drawerData.candidateProfile as CandidateProfile;
 // ============================================================================
 // STATIC PREVIEW COMPONENTS (for documentation only)
 // ============================================================================
-
-const DraggableListItem: React.FC<{ title: string; badgeText?: string }> = ({ title, badgeText }) => (
-  <div className="flex flex-row items-center p-1 gap-6 w-full bg-background rounded hover:bg-neutral-50 cursor-grab transition-colors group">
-    <div className="flex flex-row items-center gap-2 flex-1">
-      <Icon icon="drag_indicator" size={20} className="text-muted-foreground group-hover:text-foreground shrink-0" />
-      <div className="flex flex-row items-center gap-2.5 flex-1 py-2 px-2 rounded">
-        <span className="text-sm leading-[120%] tracking-[0.2px] text-foreground">
-          {title}
-        </span>
-        {badgeText && (
-          <Badge variant="default" className="px-2 py-0.5 text-xs bg-neutral-100 text-muted-foreground rounded-full font-normal">
-            {badgeText}
-          </Badge>
-        )}
-      </div>
-    </div>
-  </div>
-);
-
-const KeyResultsProgress: React.FC<{ current: number; total: number }> = ({ current, total }) => (
-  <div className="flex flex-row items-center gap-3">
-    <Icon icon="account_tree" size={20} className="text-muted-foreground" />
-    <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-muted-foreground">
-      Key Results
-    </span>
-    <span className="text-sm leading-[120%] tracking-[0.2px] text-muted-foreground">
-      {current} / {total}
-    </span>
-    <div className="w-[120px] h-2 bg-neutral-100 rounded-full overflow-hidden">
-      <div 
-        className="h-full bg-client rounded-full" 
-        style={{ width: `${(current / total) * 100}%` }}
-      />
-    </div>
-  </div>
-);
 
 interface CreateObjectiveDrawerPreviewProps {
   selectedMethod?: "automatic" | "manual" | null;
@@ -142,7 +107,7 @@ const CreateObjectiveDrawerPreview: React.FC<CreateObjectiveDrawerPreviewProps> 
 
         {selectedMethod === "automatic" && (
           <div className="flex flex-col items-start gap-4 w-full">
-            <KeyResultsProgress current={1} total={3} />
+            <ProgressIndicator current={1} total={3} label="Key Results" />
             
             <div className="flex flex-col gap-1 w-full">
               <DraggableListItem title="Increase quarterly sales by 20%" badgeText="Percent" />

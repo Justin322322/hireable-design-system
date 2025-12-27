@@ -28,3 +28,5 @@ export * from "./password-input";
 export * from "./currency-input";
 export * from "./worktrait-tag";
 export * from "./spinner";
+export * from "./draggable-list-item";
+export * from "./progress-indicator";

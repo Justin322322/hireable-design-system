@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useState } from "react";
 import {
+  Badge,
   Button,
   Drawer,
   DrawerClose,
@@ -13,6 +14,7 @@ import {
   Icon,
   Input,
   Label,
+  ProgressIndicator,
   RadioCard,
   Select,
   SelectContent,
@@ -22,7 +24,6 @@ import {
   Separator,
   Textarea,
   VisuallyHidden,
-  Badge,
 } from "@/components/ui";
 import {
   DndContext,
@@ -60,24 +61,6 @@ export const defaultKeyResults: KeyResult[] = [
 // ============================================================================
 // COMPONENTS
 // ============================================================================
-
-const KeyResultsProgress: React.FC<{ current: number; total: number }> = ({ current, total }) => (
-  <div className="flex flex-row items-center gap-3">
-    <Icon icon="account_tree" size={20} className="text-muted-foreground" />
-    <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-muted-foreground">
-      Key Results
-    </span>
-    <span className="text-sm leading-[120%] tracking-[0.2px] text-muted-foreground">
-      {current} / {total}
-    </span>
-    <div className="w-[120px] h-2 bg-neutral-100 rounded-full overflow-hidden">
-      <div 
-        className="h-full bg-client rounded-full" 
-        style={{ width: `${(current / total) * 100}%` }}
-      />
-    </div>
-  </div>
-);
 
 const SortableKeyResultItem: React.FC<{ id: string; title: string; badgeText?: string }> = ({ 
   id, 
@@ -237,7 +220,7 @@ export function CreateObjectiveDrawer({ children }: CreateObjectiveDrawerProps) 
 
               {updateMethod === "automatic" && (
                 <div className="flex flex-col items-start gap-4 w-full">
-                  <KeyResultsProgress current={keyResults.length} total={3} />
+                  <ProgressIndicator current={keyResults.length} total={3} label="Key Results" />
                   <DndContext
                     sensors={sensors}
                     collisionDetection={closestCenter}

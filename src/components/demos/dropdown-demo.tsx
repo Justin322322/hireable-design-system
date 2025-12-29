@@ -101,7 +101,7 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Error</span>
               <Select defaultValue="selected">
-                <SelectTrigger className="w-[300px] pointer-events-none border-destructive" tabIndex={-1}>
+                <SelectTrigger className="w-[300px] pointer-events-none border-border-error" tabIndex={-1}>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -206,7 +206,7 @@ export default function DropdownPage() {
               <div className="flex flex-col gap-2 w-[300px]">
                 <Label>Dropdown title</Label>
                 <Select defaultValue="selected">
-                  <SelectTrigger className="pointer-events-none border-destructive" tabIndex={-1}>
+                  <SelectTrigger className="pointer-events-none border-border-error" tabIndex={-1}>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -329,7 +329,7 @@ export default function DropdownPage() {
               <div className="flex flex-col gap-2 w-[300px]">
                 <Label>Dropdown title</Label>
                 <Select defaultValue="selected">
-                  <SelectTrigger className="pointer-events-none border-destructive" tabIndex={-1}>
+                  <SelectTrigger className="pointer-events-none border-border-error" tabIndex={-1}>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>

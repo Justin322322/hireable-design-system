@@ -5,11 +5,12 @@ interface ComponentPreviewProps {
   description?: string;
   fieldNotes?: string;
   children: React.ReactNode;
+  allowOverflow?: boolean;
 }
 
-export function ComponentPreview({ title, description, fieldNotes, children }: ComponentPreviewProps) {
+export function ComponentPreview({ title, description, fieldNotes, children, allowOverflow }: ComponentPreviewProps) {
   return (
-    <Card>
+    <Card className={allowOverflow ? "overflow-visible" : undefined}>
       <CardHeader className="pb-3">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
         {description !== undefined && (
@@ -18,7 +19,7 @@ export function ComponentPreview({ title, description, fieldNotes, children }: C
           </p>
         )}
       </CardHeader>
-      <CardContent className="border-t bg-muted/30 p-4 md:p-6 overflow-x-auto">
+      <CardContent className={`border-t bg-muted/30 p-4 md:p-6 ${allowOverflow ? "overflow-visible" : "overflow-x-auto"}`}>
         {children}
       </CardContent>
       {fieldNotes !== undefined && (

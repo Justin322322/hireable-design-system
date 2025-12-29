@@ -9,10 +9,6 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-  CloseButton,
-  NotificationButton,
-  DeleteButton,
-  ExpandButton,
 } from "@/components/ui";
 
 
@@ -394,58 +390,203 @@ export default function ButtonPage() {
 <Button variant="link">Link</Button>`}
             language="tsx"
           />
-          {/* Icon Buttons */}
-          <ComponentPreview title="Icon Buttons">
+          {/* Control Buttons */}
+          <ComponentPreview title="Control Buttons">
             <div className="space-y-6">
               <p className="text-sm text-muted-foreground pb-4">
                 Circular icon-only buttons for common actions. 32×32px with 24×24px icons.
                 White background by default, gray on hover.
               </p>
-              <div className="flex flex-wrap gap-8 items-start justify-center">
-                {/* Close Button */}
-                <div className="text-center space-y-2">
-                  <p className="text-xs text-muted-foreground font-medium">Close</p>
-                  <div className="flex gap-2">
-                    <div className="text-center">
-                      <CloseButton />
-                      <p className="text-xs text-muted-foreground mt-1">Default</p>
-                    </div>
-                  </div>
-                </div>
-                {/* Notification Button */}
-                <div className="text-center space-y-2">
-                  <p className="text-xs text-muted-foreground font-medium">Notification</p>
-                  <div className="flex gap-2">
-                    <div className="text-center">
-                      <NotificationButton />
-                      <p className="text-xs text-muted-foreground mt-1">Default</p>
-                    </div>
-                  </div>
-                </div>
-                {/* Expand Button */}
-                <div className="text-center space-y-2">
-                  <p className="text-xs text-muted-foreground font-medium">Expand</p>
-                  <div className="flex gap-2">
-                    <div className="text-center">
-                      <ExpandButton expanded={false} />
-                      <p className="text-xs text-muted-foreground mt-1">Collapsed</p>
-                    </div>
-                    <div className="text-center">
-                      <ExpandButton expanded={true} />
-                      <p className="text-xs text-muted-foreground mt-1">Expanded</p>
-                    </div>
-                  </div>
-                </div>
-                {/* Delete Button */}
-                <div className="text-center space-y-2">
-                  <p className="text-xs text-muted-foreground font-medium">Delete</p>
-                  <div className="flex gap-2">
-                    <div className="text-center">
-                      <DeleteButton />
-                      <p className="text-xs text-muted-foreground mt-1">Default</p>
-                    </div>
-                  </div>
-                </div>
+              
+              {/* Table Layout */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left py-3 px-4 font-medium text-muted-foreground">Button</th>
+                      <th className="text-center py-3 px-4 font-medium text-muted-foreground">Default</th>
+                      <th className="text-center py-3 px-4 font-medium text-muted-foreground">Hover</th>
+                      <th className="text-center py-3 px-4 font-medium text-muted-foreground">Disabled</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* Close */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Close</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="close" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="close" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="close" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Notification */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Notification</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="notifications" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="notifications" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="notifications" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Delete */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Delete</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="delete" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="delete" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="delete" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Expand (Collapsed) */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Expand (Collapsed)</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="expand_more" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="expand_more" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="expand_more" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Expand (Expanded) */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Expand (Expanded)</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="expand_less" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="expand_less" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="expand_less" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Custom (Outlined) */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Custom (Outlined)</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="settings" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="settings" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="settings" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Custom (Filled) */}
+                    <tr>
+                      <td className="py-4 px-4 font-medium">Custom (Filled)</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="search" size={24} filled className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="search" size={24} filled className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="search" size={24} filled className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </ComponentPreview>

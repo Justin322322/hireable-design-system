@@ -18,7 +18,7 @@ import { radioGroupProps, radioGroupItemProps, radioSizes, radioStates } from "@
 import { VERSION } from "@/lib/version";
 export default function RadioButtonPage() {
   return (
-    <div className="container max-w-4xl py-12 px-4 md:px-8 overflow-hidden">
+    <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Radio Button</h1>
@@ -45,7 +45,7 @@ export default function RadioButtonPage() {
               {/* With Label - 3 Sizes */}
               <div className="space-y-4">
                 <h4 className="text-sm font-medium">With Label</h4>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Small */}
                   <div className="space-y-3">
                     <span className="text-xs text-muted-foreground">Small (16px)</span>
@@ -111,7 +111,7 @@ export default function RadioButtonPage() {
               {/* With Label and Description - 3 Sizes */}
               <div className="space-y-4">
                 <h4 className="text-sm font-medium">With Label and Description</h4>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Small */}
                   <div className="space-y-3">
                     <span className="text-xs text-muted-foreground">Small (16px)</span>

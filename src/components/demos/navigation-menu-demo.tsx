@@ -24,7 +24,7 @@ import { VERSION } from "@/lib/version";
 import { cn } from "@/lib/utils";
 export default function NavigationMenuPage() {
   return (
-    <div className="container max-w-4xl py-12 px-4 md:px-8 overflow-hidden">
+    <div className="container max-w-4xl py-12 px-4 md:px-8">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Navigation Menu</h1>
@@ -41,7 +41,7 @@ export default function NavigationMenuPage() {
           <TabsTrigger value="api">API</TabsTrigger>
         </TabsList>
         <TabsContent value="examples" className="space-y-8">
-          <ComponentPreview title="Basic Navigation Menu">
+          <ComponentPreview title="Basic Navigation Menu" allowOverflow>
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -51,7 +51,7 @@ export default function NavigationMenuPage() {
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
                           <Link
-                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                             href="/"
                           >
                             <div className="mb-2 mt-4 text-lg font-medium">

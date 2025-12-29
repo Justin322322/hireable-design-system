@@ -34,8 +34,11 @@ const checklistCardVariants = cva(
 export interface ChecklistCardProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof checklistCardVariants> {
-  /** Icon element to display (32x32 recommended) */
-  icon: React.ReactNode;
+  /** 
+   * Pre-sized icon element to display (32x32 recommended).
+   * Expects a ReactElement (not a string or number).
+   */
+  icon: React.ReactElement<{ sx?: Record<string, unknown>; style?: React.CSSProperties; className?: string }>;
   /** Title text */
   title: string;
   /** Description text */
@@ -54,7 +57,7 @@ export interface ChecklistCardProps
  *
  * @example
  * <ChecklistCard
- *   icon={<PersonIcon sx={{ fontSize: 32 }} />}
+ *   icon={<PersonIcon sx={{ fontSize: 32 }} />} // Icon must be pre-sized
  *   title="Add company profile"
  *   description="Upload your logo"
  *   onCardClick={() => handleSetup()}
@@ -73,16 +76,27 @@ export const ChecklistCard = React.forwardRef<HTMLDivElement, ChecklistCardProps
     },
     ref
   ) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if ((e.key === "Enter" || e.key === " ") && onCardClick) {
+        e.preventDefault();
+        onCardClick();
+      }
+    };
+
     return (
       <Card
         ref={ref}
-        className={cn(checklistCardVariants({ state }), className)}
+        role="button"
+        tabIndex={0}
+        aria-label={title}
+        className={cn(checklistCardVariants({ state }), "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2", className)}
         onClick={onCardClick}
+        onKeyDown={handleKeyDown}
         {...props}
       >
-        {/* Icon Container - 64x64 with gray background */}
-        <div className="flex items-center justify-center size-16 bg-neutral-subtle rounded-[6.4px] shrink-0 p-[6.4px]">
-          <span className="text-icon">{React.cloneElement(icon as React.ReactElement<{ sx?: { fontSize: number } }>, { sx: { fontSize: 32 } })}</span>
+        {/* Icon Container - 64x64 container with gray background, inner icon should be 32x32 */}
+        <div className="flex items-center justify-center size-16 bg-neutral-subtle rounded-[6.4px] shrink-0">
+          <span className="text-icon">{icon}</span>
         </div>
 
         {/* Title + Description */}

@@ -32,8 +32,6 @@ export interface UserRoleCardProps extends React.HTMLAttributes<HTMLDivElement> 
   onClick?: () => void;
   /** Custom class name */
   className?: string;
-  /** Image dimensions */
-  imageSize?: { width: number; height: number };
   /** Card height */
   height?: number;
   /** Title font family (for role-specific styling) */
@@ -51,7 +49,6 @@ export const UserRoleCard = React.forwardRef<HTMLDivElement, UserRoleCardProps>(
       variant = "enabled",
       onClick,
       className,
-      imageSize = { width: 140, height: 140 },
       height = 192,
       titleFont = "primary",
       selected = false,
@@ -141,17 +138,13 @@ export const UserRoleCard = React.forwardRef<HTMLDivElement, UserRoleCardProps>(
             <p className={cn(getDescriptionStyles(), "text-xs md:text-sm")}>{description}</p>
           </div>
           <div className="shrink-0 flex items-center justify-center">
-            <div className="relative w-20 h-20 md:w-auto md:h-auto">
+            <div className="relative w-20 h-20 md:w-[140px] md:h-[140px]">
               <Image
                 src={image}
                 alt={title}
-                width={imageSize.width}
-                height={imageSize.height}
-                className="object-contain w-full h-full md:w-auto md:h-auto"
-                style={{
-                  maxWidth: "100%",
-                  height: "auto"
-                }}
+                fill
+                sizes="(max-width: 768px) 80px, 140px"
+                className="object-contain"
               />
             </div>
           </div>

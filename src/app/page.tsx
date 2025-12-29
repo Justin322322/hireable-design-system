@@ -3,7 +3,7 @@ import { Button } from "@/components/ui";
 
 export default function HomePage() {
   return (
-    <div className="container max-w-3xl py-16 px-8">
+    <div className="container max-w-3xl mx-auto py-16 px-8">
       <div className="mb-12">
         <h1 className="mb-4 text-4xl font-bold tracking-tight">
           Hireable Design System

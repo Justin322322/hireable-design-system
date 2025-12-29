@@ -182,11 +182,11 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
             <DialogClose asChild>
               <button 
                 className="flex items-center justify-center hover:bg-neutral-100 transition-colors p-1 w-8 h-8 bg-white rounded-full border-none cursor-pointer"
+                aria-label="Close upload modal"
               >
                 <Icon icon="close" size={24} className="text-neutral-850" />
               </button>
-            </DialogClose>
-          </DialogHeader>
+            </DialogClose>          </DialogHeader>
 
           {/* Divider */}
           <Separator className="my-6 w-full h-px bg-border" />
@@ -332,11 +332,12 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
         </div>
         
         <button 
-          className="flex flex-row items-center justify-center hover:bg-neutral-100 transition-colors p-1 gap-[10px] w-8 h-8 bg-white rounded-full border-none cursor-pointer"
+          className="flex flex-row items-center justify-center p-1 gap-[10px] w-8 h-8 bg-white rounded-full border-none cursor-default"
+          aria-label="Close (non-functional in preview)"
+          disabled
         >
           <Icon icon="close" size={24} className="text-neutral-850" />
-        </button>
-      </div>
+        </button>      </div>
 
       {/* Divider */}
       <Separator className="my-6 w-full h-px bg-border" />

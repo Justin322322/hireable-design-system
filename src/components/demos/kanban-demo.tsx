@@ -55,7 +55,7 @@ const candidatesColumnData = kanbanData.candidatesColumn as KanbanColumnData<Can
 // This demonstrates the extracted, reusable patterns in action
 export default function KanbanPage() {
   return (
-    <div className="container max-w-4xl py-12 px-4 md:px-8 overflow-hidden">
+    <div className="container max-w-4xl py-12 px-4 md:px-8 overflow-x-auto">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Kanban</h1>

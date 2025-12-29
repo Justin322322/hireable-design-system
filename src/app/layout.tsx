@@ -50,7 +50,7 @@ export default function RootLayout({
           <SiteHeader />
           <div className="flex flex-1">
             <Sidebar />
-            <main id="main-content" className="flex-1 w-full min-w-0 flex flex-col items-center">{children}</main>
+            <main id="main-content" className="flex-1 w-full min-w-0 flex justify-center">{children}</main>
           </div>
         </div>
         <Toaster />

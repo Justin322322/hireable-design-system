@@ -3,7 +3,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
-import { Card, CardContent, CardHeader, CardTitle, FieldNote, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui";
+import { Card, CardContent, CardHeader, CardTitle, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui";
 import { VERSION } from "@/lib/version";
 import PasswordInput from "./password-input-demo";
 import CurrencyInput from "./currency-input-demo";
@@ -101,23 +101,27 @@ export default async function InputPage() {
               <Input
                 id="error-input"
                 type="text"
-                className="border-destructive focus-visible:border-destructive"
+                className="border-border-error focus-visible:border-border-error"
               />
-              <FieldNote variant="error">Username is required</FieldNote>
+              <span className="font-secondary text-sm text-destructive tracking-[0.2px]">
+                Username is required
+              </span>
             </div>
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Input, Label, FieldNote } from "@/components/ui";
+            code={`import { Input, Label } from "@/components/ui";
 
 <div className="space-y-2">
   <Label htmlFor="error-input">Username</Label>
   <Input
     id="error-input"
     type="text"
-    className="border-destructive focus-visible:border-destructive"
+    className="border-border-error focus-visible:border-border-error"
   />
-  <FieldNote variant="error">Username is required</FieldNote>
+  <span className="font-secondary text-sm text-destructive tracking-[0.2px]">
+    Username is required
+  </span>
 </div>`}
             language="tsx"
           />

@@ -39,6 +39,10 @@ export interface EmptyStateCardAction {
   label: string;
   onClick?: () => void;
   href?: string;
+  /** Link target (e.g., "_blank") */
+  target?: string;
+  /** Link rel attribute */
+  rel?: string;
 }
 
 export interface EmptyStateCardProps
@@ -103,15 +107,25 @@ export const EmptyStateCard = React.forwardRef<HTMLDivElement, EmptyStateCardPro
     // Auto-detect alignment based on content type if not explicitly set
     const effectiveAlign = align ?? (icon ? "center" : "left");
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (interactive && (e.key === "Enter" || e.key === " ")) {
+        e.preventDefault();
+        onClick?.(e as unknown as React.MouseEvent<HTMLDivElement>);
+      }
+    };
+
     return (
       <Card
         ref={ref}
+        role={interactive ? "button" : undefined}
+        tabIndex={interactive ? 0 : undefined}
         className={cn(
           emptyStateCardVariants({ state, align: effectiveAlign }),
-          interactive && "cursor-pointer",
+          interactive && "cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           className
         )}
         onClick={interactive ? onClick : undefined}
+        onKeyDown={interactive ? handleKeyDown : undefined}
         {...props}
       >
         {/* Content wrapper */}
@@ -152,17 +166,44 @@ export const EmptyStateCard = React.forwardRef<HTMLDivElement, EmptyStateCardPro
 
         {/* Action button */}
         {action && (
-          <Button
-            variant="secondary"
-            size="base"
-            className="w-full"
-            onClick={(e) => {
-              e.stopPropagation();
-              action.onClick?.();
-            }}
-          >
-            {action.label}
-          </Button>
+          action.href ? (
+            <Button
+              variant="secondary"
+              size="base"
+              className="w-full"
+              asChild
+            >
+              <a
+                href={action.href}
+                target={action.target}
+                rel={(() => {
+                  if (action.target !== "_blank") return action.rel;
+                  const tokens = new Set((action.rel || "").split(/\s+/).filter(Boolean));
+                  tokens.add("noopener");
+                  tokens.add("noreferrer");
+                  return Array.from(tokens).join(" ");
+                })()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  action.onClick?.();
+                }}
+              >
+                {action.label}
+              </a>
+            </Button>
+          ) : (
+            <Button
+              variant="secondary"
+              size="base"
+              className="w-full"
+              onClick={(e) => {
+                e.stopPropagation();
+                action.onClick?.();
+              }}
+            >
+              {action.label}
+            </Button>
+          )
         )}
       </Card>
     );
@@ -170,4 +211,3 @@ export const EmptyStateCard = React.forwardRef<HTMLDivElement, EmptyStateCardPro
 );
 
 EmptyStateCard.displayName = "EmptyStateCard";
-

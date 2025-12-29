@@ -3,7 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Card, Avatar, AvatarImage, AvatarFallback } from "@/components/ui";
-import { cva, type VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 // ============================================================================
@@ -12,19 +12,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 // ============================================================================
 
 const talentCardVariants = cva(
-  "flex flex-row items-center gap-2 p-4 rounded-lg transition-all cursor-pointer",
-  {
-    variants: {
-      state: {
-        enabled: "border border-neutral-muted hover:border-foreground hover:shadow-md",
-        hover: "border border-foreground shadow-[0px_2px_8px_rgba(0,0,0,0.1)]",
-        pressed: "border border-client shadow-[0px_2px_8px_rgba(0,0,0,0.1)]",
-      },
-    },
-    defaultVariants: {
-      state: "enabled",
-    },
-  }
+  "flex flex-row items-center gap-2 p-4 rounded-lg transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-neutral-muted hover:border-foreground hover:shadow-[0px_2px_8px_rgba(0,0,0,0.1)] active:border-client active:shadow-[0px_2px_8px_rgba(0,0,0,0.1)]"
 );
 
 // ============================================================================
@@ -32,8 +20,7 @@ const talentCardVariants = cva(
 // ============================================================================
 
 export interface TalentCardProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof talentCardVariants> {
+  extends React.HTMLAttributes<HTMLDivElement> {
   /** Primary text (name or title) */
   name: string;
   /** Secondary text (role or subtitle) */
@@ -82,25 +69,41 @@ export const TalentCard = React.forwardRef<HTMLDivElement, TalentCardProps>(
       avatar,
       avatarIcon,
       avatarClassName,
-      state,
       onCardClick,
       ...props
     },
     ref
   ) => {
     // Get initials for fallback (only used when no avatar or avatarIcon)
-    const initials = name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 2);
+    const trimmedName = name.trim();
+    const initials = trimmedName
+      ? trimmedName
+          .split(" ")
+          .filter((n) => n.length > 0)
+          .map((n) => n[0])
+          .join("")
+          .toUpperCase()
+          .slice(0, 2)
+      : "UN";
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "Enter") {
+        onCardClick?.();
+      } else if (e.key === " ") {
+        e.preventDefault();
+        onCardClick?.();
+      }
+    };
 
     return (
       <Card
         ref={ref}
-        className={cn(talentCardVariants({ state }), className)}
+        role="button"
+        tabIndex={0}
+        aria-label={name}
+        className={cn(talentCardVariants(), className)}
         onClick={onCardClick}
+        onKeyDown={handleKeyDown}
         {...props}
       >
         {/* Avatar - supports image, custom icon, or initials fallback */}

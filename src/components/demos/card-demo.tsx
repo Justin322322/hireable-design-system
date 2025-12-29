@@ -254,7 +254,7 @@ import CasesOutlined from "@mui/icons-material/CasesOutlined";
           />
 </div>
 <div id="base-card" className="scroll-mt-20 space-y-4">
-          <ComponentPreview title="Base Card">
+          <ComponentPreview title="Empty State Card (What's Next)">
               <div className="flex flex-col gap-6 items-center">
                 {/* Enabled State */}
                 <div className="space-y-2">
@@ -297,6 +297,7 @@ import CasesOutlined from "@mui/icons-material/CasesOutlined";
           <CodeBlock
             code={`import { EmptyStateCard } from "@/patterns/cards";
 
+// Empty State Card - What's Next variant (uses label instead of icon)
 <EmptyStateCard
   label="What's next"
   title="Browse Talents"
@@ -687,9 +688,8 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
             <h2 className="mb-4 text-xl font-semibold">Card Primitives</h2>
             <div className="space-y-4">
               <p className="text-muted-foreground mb-4">
-                The base Card components are built on top of standard HTML `div` elements and accept all standard HTML attributes.
-              </p>
-              <div className="overflow-x-auto">
+                The base Card components are built on top of standard HTML <code>div</code> elements and accept all standard HTML attributes.
+              </p>              <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b">

@@ -27,6 +27,9 @@ const badgeNavItems = [
   { id: "badge-border", label: "Badge with Border" },
   { id: "badge-dot", label: "Badge with Dot" },
   { id: "badge-remove", label: "Badge with Remove" },
+  { id: "badge-lg-flat", label: "Large Badge Flat" },
+  { id: "badge-lg-border", label: "Large Badge with Border" },
+  { id: "badge-lg-remove", label: "Large Badge with Remove" },
 ];
 export default function BadgePillsPage() {
   const handleRemove = () => {
@@ -341,6 +344,74 @@ export default function BadgePillsPage() {
             language="tsx"
           />
           </div>
+          {/* Large Badges Section */}
+          <h2 className="text-xl font-semibold pt-4">Large Badges</h2>
+          {/* Large Badge Flat */}
+          <div id="badge-lg-flat" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Large Badge Flat">
+            <div className="flex flex-wrap items-center gap-4">
+              <Badge shape="badge" size="lg">Badge</Badge>
+              <Badge shape="badge" size="lg" variant="ontrack">Badge</Badge>
+              <Badge shape="badge" size="lg" variant="atrisk">Badge</Badge>
+              <Badge shape="badge" size="lg" variant="offtrack">Badge</Badge>
+              <Badge shape="badge" size="lg" variant="complete">Badge</Badge>
+            </div>
+          </ComponentPreview>
+          <CodeBlock
+            code={`import { Badge } from "@/components/ui";
+
+<Badge shape="badge" size="lg">Badge</Badge>
+<Badge shape="badge" size="lg" variant="ontrack">Badge</Badge>
+<Badge shape="badge" size="lg" variant="atrisk">Badge</Badge>
+<Badge shape="badge" size="lg" variant="offtrack">Badge</Badge>
+<Badge shape="badge" size="lg" variant="complete">Badge</Badge>`}
+            language="tsx"
+          />
+          </div>
+          {/* Large Badge with Border */}
+          <div id="badge-lg-border" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Large Badge with Border">
+            <div className="flex flex-wrap items-center gap-4">
+              <Badge shape="badge" size="lg" hasBorder>Badge</Badge>
+              <Badge shape="badge" size="lg" variant="ontrack" hasBorder>Badge</Badge>
+              <Badge shape="badge" size="lg" variant="atrisk" hasBorder>Badge</Badge>
+              <Badge shape="badge" size="lg" variant="offtrack" hasBorder>Badge</Badge>
+              <Badge shape="badge" size="lg" variant="complete" hasBorder>Badge</Badge>
+            </div>
+          </ComponentPreview>
+          <CodeBlock
+            code={`import { Badge } from "@/components/ui";
+
+<Badge shape="badge" size="lg" hasBorder>Badge</Badge>
+<Badge shape="badge" size="lg" variant="ontrack" hasBorder>Badge</Badge>
+<Badge shape="badge" size="lg" variant="atrisk" hasBorder>Badge</Badge>
+<Badge shape="badge" size="lg" variant="offtrack" hasBorder>Badge</Badge>
+<Badge shape="badge" size="lg" variant="complete" hasBorder>Badge</Badge>`}
+            language="tsx"
+          />
+          </div>
+          {/* Large Badge with Border & Remove Button */}
+          <div id="badge-lg-remove" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Large Badge with Border & Remove Button">
+            <div className="flex flex-wrap items-center gap-4">
+              <Badge shape="badge" size="lg" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="badge" size="lg" variant="ontrack" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="badge" size="lg" variant="atrisk" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="badge" size="lg" variant="offtrack" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+              <Badge shape="badge" size="lg" variant="complete" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
+            </div>
+          </ComponentPreview>
+          <CodeBlock
+            code={`import { Badge } from "@/components/ui";
+
+<Badge shape="badge" size="lg" hasBorder hasRemoveButton>Badge</Badge>
+<Badge shape="badge" size="lg" variant="ontrack" hasBorder hasRemoveButton>Badge</Badge>
+<Badge shape="badge" size="lg" variant="atrisk" hasBorder hasRemoveButton>Badge</Badge>
+<Badge shape="badge" size="lg" variant="offtrack" hasBorder hasRemoveButton>Badge</Badge>
+<Badge shape="badge" size="lg" variant="complete" hasBorder hasRemoveButton>Badge</Badge>`}
+            language="tsx"
+          />
+          </div>
             </div>
             {/* Right Sidebar Navigation */}
             <OnThisPageNav items={badgeNavItems} />
@@ -395,6 +466,12 @@ export default function BadgePillsPage() {
                     <td className="py-3 font-mono">&quot;pill&quot; | &quot;badge&quot;</td>
                     <td className="py-3">&quot;pill&quot;</td>
                     <td className="py-3">Corner radius style</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="py-3 font-mono text-foreground">size</td>
+                    <td className="py-3 font-mono">&quot;sm&quot; | &quot;lg&quot;</td>
+                    <td className="py-3">&quot;sm&quot;</td>
+                    <td className="py-3">Badge size variant</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-3 font-mono text-foreground">hasDot</td>

@@ -15,7 +15,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background">
       <div className="flex h-14 items-center">
         {/* Logo section - aligned with sidebar width */}
-        <div className="hidden h-full w-64 shrink-0 items-center border-r px-6 md:flex">
+        <div className="hidden h-full w-64 shrink-0 items-center border-r px-6 lg:flex">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/Logo.svg" alt="Logo" width={28} height={28} />
             <Image src="/Logo-name.svg" alt="Hireable" width={80} height={20} className="h-5 w-auto" />
@@ -23,14 +23,14 @@ export function SiteHeader() {
         </div>
 
         {/* Mobile logo */}
-        <Link href="/" className="flex items-center gap-2 px-4 md:hidden">
+        <Link href="/" className="flex items-center gap-2 px-4 lg:hidden">
           <Image src="/Logo.svg" alt="Logo" width={28} height={28} />
           <Image src="/Logo-name.svg" alt="Hireable" width={80} height={20} className="h-5 w-auto" />
         </Link>
 
         {/* Nav section - takes remaining space */}
-        <div className="flex flex-1 items-center px-4 md:px-6">
-          <nav className="hidden items-center gap-2 md:flex">
+        <div className="flex flex-1 items-center px-4 lg:px-6">
+          <nav className="hidden items-center gap-2 lg:flex">
             {mainNav.map((item) => {
               const Icon = item.icon;
               const isActive = pathname.startsWith(item.href);
@@ -60,7 +60,7 @@ export function SiteHeader() {
             })}
           </nav>
 
-          <div className="ml-auto flex items-center gap-2 md:gap-4">
+          <div className="ml-auto flex items-center gap-2 lg:gap-4">
             <DocsSearch />
             <MobileNav />
           </div>

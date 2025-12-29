@@ -73,6 +73,11 @@
   --color-button-tertiary-active: var(--button-tertiary-active);
   --color-button-tertiary-foreground: var(--button-tertiary-foreground);
   --color-button-tertiary-border: var(--button-tertiary-border);
+  --color-button-icon-default: var(--button-icon-default);
+  --color-button-icon-hover: var(--button-icon-hover);
+  --color-button-icon-foreground: var(--button-icon-foreground);
+  --color-link-default: var(--link-default);
+  --color-link-hover: var(--link-hover);
   --color-border-disabled: var(--border-disabled);
   --color-border-focused: var(--border-focused);
   --color-border-hover: var(--border-hover);
@@ -80,22 +85,22 @@
   --color-icon: var(--icon);
   --color-icon-active: var(--icon-active);
   --color-surface-hover: var(--surface-hover);
-  
+
   /* Avatar Colors */
   --color-avatar-admin-bg: var(--avatar-admin-bg);
   --color-avatar-admin-foreground: var(--avatar-admin-foreground);
-  
+
   /* Neutral replacements for components */
   --color-neutral-subtle: var(--neutral-subtle);
   --color-neutral-muted: var(--neutral-muted);
   --color-text-tertiary: var(--text-tertiary);
-  
+
   /* Toast Tokens */
   --color-toast-success-bg: var(--toast-success-bg);
   --color-toast-info-bg: var(--toast-info-bg);
   --color-toast-warning-bg: var(--toast-warning-bg);
   --color-toast-error-bg: var(--toast-error-bg);
-  
+
   /* Field Note Tokens */
   --color-fieldnote-info-bg: var(--fieldnote-info-bg);
   --color-fieldnote-info-text: var(--fieldnote-info-text);
@@ -105,7 +110,7 @@
   --color-fieldnote-success-text: var(--fieldnote-success-text);
   --color-fieldnote-error-bg: var(--fieldnote-error-bg);
   --color-fieldnote-error-text: var(--fieldnote-error-text);
-  
+
   /* Worktrait Tag Color Mappings */
   --color-worktrait-decision: var(--color-worktrait-blue);
   --color-worktrait-adapt: var(--color-worktrait-pink);
@@ -113,7 +118,7 @@
   --color-worktrait-time: var(--color-worktrait-orange);
   --color-worktrait-coop: var(--color-worktrait-purple);
   --color-worktrait-comm: var(--color-worktrait-cyan);
-  
+
   /* Status Badge Color Mappings */
   --color-badge-default-bg: var(--badge-default-bg);
   --color-badge-default-text: var(--badge-default-text);
@@ -154,95 +159,94 @@
   /* ═══════════════════════════════════════════════════════════
      LAYER 1: PRIMITIVES - Single source of truth for raw colors
      ═══════════════════════════════════════════════════════════ */
-  
+
   /* Base Colors */
   --color-white: oklch(1 0 0);
   --color-black: oklch(0 0 0);
   --color-black-25: oklch(0 0 0 / 0.25);
-  
+
   /* Neutral Scale */
   --color-neutral-50: oklch(0.985 0 0);
   --color-neutral-100: oklch(0.97 0 0);
-  --color-neutral-200: oklch(0.95 0 0);    /* #F2F2F2 */
-  --color-neutral-300: oklch(0.922 0 0);   /* #E5E5E5 */
-  --color-neutral-400: oklch(0.8 0 0);     /* #C3C3C3 */
-  --color-neutral-500: oklch(0.78 0 0);    /* Disabled text */
+  --color-neutral-200: oklch(0.95 0 0); /* #F2F2F2 */
+  --color-neutral-300: oklch(0.922 0 0); /* #E5E5E5 */
+  --color-neutral-400: oklch(0.8 0 0); /* #C3C3C3 */
+  --color-neutral-500: oklch(0.78 0 0); /* Disabled text */
   --color-neutral-600: oklch(0.708 0 0);
-  --color-neutral-650: oklch(0.556 0 0);   /* Muted foreground */
-  --color-neutral-700: oklch(0.5 0 0);     /* #757575 - Tertiary text */
-  --color-neutral-750: oklch(0.45 0 0);    /* #616161 - Icon default */
+  --color-neutral-650: oklch(0.556 0 0); /* Muted foreground */
+  --color-neutral-700: oklch(0.5 0 0); /* #757575 - Tertiary text */
+  --color-neutral-750: oklch(0.45 0 0); /* #616161 - Icon default */
   --color-neutral-800: oklch(0.269 0 0);
-  --color-neutral-850: oklch(0.26 0 0);    /* #212121 - Tertiary button text */
+  --color-neutral-850: oklch(0.26 0 0); /* #212121 - Tertiary button text */
   --color-neutral-900: oklch(0.205 0 0);
   --color-neutral-950: oklch(0.145 0 0);
 
   /* Blue Scale (Brand) */
-  --color-blue-100: oklch(0.92 0.04 230);  /* #CCEDFF - Secondary button bg */
-  --color-blue-200: oklch(0.87 0.06 230);  /* #99DBFF - Secondary hover */
-  --color-blue-500: oklch(0.65 0.19 230);  /* #00A7F8 - Primary brand */
-  --color-blue-600: oklch(0.52 0.15 230);  /* #0085C6 - Primary hover */
-  --color-blue-700: oklch(0.42 0.09 230);  /* #006593 - Secondary text */
-  --color-blue-900: oklch(0.5 0.13 250);   /* #0A66C2 - LinkedIn */
-  --color-blue-50: oklch(0.94 0.04 230);   /* #CCEDFF - Toast info bg */
-
+  --color-blue-100: oklch(0.92 0.04 230); /* #CCEDFF - Secondary button bg */
+  --color-blue-200: oklch(0.87 0.06 230); /* #99DBFF - Secondary hover */
+  --color-blue-500: oklch(0.65 0.19 230); /* #00A7F8 - Primary brand */
+  --color-blue-600: oklch(0.52 0.15 230); /* #0085C6 - Primary hover */
+  --color-blue-700: oklch(0.42 0.09 230); /* #006593 - Secondary text */
+  --color-blue-900: oklch(0.5 0.13 250); /* #0A66C2 - LinkedIn */
+  --color-blue-50: oklch(0.94 0.04 230); /* #CCEDFF - Toast info bg */
 
   /* Red Scale */
-  --color-red-100: oklch(0.94 0.05 25);    /* #FCD3D8 - Toast error bg */
-  --color-red-500: oklch(0.58 0.22 25);    /* #EB5757 - Danger */
-  --color-red-600: oklch(0.52 0.2 25);     /* Danger hover */
+  --color-red-100: oklch(0.94 0.05 25); /* #FCD3D8 - Toast error bg */
+  --color-red-500: oklch(0.58 0.22 25); /* #EB5757 - Danger */
+  --color-red-600: oklch(0.52 0.2 25); /* Danger hover */
 
   /* Green Scale */
-  --color-green-100: oklch(0.92 0.06 145);  /* #DDEDD6 - Toast success bg */
+  --color-green-100: oklch(0.92 0.06 145); /* #DDEDD6 - Toast success bg */
   --color-green-500: oklch(0.64 0.17 145); /* #27AE60 - Success */
 
   /* Amber Scale */
-  --color-amber-100: oklch(0.96 0.06 85);   /* #FFF3CC - Toast warning bg */
-  --color-amber-400: oklch(0.83 0.16 85);  /* #F2C94C - Warning */
+  --color-amber-100: oklch(0.96 0.06 85); /* #FFF3CC - Toast warning bg */
+  --color-amber-400: oklch(0.83 0.16 85); /* #F2C94C - Warning */
 
   /* Orange Scale (Avatar) */
   --color-orange-100: oklch(0.95 0.05 60); /* #FFE5CC - Avatar bg */
-  --color-orange-500: oklch(0.6 0.2 50);   /* #FF8112 - Avatar text */
+  --color-orange-500: oklch(0.6 0.2 50); /* #FF8112 - Avatar text */
 
   /* Worktrait Tag Colors */
-  --color-worktrait-blue: oklch(0.795 0.1208 235.67);      /* Decision Making */
-  --color-worktrait-pink: oklch(0.7328 0.1737 4.91);       /* Adaptability */
-  --color-worktrait-magenta: oklch(0.7511 0.1989 342.02);  /* Responsiveness */
-  --color-worktrait-orange: oklch(0.7958 0.1337 53.18);    /* Time Management */
-  --color-worktrait-purple: oklch(0.6927 0.2149 312.12);   /* Cooperativeness */
-  --color-worktrait-cyan: oklch(0.9513 0.0735 195.99);     /* Communication */
+  --color-worktrait-blue: oklch(0.795 0.1208 235.67); /* Decision Making */
+  --color-worktrait-pink: oklch(0.7328 0.1737 4.91); /* Adaptability */
+  --color-worktrait-magenta: oklch(0.7511 0.1989 342.02); /* Responsiveness */
+  --color-worktrait-orange: oklch(0.7958 0.1337 53.18); /* Time Management */
+  --color-worktrait-purple: oklch(0.6927 0.2149 312.12); /* Cooperativeness */
+  --color-worktrait-cyan: oklch(0.9513 0.0735 195.99); /* Communication */
 
   /* ═══════════════════════════════════════════════════════════
      LAYER 2: SEMANTIC - Intent-based tokens (reference primitives)
      ═══════════════════════════════════════════════════════════ */
-  
+
   /* Backgrounds */
   --bg-base: var(--color-white);
   --bg-muted: var(--color-neutral-100);
   --bg-subtle: var(--color-neutral-100);
   --bg-surface-hover: var(--color-neutral-200);
   --bg-elevated: var(--color-neutral-50);
-  
+
   /* Text */
   --text-base: var(--color-neutral-950);
   --text-muted: var(--color-neutral-650);
   --text-subtle: var(--color-neutral-700);
   --text-inverted: var(--color-white);
   --text-disabled: var(--color-neutral-500);
-  
+
   /* Borders */
   --border-base: var(--color-neutral-300);
   --border-muted: var(--color-neutral-200);
   --border-strong: var(--color-neutral-400);
   --border-focus: var(--color-blue-500);
   --border-inactive: var(--color-neutral-200);
-  
+
   /* Brand */
   --brand-primary: var(--color-blue-500);
   --brand-primary-hover: var(--color-blue-600);
   --brand-primary-muted: var(--color-blue-100);
   --brand-primary-muted-hover: var(--color-blue-200);
   --brand-primary-text: var(--color-blue-700);
-  
+
   /* Status */
   --status-success: var(--color-green-500);
   --status-success-text: var(--color-white);
@@ -251,22 +255,22 @@
   --status-danger: var(--color-red-500);
   --status-danger-hover: var(--color-red-600);
   --status-danger-text: var(--color-white);
-  
+
   /* Toast Backgrounds */
   --toast-success-bg: var(--color-green-100);
   --toast-info-bg: var(--color-blue-50);
   --toast-warning-bg: var(--color-amber-100);
   --toast-error-bg: var(--color-red-100);
-  
+
   /* Field Note Colors */
   --fieldnote-info-bg: var(--color-blue-50);
-  --fieldnote-info-text: oklch(0.30 0.08 230);      /* #003049 */
+  --fieldnote-info-text: oklch(0.3 0.08 230); /* #003049 */
   --fieldnote-warning-bg: var(--color-amber-100);
-  --fieldnote-warning-text: oklch(0.52 0.12 85);    /* #8E6F12 */
+  --fieldnote-warning-text: oklch(0.52 0.12 85); /* #8E6F12 */
   --fieldnote-success-bg: var(--color-green-100);
-  --fieldnote-success-text: oklch(0.45 0.12 145);   /* #386641 */
+  --fieldnote-success-text: oklch(0.45 0.12 145); /* #386641 */
   --fieldnote-error-bg: var(--color-red-100);
-  --fieldnote-error-text: oklch(0.30 0.15 25);      /* #6A040F */
+  --fieldnote-error-text: oklch(0.3 0.15 25); /* #6A040F */
 
   /* Status Badge Colors - Referencing primitives */
   --badge-default-bg: var(--color-neutral-200);
@@ -284,24 +288,24 @@
   --badge-complete-bg: oklch(0.96 0.03 145);
   --badge-complete-text: var(--color-green-500);
   --badge-complete-border: oklch(0.64 0.17 145 / 0.4);
-  
+
   /* Icons */
   --icon-default: var(--color-neutral-750);
   --icon-brand: var(--color-blue-500);
-  
+
   /* Chart */
   --chart-line: var(--color-blue-500);
   --chart-fill: var(--color-blue-500);
   --chart-grid: var(--color-neutral-400);
   --chart-axis-text: var(--color-neutral-700);
-  
+
   /* Shadows */
   --shadow-dropdown: 0px 2px 4px var(--color-black-25);
 
   /* ═══════════════════════════════════════════════════════════
      LAYER 3: COMPONENT - Component-specific (reference semantic)
      ═══════════════════════════════════════════════════════════ */
-  
+
   /* Button - Primary */
   --button-primary-default: var(--brand-primary);
   --button-primary-hover: var(--brand-primary-hover);
@@ -309,31 +313,40 @@
   --button-primary-foreground: var(--text-inverted);
   --button-primary-disabled: var(--color-neutral-300);
   --button-primary-disabled-foreground: var(--color-neutral-500);
-  
+
   /* Button - Secondary */
   --button-secondary-default: var(--brand-primary-muted);
   --button-secondary-hover: var(--brand-primary-muted-hover);
   --button-secondary-active: var(--brand-primary-muted-hover);
   --button-secondary-foreground: var(--brand-primary-text);
-  
+
   /* Button - Tertiary */
   --button-tertiary-default: var(--bg-base);
   --button-tertiary-hover: var(--bg-surface-hover);
   --button-tertiary-active: var(--bg-surface-hover);
   --button-tertiary-foreground: var(--color-neutral-850);
   --button-tertiary-border: var(--border-strong);
-  
+
   /* Button - Destructive */
   --button-destructive-default: var(--status-danger);
   --button-destructive-hover: var(--status-danger-hover);
   --button-destructive-foreground: var(--text-inverted);
-  
+
+  /* Button - Icon (circular icon-only buttons) */
+  --button-icon-default: var(--bg-base);
+  --button-icon-hover: var(--bg-surface-hover);
+  --button-icon-foreground: var(--color-neutral-850);
+
+  /* Link */
+  --link-default: var(--brand-primary);
+  --link-hover: var(--brand-primary-text);
+
   /* Input */
   --input-border-default: var(--border-base);
   --input-border-focus: var(--border-focus);
   --input-border-hover: var(--border-strong);
   --input-border-disabled: var(--border-inactive);
-  
+
   /* Avatar */
   --avatar-admin-bg: var(--color-orange-100);
   --avatar-admin-foreground: var(--color-orange-500);
@@ -342,7 +355,7 @@
      BACKWARD COMPATIBILITY ALIASES
      (Legacy token names referencing new semantic layer)
      ═══════════════════════════════════════════════════════════ */
-  
+
   /* Theme tokens */
   --background: var(--bg-base);
   --foreground: var(--text-base);
@@ -362,14 +375,14 @@
   --border: var(--border-base);
   --input: var(--border-base);
   --ring: var(--color-neutral-600);
-  
+
   /* Chart colors - use semantic chart tokens */
   --chart-1: var(--chart-line);
   --chart-2: var(--chart-line);
   --chart-3: var(--chart-line);
   --chart-4: var(--chart-line);
   --chart-5: var(--chart-line);
-  
+
   /* Sidebar */
   --sidebar: var(--color-neutral-50);
   --sidebar-foreground: var(--text-base);
@@ -391,26 +404,24 @@
   --danger: var(--status-danger);
   --danger-foreground: var(--status-danger-text);
   --linkedin: var(--color-blue-900);
-  
+
   /* Border aliases */
   --border-disabled: var(--border-inactive);
   --border-focused: var(--border-focus);
   --border-hover: var(--border-strong);
-  
+
   /* Icon aliases */
   --icon: var(--icon-default);
   --icon-active: var(--icon-brand);
-  
+
   /* Surface aliases */
   --surface-hover: var(--bg-surface-hover);
-  
+
   /* Neutral aliases */
   --neutral-subtle: var(--bg-subtle);
   --neutral-muted: var(--color-neutral-400);
   --text-tertiary: var(--text-subtle);
 }
-
-
 
 @layer base {
   * {
@@ -434,25 +445,25 @@
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
   }
-  
+
   .scrollbar-hover-only:hover {
     scrollbar-color: var(--border) transparent;
   }
-  
+
   .scrollbar-hover-only::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
-  
+
   .scrollbar-hover-only::-webkit-scrollbar-track {
     background: transparent;
   }
-  
+
   .scrollbar-hover-only::-webkit-scrollbar-thumb {
     background-color: transparent;
     border-radius: 20px;
   }
-  
+
   .scrollbar-hover-only:hover::-webkit-scrollbar-thumb {
     background-color: var(--border);
   }

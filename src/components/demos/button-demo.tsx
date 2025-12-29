@@ -9,6 +9,10 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
+  CloseButton,
+  NotificationButton,
+  DeleteButton,
+  ExpandButton,
 } from "@/components/ui";
 
 
@@ -17,7 +21,7 @@ import { buttonProps, buttonVariants as apiButtonVariants, buttonSizes } from "@
 import { VERSION } from "@/lib/version";
 export default function ButtonPage() {
   return (
-    <div className="container max-w-4xl py-12 px-4 md:px-8">
+    <div className="container max-w-4xl py-12 px-4 md:px-8 overflow-hidden">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Button</h1>
@@ -75,53 +79,61 @@ export default function ButtonPage() {
           {/* Primary Buttons */}
           <ComponentPreview title="Primary">
             <div className="space-y-6">
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">48px</span>
-                <Button variant="primary" size="lg">Enabled</Button>
-                <Button variant="primary" size="lg" disabled>Disabled</Button>
-                <Button variant="primary" size="lg">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="primary" size="icon-lg" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Large</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="primary" size="lg">Enabled</Button>
+                  <Button variant="primary" size="lg" disabled>Disabled</Button>
+                  <Button variant="primary" size="lg">
+                    <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="primary" size="icon-lg" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">44px</span>
-                <Button variant="primary" size="base">Enabled</Button>
-                <Button variant="primary" size="base" disabled>Disabled</Button>
-                <Button variant="primary" size="base">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="primary" size="icon-base" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Base</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="primary" size="base">Enabled</Button>
+                  <Button variant="primary" size="base" disabled>Disabled</Button>
+                  <Button variant="primary" size="base">
+                    <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="primary" size="icon-base" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">40px</span>
-                <Button variant="primary" size="md">Enabled</Button>
-                <Button variant="primary" size="md" disabled>Disabled</Button>
-                <Button variant="primary" size="md">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="primary" size="icon-md" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Medium</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="primary" size="md">Enabled</Button>
+                  <Button variant="primary" size="md" disabled>Disabled</Button>
+                  <Button variant="primary" size="md">
+                    <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="primary" size="icon-md" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">36px</span>
-                <Button variant="primary" size="sm">Enabled</Button>
-                <Button variant="primary" size="sm" disabled>Disabled</Button>
-                <Button variant="primary" size="sm">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="primary" size="icon-sm" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Small</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="primary" size="sm">Enabled</Button>
+                  <Button variant="primary" size="sm" disabled>Disabled</Button>
+                  <Button variant="primary" size="sm">
+                    <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="primary" size="icon-sm" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-primary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
             </div>
           </ComponentPreview>
@@ -146,53 +158,61 @@ export default function ButtonPage() {
           {/* Secondary Buttons */}
           <ComponentPreview title="Secondary">
             <div className="space-y-6">
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">48px</span>
-                <Button variant="secondary" size="lg">Enabled</Button>
-                <Button variant="secondary" size="lg" disabled>Disabled</Button>
-                <Button variant="secondary" size="lg">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="secondary" size="icon-lg" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Large</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="secondary" size="lg">Enabled</Button>
+                  <Button variant="secondary" size="lg" disabled>Disabled</Button>
+                  <Button variant="secondary" size="lg">
+                    <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="secondary" size="icon-lg" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">44px</span>
-                <Button variant="secondary" size="base">Enabled</Button>
-                <Button variant="secondary" size="base" disabled>Disabled</Button>
-                <Button variant="secondary" size="base">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="secondary" size="icon-base" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Base</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="secondary" size="base">Enabled</Button>
+                  <Button variant="secondary" size="base" disabled>Disabled</Button>
+                  <Button variant="secondary" size="base">
+                    <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="secondary" size="icon-base" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">40px</span>
-                <Button variant="secondary" size="md">Enabled</Button>
-                <Button variant="secondary" size="md" disabled>Disabled</Button>
-                <Button variant="secondary" size="md">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="secondary" size="icon-md" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Medium</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="secondary" size="md">Enabled</Button>
+                  <Button variant="secondary" size="md" disabled>Disabled</Button>
+                  <Button variant="secondary" size="md">
+                    <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="secondary" size="icon-md" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">36px</span>
-                <Button variant="secondary" size="sm">Enabled</Button>
-                <Button variant="secondary" size="sm" disabled>Disabled</Button>
-                <Button variant="secondary" size="sm">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="secondary" size="icon-sm" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Small</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="secondary" size="sm">Enabled</Button>
+                  <Button variant="secondary" size="sm" disabled>Disabled</Button>
+                  <Button variant="secondary" size="sm">
+                    <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="secondary" size="icon-sm" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-secondary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
             </div>
           </ComponentPreview>
@@ -215,53 +235,61 @@ export default function ButtonPage() {
           {/* Tertiary Buttons */}
           <ComponentPreview title="Tertiary">
             <div className="space-y-6">
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">48px</span>
-                <Button variant="tertiary" size="lg">Enabled</Button>
-                <Button variant="tertiary" size="lg" disabled>Disabled</Button>
-                <Button variant="tertiary" size="lg">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="tertiary" size="icon-lg" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Large</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="tertiary" size="lg">Enabled</Button>
+                  <Button variant="tertiary" size="lg" disabled>Disabled</Button>
+                  <Button variant="tertiary" size="lg">
+                    <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="tertiary" size="icon-lg" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">44px</span>
-                <Button variant="tertiary" size="base">Enabled</Button>
-                <Button variant="tertiary" size="base" disabled>Disabled</Button>
-                <Button variant="tertiary" size="base">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="tertiary" size="icon-base" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Base</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="tertiary" size="base">Enabled</Button>
+                  <Button variant="tertiary" size="base" disabled>Disabled</Button>
+                  <Button variant="tertiary" size="base">
+                    <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="tertiary" size="icon-base" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">40px</span>
-                <Button variant="tertiary" size="md">Enabled</Button>
-                <Button variant="tertiary" size="md" disabled>Disabled</Button>
-                <Button variant="tertiary" size="md">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="tertiary" size="icon-md" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Medium</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="tertiary" size="md">Enabled</Button>
+                  <Button variant="tertiary" size="md" disabled>Disabled</Button>
+                  <Button variant="tertiary" size="md">
+                    <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="tertiary" size="icon-md" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 items-center">
-                <span className="text-xs text-muted-foreground w-12">36px</span>
-                <Button variant="tertiary" size="sm">Enabled</Button>
-                <Button variant="tertiary" size="sm" disabled>Disabled</Button>
-                <Button variant="tertiary" size="sm">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
-                  Icon + Text
-                </Button>
-                <Button variant="tertiary" size="icon-sm" aria-label="Add">
-                  <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Small</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="tertiary" size="sm">Enabled</Button>
+                  <Button variant="tertiary" size="sm" disabled>Disabled</Button>
+                  <Button variant="tertiary" size="sm">
+                    <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
+                    Icon + Text
+                  </Button>
+                  <Button variant="tertiary" size="icon-sm" aria-label="Add">
+                    <Icon icon="add" size={20} className="text-button-tertiary-foreground" aria-hidden="true" />
+                  </Button>
+                </div>
               </div>
             </div>
           </ComponentPreview>
@@ -284,41 +312,49 @@ export default function ButtonPage() {
           {/* Text Link */}
           <ComponentPreview title="Text Link">
             <div className="space-y-6">
-              <div className="grid grid-cols-[48px_120px_100px_1fr] gap-4 items-center">
-                <span className="text-xs text-muted-foreground">48px</span>
-                <Button variant="link" size="lg" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
-                <Button variant="link" size="lg" disabled className="justify-start px-0"><span>Disabled</span></Button>
-                <Button variant="link" size="lg" className="justify-start px-0">
-                  <Icon icon="open_in_new" size={20} aria-hidden="true" />
-                  <span className="hover:underline">External Link</span>
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Large</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="link" size="lg" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
+                  <Button variant="link" size="lg" disabled className="justify-start px-0"><span>Disabled</span></Button>
+                  <Button variant="link" size="lg" className="justify-start px-0">
+                    <Icon icon="open_in_new" size={20} aria-hidden="true" />
+                    <span className="hover:underline">External Link</span>
+                  </Button>
+                </div>
               </div>
-              <div className="grid grid-cols-[48px_120px_100px_1fr] gap-4 items-center">
-                <span className="text-xs text-muted-foreground">44px</span>
-                <Button variant="link" size="base" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
-                <Button variant="link" size="base" disabled className="justify-start px-0"><span>Disabled</span></Button>
-                <Button variant="link" size="base" className="justify-start px-0">
-                  <Icon icon="open_in_new" size={20} aria-hidden="true" />
-                  <span className="hover:underline">External Link</span>
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Base</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="link" size="base" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
+                  <Button variant="link" size="base" disabled className="justify-start px-0"><span>Disabled</span></Button>
+                  <Button variant="link" size="base" className="justify-start px-0">
+                    <Icon icon="open_in_new" size={20} aria-hidden="true" />
+                    <span className="hover:underline">External Link</span>
+                  </Button>
+                </div>
               </div>
-              <div className="grid grid-cols-[48px_120px_100px_1fr] gap-4 items-center">
-                <span className="text-xs text-muted-foreground">40px</span>
-                <Button variant="link" size="md" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
-                <Button variant="link" size="md" disabled className="justify-start px-0"><span>Disabled</span></Button>
-                <Button variant="link" size="md" className="justify-start px-0">
-                  <Icon icon="open_in_new" size={20} aria-hidden="true" />
-                  <span className="hover:underline">External Link</span>
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Medium</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="link" size="md" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
+                  <Button variant="link" size="md" disabled className="justify-start px-0"><span>Disabled</span></Button>
+                  <Button variant="link" size="md" className="justify-start px-0">
+                    <Icon icon="open_in_new" size={20} aria-hidden="true" />
+                    <span className="hover:underline">External Link</span>
+                  </Button>
+                </div>
               </div>
-              <div className="grid grid-cols-[48px_120px_100px_1fr] gap-4 items-center">
-                <span className="text-xs text-muted-foreground">36px</span>
-                <Button variant="link" size="sm" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
-                <Button variant="link" size="sm" disabled className="justify-start px-0"><span>Disabled</span></Button>
-                <Button variant="link" size="sm" className="justify-start px-0">
-                  <Icon icon="open_in_new" size={16} aria-hidden="true" />
-                  <span className="hover:underline">External Link</span>
-                </Button>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                <div className="w-16 shrink-0 text-sm font-medium text-muted-foreground">Small</div>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <Button variant="link" size="sm" className="justify-start px-0"><span className="hover:underline">Text Link</span></Button>
+                  <Button variant="link" size="sm" disabled className="justify-start px-0"><span>Disabled</span></Button>
+                  <Button variant="link" size="sm" className="justify-start px-0">
+                    <Icon icon="open_in_new" size={16} aria-hidden="true" />
+                    <span className="hover:underline">External Link</span>
+                  </Button>
+                </div>
               </div>
             </div>
           </ComponentPreview>
@@ -356,6 +392,82 @@ export default function ButtonPage() {
 <Button variant="destructive">Destructive</Button>
 <Button variant="ghost">Ghost</Button>
 <Button variant="link">Link</Button>`}
+            language="tsx"
+          />
+          {/* Icon Buttons */}
+          <ComponentPreview title="Icon Buttons">
+            <div className="space-y-6">
+              <p className="text-sm text-muted-foreground pb-4">
+                Circular icon-only buttons for common actions. 32×32px with 24×24px icons.
+                White background by default, gray on hover.
+              </p>
+              <div className="flex flex-wrap gap-8 items-start justify-center">
+                {/* Close Button */}
+                <div className="text-center space-y-2">
+                  <p className="text-xs text-muted-foreground font-medium">Close</p>
+                  <div className="flex gap-2">
+                    <div className="text-center">
+                      <CloseButton />
+                      <p className="text-xs text-muted-foreground mt-1">Default</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Notification Button */}
+                <div className="text-center space-y-2">
+                  <p className="text-xs text-muted-foreground font-medium">Notification</p>
+                  <div className="flex gap-2">
+                    <div className="text-center">
+                      <NotificationButton />
+                      <p className="text-xs text-muted-foreground mt-1">Default</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Expand Button */}
+                <div className="text-center space-y-2">
+                  <p className="text-xs text-muted-foreground font-medium">Expand</p>
+                  <div className="flex gap-2">
+                    <div className="text-center">
+                      <ExpandButton expanded={false} />
+                      <p className="text-xs text-muted-foreground mt-1">Collapsed</p>
+                    </div>
+                    <div className="text-center">
+                      <ExpandButton expanded={true} />
+                      <p className="text-xs text-muted-foreground mt-1">Expanded</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Delete Button */}
+                <div className="text-center space-y-2">
+                  <p className="text-xs text-muted-foreground font-medium">Delete</p>
+                  <div className="flex gap-2">
+                    <div className="text-center">
+                      <DeleteButton />
+                      <p className="text-xs text-muted-foreground mt-1">Default</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ComponentPreview>
+          <CodeBlock
+            code={`import { 
+  CloseButton, 
+  NotificationButton, 
+  DeleteButton, 
+  ExpandButton,
+  IconButton 
+} from "@/components/ui";
+
+// Pre-configured icon buttons
+<CloseButton />                    // X icon
+<NotificationButton />             // Bell icon
+<DeleteButton />                   // Trash icon
+<ExpandButton expanded={false} />  // Chevron down
+<ExpandButton expanded={true} />   // Chevron up
+
+// Custom icon button
+<IconButton icon="settings" aria-label="Settings" />
+<IconButton icon="search" aria-label="Search" filled />`}
             language="tsx"
           />
         </TabsContent>

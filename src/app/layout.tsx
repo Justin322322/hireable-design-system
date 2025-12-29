@@ -39,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${inter.variable} ${nunitoSans.variable} font-sans antialiased`}>
+      <body className={`${dmSans.variable} ${inter.variable} ${nunitoSans.variable} font-sans antialiased overflow-x-hidden`}>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded-md focus:bg-background focus:p-4 focus:text-foreground focus:shadow-md focus:ring-2 focus:ring-ring"
@@ -50,7 +50,7 @@ export default function RootLayout({
           <SiteHeader />
           <div className="flex flex-1">
             <Sidebar />
-            <main id="main-content" className="flex-1 overflow-auto flex justify-center">{children}</main>
+            <main id="main-content" className="flex-1 w-full min-w-0 flex flex-col items-center">{children}</main>
           </div>
         </div>
         <Toaster />

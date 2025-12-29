@@ -14,8 +14,8 @@ import {
   Icon,
   Separator,
   Spinner,
+  type IconName,
 } from "@/components/ui";
-import type { IconName } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 
 /**
@@ -164,15 +164,14 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
 
         <DialogContent 
           ref={ref}
-          className={cn("max-w-[592px] p-6 gap-0 rounded-2xl [&>button]:hidden", className)}
+          className={cn("flex flex-col items-start w-[592px] max-w-[592px] h-[440px] p-6 gap-0 rounded-[16px] bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.1)] [&>button]:hidden", className)}
         >
           {/* Header - matching Figma specs exactly */}
           <DialogHeader 
-            className="flex flex-row justify-between items-center self-stretch"
-            style={{ padding: '0px', gap: '21px', height: '32px' }}
+            className="flex flex-row justify-between items-center self-stretch p-0 gap-[21px] h-8"
           >
             {/* Invisible spacer to balance close button */}
-            <div style={{ width: '32px', height: '32px' }} />
+            <div className="w-8 h-8" />
             
             {/* Modal Title - centered */}
             <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground text-center">
@@ -182,65 +181,37 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
             {/* Close Button - 32x32px, border-radius 100px */}
             <DialogClose asChild>
               <button 
-                className="flex items-center justify-center hover:bg-neutral-100 transition-colors"
-                style={{
-                  padding: '4px',
-                  width: '32px',
-                  height: '32px',
-                  background: '#FFFFFF',
-                  borderRadius: '100px',
-                  border: 'none',
-                  cursor: 'pointer',
-                }}
+                className="flex items-center justify-center hover:bg-neutral-100 transition-colors p-1 w-8 h-8 bg-white rounded-full border-none cursor-pointer"
               >
-                <Icon icon="close" size={24} style={{ color: '#212121' }} />
+                <Icon icon="close" size={24} className="text-neutral-850" />
               </button>
             </DialogClose>
           </DialogHeader>
 
           {/* Divider */}
-          <Separator className="my-6 bg-[#C3C3C3]" />
+          <Separator className="my-6 w-full h-px bg-border" />
 
           {/* Content based on state */}
           {uploadState === "idle" && (
             <div 
               className={cn(
-                "flex flex-col justify-center items-center self-stretch border-2 border-dashed bg-neutral-100 rounded-lg transition-colors",
+                "flex flex-col justify-center items-center self-stretch border-2 border-dashed bg-neutral-100 rounded-lg transition-colors box-border p-0 gap-6 h-[312px]",
                 isDragOver ? 'border-client bg-client/5' : 'border-neutral-300'
               )}
-              style={{ boxSizing: 'border-box', gap: '24px', height: '312px' }}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
             >
-              <div className="flex items-center justify-center w-16 h-16">
-                <Icon icon="download_2" size={40} weight={600} style={{ color: '#212121' }} />
-              </div>
+              <Icon icon="download_2" size={40} weight={600} className="text-neutral-850" />
               
-              <div className="flex flex-col items-center" style={{ gap: '8px' }}>
+              <div className="flex flex-col items-center gap-2">
                 <span
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: 600,
-                    fontSize: '20px',
-                    lineHeight: '150%',
-                    letterSpacing: '0.4px',
-                    color: '#212121',
-                  }}
+                  className="font-secondary font-semibold text-xl leading-[150%] tracking-[0.4px] text-neutral-850"
                 >
                   Drop your image here to upload
                 </span>
                 <p
-                  style={{
-                    margin: 0,
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: 400,
-                    fontSize: '14px',
-                    lineHeight: '120%',
-                    textAlign: 'center',
-                    letterSpacing: '0.2px',
-                    color: '#616161',
-                  }}
+                  className="m-0 font-secondary font-normal text-sm leading-[120%] text-center tracking-[0.2px] text-neutral-750"
                 >
                   Works with any {acceptedFormats} file from the web<br />
                   Recommended size: {recommendedSize}
@@ -290,7 +261,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
                 >
                   <motion.path
                     d="M5 13L9 17L19 7"
-                    stroke="#22c55e" 
+                    stroke="var(--color-success)" 
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -342,96 +313,50 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
 }) => {
   return (
     <div 
-      className={cn("flex flex-col items-start bg-white", className)}
-      style={{
-        padding: '24px',
-        width: '592px',
-        height: '440px',
-        boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
-        borderRadius: '16px',
-      }}
+      className={cn("flex flex-col items-start bg-white p-6 w-[592px] h-[440px] shadow-[0px_2px_8px_rgba(0,0,0,0.1)] rounded-[16px]", className)}
     >
       {/* Header */}
       <div 
-        className="flex flex-row justify-between items-center self-stretch"
-        style={{ padding: '0px', gap: '21px', height: '32px' }}
+        className="flex flex-row justify-between items-center self-stretch p-0 gap-[21px] h-8"
       >
-        <div style={{ width: '32px', height: '32px' }} />
+        <div className="w-8 h-8" />
         
         <div 
-          className="flex flex-row justify-center items-center"
-          style={{ padding: '0px', gap: '10px', margin: '0 auto', height: '32px' }}
+          className="flex flex-row justify-center items-center p-0 gap-[10px] mx-auto h-8"
         >
           <span
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              fontStyle: 'normal',
-              fontWeight: 600,
-              fontSize: '20px',
-              lineHeight: '150%',
-              letterSpacing: '0.4px',
-              color: '#212121',
-            }}
+            className="font-secondary font-semibold text-xl leading-[150%] tracking-[0.4px] text-neutral-850"
           >
             {title}
           </span>
         </div>
         
         <button 
-          className="flex flex-row items-center justify-center hover:bg-neutral-100 transition-colors"
-          style={{
-            padding: '4px',
-            gap: '10px',
-            width: '32px',
-            height: '32px',
-            background: '#FFFFFF',
-            borderRadius: '100px',
-            border: 'none',
-            cursor: 'pointer',
-          }}
+          className="flex flex-row items-center justify-center hover:bg-neutral-100 transition-colors p-1 gap-[10px] w-8 h-8 bg-white rounded-full border-none cursor-pointer"
         >
-          <Icon icon="close" size={24} style={{ color: '#212121' }} />
+          <Icon icon="close" size={24} className="text-neutral-850" />
         </button>
       </div>
 
       {/* Divider */}
-      <Separator className="my-6 bg-[#C3C3C3]" />
+      <Separator className="my-6 w-full h-px bg-border" />
 
       {/* Content based on state */}
       {state === "default" && (
         <div 
-          className="flex flex-col justify-center items-center self-stretch border-2 border-dashed border-neutral-300 bg-neutral-100 rounded-lg"
-          style={{ boxSizing: 'border-box', padding: '0px', gap: '24px', height: '312px' }}
+          className="flex flex-col justify-center items-center self-stretch border-2 border-dashed border-neutral-300 bg-neutral-100 rounded-lg box-border p-0 gap-6 h-[312px]"
         >
-          <Icon icon="download_2" size={40} weight={600} style={{ color: '#212121' }} />
+          <Icon icon="download_2" size={40} weight={600} className="text-neutral-850" />
           
-          <div className="flex flex-col items-center" style={{ padding: '0px', gap: '8px' }}>
+          <div className="flex flex-col items-center gap-2">
             <span
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontStyle: 'normal',
-                fontWeight: 600,
-                fontSize: '20px',
-                lineHeight: '150%',
-                letterSpacing: '0.4px',
-                color: '#212121',
-              }}
+              className="font-secondary font-semibold text-xl leading-[150%] tracking-[0.4px] text-neutral-850"
             >
               Drop your image here to upload
             </span>
             
             <p
-              style={{
-                margin: 0,
-                fontFamily: 'Inter, sans-serif',
-                fontStyle: 'normal',
-                fontWeight: 400,
-                fontSize: '14px',
-                lineHeight: '120%',
-                textAlign: 'center',
-                letterSpacing: '0.2px',
-                color: '#616161',
-              }}
+              className="m-0 font-secondary font-normal text-sm leading-[120%] text-center tracking-[0.2px] text-neutral-750"
             >
               Works with any {acceptedFormats} file from the web<br />
               Recommended size: {recommendedSize}
@@ -446,22 +371,13 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
 
       {state === "uploading" && (
         <div 
-          className="flex flex-col justify-center items-center self-stretch"
-          style={{ boxSizing: 'border-box', padding: '0px', gap: '24px', height: '312px', borderRadius: '8px' }}
+          className="flex flex-col justify-center items-center self-stretch box-border p-0 gap-6 h-[312px] rounded-lg"
         >
           <Spinner size={40} />
           
-          <div className="flex flex-col items-center" style={{ padding: '0px', gap: '8px' }}>
+          <div className="flex flex-col items-center gap-2">
             <span
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontStyle: 'normal',
-                fontWeight: 600,
-                fontSize: '20px',
-                lineHeight: '150%',
-                letterSpacing: '0.4px',
-                color: '#212121',
-              }}
+              className="font-secondary font-semibold text-xl leading-[150%] tracking-[0.4px] text-neutral-850"
             >
               Uploading image
             </span>
@@ -482,7 +398,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
             >
               <motion.path
                 d="M5 13L9 17L19 7"
-                stroke="#22c55e" 
+                stroke="var(--color-success)" 
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"

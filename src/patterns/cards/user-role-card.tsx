@@ -135,20 +135,25 @@ export const UserRoleCard = React.forwardRef<HTMLDivElement, UserRoleCardProps>(
         }}
         {...props}
       >
-        <div className="flex flex-1 items-center gap-4 rounded-lg bg-background py-0 pl-6 pr-10 h-full">
-          <div className="flex flex-1 flex-col gap-3">
-            <h3 className={getTitleStyles()}>{title}</h3>
-            <p className={getDescriptionStyles()}>{description}</p>
+        <div className="flex flex-1 items-center gap-2 md:gap-4 rounded-lg bg-background py-0 pl-4 pr-4 md:pl-6 md:pr-10 h-full">
+          <div className="flex flex-1 flex-col gap-1 md:gap-3">
+            <h3 className={cn(getTitleStyles(), "text-lg md:text-xl")}>{title}</h3>
+            <p className={cn(getDescriptionStyles(), "text-xs md:text-sm")}>{description}</p>
           </div>
-          <div className="shrink-0">
-            <Image
-              src={image}
-              alt={title}
-              width={imageSize.width}
-              height={imageSize.height}
-              className="object-contain"
-              style={{ width: imageSize.width, height: imageSize.height }}
-            />
+          <div className="shrink-0 flex items-center justify-center">
+            <div className="relative w-20 h-20 md:w-auto md:h-auto">
+              <Image
+                src={image}
+                alt={title}
+                width={imageSize.width}
+                height={imageSize.height}
+                className="object-contain w-full h-full md:w-auto md:h-auto"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

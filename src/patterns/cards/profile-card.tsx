@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Card, CardContent, Button, Icon } from "@/components/ui";
-import type { IconName } from "@/components/ui/icon";
+import { Card, CardContent, Button, Icon, type IconName } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 /**

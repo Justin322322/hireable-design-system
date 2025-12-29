@@ -111,7 +111,7 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="hidden w-64 shrink-0 border-r bg-background md:block">
+    <aside className="hidden w-64 shrink-0 border-r bg-background lg:block">
       <nav className="sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto p-6 scrollbar-hover-only">
         <h2 className="mb-4 text-sm font-semibold">{navSection.title}</h2>
         

@@ -14,7 +14,7 @@ import { checkboxProps, checkboxSizes, checkboxStates } from "@/data/api/checkbo
 import { VERSION } from "@/lib/version";
 export default function CheckboxPage() {
   return (
-    <div className="container max-w-4xl py-12 px-4 md:px-8">
+    <div className="container max-w-4xl py-12 px-4 md:px-8 overflow-hidden">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Checkbox</h1>

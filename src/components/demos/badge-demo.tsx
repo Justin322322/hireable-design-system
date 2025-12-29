@@ -13,13 +13,27 @@ import {
 import { toast } from "sonner";
 import { CodeBlock } from "@/components/docs/code-block";
 import { ComponentPreview } from "@/components/docs/component-preview";
+import { OnThisPageNav } from "@/components/docs/on-this-page-nav";
 import { VERSION } from "@/lib/version";
+
+// Navigation items for the right sidebar
+const badgeNavItems = [
+  { id: "worktrait-tags", label: "Worktrait Tags" },
+  { id: "pill-flat", label: "Pill Flat" },
+  { id: "pill-border", label: "Pill with Border" },
+  { id: "pill-dot", label: "Pill with Dot" },
+  { id: "pill-remove", label: "Pill with Remove" },
+  { id: "badge-flat", label: "Badge Flat" },
+  { id: "badge-border", label: "Badge with Border" },
+  { id: "badge-dot", label: "Badge with Dot" },
+  { id: "badge-remove", label: "Badge with Remove" },
+];
 export default function BadgePillsPage() {
   const handleRemove = () => {
     toast("Badge removed");
   };
   return (
-    <div className="container max-w-4xl py-12 px-4 md:px-8">
+    <div className="container max-w-6xl py-12 px-4 md:px-8">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Badge & Pills</h1>
@@ -35,8 +49,12 @@ export default function BadgePillsPage() {
           <TabsTrigger value="usage">Usage</TabsTrigger>
           <TabsTrigger value="api">API</TabsTrigger>
         </TabsList>
-        <TabsContent value="examples" className="space-y-8">
-          {/* Worktrait Tags Section */}
+        <TabsContent value="examples" className="space-y-0">
+          <div className="flex gap-8 items-start">
+            {/* Main Content Area */}
+            <div className="flex-1 min-w-0 space-y-8">
+              {/* Worktrait Tags Section */}
+              <div id="worktrait-tags" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Worktrait Tags">
             <div className="space-y-6">
               {/* Large Size */}
@@ -142,9 +160,11 @@ export default function BadgePillsPage() {
 />`}
             language="tsx"
           />
+              </div>
           {/* Pills Section */}
           <h2 className="text-xl font-semibold pt-4">Pills</h2>
           {/* Pill Flat */}
+          <div id="pill-flat" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Pill Flat">
             <div className="flex flex-wrap items-center gap-4">
               <Badge shape="pill">Badge</Badge>
@@ -164,7 +184,9 @@ export default function BadgePillsPage() {
 <Badge shape="pill" variant="complete">Badge</Badge>`}
             language="tsx"
           />
+          </div>
           {/* Pill with Border */}
+          <div id="pill-border" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Pill with Border">
             <div className="flex flex-wrap items-center gap-4">
               <Badge shape="pill" hasBorder>Badge</Badge>
@@ -184,7 +206,9 @@ export default function BadgePillsPage() {
 <Badge shape="pill" variant="complete" hasBorder>Badge</Badge>`}
             language="tsx"
           />
+          </div>
           {/* Pill with Dot */}
+          <div id="pill-dot" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Pill with Dot">
             <div className="flex flex-wrap items-center gap-4">
               <Badge shape="pill" hasDot>Badge</Badge>
@@ -204,7 +228,9 @@ export default function BadgePillsPage() {
 <Badge shape="pill" variant="complete" hasDot>Badge</Badge>`}
             language="tsx"
           />
+          </div>
           {/* Pill with Border & Remove Button */}
+          <div id="pill-remove" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Pill with Border & Remove Button">
             <div className="flex flex-wrap items-center gap-4">
               <Badge shape="pill" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
@@ -224,9 +250,11 @@ export default function BadgePillsPage() {
 <Badge shape="pill" variant="complete" hasBorder hasRemoveButton>Badge</Badge>`}
             language="tsx"
           />
+          </div>
           {/* Badges Section */}
           <h2 className="text-xl font-semibold pt-4">Badges</h2>
           {/* Badge Flat */}
+          <div id="badge-flat" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Badge Flat">
             <div className="flex flex-wrap items-center gap-4">
               <Badge shape="badge">Badge</Badge>
@@ -246,7 +274,9 @@ export default function BadgePillsPage() {
 <Badge shape="badge" variant="complete">Badge</Badge>`}
             language="tsx"
           />
+          </div>
           {/* Badge with Border */}
+          <div id="badge-border" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Badge with Border">
             <div className="flex flex-wrap items-center gap-4">
               <Badge shape="badge" hasBorder>Badge</Badge>
@@ -266,7 +296,9 @@ export default function BadgePillsPage() {
 <Badge shape="badge" variant="complete" hasBorder>Badge</Badge>`}
             language="tsx"
           />
+          </div>
           {/* Badge with Dot */}
+          <div id="badge-dot" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Badge with Dot">
             <div className="flex flex-wrap items-center gap-4">
               <Badge shape="badge" hasDot>Badge</Badge>
@@ -286,7 +318,9 @@ export default function BadgePillsPage() {
 <Badge shape="badge" variant="complete" hasDot>Badge</Badge>`}
             language="tsx"
           />
+          </div>
           {/* Badge with Border & Remove Button */}
+          <div id="badge-remove" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Badge with Border & Remove Button">
             <div className="flex flex-wrap items-center gap-4">
               <Badge shape="badge" hasBorder hasRemoveButton onRemove={handleRemove}>Badge</Badge>
@@ -306,6 +340,11 @@ export default function BadgePillsPage() {
 <Badge shape="badge" variant="complete" hasBorder hasRemoveButton>Badge</Badge>`}
             language="tsx"
           />
+          </div>
+            </div>
+            {/* Right Sidebar Navigation */}
+            <OnThisPageNav items={badgeNavItems} />
+          </div>
         </TabsContent>
         <TabsContent value="usage" className="space-y-8">
           <section>

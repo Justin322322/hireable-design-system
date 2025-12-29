@@ -18,7 +18,7 @@ export function ComponentPreview({ title, description, fieldNotes, children }: C
           </p>
         )}
       </CardHeader>
-      <CardContent className="border-t bg-muted/30 p-6">
+      <CardContent className="border-t bg-muted/30 p-4 md:p-6 overflow-x-auto">
         {children}
       </CardContent>
       {fieldNotes !== undefined && (

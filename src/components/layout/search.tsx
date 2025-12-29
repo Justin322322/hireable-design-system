@@ -144,7 +144,7 @@ export function DocsSearch() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="relative flex h-9 w-full items-center justify-start gap-2 rounded-lg border bg-muted/50 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted md:w-40 lg:w-64"
+        className="relative flex h-9 items-center justify-start gap-2 rounded-lg border bg-muted/50 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted w-32 sm:w-48 md:w-64 lg:w-80"
       >
         <Icon icon="search" size={16} className="text-icon" />
         <span className="hidden lg:inline-flex">Search documentation...</span>

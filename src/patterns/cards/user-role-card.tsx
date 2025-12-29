@@ -32,8 +32,6 @@ export interface UserRoleCardProps extends React.HTMLAttributes<HTMLDivElement> 
   onClick?: () => void;
   /** Custom class name */
   className?: string;
-  /** Image dimensions */
-  imageSize?: { width: number; height: number };
   /** Card height */
   height?: number;
   /** Title font family (for role-specific styling) */
@@ -51,7 +49,6 @@ export const UserRoleCard = React.forwardRef<HTMLDivElement, UserRoleCardProps>(
       variant = "enabled",
       onClick,
       className,
-      imageSize = { width: 140, height: 140 },
       height = 192,
       titleFont = "primary",
       selected = false,
@@ -135,20 +132,21 @@ export const UserRoleCard = React.forwardRef<HTMLDivElement, UserRoleCardProps>(
         }}
         {...props}
       >
-        <div className="flex flex-1 items-center gap-4 rounded-lg bg-background py-0 pl-6 pr-10 h-full">
-          <div className="flex flex-1 flex-col gap-3">
-            <h3 className={getTitleStyles()}>{title}</h3>
-            <p className={getDescriptionStyles()}>{description}</p>
+        <div className="flex flex-1 items-center gap-2 md:gap-4 rounded-lg bg-background py-0 pl-4 pr-4 md:pl-6 md:pr-10 h-full">
+          <div className="flex flex-1 flex-col gap-1 md:gap-3">
+            <h3 className={cn(getTitleStyles(), "text-lg md:text-xl")}>{title}</h3>
+            <p className={cn(getDescriptionStyles(), "text-xs md:text-sm")}>{description}</p>
           </div>
-          <div className="shrink-0">
-            <Image
-              src={image}
-              alt={title}
-              width={imageSize.width}
-              height={imageSize.height}
-              className="object-contain"
-              style={{ width: imageSize.width, height: imageSize.height }}
-            />
+          <div className="shrink-0 flex items-center justify-center">
+            <div className="relative w-20 h-20 md:w-[140px] md:h-[140px]">
+              <Image
+                src={image}
+                alt={title}
+                fill
+                sizes="(max-width: 768px) 80px, 140px"
+                className="object-contain"
+              />
+            </div>
           </div>
         </div>
       </div>

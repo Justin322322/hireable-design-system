@@ -45,7 +45,7 @@ export default function RadioButtonPage() {
               {/* With Label - 3 Sizes */}
               <div className="space-y-4">
                 <h4 className="text-sm font-medium">With Label</h4>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Small */}
                   <div className="space-y-3">
                     <span className="text-xs text-muted-foreground">Small (16px)</span>
@@ -111,7 +111,7 @@ export default function RadioButtonPage() {
               {/* With Label and Description - 3 Sizes */}
               <div className="space-y-4">
                 <h4 className="text-sm font-medium">With Label and Description</h4>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Small */}
                   <div className="space-y-3">
                     <span className="text-xs text-muted-foreground">Small (16px)</span>

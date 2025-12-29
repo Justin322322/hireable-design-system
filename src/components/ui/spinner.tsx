@@ -10,7 +10,7 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
     return (
       <div
         ref={ref}
-        className={cn("relative flex-shrink-0", className)}
+        className={cn("relative shrink-0", className)}
         style={{
           width: size,
           height: size,

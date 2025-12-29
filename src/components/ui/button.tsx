@@ -29,7 +29,10 @@ const buttonVariants = cva(
         outline:
           "border border-button-tertiary-border bg-button-tertiary-default text-button-tertiary-foreground shadow-sm hover:bg-button-tertiary-hover",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-client underline-offset-4 disabled:text-muted-foreground disabled:opacity-50",
+        // Icon - circular icon-only buttons (32x32px with 24x24 icon)
+        icon: "bg-button-icon-default text-button-icon-foreground hover:bg-button-icon-hover rounded-full p-1 [&_svg]:size-6",
+        // Link - underline on hover with darker blue
+        link: "text-link-default hover:text-link-hover hover:underline underline-offset-4 disabled:text-muted-foreground disabled:opacity-50",
       },
       size: {
         // Figma: Large = 48px, padding 8px 20px, font-size 16px

@@ -41,7 +41,7 @@ export default function NavigationMenuPage() {
           <TabsTrigger value="api">API</TabsTrigger>
         </TabsList>
         <TabsContent value="examples" className="space-y-8">
-          <ComponentPreview title="Basic Navigation Menu">
+          <ComponentPreview title="Basic Navigation Menu" allowOverflow>
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>

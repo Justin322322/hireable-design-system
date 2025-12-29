@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { Badge } from "@/components/ui/badge";
-import { Icon } from "@/components/ui/icon";
+import { Badge } from "./badge";
+import { Icon } from "./icon";
 import { cn } from "@/lib/utils";
 
 // ============================================================================

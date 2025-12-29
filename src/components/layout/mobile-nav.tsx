@@ -29,7 +29,7 @@ export function MobileNav() {
       <DrawerTrigger asChild>
         <Button
           variant="ghost"
-          className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 lg:hidden"
         >
           <Icon icon="menu" size={24} className="text-icon" />
           <span className="sr-only">Toggle Menu</span>

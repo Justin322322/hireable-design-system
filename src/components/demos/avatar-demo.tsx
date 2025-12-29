@@ -19,7 +19,7 @@ import { ComponentPreview } from "@/components/docs/component-preview";
 import { VERSION } from "@/lib/version";
 export default function AvatarPage() {
   return (
-    <div className="container max-w-4xl py-12 px-4 md:px-8">
+    <div className="container max-w-4xl py-12 px-4 md:px-8 overflow-hidden">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Avatar</h1>
@@ -38,7 +38,7 @@ export default function AvatarPage() {
         <TabsContent value="examples" className="space-y-8">
           {/* Size Variants */}
           <ComponentPreview title="Sizes">
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-6">
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="xl">
                   <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
@@ -96,7 +96,7 @@ export default function AvatarPage() {
           />
 {/* Fallback State */}
           <ComponentPreview title="Fallback States">
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-6">
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="xl">
                   <AvatarFallback className="text-lg">JD</AvatarFallback>

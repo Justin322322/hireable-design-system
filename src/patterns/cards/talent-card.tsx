@@ -3,7 +3,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Card, Avatar, AvatarImage, AvatarFallback } from "@/components/ui";
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 // ============================================================================
@@ -12,7 +12,19 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 // ============================================================================
 
 const talentCardVariants = cva(
-  "flex flex-row items-center gap-2 p-4 rounded-lg transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-neutral-muted hover:border-foreground hover:shadow-[0px_2px_8px_rgba(0,0,0,0.1)] active:border-client active:shadow-[0px_2px_8px_rgba(0,0,0,0.1)]"
+  "flex flex-row items-center gap-2 p-4 rounded-lg transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border",
+  {
+    variants: {
+      state: {
+        enabled: "border-neutral-muted hover:border-foreground hover:shadow-md active:border-client active:shadow-md",
+        hover: "border-foreground shadow-md",
+        pressed: "border-client shadow-md",
+      },
+    },
+    defaultVariants: {
+      state: "enabled",
+    },
+  }
 );
 
 // ============================================================================
@@ -20,7 +32,8 @@ const talentCardVariants = cva(
 // ============================================================================
 
 export interface TalentCardProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof talentCardVariants> {
   /** Primary text (name or title) */
   name: string;
   /** Secondary text (role or subtitle) */
@@ -70,6 +83,7 @@ export const TalentCard = React.forwardRef<HTMLDivElement, TalentCardProps>(
       avatarIcon,
       avatarClassName,
       onCardClick,
+      state,
       ...props
     },
     ref
@@ -101,7 +115,7 @@ export const TalentCard = React.forwardRef<HTMLDivElement, TalentCardProps>(
         role="button"
         tabIndex={0}
         aria-label={name}
-        className={cn(talentCardVariants(), className)}
+        className={cn(talentCardVariants({ state }), className)}
         onClick={onCardClick}
         onKeyDown={handleKeyDown}
         {...props}

@@ -10,6 +10,17 @@ export type PasswordInputProps = Omit<InputProps, "type">
 const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
   ({ className, ...props }, ref) => {
     const [showPassword, setShowPassword] = React.useState(false)
+    const [capsLockActive, setCapsLockActive] = React.useState(false)
+
+    const checkCapsLock = (
+      e: React.KeyboardEvent | React.MouseEvent
+    ) => {
+      if (e.getModifierState("CapsLock")) {
+        setCapsLockActive(true)
+      } else {
+        setCapsLockActive(false)
+      }
+    }
 
     return (
       <div className="relative flex items-center">
@@ -18,7 +29,30 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
           className={cn("pr-10", className)}
           ref={ref}
           {...props}
+          onKeyDown={(e) => {
+            checkCapsLock(e)
+            props.onKeyDown?.(e)
+          }}
+          onKeyUp={(e) => {
+            checkCapsLock(e)
+            props.onKeyUp?.(e)
+          }}
+          onClick={(e) => {
+            checkCapsLock(e)
+            props.onClick?.(e)
+          }}
         />
+        {capsLockActive && (
+          <div
+            className="absolute right-12 flex items-center justify-center text-warning"
+            title="Caps Lock is on"
+            role="alert"
+            aria-live="polite"
+          >
+            <Icon icon="warning" size={20} />
+            <span className="sr-only">Caps Lock is on</span>
+          </div>
+        )}
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}

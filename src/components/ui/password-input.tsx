@@ -23,48 +23,48 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
     }
 
     return (
-      <div className="relative flex items-center">
-        <Input
-          type={showPassword ? "text" : "password"}
-          className={cn("pr-10", className)}
-          ref={ref}
-          {...props}
-          onKeyDown={(e) => {
-            checkCapsLock(e)
-            props.onKeyDown?.(e)
-          }}
-          onKeyUp={(e) => {
-            checkCapsLock(e)
-            props.onKeyUp?.(e)
-          }}
-          onClick={(e) => {
-            checkCapsLock(e)
-            props.onClick?.(e)
-          }}
-        />
+      <div className="w-full">
+        <div className="relative flex items-center">
+          <Input
+            type={showPassword ? "text" : "password"}
+            className={cn("pr-10", className)}
+            ref={ref}
+            {...props}
+            onKeyDown={(e) => {
+              checkCapsLock(e)
+              props.onKeyDown?.(e)
+            }}
+            onKeyUp={(e) => {
+              checkCapsLock(e)
+              props.onKeyUp?.(e)
+            }}
+            onClick={(e) => {
+              checkCapsLock(e)
+              props.onClick?.(e)
+            }}
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-4 flex h-4 w-4 items-center justify-center text-icon hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-label={showPassword ? "Hide password" : "Show password"}
+          >
+            <Icon
+              icon={showPassword ? "visibility_off" : "visibility"}
+              size={20}
+              className="text-icon"
+            />
+          </button>
+        </div>
         {capsLockActive && (
           <div
-            className="absolute right-12 flex items-center justify-center text-warning"
-            title="Caps Lock is on"
+            className="mt-2 font-secondary text-sm tracking-[0.2px] text-[var(--status-warning-text-strong)]"
             role="alert"
             aria-live="polite"
           >
-            <Icon icon="warning" size={20} />
-            <span className="sr-only">Caps Lock is on</span>
+            Caps Lock is on
           </div>
         )}
-        <button
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-4 flex h-4 w-4 items-center justify-center text-icon hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          aria-label={showPassword ? "Hide password" : "Show password"}
-        >
-          <Icon
-            icon={showPassword ? "visibility_off" : "visibility"}
-            size={20}
-            className="text-icon"
-          />
-        </button>
       </div>
     )
   }

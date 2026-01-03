@@ -208,6 +208,7 @@ html {
   /* Amber Scale */
   --color-amber-100: oklch(0.96 0.06 85); /* #FFF3CC - Toast warning bg */
   --color-amber-400: oklch(0.83 0.16 85); /* #F2C94C - Warning */
+  --color-amber-500: #F59E0B; /* Amber 500 */
 
   /* Orange Scale (Avatar) */
   --color-orange-100: oklch(0.95 0.05 60); /* #FFE5CC - Avatar bg */
@@ -265,6 +266,7 @@ html {
   --status-success-text: var(--color-white);
   --status-warning: var(--color-amber-400);
   --status-warning-text: var(--color-neutral-900);
+  --status-warning-text-strong: var(--color-amber-500);
   --status-danger: var(--color-red-500);
   --status-danger-hover: var(--color-red-600);
   --status-danger-text: var(--color-white);

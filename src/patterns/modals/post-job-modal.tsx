@@ -97,8 +97,9 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
 
         <DialogContent 
           ref={ref}
+          hideDefaultClose
           className={cn(
-            "flex flex-col items-start w-[592px] max-w-[592px] p-6 gap-0 rounded-[16px] bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.1)] [&>button]:hidden",
+            "flex flex-col items-start w-[592px] max-w-[592px] p-6 gap-0 rounded-[16px] bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.1)]",
             className
           )}
         >

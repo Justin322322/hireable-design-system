@@ -12,6 +12,7 @@ import DrawerDemo from "@/components/demos/drawer-demo";
 import DropdownDemo from "@/components/demos/dropdown-demo";
 import DescriptionBoxDemo from "@/components/demos/description-box-demo";
 import FieldNotesDemo from "@/components/demos/field-notes-demo";
+import HeaderDemo from "@/components/demos/header-demo";
 import InputDemo from "@/components/demos/input-demo";
 import KanbanDemo from "@/components/demos/kanban-demo";
 import ModalDemo from "@/components/demos/modal-demo";
@@ -46,4 +47,5 @@ export const componentRegistry: Record<string, React.ComponentType<object> | ((p
   "toggle": ToggleDemo,
   "description-box": DescriptionBoxDemo,
   "field-notes": FieldNotesDemo,
+  "header": HeaderDemo,
 };

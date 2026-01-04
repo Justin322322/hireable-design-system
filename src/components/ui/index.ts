@@ -8,6 +8,7 @@ export * from "./checkbox";
 export * from "./dialog";
 export * from "./drawer";
 export * from "./field-note";
+export * from "./header";
 export * from "./icon";
 export * from "./icon-button";
 export * from "./input";

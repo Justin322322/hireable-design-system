@@ -6,13 +6,17 @@ interface ComponentPreviewProps {
   fieldNotes?: string;
   children: React.ReactNode;
   allowOverflow?: boolean;
+  action?: React.ReactNode;
 }
 
-export function ComponentPreview({ title, description, fieldNotes, children, allowOverflow }: ComponentPreviewProps) {
+export function ComponentPreview({ title, description, fieldNotes, children, allowOverflow, action }: ComponentPreviewProps) {
   return (
     <Card className={allowOverflow ? "overflow-visible" : undefined}>
       <CardHeader className="pb-3">
-        <CardTitle className="text-sm font-medium">{title}</CardTitle>
+        <div className="flex items-center justify-between gap-4">
+          <CardTitle className="text-sm font-medium">{title}</CardTitle>
+          {action}
+        </div>
         {description !== undefined && (
           <p className="text-sm text-muted-foreground mt-1">
             {description || <span className="italic">No description provided</span>}

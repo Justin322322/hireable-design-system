@@ -31,7 +31,7 @@ const talentMenuItems: SidebarMenuItem[] = [
   { icon: "home", label: "Home", href: "#", active: true },
   { icon: "work", label: "Job board", href: "#" },
   { icon: "mail", label: "Messages", href: "#" },
-  { icon: "hourglass_empty", label: "Trials", href: "#" },
+  { icon: "hourglass_empty", label: "Tests", href: "#" },
 ];
 
 const employerMenuItems: SidebarMenuItem[] = [
@@ -39,7 +39,7 @@ const employerMenuItems: SidebarMenuItem[] = [
   { icon: "person_search", label: "Discover Talent", href: "#" },
   { icon: "work", label: "Jobs", href: "#" },
   { icon: "mail", label: "Messages", href: "#" },
-  { icon: "hourglass_empty", label: "Trials", href: "#" },
+  { icon: "hourglass_empty", label: "Tests", href: "#" },
 ];
 
 const adminMenuItems: SidebarMenuItem[] = [

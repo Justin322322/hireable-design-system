@@ -60,6 +60,7 @@ const icons = {
   checkBox: createIconComponent("check_box"),
   radioButtonChecked: createIconComponent("radio_button_checked"),
   viewSidebar: createIconComponent("view_sidebar"),
+  home: createIconComponent("home"),
   accountCircle: createIconComponent("account_circle"),
   horizontalRule: createIconComponent("horizontal_rule"),
   menu: createIconComponent("menu"),
@@ -148,6 +149,7 @@ export const sidebarNav: Record<string, NavSection> = {
         items: [
           { label: "Tabs", href: "/components/tabs", icon: icons.tab, description: "Organize content into switchable panels.", fieldNotes: "" },
           { label: "Breadcrumb", href: "/components/breadcrumb", icon: icons.navigateNext, description: "Navigation trail showing the user's location in the site hierarchy.", fieldNotes: "" },
+          { label: "Header", href: "/components/header", icon: icons.home, description: "Page header with title, actions, and optional tabs.", fieldNotes: "" },
           { label: "Sidebar", href: "/components/sidebar", icon: icons.viewSidebar, description: "Collapsible navigation panel for app layouts.", fieldNotes: "" },
           { label: "Navigation Menu", href: "/components/navigation-menu", icon: icons.menu, description: "List of links for site navigation.", fieldNotes: "" },
         ],

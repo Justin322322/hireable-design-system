@@ -117,6 +117,13 @@ html {
   --color-fieldnote-error-bg: var(--fieldnote-error-bg);
   --color-fieldnote-error-text: var(--fieldnote-error-text);
 
+  /* Modal Size Tokens */
+  --modal-width-sm: 592px;
+  --modal-width-lg: 800px;
+  --modal-height-sm: 440px;
+  --modal-content-height: 312px;
+  --modal-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+
   /* Worktrait Tag Color Mappings */
   --color-worktrait-decision: var(--color-worktrait-blue);
   --color-worktrait-adapt: var(--color-worktrait-pink);

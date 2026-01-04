@@ -99,7 +99,7 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
           ref={ref}
           hideDefaultClose
           className={cn(
-            "flex flex-col items-start w-[592px] max-w-[592px] p-6 gap-0 rounded-[16px] bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.1)]",
+            "flex flex-col items-start w-[--modal-width-sm] max-w-[--modal-width-sm] p-6 gap-0 rounded-[16px] bg-white shadow-[--modal-shadow]",
             className
           )}
         >
@@ -215,7 +215,7 @@ export const PostJobModalPreview: React.FC<PostJobModalPreviewProps> = ({
   return (
     <div 
       className={cn(
-        "flex flex-col items-start bg-white p-6 w-[592px] shadow-[0px_2px_8px_rgba(0,0,0,0.1)] rounded-[16px]",
+        "flex flex-col items-start bg-white p-6 w-[--modal-width-sm] shadow-[--modal-shadow] rounded-[16px]",
         className
       )}
     >

@@ -104,7 +104,7 @@ export const CompleteSetupModal = React.forwardRef<HTMLDivElement, CompleteSetup
           ref={ref}
           hideDefaultClose
           className={cn(
-            "flex flex-col items-start w-[800px] max-w-[800px] p-6 gap-0 rounded-[16px] bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.1)]",
+            "flex flex-col items-start w-[--modal-width-lg] max-w-[--modal-width-lg] p-6 gap-0 rounded-[16px] bg-white shadow-[--modal-shadow]",
             className
           )}
         >
@@ -145,9 +145,9 @@ export const CompleteSetupModal = React.forwardRef<HTMLDivElement, CompleteSetup
 
             {/* Info Note */}
             {infoMessage && (
-              <div className="flex flex-row items-start p-4 gap-4 w-full bg-[#CCEDFF] rounded-lg">
-                <Icon icon="info" size={20} className="text-[#003049] flex-shrink-0" />
-                <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-[#003049] flex-1">
+              <div className="flex flex-row items-start p-4 gap-4 w-full bg-fieldnote-info-bg rounded-lg">
+                <Icon icon="info" size={20} className="text-fieldnote-info-text shrink-0" />
+                <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-fieldnote-info-text flex-1">
                   {infoMessage}
                 </span>
               </div>
@@ -204,7 +204,7 @@ const SetupCard: React.FC<SetupCardProps> = ({ title, description, onClick }) =>
           {description}
         </span>
       </div>
-      <Icon icon="chevron_right" size={24} className="text-neutral-850 flex-shrink-0" />
+      <Icon icon="chevron_right" size={24} className="text-neutral-850 shrink-0" />
     </button>
   );
 };
@@ -222,7 +222,7 @@ export const CompleteSetupModalPreview: React.FC<CompleteSetupModalPreviewProps>
   return (
     <div 
       className={cn(
-        "flex flex-col items-start bg-white p-6 w-[800px] shadow-[0px_2px_8px_rgba(0,0,0,0.1)] rounded-[16px]",
+        "flex flex-col items-start bg-white p-6 w-[--modal-width-lg] shadow-[--modal-shadow] rounded-[16px]",
         className
       )}
     >
@@ -263,14 +263,14 @@ export const CompleteSetupModalPreview: React.FC<CompleteSetupModalPreviewProps>
                 {item.description}
               </span>
             </div>
-            <Icon icon="chevron_right" size={24} className="text-neutral-850 flex-shrink-0" />
+            <Icon icon="chevron_right" size={24} className="text-neutral-850 shrink-0" />
           </div>
         ))}
 
         {/* Info Note */}
-        <div className="flex flex-row items-start p-4 gap-4 w-full bg-[#CCEDFF] rounded-lg">
-          <Icon icon="info" size={20} className="text-[#003049] flex-shrink-0" />
-          <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-[#003049] flex-1">
+        <div className="flex flex-row items-start p-4 gap-4 w-full bg-fieldnote-info-bg rounded-lg">
+          <Icon icon="info" size={20} className="text-fieldnote-info-text shrink-0" />
+          <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-fieldnote-info-text flex-1">
             Your job post has been saved as a draft. You can publish it once you complete the setup.
           </span>
         </div>

@@ -165,7 +165,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
         <DialogContent 
           ref={ref}
           hideDefaultClose
-          className={cn("flex flex-col items-start w-[592px] max-w-[592px] h-[440px] p-6 gap-0 rounded-[16px] bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.1)]", className)}
+          className={cn("flex flex-col items-start w-[--modal-width-sm] max-w-[--modal-width-sm] h-[--modal-height-sm] p-6 gap-0 rounded-[16px] bg-white shadow-[--modal-shadow]", className)}
         >
           {/* Header - matching Figma specs exactly */}
           <DialogHeader 
@@ -196,7 +196,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
           {uploadState === "idle" && (
             <div 
               className={cn(
-                "flex flex-col justify-center items-center self-stretch border-2 border-dashed bg-neutral-100 rounded-lg transition-colors box-border p-0 gap-6 h-[312px]",
+                "flex flex-col justify-center items-center self-stretch border-2 border-dashed bg-neutral-100 rounded-lg transition-colors box-border p-0 gap-6 h-[--modal-content-height]",
                 isDragOver ? 'border-client bg-client/5' : 'border-neutral-300'
               )}
               onDragOver={handleDragOver}
@@ -236,7 +236,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
           )}
 
           {uploadState === "uploading" && (
-            <div className="box-border flex flex-col justify-center items-center gap-6 w-full h-[312px] rounded-lg">
+            <div className="box-border flex flex-col justify-center items-center gap-6 w-full h-[--modal-content-height] rounded-lg">
               <div className="flex items-center justify-center w-16 h-16">
                 <Spinner size={40} />
               </div>
@@ -250,7 +250,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
           )}
 
           {uploadState === "complete" && (
-            <div className="box-border flex flex-col justify-center items-center w-full h-[312px] gap-6">
+            <div className="box-border flex flex-col justify-center items-center w-full h-[--modal-content-height] gap-6">
               <div className="flex items-center justify-center w-16 h-16 rounded-full bg-success/10 shrink-0">
                 <motion.svg
                   width="24"
@@ -314,7 +314,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
 }) => {
   return (
     <div 
-      className={cn("flex flex-col items-start bg-white p-6 w-[592px] h-[440px] shadow-[0px_2px_8px_rgba(0,0,0,0.1)] rounded-[16px]", className)}
+      className={cn("flex flex-col items-start bg-white p-6 w-[--modal-width-sm] h-[--modal-height-sm] shadow-[--modal-shadow] rounded-[16px]", className)}
     >
       {/* Header */}
       <div 
@@ -346,7 +346,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
       {/* Content based on state */}
       {state === "default" && (
         <div 
-          className="flex flex-col justify-center items-center self-stretch border-2 border-dashed border-neutral-300 bg-neutral-100 rounded-lg box-border p-0 gap-6 h-[312px]"
+          className="flex flex-col justify-center items-center self-stretch border-2 border-dashed border-neutral-300 bg-neutral-100 rounded-lg box-border p-0 gap-6 h-[--modal-content-height]"
         >
           <Icon icon="download_2" size={40} weight={600} className="text-neutral-850" />
           
@@ -373,7 +373,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
 
       {state === "uploading" && (
         <div 
-          className="flex flex-col justify-center items-center self-stretch box-border p-0 gap-6 h-[312px] rounded-lg"
+          className="flex flex-col justify-center items-center self-stretch box-border p-0 gap-6 h-[--modal-content-height] rounded-lg"
         >
           <Spinner size={40} />
           
@@ -388,7 +388,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
       )}
 
       {state === "complete" && (
-        <div className="box-border flex flex-col justify-center items-center self-stretch gap-6 h-[312px]">
+        <div className="box-border flex flex-col justify-center items-center self-stretch gap-6 h-[--modal-content-height]">
           <div className="flex items-center justify-center w-16 h-16 rounded-full bg-success/10 shrink-0">
             <motion.svg
               width="24"

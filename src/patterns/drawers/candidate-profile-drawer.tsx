@@ -23,60 +23,17 @@ import {
 } from "@/components/ui";
 import { ProfileCard } from "@/patterns/cards";
 
-// ============================================================================
 // TYPE DEFINITIONS
 // ============================================================================
 
-interface Education {
-  id: string;
-  degree: string;
-  school: string;
-  years: string;
-}
+import { 
+  type CandidateProfile,
+  type Education,
+  type Certificate,
+  type AIMatch
+} from "@/types/api-contracts";
 
-interface Certificate {
-  id: string;
-  name: string;
-  issuer: string;
-  year: string;
-}
 
-interface AIMatch {
-  percentage: number;
-  workStyleFit: string;
-  performanceHistory: string;
-  jobDescriptionFit: string;
-}
-
-interface Application {
-  position: string;
-  appliedDate: string;
-}
-
-interface Links {
-  linkedin?: string;
-  portfolio?: string;
-}
-
-export interface CandidateProfile {
-  id: string;
-  name: string;
-  role: string;
-  avatar: string;
-  salary: string;
-  experience: string;
-  location: string;
-  status: string;
-  activityTitle: string;
-  application: Application;
-  aiMatch: AIMatch;
-  about: string;
-  skills: string[];
-  education: Education[];
-  certificates: Certificate[];
-  links: Links;
-  personalMessage: string;
-}
 
 // ============================================================================
 // TRIGGER CARD - Uses ProfileCard
@@ -165,7 +122,7 @@ const CandidateHeader: React.FC<{ data: CandidateProfile }> = ({ data }) => (
   </div>
 );
 
-const JobDetails: React.FC<{ application: Application }> = ({ application }) => (
+const JobDetails: React.FC<{ application: CandidateProfile['application'] }> = ({ application }) => (
   <div className="flex flex-col gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
     <div className="flex items-center gap-2">
       <span className="text-sm text-neutral-500">Applied for:</span>

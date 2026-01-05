@@ -1,6 +1,5 @@
 export { 
   CandidateProfileDrawer, 
-  type CandidateProfile,
   type CandidateProfileDrawerProps 
 } from "./candidate-profile-drawer";
 

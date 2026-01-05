@@ -7,6 +7,5 @@ export {
 export { 
   CreateObjectiveDrawer,
   defaultKeyResults,
-  type CreateObjectiveDrawerProps,
-  type KeyResult 
+  type CreateObjectiveDrawerProps
 } from "./create-objective-drawer";

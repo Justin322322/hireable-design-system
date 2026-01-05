@@ -43,16 +43,11 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { cn } from "@/lib/utils";
+import { type KeyResult } from "@/types/api-contracts";
 
 // ============================================================================
 // TYPE DEFINITIONS
 // ============================================================================
-
-export interface KeyResult {
-  id: string;
-  title: string;
-  badgeText: string;
-}
 
 export const defaultKeyResults: KeyResult[] = [
   { id: "kr-1", title: "Increase quarterly sales by 20%", badgeText: "Percent" },

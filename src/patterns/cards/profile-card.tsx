@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, CardContent, Button, Icon, type IconName } from "@/components/ui";
+import { Card, CardContent, Button, Icon, Badge, type IconName } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 /**
@@ -11,13 +11,17 @@ import { cn } from "@/lib/utils";
  *   name="John Doe"
  *   role="Senior Developer"
  *   metadata={[
- *     { label: "Salary", value: "$120k - $150k" },
- *     { label: "Experience", value: "5+ years" }
+ *     { value: "$120k - $150k" },
+ *     { value: "5+ years" }
  *   ]}
- *   footer={{ label: "Last active 2 hours ago", action: { label: "View", onClick: () => {} } }}
+ *   matchPercentage={80}
+ *   footer={{ label: "Last active 2 hours ago", action: { onClick: () => {} } }}
  * />
  * ```
  */
+
+export type ProfileCardState = "enabled" | "hover" | "pressed";
+export type ProfileCardType = "active" | "inactive";
 
 export interface ProfileCardMetadata {
   label?: string;
@@ -40,19 +44,21 @@ export interface ProfileCardProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
   /** Profile role/title */
   role: string;
-  /** Avatar image URL (optional) */
+  /** Avatar image URL or custom React node */
   avatar?: string | React.ReactNode;
   /** Array of metadata items (salary, experience, etc.) */
   metadata?: ProfileCardMetadata[];
+  /** Match percentage (0-100), shows badge when provided */
+  matchPercentage?: number;
   /** Footer configuration */
   footer?: ProfileCardFooter;
-  /** Click handler for the entire card */
-  onClick?: () => void;
-  /** Custom class name */
-  className?: string;
+  /** Card type - affects footer styling */
+  type?: ProfileCardType;
+  /** Visual state for demo purposes */
+  state?: ProfileCardState;
   /** Avatar size in pixels */
   avatarSize?: number;
-  /** Show hover effect */
+  /** Show hover effect (default: true) */
   hoverable?: boolean;
 }
 
@@ -63,8 +69,10 @@ export const ProfileCard = React.forwardRef<HTMLDivElement, ProfileCardProps>(
       role,
       avatar,
       metadata = [],
+      matchPercentage,
       footer,
-      onClick,
+      type = "active",
+      state = "enabled",
       className,
       avatarSize = 56,
       hoverable = true,
@@ -72,19 +80,39 @@ export const ProfileCard = React.forwardRef<HTMLDivElement, ProfileCardProps>(
     },
     ref
   ) => {
-    const hasAction = footer?.action?.onClick;
-    const isClickable = onClick || hasAction;
+    // Normalize and validate matchPercentage
+    let normalizedMatchPercentage: number | undefined;
+    if (matchPercentage !== undefined && matchPercentage !== null) {
+      if (!Number.isFinite(matchPercentage)) {
+        console.warn(`ProfileCard: matchPercentage must be a finite number, received: ${matchPercentage}`);
+        normalizedMatchPercentage = undefined;
+      } else {
+        const rounded = Math.round(matchPercentage);
+        const clamped = Math.max(0, Math.min(100, rounded));
+        
+        if (matchPercentage !== clamped) {
+          console.warn(`ProfileCard: matchPercentage should be between 0-100, received: ${matchPercentage}, normalized to: ${clamped}`);
+        }
+        
+        normalizedMatchPercentage = clamped;
+      }
+    }
+
+    const isActive = type === "active";
+    const showMatchBadge = normalizedMatchPercentage !== undefined && normalizedMatchPercentage > 0;
+    const isClickable = !!props.onClick;
 
     return (
       <Card
         ref={ref}
         className={cn(
-          "w-full max-w-sm",
+          "w-full max-w-sm shadow-none",
           isClickable && "cursor-pointer",
-          hoverable && "transition-colors hover:bg-muted hover:border-border",
+          hoverable && "transition-colors hover:border-foreground active:border-client",
+          state === "hover" && "border-foreground",
+          state === "pressed" && "border-client",
           className
         )}
-        onClick={onClick}
         {...props}
       >
         <CardContent className="flex flex-col items-start gap-2.5 p-4">
@@ -123,8 +151,8 @@ export const ProfileCard = React.forwardRef<HTMLDivElement, ProfileCardProps>(
             </div>
           </div>
 
-          {/* Metadata */}
-          {metadata.length > 0 && (
+          {/* Metadata with optional match badge */}
+          {(metadata.length > 0 || showMatchBadge) && (
             <div className="flex flex-row items-center gap-6 w-full text-xs text-foreground flex-wrap">
               {metadata.map((item, index) => (
                 <span key={index} className="flex items-center gap-1">
@@ -133,24 +161,45 @@ export const ProfileCard = React.forwardRef<HTMLDivElement, ProfileCardProps>(
                   <span>{item.value}</span>
                 </span>
               ))}
+              {showMatchBadge && (
+                <Badge
+                  variant="complete"
+                  size="sm"
+                  shape="badge"
+                  className="h-5 px-2 py-1 text-[10px] uppercase"
+                >
+                  {normalizedMatchPercentage}% matched
+                </Badge>
+              )}
             </div>
           )}
 
           {/* Footer */}
           {footer && (
             <div className="flex flex-row items-center justify-between gap-4 w-full">
-              <span className="text-xs text-foreground truncate flex-1">
+              <span
+                className={cn(
+                  "text-xs truncate flex-1",
+                  isActive ? "text-foreground" : "text-muted-foreground"
+                )}
+              >
                 {footer.label || "—"}
               </span>
               {footer.action && (
                 <Button
                   size="sm"
-                  className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active shrink-0"
+                  className={cn(
+                    "rounded-full w-6 h-6 p-0 shrink-0",
+                    isActive
+                      ? "bg-client hover:bg-client-active"
+                      : "bg-muted hover:bg-muted"
+                  )}
                   onClick={(e) => {
                     e.stopPropagation();
                     footer.action?.onClick?.();
                   }}
                   aria-label={footer.action.ariaLabel || footer.action.label || "Action"}
+                  disabled={!isActive}
                 >
                   <Icon
                     icon={footer.action.icon || "chevron_right"}

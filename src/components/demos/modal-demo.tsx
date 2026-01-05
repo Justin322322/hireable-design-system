@@ -17,7 +17,7 @@ import { CodeBlock, ComponentPreview } from "@/components/docs";
 import { VERSION } from "@/lib/version";
 
 // Import extracted modal patterns
-import { UploadPhotoModal, UploadPhotoModalPreview } from "@/patterns/modals";
+import { UploadPhotoModal, UploadPhotoModalPreview, PostJobModal, PostJobModalPreview, CompleteSetupModal, CompleteSetupModalPreview } from "@/patterns/modals";
 
 // ============================================================================
 // MAIN DEMO PAGE
@@ -133,6 +133,130 @@ export function MyComponent() {
     </Button>
   }
 />`}
+            language="tsx"
+          />
+
+          {/* Post a Job Modal */}
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Post a Job Modal</h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              A modal for selecting job posting type with radio card options. Features a disabled &quot;Full-time&quot; option and an active &quot;Test (30-60-90 Day)&quot; option.
+            </p>
+            <ComponentPreview title="Post a Job Modal">
+              <div className="flex justify-center">
+                <PostJobModalPreview />
+              </div>
+            </ComponentPreview>
+          </section>
+
+          {/* Post a Job Modal - Interactive */}
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Post a Job Modal - Interactive</h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              Click the button below to see the Post a Job modal in action.
+            </p>
+            <Card>
+              <CardContent className="py-6">
+                <div className="flex flex-col items-center justify-center py-6 gap-4">
+                  <p className="text-sm text-muted-foreground">Click button to open Post a Job modal</p>
+                  <PostJobModal 
+                    onSubmit={(type) => {
+                      console.log("Selected job type:", type);
+                    }}
+                    onCancel={() => {
+                      console.log("Cancelled");
+                    }}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Post a Job Code Example */}
+          <CodeBlock
+            code={`import { PostJobModal } from "@/patterns/modals";
+
+export function MyComponent() {
+  const handleSubmit = (type: "full-time" | "test-30-60-90") => {
+    console.log("Selected job type:", type);
+    // Navigate to job creation form
+  };
+
+  return (
+    <PostJobModal
+      onSubmit={handleSubmit}
+      onCancel={() => console.log("Cancelled")}
+    />
+  );
+}
+
+// Controlled usage
+const [open, setOpen] = useState(false);
+
+<PostJobModal
+  open={open}
+  onOpenChange={setOpen}
+  onSubmit={handleSubmit}
+  showTrigger={false}
+/>`}
+            language="tsx"
+          />
+
+          {/* Complete Setup Modal */}
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Complete Setup Modal</h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              A modal showing setup requirements before publishing a job post. Features clickable setup cards with chevron icons and an info note.
+            </p>
+            <ComponentPreview title="Complete Setup Modal">
+              <div className="flex justify-center">
+                <CompleteSetupModalPreview />
+              </div>
+            </ComponentPreview>
+          </section>
+
+          {/* Complete Setup Modal - Interactive */}
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Complete Setup Modal - Interactive</h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              Click the button below to see the Complete Setup modal in action.
+            </p>
+            <Card>
+              <CardContent className="py-6">
+                <div className="flex flex-col items-center justify-center py-6 gap-4">
+                  <p className="text-sm text-muted-foreground">Click button to open Complete Setup modal</p>
+                  <CompleteSetupModal 
+                    onSubmit={() => console.log("Complete Setup clicked")}
+                    onCancel={() => console.log("Later clicked")}
+                    onItemClick={(id) => console.log("Item clicked:", id)}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Complete Setup Code Example */}
+          <CodeBlock
+            code={`import { CompleteSetupModal } from "@/patterns/modals";
+
+export function MyComponent() {
+  const setupItems = [
+    { id: "company-profile", title: "Add company profile", description: "Upload your logo" },
+    { id: "company-description", title: "Add company description", description: "Tell talents about your company" },
+    { id: "billing", title: "Set up billing method", description: "Add payment details required to start tests" },
+    { id: "post-job", title: "Post a job", description: "Create your first job post" },
+  ];
+
+  return (
+    <CompleteSetupModal
+      items={setupItems}
+      infoMessage="Your job post has been saved as a draft. You can publish it once you complete the setup."
+      onSubmit={() => console.log("Complete Setup")}
+      onCancel={() => console.log("Later")}
+      onItemClick={(id) => navigateTo(id)}
+    />
+  );
+}`}
             language="tsx"
           />
         </TabsContent>

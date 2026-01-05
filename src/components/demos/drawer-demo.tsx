@@ -39,12 +39,12 @@ import {
   educationInterface,
   certificateInterface,
 } from "@/data/api/drawer";
+import { type CandidateProfile } from "@/types/api-contracts";
 
 // Import drawer patterns
-import { 
+import {
   CandidateProfileDrawer,
   CreateObjectiveDrawer,
-  type CandidateProfile 
 } from "@/patterns/drawers";
 
 // Import JSON data

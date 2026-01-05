@@ -60,6 +60,7 @@ const icons = {
   checkBox: createIconComponent("check_box"),
   radioButtonChecked: createIconComponent("radio_button_checked"),
   viewSidebar: createIconComponent("view_sidebar"),
+  home: createIconComponent("home"),
   accountCircle: createIconComponent("account_circle"),
   horizontalRule: createIconComponent("horizontal_rule"),
   menu: createIconComponent("menu"),
@@ -68,6 +69,7 @@ const icons = {
   viewKanban: createIconComponent("view_kanban"),
   subject: createIconComponent("subject"),
   noteAlt: createIconComponent("note_alt"),
+  scrollVertical: createIconComponent("swap_vert"),
   
   // Patterns
   layers: createIconComponent("layers"),
@@ -121,6 +123,7 @@ export const sidebarNav: Record<string, NavSection> = {
           { label: "Checkbox", href: "/components/checkbox", icon: icons.checkBox, description: "Selection control for multiple choices.", fieldNotes: "" },
           { label: "Radio Group/Button", href: "/components/radio-button", icon: icons.radioButtonChecked, description: "Single selection from a set of mutually exclusive options.", fieldNotes: "" },
           { label: "Dropdown", href: "/components/dropdown", icon: icons.expandMore, description: "Dropdown selection from a list of options.", fieldNotes: "" },
+          { label: "Collapsible Form", href: "/components/collapsible-form", icon: icons.expandMore, description: "Multi-step collapsible forms for guided user input.", fieldNotes: "" },
         ],
       },
       {
@@ -130,6 +133,7 @@ export const sidebarNav: Record<string, NavSection> = {
           { label: "Badge", href: "/components/badge", icon: icons.verified, description: "Highlight important information and show status indicators.", fieldNotes: "" },
           { label: "Avatar", href: "/components/avatar", icon: icons.accountCircle, description: "Visual representation of a user or entity.", fieldNotes: "" },
           { label: "Separator", href: "/components/separator", icon: icons.horizontalRule, description: "Visual divider between content sections.", fieldNotes: "" },
+          { label: "Scrollbar", href: "/components/scrollbar", icon: icons.scrollVertical, description: "Custom scrollbar styles for consistent UI.", fieldNotes: "" },
           { label: "Description Box", href: "/components/description-box", icon: icons.subject, description: "Display component or feature descriptions.", fieldNotes: "" },
           { label: "Field Notes", href: "/components/field-notes", icon: icons.noteAlt, description: "Contextual notes and annotations for form fields.", fieldNotes: "" },
         ],
@@ -148,6 +152,7 @@ export const sidebarNav: Record<string, NavSection> = {
         items: [
           { label: "Tabs", href: "/components/tabs", icon: icons.tab, description: "Organize content into switchable panels.", fieldNotes: "" },
           { label: "Breadcrumb", href: "/components/breadcrumb", icon: icons.navigateNext, description: "Navigation trail showing the user's location in the site hierarchy.", fieldNotes: "" },
+          { label: "Header", href: "/components/header", icon: icons.home, description: "Page header with title, actions, and optional tabs.", fieldNotes: "" },
           { label: "Sidebar", href: "/components/sidebar", icon: icons.viewSidebar, description: "Collapsible navigation panel for app layouts.", fieldNotes: "" },
           { label: "Navigation Menu", href: "/components/navigation-menu", icon: icons.menu, description: "List of links for site navigation.", fieldNotes: "" },
         ],
@@ -165,9 +170,26 @@ export const sidebarNav: Record<string, NavSection> = {
     title: "Patterns",
     items: [
       { label: "Overview", href: "/patterns", icon: icons.layers },
-      { label: "Forms", href: "/patterns/forms", icon: icons.input },
-      { label: "Navigation", href: "/patterns/navigation", icon: icons.explore },
-      { label: "Data Display", href: "/patterns/data-display", icon: icons.tableChart },
+    ],
+    groups: [
+      {
+        category: "Forms",
+        items: [
+          { label: "Form Guidelines", href: "/patterns/forms", icon: icons.input, description: "Best practices for form layout and validation." },
+        ],
+      },
+      {
+        category: "Navigation",
+        items: [
+          { label: "Navigation Patterns", href: "/patterns/navigation", icon: icons.explore, description: "Navigation patterns and best practices." },
+        ],
+      },
+      {
+        category: "Data Display",
+        items: [
+          { label: "Data Display Patterns", href: "/patterns/data-display", icon: icons.tableChart, description: "Patterns for displaying data." },
+        ],
+      },
     ],
   },
   resources: {

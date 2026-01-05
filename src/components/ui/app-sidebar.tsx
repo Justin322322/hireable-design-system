@@ -31,7 +31,7 @@ const talentMenuItems: SidebarMenuItem[] = [
   { icon: "home", label: "Home", href: "#", active: true },
   { icon: "work", label: "Job board", href: "#" },
   { icon: "mail", label: "Messages", href: "#" },
-  { icon: "hourglass_empty", label: "Trials", href: "#" },
+  { icon: "hourglass_empty", label: "Tests", href: "#" },
 ];
 
 const employerMenuItems: SidebarMenuItem[] = [
@@ -39,7 +39,7 @@ const employerMenuItems: SidebarMenuItem[] = [
   { icon: "person_search", label: "Discover Talent", href: "#" },
   { icon: "work", label: "Jobs", href: "#" },
   { icon: "mail", label: "Messages", href: "#" },
-  { icon: "hourglass_empty", label: "Trials", href: "#" },
+  { icon: "hourglass_empty", label: "Tests", href: "#" },
 ];
 
 const adminMenuItems: SidebarMenuItem[] = [
@@ -304,7 +304,7 @@ function AppSidebar({ variant = "talent", className }: AppSidebarProps) {
       </div>
 
       {/* Navigation Menu */}
-      <div className="flex-1 flex flex-col relative w-full overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-muted-foreground/20 hover:scrollbar-thumb-muted-foreground/40">
+      <div className="flex-1 w-full overflow-y-auto">
         <ul className="flex flex-col gap-2 p-2" role="list">
           {menuItems.map((item, index) => (
             <li key={index}>

@@ -92,6 +92,7 @@ export type IconName =
   | "sort"
   | "more_vert"
   | "more_horiz"
+  | "swap_vert"
   // Admin/Business icons
   | "bar_chart"
   | "gavel"

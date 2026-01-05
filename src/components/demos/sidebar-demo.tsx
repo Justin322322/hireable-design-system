@@ -48,7 +48,7 @@ export default function SidebarPage() {
 
 // Talent variant - for job seekers
 <AppSidebar variant="talent" />
-// Menu items: Home, Job board, Messages, Trials
+// Menu items: Home, Job board, Messages, Tests
 // Profile: Avatar image with user name and email`}
             language="tsx"
           />
@@ -66,7 +66,7 @@ export default function SidebarPage() {
 
 // Employer variant - for hiring managers
 <AppSidebar variant="employer" />
-// Menu items: Home, Discover Talent, Jobs, Messages, Trials
+// Menu items: Home, Discover Talent, Jobs, Messages, Tests
 // Profile: Avatar image with company name and email`}
             language="tsx"
           />
@@ -158,7 +158,7 @@ export default function SidebarPage() {
                   <CardTitle className="text-lg">Talent</CardTitle>
                 </CardHeader>
                 <CardContent className="text-muted-foreground">
-                  <p>Home, Job board, Messages, Trials</p>
+                  <p>Home, Job board, Messages, Tests</p>
                 </CardContent>
               </Card>
               <Card>
@@ -166,7 +166,7 @@ export default function SidebarPage() {
                   <CardTitle className="text-lg">Employer</CardTitle>
                 </CardHeader>
                 <CardContent className="text-muted-foreground">
-                  <p>Home, Discover Talent, Jobs, Messages, Trials</p>
+                  <p>Home, Discover Talent, Jobs, Messages, Tests</p>
                 </CardContent>
               </Card>
               <Card>

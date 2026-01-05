@@ -1,5 +1,5 @@
 export { ProfileCard } from "./profile-card";
-export type { ProfileCardProps, ProfileCardMetadata, ProfileCardFooter } from "./profile-card";
+export type { ProfileCardProps, ProfileCardMetadata, ProfileCardFooter, ProfileCardState, ProfileCardType } from "./profile-card";
 
 export { GoalCard } from "./goal-card";
 export type { GoalCardProps, GoalCardMetric, GoalCardBadge } from "./goal-card";

@@ -20,7 +20,7 @@ import {
   Separator,
   VisuallyHidden,
 } from "@/components/ui";
-import { cn } from "@/lib/utils";
+import { ProfileCard } from "@/patterns/cards";
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -78,7 +78,7 @@ export interface CandidateProfile {
 }
 
 // ============================================================================
-// TRIGGER CARD
+// TRIGGER CARD - Uses ProfileCard
 // ============================================================================
 
 interface CandidateCardProps extends React.ComponentProps<"div"> {
@@ -87,39 +87,21 @@ interface CandidateCardProps extends React.ComponentProps<"div"> {
 
 export const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps>(
   ({ className, data, ...props }, ref) => (
-    <div
+    <ProfileCard
       ref={ref}
-      className={cn(
-        "flex flex-col items-start gap-2.5 p-4 bg-background border border-neutral-300 rounded-lg w-96 transition-colors hover:bg-neutral-100 hover:border-neutral-300 cursor-pointer",
-        className
-      )}
+      name={data.name}
+      role={data.role}
+      avatar={data.avatar}
+      metadata={[
+        { value: data.salary },
+        { value: data.experience }
+      ]}
+      footer={{
+        label: data.activityTitle
+      }}
+      className={className}
       {...props}
-    >
-      <div className="flex flex-row items-center gap-2.5 w-full">
-        <Avatar className="w-14 h-14 shrink-0">
-          <AvatarImage src={data.avatar} alt={data.name} />
-          <AvatarFallback className="bg-muted">
-            {data.name.split(" ").map(n => n[0]).join("")}
-          </AvatarFallback>
-        </Avatar>
-        <div className="flex flex-col items-start gap-1 flex-1">
-          <p className="font-semibold text-sm text-foreground leading-[120%]">{data.name}</p>
-          <p className="font-normal text-xs text-foreground leading-[120%]">{data.role}</p>
-        </div>
-      </div>
-
-      <div className="flex flex-row items-center gap-6 w-full text-xs text-foreground">
-        <span>{data.salary}</span>
-        <span>{data.experience}</span>
-      </div>
-
-      <div className="flex flex-row items-center justify-between gap-4 w-full">
-        <span className="text-xs text-foreground">{data.activityTitle}</span>
-        <Button size="sm" className="rounded-full w-6 h-6 p-0 bg-client hover:bg-client-active" aria-label="View candidate profile">
-          <Icon icon="chevron_right" size={16} className="text-white" aria-hidden="true" />
-        </Button>
-      </div>
-    </div>
+    />
   )
 );
 CandidateCard.displayName = "CandidateCard";

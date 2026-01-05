@@ -83,35 +83,117 @@ export default function CardPage() {
             <div className="flex-1 min-w-0 space-y-8">
 <div id="profile-card" className="scroll-mt-20 space-y-4">
 <ComponentPreview title="Profile Card">
-            <div className="flex justify-center">
-              <ProfileCard
-                name={profileData.name}
-                role={profileData.role}
-                metadata={[
-                  { value: profileData.salary },
-                  { value: profileData.experience }
-                ]}
-                footer={{
-                  label: profileData.activityTitle,
-                  action: { onClick: () => console.log("View profile") }
-                }}
-              />
+            <div className="flex flex-col gap-6 w-full max-w-sm mx-auto">
+              {/* Default */}
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-muted-foreground">Default</h4>
+                <ProfileCard
+                  name={profileData.name}
+                  role={profileData.role}
+                  metadata={[
+                    { value: profileData.salary },
+                    { value: profileData.experience }
+                  ]}
+                  footer={{
+                    label: profileData.activityTitle,
+                    action: { onClick: () => console.log("View profile") }
+                  }}
+                />
+              </div>
+              {/* With Match Badge */}
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-muted-foreground">With Match Badge</h4>
+                <ProfileCard
+                  name="Juan Dela Cruz"
+                  role="Sales Manager"
+                  avatar="/images/juan-delacruz.svg"
+                  metadata={[
+                    { value: "$4k /mo" },
+                    { value: "5-8 years" }
+                  ]}
+                  matchPercentage={80}
+                  footer={{
+                    label: "Last active 2 hours ago",
+                    action: { onClick: () => console.log("View profile") }
+                  }}
+                />
+              </div>
+              {/* Hover State */}
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-muted-foreground">State: Hover</h4>
+                <ProfileCard
+                  name="Juan Dela Cruz"
+                  role="Sales Manager"
+                  avatar="/images/juan-delacruz.svg"
+                  metadata={[
+                    { value: "$4k /mo" },
+                    { value: "5-8 years" }
+                  ]}
+                  matchPercentage={80}
+                  footer={{
+                    label: "Last active 2 hours ago",
+                    action: { onClick: () => console.log("View profile") }
+                  }}
+                  state="hover"
+                />
+              </div>
+              {/* Pressed State */}
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-muted-foreground">State: Pressed</h4>
+                <ProfileCard
+                  name="Juan Dela Cruz"
+                  role="Sales Manager"
+                  avatar="/images/juan-delacruz.svg"
+                  metadata={[
+                    { value: "$4k /mo" },
+                    { value: "5-8 years" }
+                  ]}
+                  matchPercentage={80}
+                  footer={{
+                    label: "Last active 2 hours ago",
+                    action: { onClick: () => console.log("View profile") }
+                  }}
+                  state="pressed"
+                />
+              </div>
+              {/* Inactive Type */}
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-muted-foreground">Type: Inactive</h4>
+                <ProfileCard
+                  name="Juan Dela Cruz"
+                  role="Sales Manager"
+                  avatar="/images/juan-delacruz.svg"
+                  metadata={[
+                    { value: "$4k /mo" },
+                    { value: "5-8 years" }
+                  ]}
+                  footer={{
+                    label: "No recent activity",
+                    action: { onClick: () => {} }
+                  }}
+                  type="inactive"
+                />
+              </div>
             </div>
           </ComponentPreview>
           <CodeBlock
             code={`import { ProfileCard } from "@/patterns/cards";
 
 <ProfileCard
-  name="Sarah Johnson"
-  role="Senior Product Designer"
+  name="Juan Dela Cruz"
+  role="Sales Manager"
+  avatar="/images/juan-delacruz.svg"
   metadata={[
-    { value: "$100k - $130k" },
-    { value: "8+ years" }
+    { value: "$4k /mo" },
+    { value: "5-8 years" }
   ]}
+  matchPercentage={80}
   footer={{
-    label: "Last active 1 hour ago",
+    label: "Last active 2 hours ago",
     action: { onClick: () => viewProfile() }
   }}
+  type="active" // or "inactive"
+  state="enabled" // or "hover" | "pressed"
 />`}
             language="tsx"
           />

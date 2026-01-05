@@ -47,7 +47,8 @@ export function MobileNav() {
             <span className="sr-only">Close Menu</span>
           </Button>
         </DrawerHeader>
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-6">
           <div className="flex flex-col gap-8 pb-10">
             <div className="flex flex-col space-y-4">
               <h4 className="text-sm font-bold uppercase tracking-wider text-muted-foreground/70">Main Sections</h4>
@@ -129,6 +130,7 @@ export function MobileNav() {
                 </div>
               </div>
             )}
+            </div>
           </div>
         </div>
       </DrawerContent>

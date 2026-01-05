@@ -92,6 +92,9 @@ html {
   --color-icon-active: var(--icon-active);
   --color-surface-hover: var(--surface-hover);
 
+  /* Denotive Colors */
+  --color-denotive-green: var(--status-success);
+
   /* Avatar Colors */
   --color-avatar-admin-bg: var(--avatar-admin-bg);
   --color-avatar-admin-foreground: var(--avatar-admin-foreground);
@@ -450,6 +453,57 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Custom Scrollbar - Pill Shape (Figma Spec) */
+  /* WebKit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F2F2F2;
+    border-radius: 100px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #969696;
+    border-radius: 100px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7a7a7a;
+  }
+
+  /* Hide scrollbar arrows/buttons - all variants */
+  ::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+
+  ::-webkit-scrollbar-button:start:decrement,
+  ::-webkit-scrollbar-button:end:increment,
+  ::-webkit-scrollbar-button:vertical:start:increment,
+  ::-webkit-scrollbar-button:vertical:end:decrement,
+  ::-webkit-scrollbar-button:horizontal:start:increment,
+  ::-webkit-scrollbar-button:horizontal:end:decrement {
+    display: none !important;
+  }
+
+  /* Hide scrollbar corner (where horizontal and vertical scrollbars meet) */
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+/* Firefox-only scrollbar styling (outside @layer to avoid conflicts with WebKit) */
+@supports (-moz-appearance: none) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #969696 #F2F2F2;
+  }
 }
 
 @layer utilities {
@@ -461,30 +515,18 @@ html {
     scrollbar-width: none;
   }
 
-  .scrollbar-hover-only {
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
+  /* Auto-hide scrollbar - shows only on hover */
+  .scrollbar-auto-hide::-webkit-scrollbar-thumb {
+    background: transparent;
+    transition: background 0.2s ease;
   }
-
-  .scrollbar-hover-only:hover {
-    scrollbar-color: var(--border) transparent;
+  .scrollbar-auto-hide:hover::-webkit-scrollbar-thumb {
+    background: #969696;
   }
-
-  .scrollbar-hover-only::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  .scrollbar-hover-only::-webkit-scrollbar-track {
+  .scrollbar-auto-hide::-webkit-scrollbar-track {
     background: transparent;
   }
-
-  .scrollbar-hover-only::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 20px;
-  }
-
-  .scrollbar-hover-only:hover::-webkit-scrollbar-thumb {
-    background-color: var(--border);
+  .scrollbar-auto-hide:hover::-webkit-scrollbar-track {
+    background: #F2F2F2;
   }
 }

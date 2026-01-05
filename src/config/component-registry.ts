@@ -18,6 +18,8 @@ import KanbanDemo from "@/components/demos/kanban-demo";
 import ModalDemo from "@/components/demos/modal-demo";
 import NavigationMenuDemo from "@/components/demos/navigation-menu-demo";
 import RadioButtonDemo from "@/components/demos/radio-button-demo";
+import ScrollbarDemo from "@/components/demos/scrollbar-demo";
+
 import SeparatorDemo from "@/components/demos/separator-demo";
 import SidebarDemo from "@/components/demos/sidebar-demo";
 import TabsDemo from "@/components/demos/tabs-demo";
@@ -40,6 +42,8 @@ export const componentRegistry: Record<string, React.ComponentType<object> | ((p
   "modal": ModalDemo,
   "navigation-menu": NavigationMenuDemo,
   "radio-button": RadioButtonDemo,
+  "scrollbar": ScrollbarDemo,
+
   "separator": SeparatorDemo,
   "sidebar": SidebarDemo,
   "tabs": TabsDemo,

@@ -32,3 +32,4 @@ export * from "./worktrait-tag";
 export * from "./spinner";
 export * from "./draggable-list-item";
 export * from "./progress-indicator";
+export * from "./collapsible-form";

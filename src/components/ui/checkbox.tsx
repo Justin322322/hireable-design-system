@@ -9,19 +9,22 @@ export type CheckboxSize = "sm" | "md" | "lg";
 
 const sizeConfig = {
   sm: {
-    box: "size-4 rounded-[3.2px]",
+    box: "size-4",
+    radius: "rounded-[3.2px]",
     iconSize: 16 as const,
     gap: "gap-2",
     labelText: "text-sm font-secondary leading-[1.2] tracking-[0.2px]",
   },
   md: {
-    box: "size-6 rounded",
+    box: "size-6",
+    radius: "rounded",
     iconSize: 20 as const,
     gap: "gap-2",
     labelText: "text-base font-nunito leading-normal tracking-[0.2px]",
   },
   lg: {
-    box: "size-7 rounded",
+    box: "size-7",
+    radius: "rounded",
     iconSize: 24 as const,
     gap: "gap-3",
     labelText: "text-base font-nunito leading-normal tracking-[0.2px]",
@@ -85,6 +88,7 @@ const Checkbox = React.forwardRef<
           // Base styles
           "peer relative shrink-0 flex items-center justify-center transition-colors",
           config.box,
+          config.radius,
           // Idle state (unchecked)
           "border border-button-tertiary-border bg-background",
           "hover:border-border-hover",

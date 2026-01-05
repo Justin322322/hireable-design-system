@@ -24,6 +24,7 @@ import {
   Separator,
   Textarea,
   VisuallyHidden,
+
 } from "@/components/ui";
 import {
   DndContext,
@@ -184,7 +185,8 @@ export function CreateObjectiveDrawer({ children }: CreateObjectiveDrawerProps) 
           </div>
 
           {/* Scrollable Content */}
-          <div className="flex flex-col items-start p-4 gap-8 flex-1 overflow-y-auto">
+          <div className="flex-1 w-full overflow-y-auto">
+            <div className="flex flex-col items-start p-4 gap-8">
             <Input size="lg" placeholder="Write objective title" className="w-full h-14" />
 
             <div className="flex flex-col items-start gap-2 w-full">
@@ -297,6 +299,7 @@ export function CreateObjectiveDrawer({ children }: CreateObjectiveDrawerProps) 
                   If your objective is not measurable (e.g. qualitative outcomes or binary tasks), you may skip selecting a measurement type. The goal will be tracked using status updates only (Not Started, In Progress, Completed).
                 </FieldNote>
               )}
+              </div>
             </div>
           </div>
 

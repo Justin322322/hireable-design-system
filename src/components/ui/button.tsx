@@ -33,6 +33,8 @@ const buttonVariants = cva(
         icon: "bg-button-icon-default text-button-icon-foreground hover:bg-button-icon-hover rounded-full p-1 [&_svg]:size-6",
         // Link - underline on hover with darker blue
         link: "text-link-default hover:text-link-hover hover:underline underline-offset-4 disabled:text-muted-foreground disabled:opacity-50",
+        // Soft Blue - specific for "Add Goal" type actions (uses secondary button tokens)
+        "soft-blue": "bg-button-secondary-default text-button-secondary-foreground hover:bg-button-secondary-hover shadow-none",
       },
       size: {
         // Figma: Large = 48px, padding 8px 20px, font-size 16px

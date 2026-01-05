@@ -104,17 +104,17 @@ export const CompleteSetupModal = React.forwardRef<HTMLDivElement, CompleteSetup
           ref={ref}
           hideDefaultClose
           className={cn(
-            "flex flex-col items-start w-[--modal-width-lg] max-w-[--modal-width-lg] p-6 gap-0 rounded-[16px] bg-white shadow-[--modal-shadow]",
+            "flex flex-col items-start w-[592px] max-w-[592px] p-6 gap-0 rounded-[16px] bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.1)]",
             className
           )}
         >
           {/* Header */}
           <DialogHeader className="flex flex-row justify-between items-start self-stretch p-0 gap-[21px]">
             <div className="flex flex-col items-start gap-1 flex-1">
-              <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+              <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-[#212121]">
                 Complete Your Setup
               </DialogTitle>
-              <DialogDescription className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+              <DialogDescription className="text-sm font-normal leading-[120%] tracking-[0.2px] text-[#616161]">
                 You need to complete the following requirements before publishing your job post.
               </DialogDescription>
             </div>
@@ -124,13 +124,13 @@ export const CompleteSetupModal = React.forwardRef<HTMLDivElement, CompleteSetup
                 className="flex items-center justify-center hover:bg-neutral-100 transition-colors p-1 w-8 h-8 bg-white rounded-full border-none cursor-pointer"
                 aria-label="Close modal"
               >
-                <Icon icon="close" size={24} className="text-neutral-850" />
+                <Icon icon="close" size={24} className="text-[#212121]" />
               </button>
             </DialogClose>
           </DialogHeader>
 
           {/* Divider */}
-          <Separator className="my-6 w-full h-px bg-border" />
+          <Separator className="my-6 w-full h-px bg-[#C3C3C3]" />
 
           {/* Setup Cards Container */}
           <div className="flex flex-col items-start gap-4 w-full">
@@ -155,14 +155,13 @@ export const CompleteSetupModal = React.forwardRef<HTMLDivElement, CompleteSetup
           </div>
 
           {/* Divider */}
-          <Separator className="my-6 w-full h-px bg-border" />
+          <Separator className="my-6 w-full h-px bg-[#C3C3C3]" />
 
           {/* CTA Buttons */}
           <div className="flex flex-row items-center gap-2 w-full">
             <Button 
-              variant="client"
+              className="bg-[#00A7F8] hover:bg-[#0090D5] text-white rounded-lg h-11 px-5"
               onClick={handleSubmit}
-              className="h-11 px-5"
             >
               Complete Setup
             </Button>
@@ -194,17 +193,17 @@ const SetupCard: React.FC<SetupCardProps> = ({ title, description, onClick }) =>
     <button
       type="button"
       onClick={onClick}
-      className="box-border flex flex-row items-center p-4 gap-6 w-full bg-white border border-neutral-300 rounded-lg cursor-pointer hover:border-neutral-400 transition-colors text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-client focus-visible:ring-offset-2"
+      className="box-border flex flex-row items-center p-4 gap-6 w-full bg-white border border-[#C3C3C3] rounded-lg cursor-pointer hover:border-neutral-400 transition-colors text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00A7F8] focus-visible:ring-offset-2"
     >
       <div className="flex flex-col items-start gap-2 flex-1">
-        <span className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+        <span className="font-semibold text-base leading-[150%] tracking-[0.2px] text-[#212121]">
           {title}
         </span>
-        <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+        <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-[#616161]">
           {description}
         </span>
       </div>
-      <Icon icon="chevron_right" size={24} className="text-neutral-850 shrink-0" />
+      <Icon icon="chevron_right" size={24} className="text-[#212121] shrink-0" />
     </button>
   );
 };
@@ -222,17 +221,17 @@ export const CompleteSetupModalPreview: React.FC<CompleteSetupModalPreviewProps>
   return (
     <div 
       className={cn(
-        "flex flex-col items-start bg-white p-6 w-[--modal-width-lg] shadow-[--modal-shadow] rounded-[16px]",
+        "flex flex-col items-start bg-white p-6 w-[592px] shadow-[0px_2px_8px_rgba(0,0,0,0.1)] rounded-[16px]",
         className
       )}
     >
       {/* Header */}
       <div className="flex flex-row justify-between items-start self-stretch p-0 gap-[21px]">
         <div className="flex flex-col items-start gap-1 flex-1">
-          <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-neutral-850">
+          <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-[#212121]">
             Complete Your Setup
           </span>
-          <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+          <span className="text-[14px] font-normal leading-[120%] tracking-[0.2px] text-[#616161]">
             You need to complete the following requirements before publishing your job post.
           </span>
         </div>
@@ -241,29 +240,29 @@ export const CompleteSetupModalPreview: React.FC<CompleteSetupModalPreviewProps>
           className="flex items-center justify-center p-1 w-8 h-8 bg-white rounded-full border-none cursor-default"
           disabled
         >
-          <Icon icon="close" size={24} className="text-neutral-850" />
+          <Icon icon="close" size={24} className="text-[#212121]" />
         </button>
       </div>
 
       {/* Divider */}
-      <Separator className="my-6 w-full h-px bg-border" />
+      <Separator className="my-6 w-full h-px bg-[#C3C3C3]" />
 
       {/* Setup Cards */}
       <div className="flex flex-col items-start gap-4 w-full">
         {defaultItems.map((item) => (
           <div
             key={item.id}
-            className="box-border flex flex-row items-center p-4 gap-6 w-full bg-white border border-neutral-300 rounded-lg"
+            className="box-border flex flex-row items-center p-4 gap-6 w-full bg-white border border-[#C3C3C3] rounded-[8px]"
           >
             <div className="flex flex-col items-start gap-2 flex-1">
-              <span className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+              <span className="font-semibold text-[16px] leading-[150%] tracking-[0.2px] text-[#212121]">
                 {item.title}
               </span>
-              <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+              <span className="text-[14px] font-normal leading-[120%] tracking-[0.2px] text-[#616161]">
                 {item.description}
               </span>
             </div>
-            <Icon icon="chevron_right" size={24} className="text-neutral-850 shrink-0" />
+            <Icon icon="chevron_right" size={24} className="text-[#212121] shrink-0" />
           </div>
         ))}
 
@@ -277,11 +276,11 @@ export const CompleteSetupModalPreview: React.FC<CompleteSetupModalPreviewProps>
       </div>
 
       {/* Divider */}
-      <Separator className="my-6 w-full h-px bg-border" />
+      <Separator className="my-6 w-full h-px bg-[#C3C3C3]" />
 
       {/* CTA Buttons */}
       <div className="flex flex-row items-center gap-2 w-full">
-        <Button variant="client" className="h-11 px-5">
+        <Button className="bg-[#00A7F8] hover:bg-[#0090D5] text-white rounded-[8px] h-11 px-5">
           Complete Setup
         </Button>
         <Button variant="outline" className="h-11 px-5">

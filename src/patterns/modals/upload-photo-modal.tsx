@@ -165,7 +165,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
         <DialogContent 
           ref={ref}
           hideDefaultClose
-          className={cn("flex flex-col items-start w-[--modal-width-sm] max-w-[--modal-width-sm] h-[--modal-height-sm] p-6 gap-0 rounded-[16px] bg-white shadow-[--modal-shadow]", className)}
+          className={cn("flex flex-col items-start w-[592px] max-w-[592px] h-[440px] p-6 gap-0 rounded-[16px] bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.1)]", className)}
         >
           {/* Header - matching Figma specs exactly */}
           <DialogHeader 
@@ -175,7 +175,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
             <div className="w-8 h-8" />
             
             {/* Modal Title - centered */}
-            <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground text-center">
+            <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-[#212121] text-center">
               {title}
             </DialogTitle>
             
@@ -185,34 +185,34 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
                 className="flex items-center justify-center hover:bg-neutral-100 transition-colors p-1 w-8 h-8 bg-white rounded-full border-none cursor-pointer"
                 aria-label="Close upload modal"
               >
-                <Icon icon="close" size={24} className="text-neutral-850" />
+                <Icon icon="close" size={24} className="text-[#212121]" />
               </button>
             </DialogClose>          </DialogHeader>
 
           {/* Divider */}
-          <Separator className="my-6 w-full h-px bg-border" />
+          <Separator className="my-6 w-full h-px bg-[#C3C3C3]" />
 
           {/* Content based on state */}
           {uploadState === "idle" && (
             <div 
               className={cn(
-                "flex flex-col justify-center items-center self-stretch border-2 border-dashed bg-neutral-100 rounded-lg transition-colors box-border p-0 gap-6 h-[--modal-content-height]",
-                isDragOver ? 'border-client bg-client/5' : 'border-neutral-300'
+                "flex flex-col justify-center items-center self-stretch border border-dashed bg-[#F2F2F2] rounded-lg transition-colors box-border p-0 gap-6 w-[544px] h-[312px]",
+                isDragOver ? 'border-[#00A7F8] bg-[#00A7F8]/5' : 'border-[#C3C3C3]'
               )}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
             >
-              <Icon icon="download_2" size={40} weight={600} className="text-neutral-850" />
+              <Icon icon="download_2" size={40} weight={600} className="text-[#212121]" />
               
               <div className="flex flex-col items-center gap-2">
                 <span
-                  className="font-secondary font-semibold text-xl leading-[150%] tracking-[0.4px] text-neutral-850"
+                  className="font-secondary font-semibold text-xl leading-[150%] tracking-[0.4px] text-[#212121]"
                 >
                   Drop your image here to upload
                 </span>
                 <p
-                  className="m-0 font-secondary font-normal text-sm leading-[120%] text-center tracking-[0.2px] text-neutral-750"
+                  className="m-0 font-secondary font-normal text-sm leading-[120%] text-center tracking-[0.2px] text-[#616161]"
                 >
                   Works with any {acceptedFormats} file from the web<br />
                   Recommended size: {recommendedSize}
@@ -227,7 +227,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
                 onChange={handleFileInput}
               />
               <Button 
-                variant="client" 
+                className="bg-[#00A7F8] hover:bg-[#0090D5] text-white rounded-lg h-11 px-5"
                 onClick={() => document.getElementById('file-upload')?.click()}
               >
                 Upload
@@ -235,14 +235,15 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
             </div>
           )}
 
+          {/* Uploading State */}
           {uploadState === "uploading" && (
-            <div className="box-border flex flex-col justify-center items-center gap-6 w-full h-[--modal-content-height] rounded-lg">
-              <div className="flex items-center justify-center w-16 h-16">
-                <Spinner size={40} />
+            <div className="box-border flex flex-col justify-center items-center gap-6 w-[544px] h-[312px] rounded-lg">
+              <div className="flex items-center justify-center w-10 h-10">
+                <Spinner size={40} className="text-[#00A7F8]" />
               </div>
               
               <div className="flex flex-col items-center gap-2">
-                <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+                <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-[#212121]">
                   Uploading image
                 </span>
               </div>
@@ -250,7 +251,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
           )}
 
           {uploadState === "complete" && (
-            <div className="box-border flex flex-col justify-center items-center w-full h-[--modal-content-height] gap-6">
+            <div className="box-border flex flex-col justify-center items-center w-[544px] h-[312px] gap-6">
               <div className="flex items-center justify-center w-16 h-16 rounded-full bg-success/10 shrink-0">
                 <motion.svg
                   width="24"
@@ -274,7 +275,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
               </div>
               
               <div className="flex flex-col items-center">
-                <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground text-center">
+                <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-[#212121] text-center">
                   Upload complete!
                 </span>
               </div>
@@ -314,7 +315,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
 }) => {
   return (
     <div 
-      className={cn("flex flex-col items-start bg-white p-6 w-[--modal-width-sm] h-[--modal-height-sm] shadow-[--modal-shadow] rounded-[16px]", className)}
+      className={cn("flex flex-col items-start bg-white p-6 w-[592px] h-[440px] shadow-[0px_2px_8px_rgba(0,0,0,0.1)] rounded-[16px]", className)}
     >
       {/* Header */}
       <div 
@@ -326,7 +327,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
           className="flex flex-row justify-center items-center p-0 gap-[10px] mx-auto h-8"
         >
           <span
-            className="font-secondary font-semibold text-xl leading-[150%] tracking-[0.4px] text-neutral-850"
+            className="font-secondary font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-[#212121]"
           >
             {title}
           </span>
@@ -337,35 +338,35 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
           aria-label="Close (non-functional in preview)"
           disabled
         >
-          <Icon icon="close" size={24} className="text-neutral-850" />
+          <Icon icon="close" size={24} className="text-[#212121]" />
         </button>      </div>
 
       {/* Divider */}
-      <Separator className="my-6 w-full h-px bg-border" />
+      <Separator className="my-6 w-full h-px bg-[#C3C3C3]" />
 
       {/* Content based on state */}
       {state === "default" && (
         <div 
-          className="flex flex-col justify-center items-center self-stretch border-2 border-dashed border-neutral-300 bg-neutral-100 rounded-lg box-border p-0 gap-6 h-[--modal-content-height]"
+          className="flex flex-col justify-center items-center self-stretch border border-dashed border-[#C3C3C3] bg-[#F2F2F2] rounded-[8px] box-border p-0 gap-6 w-[544px] h-[312px]"
         >
-          <Icon icon="download_2" size={40} weight={600} className="text-neutral-850" />
+          <Icon icon="download_2" size={40} weight={600} className="text-[#212121]" />
           
           <div className="flex flex-col items-center gap-2">
             <span
-              className="font-secondary font-semibold text-xl leading-[150%] tracking-[0.4px] text-neutral-850"
+              className="font-secondary font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-[#212121]"
             >
               Drop your image here to upload
             </span>
             
             <p
-              className="m-0 font-secondary font-normal text-sm leading-[120%] text-center tracking-[0.2px] text-neutral-750"
+              className="m-0 font-secondary font-normal text-[14px] leading-[120%] text-center tracking-[0.2px] text-[#616161]"
             >
               Works with any {acceptedFormats} file from the web<br />
               Recommended size: {recommendedSize}
             </p>
           </div>
 
-          <Button variant="client" size="default">
+          <Button className="bg-[#00A7F8] hover:bg-[#0090D5] text-white rounded-[8px] w-[88px] h-[44px] px-5 py-2 text-[14px] font-medium">
             Upload
           </Button>
         </div>
@@ -373,13 +374,13 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
 
       {state === "uploading" && (
         <div 
-          className="flex flex-col justify-center items-center self-stretch box-border p-0 gap-6 h-[--modal-content-height] rounded-lg"
+          className="flex flex-col justify-center items-center self-stretch box-border p-0 gap-6 w-[544px] h-[312px] rounded-[8px]"
         >
-          <Spinner size={40} />
+          <Spinner size={40} className="text-[#00A7F8]" />
           
           <div className="flex flex-col items-center gap-2">
             <span
-              className="font-secondary font-semibold text-xl leading-[150%] tracking-[0.4px] text-neutral-850"
+              className="font-secondary font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-[#212121]"
             >
               Uploading image
             </span>
@@ -388,7 +389,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
       )}
 
       {state === "complete" && (
-        <div className="box-border flex flex-col justify-center items-center self-stretch gap-6 h-[--modal-content-height]">
+        <div className="box-border flex flex-col justify-center items-center self-stretch gap-6 w-[544px] h-[312px]">
           <div className="flex items-center justify-center w-16 h-16 rounded-full bg-success/10 shrink-0">
             <motion.svg
               width="24"
@@ -412,7 +413,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
           </div>
           
           <div className="flex flex-col items-center">
-            <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground text-center">
+            <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-[#212121] text-center">
               Upload complete!
             </span>
           </div>

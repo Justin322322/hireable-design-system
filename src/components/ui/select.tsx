@@ -150,6 +150,93 @@ const SelectItem = React.forwardRef<
 ))
 SelectItem.displayName = SelectPrimitive.Item.displayName
 
+// Option with Checkbox variant
+interface SelectItemCheckboxProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> {
+  checked?: boolean
+}
+
+const SelectItemCheckbox = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Item>,
+  SelectItemCheckboxProps
+>(({ className, children, checked, ...props }, ref) => (
+  <SelectPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative flex w-full cursor-default select-none items-center gap-2 h-11 px-6 py-4 text-sm outline-none bg-background hover:bg-secondary focus:bg-secondary data-disabled:pointer-events-none data-disabled:text-muted-foreground",
+      className
+    )}
+    {...props}
+  >
+    <span
+      className={cn(
+        "flex h-4 w-4 shrink-0 items-center justify-center rounded-[3.2px] border",
+        checked
+          ? "bg-client border-client"
+          : "bg-background border-border",
+        props.disabled && "border-border-disabled"
+      )}
+    >
+      {checked && (
+        <Icon icon="check" size={14} className="text-white" />
+      )}
+    </span>
+    <SelectPrimitive.ItemText className="text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+      {children}
+    </SelectPrimitive.ItemText>
+  </SelectPrimitive.Item>
+))
+SelectItemCheckbox.displayName = "SelectItemCheckbox"
+
+// Option with Radio Button + Pill variant
+interface SelectItemRadioPillProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> {
+  pillText?: string
+  pillClassName?: string
+}
+
+const SelectItemRadioPill = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Item>,
+  SelectItemRadioPillProps
+>(({ className, children, pillText, pillClassName, ...props }, ref) => (
+  <SelectPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative flex w-full cursor-default select-none items-center justify-between h-11 px-6 py-4 text-sm outline-none bg-background hover:bg-secondary focus:bg-secondary data-disabled:pointer-events-none data-disabled:text-muted-foreground",
+      className
+    )}
+    {...props}
+  >
+    <div className="flex items-center gap-2">
+      <span
+        className={cn(
+          "flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-[0.8px]",
+          "data-[state=checked]:border-client border-border",
+          props.disabled && "border-border-disabled"
+        )}
+        data-state={props["aria-selected"] ? "checked" : "unchecked"}
+      >
+        <SelectPrimitive.ItemIndicator>
+          <span className="block h-[11.2px] w-[11.2px] rounded-full bg-client" />
+        </SelectPrimitive.ItemIndicator>
+      </span>
+      <SelectPrimitive.ItemText className="text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+        {children}
+      </SelectPrimitive.ItemText>
+    </div>
+    {pillText && (
+      <span
+        className={cn(
+          "flex items-center justify-center h-6 px-2 py-2 rounded-full text-xs leading-[1.2] tracking-[0.2px]",
+          "bg-[#fff5ec] text-[#ff8112]",
+          pillClassName
+        )}
+      >
+        {pillText}
+      </span>
+    )}
+  </SelectPrimitive.Item>
+))
+SelectItemRadioPill.displayName = "SelectItemRadioPill"
+
 const SelectSeparator = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
@@ -170,6 +257,8 @@ export {
   SelectContent,
   SelectLabel,
   SelectItem,
+  SelectItemCheckbox,
+  SelectItemRadioPill,
   SelectSeparator,
   SelectScrollUpButton,
   SelectScrollDownButton,

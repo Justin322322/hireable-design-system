@@ -104,16 +104,14 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
           )}
         >
           {/* Header */}
-          <DialogHeader className="flex flex-row justify-between items-center self-stretch p-0 gap-[21px] h-8">
-            <div className="w-8 h-8" />
-            
-            <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground text-center">
+          <DialogHeader className="flex flex-row justify-between items-center self-stretch p-0 h-8">
+            <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
               Post a Job
             </DialogTitle>
             
             <DialogClose asChild>
               <button 
-                className="flex items-center justify-center hover:bg-neutral-100 transition-colors p-1 w-8 h-8 bg-white rounded-full border-none cursor-pointer"
+                className="flex items-center justify-center hover:bg-surface-hover transition-colors p-1 w-8 h-8 bg-background rounded-full border-none cursor-pointer"
                 aria-label="Close modal"
               >
                 <Icon icon="close" size={24} className="text-foreground" />
@@ -219,15 +217,13 @@ export const PostJobModalPreview: React.FC<PostJobModalPreviewProps> = ({
       )}
     >
       {/* Header */}
-      <div className="flex flex-row justify-between items-center self-stretch p-0 gap-[21px] h-8 w-full">
-        <div className="w-8 h-8" />
-        
-        <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground text-center font-['Inter']">
+      <div className="flex flex-row justify-between items-center self-stretch p-0 h-8 w-full">
+        <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground font-['Inter']">
           Post a Job
         </span>
         
         <button 
-          className="flex items-center justify-center p-1 w-8 h-8 bg-white rounded-full border-none cursor-default"
+          className="flex items-center justify-center p-1 w-8 h-8 bg-background rounded-full border-none cursor-default"
           aria-label="Close (non-functional in preview)"
           disabled
         >

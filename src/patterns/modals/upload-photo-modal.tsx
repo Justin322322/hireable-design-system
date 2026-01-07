@@ -169,25 +169,23 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
         >
           {/* Header - matching Figma specs exactly */}
           <DialogHeader 
-            className="flex flex-row justify-between items-center self-stretch p-0 gap-[21px] h-8"
+            className="flex flex-row justify-between items-center self-stretch p-0 h-8"
           >
-            {/* Invisible spacer to balance close button */}
-            <div className="w-8 h-8" />
-            
-            {/* Modal Title - centered */}
-            <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground text-center">
+            {/* Modal Title - left aligned */}
+            <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
               {title}
             </DialogTitle>
             
             {/* Close Button - 32x32px, border-radius 100px */}
             <DialogClose asChild>
               <button 
-                className="flex items-center justify-center hover:bg-neutral-100 transition-colors p-1 w-8 h-8 bg-white rounded-full border-none cursor-pointer"
+                className="flex items-center justify-center hover:bg-surface-hover transition-colors p-1 w-8 h-8 bg-background rounded-full border-none cursor-pointer"
                 aria-label="Close upload modal"
               >
                 <Icon icon="close" size={24} className="text-foreground" />
               </button>
-            </DialogClose>          </DialogHeader>
+            </DialogClose>
+          </DialogHeader>
 
           {/* Divider */}
           <Separator className="my-6 w-full h-px bg-neutral-muted" />
@@ -319,27 +317,22 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
     >
       {/* Header */}
       <div 
-        className="flex flex-row justify-between items-center self-stretch p-0 gap-[21px] h-8"
+        className="flex flex-row justify-between items-center self-stretch p-0 h-8"
       >
-        <div className="w-8 h-8" />
-        
-        <div 
-          className="flex flex-row justify-center items-center p-0 gap-[10px] mx-auto h-8"
+        <span
+          className="font-secondary font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground"
         >
-          <span
-            className="font-secondary font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground"
-          >
-            {title}
-          </span>
-        </div>
+          {title}
+        </span>
         
         <button 
-          className="flex flex-row items-center justify-center p-1 gap-[10px] w-8 h-8 bg-white rounded-full border-none cursor-default"
+          className="flex flex-row items-center justify-center p-1 gap-[10px] w-8 h-8 bg-background rounded-full border-none cursor-default"
           aria-label="Close (non-functional in preview)"
           disabled
         >
           <Icon icon="close" size={24} className="text-foreground" />
-        </button>      </div>
+        </button>
+      </div>
 
       {/* Divider */}
       <Separator className="my-6 w-full h-px bg-neutral-muted" />

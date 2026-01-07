@@ -157,10 +157,8 @@ export const ApplyToJobModal = React.forwardRef<HTMLDivElement, ApplyToJobModalP
           )}
         >
           {/* Header */}
-          <DialogHeader className="flex flex-row justify-between items-center self-stretch p-0 gap-[21px] h-8">
-            <div className="w-8 h-8" />
-            
-            <DialogTitle className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground text-center font-['Inter']">
+          <DialogHeader className="flex flex-row justify-between items-center self-stretch p-0 h-8">
+            <DialogTitle className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground font-['Inter']">
               Apply to Job
             </DialogTitle>
             
@@ -330,10 +328,8 @@ export const ApplyToJobModalPreview: React.FC<ApplyToJobModalPreviewProps> = ({
       )}
     >
       {/* Header */}
-      <div className="flex flex-row justify-between items-center self-stretch p-0 gap-[21px] h-8 w-full">
-        <div className="w-8 h-8" />
-        
-        <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground text-center font-['Inter']">
+      <div className="flex flex-row justify-between items-center self-stretch p-0 h-8 w-full">
+        <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground font-['Inter']">
           Apply to Job
         </span>
         

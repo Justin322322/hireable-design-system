@@ -12,6 +12,11 @@ import {
   DrawerTrigger,
   FieldNote,
   Icon,
+  IconEqual,
+  IconGreater,
+  IconGreaterEqual,
+  IconLess,
+  IconLessEqual,
   Input,
   Label,
   ProgressIndicator,
@@ -255,18 +260,45 @@ export function CreateObjectiveDrawer({ children }: CreateObjectiveDrawerProps) 
               {updateMethod === "manual" && (
                 <div className="flex flex-col items-start gap-4 w-full">
                   <div className="flex flex-row items-start gap-2 w-full">
-                    <div className="flex flex-col items-start gap-2 flex-1">
-                      <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-muted-foreground">
+                    <div className="flex flex-col items-start gap-2 w-[180px] shrink-0">
+                      <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
                         Operator
                       </Label>
-                      <Select defaultValue="gte" disabled>
-                        <SelectTrigger className="h-11">
-                          <SelectValue />
+                      <Select defaultValue="gte">
+                        <SelectTrigger className="h-11 w-full">
+                          <SelectValue className="truncate" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="gte">≥</SelectItem>
-                          <SelectItem value="lte">≤</SelectItem>
-                          <SelectItem value="eq">=</SelectItem>
+                          <SelectItem value="gte">
+                            <div className="flex items-center gap-3">
+                              <IconGreaterEqual className="w-4 h-4 text-foreground shrink-0" />
+                              <span className="truncate">Greater than or equal to</span>
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="lte">
+                            <div className="flex items-center gap-3">
+                              <IconLessEqual className="w-4 h-4 text-foreground shrink-0" />
+                              <span className="truncate">Less than or equal to</span>
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="eq">
+                            <div className="flex items-center gap-3">
+                              <IconEqual className="w-4 h-4 text-foreground shrink-0" />
+                              <span className="truncate">Equal to</span>
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="gt">
+                            <div className="flex items-center gap-3">
+                              <IconGreater className="w-4 h-4 text-foreground shrink-0" />
+                              <span className="truncate">Greater than</span>
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="lt">
+                            <div className="flex items-center gap-3">
+                              <IconLess className="w-4 h-4 text-foreground shrink-0" />
+                              <span className="truncate">Less than</span>
+                            </div>
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -318,7 +350,7 @@ export function CreateObjectiveDrawer({ children }: CreateObjectiveDrawerProps) 
                 </div>
               )}
 
-              {updateMethod !== "manual" && (
+              {updateMethod && (
                 <FieldNote variant="info">
                   If your objective is not measurable (e.g. qualitative outcomes or binary tasks), you may skip selecting a measurement type. The goal will be tracked using status updates only (Not Started, In Progress, Completed).
                 </FieldNote>

@@ -5,6 +5,11 @@ import {
   CardTitle,
   Checkbox,
   Icon,
+  IconEqual,
+  IconGreater,
+  IconGreaterEqual,
+  IconLess,
+  IconLessEqual,
   Label,
   RadioGroup,
   RadioGroupItem,
@@ -710,6 +715,105 @@ export default function DropdownPage() {
     FULL-TIME
   </span>
 </div>`}
+          language="tsx"
+        />
+        {/* Operator Dropdown */}
+        <ComponentPreview title="Operator Dropdown">
+          <div className="flex flex-col items-center gap-6">
+            {/* Interactive Example */}
+            <div className="space-y-2">
+              <span className="text-sm text-muted-foreground">Interactive Example</span>
+              <Select defaultValue="eq">
+                <SelectTrigger className="w-[280px]">
+                  <SelectValue className="truncate" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="gte">
+                    <div className="flex items-center gap-3">
+                      <IconGreaterEqual className="w-4 h-4 text-foreground shrink-0" />
+                      <span>Greater than or equal to</span>
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="lte">
+                    <div className="flex items-center gap-3">
+                      <IconLessEqual className="w-4 h-4 text-foreground shrink-0" />
+                      <span>Less than or equal to</span>
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="eq">
+                    <div className="flex items-center gap-3">
+                      <IconEqual className="w-4 h-4 text-foreground shrink-0" />
+                      <span>Equal to</span>
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="gt">
+                    <div className="flex items-center gap-3">
+                      <IconGreater className="w-4 h-4 text-foreground shrink-0" />
+                      <span>Greater than</span>
+                    </div>
+                  </SelectItem>
+                  <SelectItem value="lt">
+                    <div className="flex items-center gap-3">
+                      <IconLess className="w-4 h-4 text-foreground shrink-0" />
+                      <span>Less than</span>
+                    </div>
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </ComponentPreview>
+        <CodeBlock
+          code={`import {
+  IconEqual,
+  IconGreater,
+  IconGreaterEqual,
+  IconLess,
+  IconLessEqual,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui";
+
+<Select defaultValue="eq">
+  <SelectTrigger className="w-[280px]">
+    <SelectValue className="truncate" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="gte">
+      <div className="flex items-center gap-3">
+        <IconGreaterEqual className="w-4 h-4 text-foreground shrink-0" />
+        <span>Greater than or equal to</span>
+      </div>
+    </SelectItem>
+    <SelectItem value="lte">
+      <div className="flex items-center gap-3">
+        <IconLessEqual className="w-4 h-4 text-foreground shrink-0" />
+        <span>Less than or equal to</span>
+      </div>
+    </SelectItem>
+    <SelectItem value="eq">
+      <div className="flex items-center gap-3">
+        <IconEqual className="w-4 h-4 text-foreground shrink-0" />
+        <span>Equal to</span>
+      </div>
+    </SelectItem>
+    <SelectItem value="gt">
+      <div className="flex items-center gap-3">
+        <IconGreater className="w-4 h-4 text-foreground shrink-0" />
+        <span>Greater than</span>
+      </div>
+    </SelectItem>
+    <SelectItem value="lt">
+      <div className="flex items-center gap-3">
+        <IconLess className="w-4 h-4 text-foreground shrink-0" />
+        <span>Less than</span>
+      </div>
+    </SelectItem>
+  </SelectContent>
+</Select>`}
           language="tsx"
         />
         </TabsContent>

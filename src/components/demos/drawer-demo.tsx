@@ -8,6 +8,11 @@ import {
   DraggableListItem,
   FieldNote,
   Icon,
+  IconEqual,
+  IconGreater,
+  IconGreaterEqual,
+  IconLess,
+  IconLessEqual,
   Input,
   Label,
   ProgressIndicator,
@@ -126,39 +131,84 @@ const CreateObjectiveDrawerPreview: React.FC<CreateObjectiveDrawerPreviewProps> 
         )}
 
         {selectedMethod === "manual" && (
-          <div className="flex flex-row items-start gap-4 w-full">
-            <div className="flex flex-col items-start gap-2 flex-1">
-              <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
-                Unit type
-              </Label>
-              <Select defaultValue="percent">
-                <SelectTrigger className="h-11">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="percent">Percent</SelectItem>
-                  <SelectItem value="number">Number</SelectItem>
-                  <SelectItem value="currency">Currency</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          <div className="flex flex-col items-start gap-4 w-full">
+            <div className="flex flex-row items-start gap-2 w-full">
+              <div className="flex flex-col items-start gap-2 w-[180px] shrink-0">
+                <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                  Operator
+                </Label>
+                <Select defaultValue="gte">
+                  <SelectTrigger className="h-11 w-full">
+                    <SelectValue className="truncate" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="gte">
+                      <div className="flex items-center gap-3">
+                        <IconGreaterEqual className="w-4 h-4 text-foreground shrink-0" />
+                        <span className="truncate">Greater than or equal to</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="lte">
+                      <div className="flex items-center gap-3">
+                        <IconLessEqual className="w-4 h-4 text-foreground shrink-0" />
+                        <span className="truncate">Less than or equal to</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="eq">
+                      <div className="flex items-center gap-3">
+                        <IconEqual className="w-4 h-4 text-foreground shrink-0" />
+                        <span className="truncate">Equal to</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="gt">
+                      <div className="flex items-center gap-3">
+                        <IconGreater className="w-4 h-4 text-foreground shrink-0" />
+                        <span className="truncate">Greater than</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="lt">
+                      <div className="flex items-center gap-3">
+                        <IconLess className="w-4 h-4 text-foreground shrink-0" />
+                        <span className="truncate">Less than</span>
+                      </div>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <div className="flex flex-col justify-center items-center self-stretch pt-[25px]">
-              <Separator className="w-4" />
-            </div>
+              <div className="flex flex-col items-start gap-2 flex-1">
+                <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                  Measurement
+                </Label>
+                <Select defaultValue="percent">
+                  <SelectTrigger className="h-11">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="percent">Percent</SelectItem>
+                    <SelectItem value="number">Number</SelectItem>
+                    <SelectItem value="currency">Currency</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <div className="flex flex-col items-start gap-2 flex-1">
-              <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
-                Current value
-              </Label>
-              <Input placeholder="0" className="w-full h-11" />
-            </div>
+              <div className="flex flex-col justify-center items-center self-stretch pt-[25px]">
+                <Separator className="w-4" />
+              </div>
 
-            <div className="flex flex-col items-start gap-2 flex-1">
-              <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
-                Target value
-              </Label>
-              <Input placeholder="100" className="w-full h-11" />
+              <div className="flex flex-col items-start gap-2 flex-1">
+                <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                  Starting value
+                </Label>
+                <Input placeholder="0" className="w-full h-11" />
+              </div>
+
+              <div className="flex flex-col items-start gap-2 flex-1">
+                <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                  Target value
+                </Label>
+                <Input placeholder="100" className="w-full h-11" />
+              </div>
             </div>
           </div>
         )}

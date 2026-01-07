@@ -13,6 +13,7 @@ export * from "./icon";
 export * from "./icon-button";
 export * from "./input";
 export * from "./label";
+export * from "./operator-icons";
 export * from "./navigation-menu";
 export * from "./radio-group";
 export * from "./radio-card";

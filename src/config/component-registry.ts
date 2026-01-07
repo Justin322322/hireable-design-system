@@ -7,6 +7,8 @@ import ButtonDemo from "@/components/demos/button-demo";
 import CardDemo from "@/components/demos/card-demo";
 import ChartDemo from "@/components/demos/chart-demo";
 import CheckboxDemo from "@/components/demos/checkbox-demo";
+import CollapsibleFormDemo from "@/components/demos/collapsible-form-demo";
+import CurrencyInputDemo from "@/components/demos/currency-input-demo";
 import DialogDemo from "@/components/demos/dialog-demo";
 import DrawerDemo from "@/components/demos/drawer-demo";
 import DropdownDemo from "@/components/demos/dropdown-demo";
@@ -17,9 +19,9 @@ import InputDemo from "@/components/demos/input-demo";
 import KanbanDemo from "@/components/demos/kanban-demo";
 import ModalDemo from "@/components/demos/modal-demo";
 import NavigationMenuDemo from "@/components/demos/navigation-menu-demo";
+import PasswordInputDemo from "@/components/demos/password-input-demo";
 import RadioButtonDemo from "@/components/demos/radio-button-demo";
 import ScrollbarDemo from "@/components/demos/scrollbar-demo";
-
 import SeparatorDemo from "@/components/demos/separator-demo";
 import SidebarDemo from "@/components/demos/sidebar-demo";
 import TabsDemo from "@/components/demos/tabs-demo";
@@ -34,6 +36,8 @@ export const componentRegistry: Record<string, React.ComponentType<object> | ((p
   "card": CardDemo,
   "chart": ChartDemo,
   "checkbox": CheckboxDemo,
+  "collapsible-form": CollapsibleFormDemo,
+  "currency-input": CurrencyInputDemo,
   "dialog": DialogDemo,
   "drawer": DrawerDemo,
   "dropdown": DropdownDemo,
@@ -41,9 +45,9 @@ export const componentRegistry: Record<string, React.ComponentType<object> | ((p
   "kanban": KanbanDemo,
   "modal": ModalDemo,
   "navigation-menu": NavigationMenuDemo,
+  "password-input": PasswordInputDemo,
   "radio-button": RadioButtonDemo,
   "scrollbar": ScrollbarDemo,
-
   "separator": SeparatorDemo,
   "sidebar": SidebarDemo,
   "tabs": TabsDemo,

@@ -80,6 +80,51 @@ export async function GET() {
       srcFolder.folder("app")?.file("globals.css", globalsContent);
     }
 
+    // Add postcss.config.mjs (required for Tailwind v4)
+    const postcssPath = path.join(process.cwd(), "postcss.config.mjs");
+    if (fs.existsSync(postcssPath)) {
+      const postcssContent = fs.readFileSync(postcssPath, "utf-8");
+      zip.file("postcss.config.mjs", postcssContent);
+    }
+
+    // Add package.json with all required dependencies
+    const packageJson = `{
+  "name": "hireable-design-system",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.0.2",
+    "class-variance-authority": "^0.7.1",
+    "@radix-ui/react-dialog": "^1.1.4",
+    "@radix-ui/react-dropdown-menu": "^2.1.4",
+    "@radix-ui/react-tabs": "^1.1.2",
+    "@radix-ui/react-select": "^2.1.4",
+    "@radix-ui/react-checkbox": "^1.1.3",
+    "@radix-ui/react-radio-group": "^1.2.2",
+    "@radix-ui/react-switch": "^1.1.2",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-avatar": "^1.1.2",
+    "@radix-ui/react-separator": "^1.1.1",
+    "@radix-ui/react-navigation-menu": "^1.2.3",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-accordion": "^1.2.2",
+    "@radix-ui/react-progress": "^1.1.1",
+    "@radix-ui/react-toggle": "^1.1.1",
+    "@radix-ui/react-visually-hidden": "^1.1.1",
+    "@radix-ui/react-collapsible": "^1.1.2",
+    "vaul": "^1.1.2",
+    "sonner": "^2.0.3",
+    "framer-motion": "^11.18.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}
+`;
+    zip.file("package.json", packageJson);
+
     // Add public assets (icons, images, logos)
     const publicDir = path.join(process.cwd(), "public");
     if (fs.existsSync(publicDir)) {
@@ -139,43 +184,52 @@ hireable-design-system/
 │   ├── lib/                 # Utility functions
 │   ├── patterns/            # Composite patterns
 │   └── app/
-│       └── globals.css      # Design tokens
+│       └── globals.css      # Design tokens + Tailwind config
 ├── public/
 │   ├── icons/               # Icon assets
 │   ├── images/              # Image assets
 │   ├── Logo.svg
 │   ├── Logo-name.svg
 │   └── auth-pillars.svg
+├── package.json             # All required dependencies
+├── postcss.config.mjs       # Tailwind v4 PostCSS config
 └── README.md
 \`\`\`
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Plug and Play)
 
-### Option 1: Copy to Existing Next.js Project
+### 1. Extract and install dependencies:
 
-1. **Extract and copy folders:**
-   \`\`\`bash
-   # Copy src folder contents
-   cp -r src/* your-project/src/
-   
-   # Copy public assets
-   cp -r public/* your-project/public/
-   \`\`\`
+\`\`\`bash
+# Extract the ZIP then run:
+bun install   # or npm install
+\`\`\`
 
-2. **Import globals.css in your layout:**
-   \`\`\`tsx
-   // app/layout.tsx
-   import "@/app/globals.css"
-   \`\`\`
+### 2. Copy to your project:
 
-### Option 2: Start Fresh
+\`\`\`bash
+# Copy src folder contents
+cp -r src/* your-project/src/
 
-1. **Extract the ZIP to your project root**
-2. **The folder structure is ready to use!**
+# Copy public assets
+cp -r public/* your-project/public/
 
-## 📋 Installation
+# Copy config (if not already using Tailwind v4)
+cp postcss.config.mjs your-project/
+\`\`\`
 
-### 1. Install dependencies
+### 3. Import globals.css in your layout:
+
+\`\`\`tsx
+// app/layout.tsx
+import "@/app/globals.css"
+\`\`\`
+
+**That's it!** The design system is ready to use.
+
+---
+
+## 📋 Manual Installation (Alternative)
 
 \`\`\`bash
 # Core utilities
@@ -222,26 +276,16 @@ Ensure your \`tsconfig.json\` has the \`@/\` alias:
 }
 \`\`\`
 
-### 3. Configure Tailwind CSS
+### 3. Configure Tailwind CSS v4
 
-Make sure your \`tailwind.config.ts\` includes the component paths:
+This design system uses **Tailwind CSS v4** with the new PostCSS plugin.
 
-\`\`\`typescript
-import type { Config } from "tailwindcss";
+The included \`postcss.config.mjs\` and \`globals.css\` handle the configuration automatically.
+Make sure \`globals.css\` is imported in your layout:
 
-const config: Config = {
-  content: [
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-    "./src/patterns/**/*.{js,ts,jsx,tsx}",
-    "./src/app/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-
-export default config;
+\`\`\`tsx
+// app/layout.tsx
+import "@/app/globals.css"
 \`\`\`
 
 ## 💡 Usage

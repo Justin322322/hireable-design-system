@@ -585,6 +585,56 @@ export default function ButtonPage() {
                         </div>
                       </td>
                     </tr>
+                    {/* Save */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Save</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="check" size={24} className="text-[#00A7F8]" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="check" size={24} className="text-[#00A7F8]" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="check" size={24} className="text-[#00A7F8]" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Send */}
+                    <tr>
+                      <td className="py-4 px-4 font-medium">Send</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-[#00A7F8] inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="arrow_upward" size={24} className="text-white" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-[#0085C6] inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="arrow_upward" size={24} className="text-white" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-[#00A7F8] inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="arrow_upward" size={24} className="text-white" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -596,6 +646,8 @@ export default function ButtonPage() {
   NotificationButton, 
   DeleteButton, 
   ExpandButton,
+  SaveButton,
+  SendButton,
   IconButton 
 } from "@/components/ui";
 
@@ -603,6 +655,8 @@ export default function ButtonPage() {
 <CloseButton />                    // X icon
 <NotificationButton />             // Bell icon
 <DeleteButton />                   // Trash icon
+<SaveButton />                     // Check icon (Blue)
+<SendButton />                     // Arrow Up icon (Blue Background)
 <ExpandButton expanded={false} />  // Chevron down
 <ExpandButton expanded={true} />   // Chevron up
 

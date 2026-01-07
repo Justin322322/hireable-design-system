@@ -24,11 +24,11 @@ html {
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+  --color-chart-5: var(--chart-line);
+  --color-chart-4: var(--chart-line);
+  --color-chart-3: var(--chart-line);
+  --color-chart-2: var(--chart-line);
+  --color-chart-1: var(--chart-line);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -83,14 +83,14 @@ html {
   --color-button-icon-foreground: var(--button-icon-foreground);
   --color-link-default: var(--link-default);
   --color-link-hover: var(--link-hover);
-  --color-border-disabled: var(--border-disabled);
-  --color-border-focused: var(--border-focused);
-  --color-border-hover: var(--border-hover);
+  --color-border-disabled: var(--border-inactive);
+  --color-border-focused: var(--border-focus);
+  --color-border-hover: var(--border-strong);
   --color-border-error: var(--border-error);
   --color-linkedin: var(--linkedin);
-  --color-icon: var(--icon);
-  --color-icon-active: var(--icon-active);
-  --color-surface-hover: var(--surface-hover);
+  --color-icon: var(--icon-default);
+  --color-icon-active: var(--icon-brand);
+  --color-surface-hover: var(--bg-surface-hover);
 
   /* Denotive Colors */
   --color-denotive-green: var(--status-success);
@@ -100,9 +100,9 @@ html {
   --color-avatar-admin-foreground: var(--avatar-admin-foreground);
 
   /* Neutral replacements for components */
-  --color-neutral-subtle: var(--neutral-subtle);
-  --color-neutral-muted: var(--neutral-muted);
-  --color-text-tertiary: var(--text-tertiary);
+  --color-neutral-subtle: var(--bg-subtle);
+  --color-neutral-muted: var(--color-neutral-400);
+  --color-text-tertiary: var(--text-subtle);
 
   /* Toast Tokens */
   --color-toast-success-bg: var(--toast-success-bg);
@@ -366,12 +366,6 @@ html {
   --link-default: var(--brand-primary);
   --link-hover: var(--brand-primary-text);
 
-  /* Input */
-  --input-border-default: var(--border-base);
-  --input-border-focus: var(--border-focus);
-  --input-border-hover: var(--border-strong);
-  --input-border-disabled: var(--border-inactive);
-
   /* Avatar */
   --avatar-admin-bg: var(--color-orange-100);
   --avatar-admin-foreground: var(--color-orange-500);
@@ -401,12 +395,7 @@ html {
   --input: var(--border-base);
   --ring: var(--color-neutral-600);
 
-  /* Chart colors - use semantic chart tokens */
-  --chart-1: var(--chart-line);
-  --chart-2: var(--chart-line);
-  --chart-3: var(--chart-line);
-  --chart-4: var(--chart-line);
-  --chart-5: var(--chart-line);
+
 
   /* Sidebar */
   --sidebar: var(--color-neutral-50);
@@ -430,22 +419,7 @@ html {
   --danger-foreground: var(--status-danger-text);
   --linkedin: var(--color-blue-900);
 
-  /* Border aliases */
-  --border-disabled: var(--border-inactive);
-  --border-focused: var(--border-focus);
-  --border-hover: var(--border-strong);
 
-  /* Icon aliases */
-  --icon: var(--icon-default);
-  --icon-active: var(--icon-brand);
-
-  /* Surface aliases */
-  --surface-hover: var(--bg-surface-hover);
-
-  /* Neutral aliases */
-  --neutral-subtle: var(--bg-subtle);
-  --neutral-muted: var(--color-neutral-400);
-  --text-tertiary: var(--text-subtle);
 }
 
 @layer base {

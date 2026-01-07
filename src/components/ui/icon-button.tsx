@@ -105,10 +105,45 @@ const ExpandButton = React.forwardRef<HTMLButtonElement, ExpandButtonProps>(
 )
 ExpandButton.displayName = "ExpandButton"
 
+/** Save button - Check icon with blue color */
+const SaveButton = React.forwardRef<
+  HTMLButtonElement,
+  Omit<IconButtonProps, "icon" | "aria-label"> & { "aria-label"?: string }
+>(({ "aria-label": ariaLabel = "Save", className, ...props }, ref) => (
+  <IconButton
+    ref={ref}
+    icon="check"
+    aria-label={ariaLabel}
+    className={cn("text-[#00A7F8] hover:text-[#00A7F8]", className)}
+    {...props}
+  />
+))
+SaveButton.displayName = "SaveButton"
+
+/** Send button - Up arrow with blue background */
+const SendButton = React.forwardRef<
+  HTMLButtonElement,
+  Omit<IconButtonProps, "icon" | "aria-label"> & { "aria-label"?: string }
+>(({ "aria-label": ariaLabel = "Send", className, ...props }, ref) => (
+  <IconButton
+    ref={ref}
+    icon="arrow_upward"
+    aria-label={ariaLabel}
+    className={cn(
+      "bg-client text-white hover:bg-client-hover active:bg-client-active shadow-none",
+      className
+    )}
+    {...props}
+  />
+))
+SendButton.displayName = "SendButton"
+
 export {
   IconButton,
   CloseButton,
   NotificationButton,
   DeleteButton,
   ExpandButton,
+  SaveButton,
+  SendButton,
 }

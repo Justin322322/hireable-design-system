@@ -109,7 +109,7 @@ const Checkbox = React.forwardRef<
         <CheckboxPrimitive.Indicator
           className={cn(
             "flex items-center justify-center text-button-primary-foreground",
-            "data-[disabled]:text-button-primary-disabled-foreground"
+            "data-disabled:text-button-primary-disabled-foreground"
           )}
         >
           <Icon icon="check" size={config.iconSize} />

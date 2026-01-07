@@ -107,7 +107,7 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
           <DialogHeader className="flex flex-row justify-between items-center self-stretch p-0 gap-[21px] h-8">
             <div className="w-8 h-8" />
             
-            <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-[#212121] text-center">
+            <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground text-center">
               Post a Job
             </DialogTitle>
             
@@ -116,14 +116,14 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
                 className="flex items-center justify-center hover:bg-neutral-100 transition-colors p-1 w-8 h-8 bg-white rounded-full border-none cursor-pointer"
                 aria-label="Close modal"
               >
-                <Icon icon="close" size={24} className="text-[#212121]" />
+                <Icon icon="close" size={24} className="text-foreground" />
               </button>
             </DialogClose>
           </DialogHeader>
 
           {/* Divider */}
           <div className="py-6 w-full">
-            <div className="w-full h-px bg-[#C3C3C3]" />
+            <div className="w-full h-px bg-neutral-muted" />
           </div>
 
           {/* Radio Cards Container */}
@@ -136,7 +136,7 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
             <label
               className={cn(
                 "box-border flex flex-row items-start p-4 gap-6 w-full rounded-lg border transition-all text-left cursor-not-allowed",
-                "border-[#C3C3C3]"
+                "border-neutral-muted"
               )}
             >
               <div className="flex flex-col items-start gap-1 flex-1">
@@ -155,15 +155,15 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
               className={cn(
                 "box-border flex flex-row items-start p-4 gap-6 w-full rounded-lg border transition-all text-left cursor-pointer",
                 selectedType === "test-30-60-90"
-                  ? "border-[#00A7F8]"
-                  : "border-[#C3C3C3] hover:border-[#00A7F8]/50"
+                  ? "border-button-primary-default"
+                  : "border-neutral-muted hover:border-button-primary-default/50"
               )}
             >
               <div className="flex flex-col items-start gap-1 flex-1">
-                <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-[#212121]">
+                <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
                   Test (30-60-90 Day)
                 </span>
-                <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-[#616161]">
+                <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
                   Run a paid, short-term trial on real work to evaluate performance and fit before committing to a full-time hire.
                 </span>
               </div>
@@ -173,13 +173,13 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
 
           {/* Divider */}
           <div className="py-6 w-full">
-            <div className="w-full h-px bg-[#C3C3C3]" />
+            <div className="w-full h-px bg-neutral-muted" />
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-row items-center gap-2 w-full">
             <Button 
-              className="bg-[#00A7F8] hover:bg-[#0090D5] text-white rounded-[8px] h-11 px-5"
+              className="bg-button-primary-default hover:bg-button-primary-hover text-button-primary-foreground rounded-[8px] h-11 px-5"
               onClick={handleSubmit}
             >
               Create Job Post
@@ -222,7 +222,7 @@ export const PostJobModalPreview: React.FC<PostJobModalPreviewProps> = ({
       <div className="flex flex-row justify-between items-center self-stretch p-0 gap-[21px] h-8 w-full">
         <div className="w-8 h-8" />
         
-        <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-[#212121] text-center font-['Inter']">
+        <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground text-center font-['Inter']">
           Post a Job
         </span>
         
@@ -231,19 +231,19 @@ export const PostJobModalPreview: React.FC<PostJobModalPreviewProps> = ({
           aria-label="Close (non-functional in preview)"
           disabled
         >
-          <Icon icon="close" size={24} className="text-[#212121]" />
+          <Icon icon="close" size={24} className="text-foreground" />
         </button>
       </div>
 
       {/* Divider */}
       <div className="py-6 w-full">
-        <div className="w-full h-px bg-[#C3C3C3]" />
+        <div className="w-full h-px bg-neutral-muted" />
       </div>
 
       {/* Radio Cards Container */}
       <RadioGroup defaultValue="test-30-60-90" className="flex flex-col items-start gap-4 w-full">
         {/* Full-time Option (Disabled) */}
-        <label className="box-border flex flex-row items-start p-4 gap-6 w-full rounded-lg border border-[#C3C3C3] cursor-not-allowed">
+        <label className="box-border flex flex-row items-start p-4 gap-6 w-full rounded-lg border border-neutral-muted cursor-not-allowed">
           <div className="flex flex-col items-start gap-1 flex-1">
             <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-neutral-300">
               Full-time (Coming Soon)
@@ -256,9 +256,9 @@ export const PostJobModalPreview: React.FC<PostJobModalPreviewProps> = ({
         </label>
 
         {/* Test 30-60-90 Option (Selected) */}
-        <label className="box-border flex flex-row items-start p-4 gap-6 w-full rounded-lg border border-[#00A7F8] cursor-pointer">
+        <label className="box-border flex flex-row items-start p-4 gap-6 w-full rounded-lg border border-button-primary-default cursor-pointer">
           <div className="flex flex-col items-start gap-1 flex-1">
-            <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-[#212121]">
+            <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
               Test (30-60-90 Day)
             </span>
             <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
@@ -271,12 +271,12 @@ export const PostJobModalPreview: React.FC<PostJobModalPreviewProps> = ({
 
       {/* Divider */}
       <div className="py-6 w-full">
-        <div className="w-full h-px bg-[#C3C3C3]" />
+        <div className="w-full h-px bg-neutral-muted" />
       </div>
 
       {/* CTA Buttons */}
       <div className="flex flex-row items-center gap-2 w-full">
-        <Button className="bg-[#00A7F8] hover:bg-[#0090D5] text-white rounded-[8px] h-11 px-5">
+        <Button className="bg-button-primary-default hover:bg-button-primary-hover text-button-primary-foreground rounded-[8px] h-11 px-5">
           Create Job Post
         </Button>
         <Button variant="outline" className="h-11 px-5">

@@ -114,7 +114,7 @@ export default function FormsPatternPage() {
                       <div className="h-8 w-full bg-background border border-neutral-200 rounded-md" />
                       <div className="h-8 w-full bg-background border border-neutral-200 rounded-md" />
                       <div className="flex gap-2 pt-2">
-                        <div className="h-9 w-20 bg-blue-500 rounded-md flex items-center justify-center">
+                        <div className="h-9 w-20 bg-button-primary-default rounded-md flex items-center justify-center">
                           <span className="text-xs text-white font-medium">Submit</span>
                         </div>
                         <div className="h-9 w-20 bg-background border border-neutral-300 rounded-md flex items-center justify-center">

@@ -14,8 +14,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  CurrencyInput,
 } from "@/components/ui"
-import { CurrencyInput } from "@/components/ui/currency-input"
 
 // Duration option component
 interface DurationOptionProps {
@@ -37,11 +37,11 @@ function DurationOption({ days, selected, onClick }: DurationOptionProps) {
       onClick={onClick}
       className={cn(
         "flex flex-row justify-center items-center gap-2 w-[112px] h-[44px] px-4 py-3 rounded-lg border bg-white transition-colors box-border",
-        selected ? "border-[#00A7F8]" : "border-[#C3C3C3] hover:border-[#00A7F8]/50"
+        selected ? "border-button-primary-default" : "border-neutral-muted hover:border-button-primary-default/50"
       )}
     >
       <Icon icon="calendar_today" size={16} className={cn(durationColors[days], "shrink-0")} />
-      <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-[#212121] whitespace-nowrap">{days} Days</span>
+      <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-foreground whitespace-nowrap">{days} Days</span>
     </button>
   )
 }
@@ -55,9 +55,9 @@ interface ObjectiveItemProps {
 
 function ObjectiveItem({ title, type, progress }: ObjectiveItemProps) {
   return (
-    <div className="flex items-center gap-1 px-6 py-4 border border-[#C3C3C3] rounded-lg bg-white">
+    <div className="flex items-center gap-1 px-6 py-4 border border-neutral-muted rounded-lg bg-white">
       <div className="flex items-center gap-2 flex-1">
-        <span className="text-base font-semibold text-[#212121] tracking-[0.2px]">
+        <span className="text-base font-semibold text-foreground tracking-[0.2px]">
           {title}
         </span>
         <Badge variant="default" shape="pill" size="sm">
@@ -110,7 +110,7 @@ const CollapsibleForm = React.forwardRef<HTMLDivElement, CollapsibleFormProps>(
       <div
         ref={ref}
         className={cn(
-          "bg-white border border-[#C3C3C3] rounded-lg p-8 w-full max-w-[840px]",
+          "bg-white border border-neutral-muted rounded-lg p-8 w-full max-w-[840px]",
           className
         )}
       >
@@ -128,14 +128,14 @@ const CollapsibleForm = React.forwardRef<HTMLDivElement, CollapsibleFormProps>(
                 "size-6 rounded-full border flex items-center justify-center shrink-0 transition-colors",
                 isCompleted
                   ? "bg-denotive-green border-denotive-green"
-                  : "bg-white border-[#C3C3C3]"
+                  : "bg-white border-neutral-muted"
               )}
             >
               {isCompleted && (
                 <Icon icon="check" size={20} className="text-white" />
               )}
             </div>
-            <ol className="flex-1 list-decimal font-semibold text-xl text-[#212121] tracking-[0.4px]">
+            <ol className="flex-1 list-decimal font-semibold text-xl text-foreground tracking-[0.4px]">
               <li className="ms-[30px]" value={stepNumber}>
                 <span>{title}</span>
               </li>

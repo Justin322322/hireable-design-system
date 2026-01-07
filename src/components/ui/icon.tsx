@@ -34,6 +34,7 @@ export type IconName =
   | "expand_less"
   | "arrow_forward"
   | "arrow_back"
+  | "arrow_upward"
   | "navigate_next"
   | "menu"
   // Content

@@ -12,12 +12,24 @@ import {
 } from "@/components/ui";
 
 
-import { CodeBlock, ComponentPreview, PropsTable, VariantsTable } from "@/components/docs";
+import { CodeBlock, ComponentPreview, PropsTable, VariantsTable, OnThisPageNav } from "@/components/docs";
 import { buttonProps, buttonVariants as apiButtonVariants, buttonSizes } from "@/data/api/button";
 import { VERSION } from "@/lib/version";
 export default function ButtonPage() {
+  const navItems = [
+    { id: "sizes", label: "Sizes" },
+    { id: "primary", label: "Primary" },
+    { id: "secondary", label: "Secondary" },
+    { id: "tertiary", label: "Tertiary" },
+    { id: "text-link", label: "Text Link" },
+    { id: "other-variants", label: "Other Variants" },
+    { id: "control-buttons", label: "Control Buttons" },
+  ];
+
   return (
-    <div className="container max-w-4xl py-12 px-4 md:px-8 overflow-hidden">
+    <div className="container py-12 px-4 md:px-8">
+      <div className="flex gap-12 justify-center">
+        <div className="flex-1 w-full min-w-0 max-w-4xl">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Button</h1>
@@ -37,6 +49,7 @@ export default function ButtonPage() {
         </TabsList>
         <TabsContent value="examples" className="space-y-8">
           {/* Sizes - First */}
+          <div id="sizes" className="scroll-mt-24 space-y-4">
           <ComponentPreview title="Sizes">
             <div className="flex flex-wrap items-end gap-4">
               <div className="text-center">
@@ -72,7 +85,9 @@ export default function ButtonPage() {
 <Button size="icon-sm" aria-label="Add"><Icon icon="add" size={20} aria-hidden="true" /></Button>`}
             language="tsx"
           />
+          </div>
           {/* Primary Buttons */}
+          <div id="primary" className="scroll-mt-24 space-y-4">
           <ComponentPreview title="Primary">
             <div className="space-y-6">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
@@ -151,7 +166,9 @@ export default function ButtonPage() {
 <Button variant="primary" size="lg" disabled>Disabled</Button>`}
             language="tsx"
           />
+          </div>
           {/* Secondary Buttons */}
+          <div id="secondary" className="scroll-mt-24 space-y-4">
           <ComponentPreview title="Secondary">
             <div className="space-y-6">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
@@ -228,7 +245,9 @@ export default function ButtonPage() {
 </Button>`}
             language="tsx"
           />
+          </div>
           {/* Tertiary Buttons */}
+          <div id="tertiary" className="scroll-mt-24 space-y-4">
           <ComponentPreview title="Tertiary">
             <div className="space-y-6">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
@@ -305,7 +324,9 @@ export default function ButtonPage() {
 </Button>`}
             language="tsx"
           />
+          </div>
           {/* Text Link */}
+          <div id="text-link" className="scroll-mt-24 space-y-4">
           <ComponentPreview title="Text Link">
             <div className="space-y-6">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 pb-6 border-b">
@@ -374,7 +395,9 @@ export default function ButtonPage() {
 </Button>`}
             language="tsx"
           />
+          </div>
           {/* Other Variants */}
+          <div id="other-variants" className="scroll-mt-24 space-y-4">
           <ComponentPreview title="Other Variants">
             <div className="flex flex-wrap gap-4 items-center">
               <Button variant="destructive">Destructive</Button>
@@ -390,7 +413,9 @@ export default function ButtonPage() {
 <Button variant="link">Link</Button>`}
             language="tsx"
           />
+          </div>
           {/* Control Buttons */}
+          <div id="control-buttons" className="scroll-mt-24 space-y-4">
           <ComponentPreview title="Control Buttons">
             <div className="space-y-6">
               <p className="text-sm text-muted-foreground pb-4">
@@ -585,27 +610,402 @@ export default function ButtonPage() {
                         </div>
                       </td>
                     </tr>
-                    {/* Save */}
+                    {/* Edit */}
                     <tr className="border-b">
-                      <td className="py-4 px-4 font-medium">Save</td>
+                      <td className="py-4 px-4 font-medium">Edit</td>
                       <td className="py-4 px-4 text-center">
                         <div className="inline-flex justify-center">
                           <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
-                            <Icon icon="check" size={24} className="text-[#00A7F8]" />
+                            <Icon icon="edit" size={24} className="text-icon" />
                           </span>
                         </div>
                       </td>
                       <td className="py-4 px-4 text-center">
                         <div className="inline-flex justify-center">
                           <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
-                            <Icon icon="check" size={24} className="text-[#00A7F8]" />
+                            <Icon icon="edit" size={24} className="text-icon" />
                           </span>
                         </div>
                       </td>
                       <td className="py-4 px-4 text-center">
                         <div className="inline-flex justify-center">
                           <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
-                            <Icon icon="check" size={24} className="text-[#00A7F8]" />
+                            <Icon icon="edit" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Chevron (Left) */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Chevron (Left)</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="chevron_left" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="chevron_left" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="chevron_left" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Chevron (Right) */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Chevron (Right)</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="chevron_right" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="chevron_right" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="chevron_right" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Options */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Options</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="more_vert" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="more_vert" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="more_vert" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Open in New */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Open in New</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="open_in_new" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="open_in_new" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="open_in_new" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Attach */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Attach</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="attach_file" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="attach_file" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="attach_file" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* File */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">File</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="description" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="description" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="description" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Edit */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Edit</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="edit" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="edit" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="edit" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Chevron (Left) */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Chevron (Left)</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="chevron_left" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="chevron_left" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="chevron_left" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Chevron (Right) */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Chevron (Right)</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="chevron_right" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="chevron_right" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="chevron_right" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Options */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Options</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="more_vert" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="more_vert" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="more_vert" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Open in New */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Open in New</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="open_in_new" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="open_in_new" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="open_in_new" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Attach */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Attach</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="attach_file" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="attach_file" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="attach_file" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* File */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">File</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="description" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="description" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="description" size={24} className="text-icon" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Save (Outlined) */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Save (Outlined)</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="bookmark" size={24} className="text-[#00A7F8]" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="bookmark" size={24} className="text-[#00A7F8]" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="bookmark" size={24} className="text-[#00A7F8]" />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                    {/* Save (Filled) */}
+                    <tr className="border-b">
+                      <td className="py-4 px-4 font-medium">Save (Filled)</td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="bookmark" size={24} filled className="text-[#00A7F8]" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
+                            <Icon icon="bookmark" size={24} filled className="text-[#00A7F8]" />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4 text-center">
+                        <div className="inline-flex justify-center">
+                          <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
+                            <Icon icon="bookmark" size={24} filled className="text-[#00A7F8]" />
                           </span>
                         </div>
                       </td>
@@ -646,25 +1046,48 @@ export default function ButtonPage() {
   NotificationButton, 
   DeleteButton, 
   ExpandButton,
+  ExpandButton,
+  EditButton,
+  ChevronButton,
+  OptionsButton,
+  OpenInNewButton,
+  AttachButton,
+  FileButton,
   SaveButton,
   SendButton,
-  IconButton 
+  IconButton
 } from "@/components/ui";
 
 // Pre-configured icon buttons
 <CloseButton />                    // X icon
 <NotificationButton />             // Bell icon
 <DeleteButton />                   // Trash icon
-<SaveButton />                     // Check icon (Blue)
+<SaveButton />                     // Bookmark icon (outlined)
+<SaveButton saved />               // Bookmark icon (filled)
 <SendButton />                     // Arrow Up icon (Blue Background)
 <ExpandButton expanded={false} />  // Chevron down
 <ExpandButton expanded={true} />   // Chevron up
+<EditButton />                     // Pencil icon
+<ChevronButton direction="left" /> // Previous
+<ChevronButton direction="right" />// Next
+<OptionsButton />                  // Vertical menu
+<OpenInNewButton />                // External link
+<AttachButton />                   // Paperclip
+<FileButton />                     // Document
+<EditButton />                     // Pencil icon
+<ChevronButton direction="left" /> // Previous
+<ChevronButton direction="right" />// Next
+<OptionsButton />                  // Vertical menu
+<OpenInNewButton />                // External link
+<AttachButton />                   // Paperclip
+<FileButton />                     // Document
 
 // Custom icon button
 <IconButton icon="settings" aria-label="Settings" />
 <IconButton icon="search" aria-label="Search" filled />`}
             language="tsx"
           />
+          </div>
         </TabsContent>
         <TabsContent value="usage" className="space-y-8">
           <section>
@@ -734,6 +1157,9 @@ export default function ButtonPage() {
           </section>
         </TabsContent>
       </Tabs>
+        </div>
+        <OnThisPageNav items={navItems} />
+      </div>
     </div>
   );
 }

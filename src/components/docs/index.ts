@@ -5,3 +5,4 @@ export { InterfaceTable } from "./interface-table";
 export { PropsTable } from "./props-table";
 export { VariantsTable } from "./variants-table";
 export { SidebarSkeleton } from "./sidebar-skeleton";
+export { OnThisPageNav } from "./on-this-page-nav";

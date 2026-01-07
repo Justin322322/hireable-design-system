@@ -105,19 +105,28 @@ const ExpandButton = React.forwardRef<HTMLButtonElement, ExpandButtonProps>(
 )
 ExpandButton.displayName = "ExpandButton"
 
-/** Save button - Check icon with blue color */
-const SaveButton = React.forwardRef<
-  HTMLButtonElement,
-  Omit<IconButtonProps, "icon" | "aria-label"> & { "aria-label"?: string }
->(({ "aria-label": ariaLabel = "Save", className, ...props }, ref) => (
-  <IconButton
-    ref={ref}
-    icon="check"
-    aria-label={ariaLabel}
-    className={cn("text-[#00A7F8] hover:text-[#00A7F8]", className)}
-    {...props}
-  />
-))
+/** Save button - Bookmark icon for saving items */
+interface SaveButtonProps extends Omit<IconButtonProps, "icon" | "aria-label"> {
+  /** Whether the item is saved (filled icon) */
+  saved?: boolean
+  "aria-label"?: string
+}
+
+const SaveButton = React.forwardRef<HTMLButtonElement, SaveButtonProps>(
+  ({ saved = false, "aria-label": ariaLabel, className, ...props }, ref) => {
+    const label = ariaLabel ?? (saved ? "Unsave" : "Save")
+    return (
+      <IconButton
+        ref={ref}
+        icon="bookmark"
+        aria-label={label}
+        filled={saved}
+        className={cn("text-[#00A7F8] hover:text-[#00A7F8]", className)}
+        {...props}
+      />
+    )
+  }
+)
 SaveButton.displayName = "SaveButton"
 
 /** Send button - Up arrow with blue background */
@@ -138,6 +147,73 @@ const SendButton = React.forwardRef<
 ))
 SendButton.displayName = "SendButton"
 
+/** Edit button - Pencil icon for editing content */
+const EditButton = React.forwardRef<
+  HTMLButtonElement,
+  Omit<IconButtonProps, "icon" | "aria-label"> & { "aria-label"?: string }
+>(({ "aria-label": ariaLabel = "Edit", ...props }, ref) => (
+  <IconButton ref={ref} icon="edit" aria-label={ariaLabel} {...props} />
+))
+EditButton.displayName = "EditButton"
+
+/** Chevron button - Left/Right chevron for navigation/pagination */
+interface ChevronButtonProps extends Omit<IconButtonProps, "icon" | "aria-label"> {
+  /** Direction of the chevron */
+  direction?: "left" | "right"
+  "aria-label"?: string
+}
+
+const ChevronButton = React.forwardRef<HTMLButtonElement, ChevronButtonProps>(
+  ({ direction = "right", "aria-label": ariaLabel, ...props }, ref) => {
+    const label = ariaLabel ?? (direction === "left" ? "Previous" : "Next")
+    return (
+      <IconButton
+        ref={ref}
+        icon={direction === "left" ? "chevron_left" : "chevron_right"}
+        aria-label={label}
+        {...props}
+      />
+    )
+  }
+)
+ChevronButton.displayName = "ChevronButton"
+
+/** Options button - Vertical ellipsis (kebab menu) for more actions */
+const OptionsButton = React.forwardRef<
+  HTMLButtonElement,
+  Omit<IconButtonProps, "icon" | "aria-label"> & { "aria-label"?: string }
+>(({ "aria-label": ariaLabel = "Options", ...props }, ref) => (
+  <IconButton ref={ref} icon="more_vert" aria-label={ariaLabel} {...props} />
+))
+OptionsButton.displayName = "OptionsButton"
+
+/** Open in New button - Arrow top right icon */
+const OpenInNewButton = React.forwardRef<
+  HTMLButtonElement,
+  Omit<IconButtonProps, "icon" | "aria-label"> & { "aria-label"?: string }
+>(({ "aria-label": ariaLabel = "Open in new tab", ...props }, ref) => (
+  <IconButton ref={ref} icon="open_in_new" aria-label={ariaLabel} {...props} />
+))
+OpenInNewButton.displayName = "OpenInNewButton"
+
+/** Attach button - Paperclip icon */
+const AttachButton = React.forwardRef<
+  HTMLButtonElement,
+  Omit<IconButtonProps, "icon" | "aria-label"> & { "aria-label"?: string }
+>(({ "aria-label": ariaLabel = "Attach", ...props }, ref) => (
+  <IconButton ref={ref} icon="attach_file" aria-label={ariaLabel} {...props} />
+))
+AttachButton.displayName = "AttachButton"
+
+/** File button - Document icon */
+const FileButton = React.forwardRef<
+  HTMLButtonElement,
+  Omit<IconButtonProps, "icon" | "aria-label"> & { "aria-label"?: string }
+>(({ "aria-label": ariaLabel = "File", ...props }, ref) => (
+  <IconButton ref={ref} icon="description" aria-label={ariaLabel} {...props} />
+))
+FileButton.displayName = "FileButton"
+
 export {
   IconButton,
   CloseButton,
@@ -146,4 +222,10 @@ export {
   ExpandButton,
   SaveButton,
   SendButton,
+  EditButton,
+  ChevronButton,
+  OptionsButton,
+  OpenInNewButton,
+  AttachButton,
+  FileButton,
 }

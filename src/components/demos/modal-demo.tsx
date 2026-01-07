@@ -17,7 +17,7 @@ import { CodeBlock, ComponentPreview } from "@/components/docs";
 import { VERSION } from "@/lib/version";
 
 // Import extracted modal patterns
-import { UploadPhotoModal, UploadPhotoModalPreview, PostJobModal, PostJobModalPreview, CompleteSetupModal, CompleteSetupModalPreview } from "@/patterns/modals";
+import { UploadPhotoModal, UploadPhotoModalPreview, PostJobModal, PostJobModalPreview, CompleteSetupModal, CompleteSetupModalPreview, InviteToJobModal, InviteToJobModalPreview, ApplyToJobModal, ApplyToJobModalPreview } from "@/patterns/modals";
 
 // ============================================================================
 // MAIN DEMO PAGE
@@ -202,6 +202,39 @@ const [open, setOpen] = useState(false);
             language="tsx"
           />
 
+          {/* Apply to Job Modal */}
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Apply to Job Modal</h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              A modal for applying to a job with specific trial objectives requiring user input.
+            </p>
+            <ComponentPreview title="Apply to Job Modal">
+              <div className="flex justify-center">
+                <ApplyToJobModalPreview />
+              </div>
+            </ComponentPreview>
+          </section>
+
+          {/* Apply to Job Code Example */}
+          <CodeBlock
+            code={`import { ApplyToJobModal } from "@/patterns/modals";
+
+export function MyComponent() {
+  const handleApply = (data: { jobId: string; responses: Record<string, string> }) => {
+    console.log("Applying to job:", data.jobId);
+    console.log("Responses:", data.responses);
+  };
+
+  return (
+    <ApplyToJobModal
+      onSubmit={handleApply}
+      onCancel={() => console.log("Cancelled")}
+    />
+  );
+}`}
+            language="tsx"
+          />
+
           {/* Complete Setup Modal */}
           <section>
             <h2 className="mb-4 text-xl font-semibold">Complete Setup Modal</h2>
@@ -257,6 +290,48 @@ export function MyComponent() {
     />
   );
 }`}
+            language="tsx"
+          />
+
+          {/* Invite to Job Modal */}
+          <section>
+            <h2 className="mb-4 text-xl font-semibold">Invite to Job Modal</h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              A modal for inviting candidates to a specific job post with a personalized message.
+            </p>
+            <ComponentPreview title="Invite to Job Modal">
+              <div className="flex justify-center">
+                <InviteToJobModalPreview />
+              </div>
+            </ComponentPreview>
+          </section>
+
+          {/* Invite to Job Code Example */}
+          <CodeBlock
+            code={`import { InviteToJobModal } from "@/patterns/modals";
+
+export function MyComponent() {
+  const handleInvite = (data: { jobId: string; message: string }) => {
+    console.log("Inviting to job:", data.jobId);
+    console.log("Message:", data.message);
+  };
+
+  return (
+    <InviteToJobModal
+      onSubmit={handleInvite}
+      onCancel={() => console.log("Cancelled")}
+    />
+  );
+}
+
+// Controlled usage
+const [open, setOpen] = useState(false);
+
+<InviteToJobModal
+  open={open}
+  onOpenChange={setOpen}
+  onSubmit={handleInvite}
+/>`}
             language="tsx"
           />
         </TabsContent>

@@ -46,6 +46,7 @@ export const DraggableListItem: React.FC<DraggableListItemProps> = ({
         {badgeText && (
           <Badge
             variant="default"
+            hasBorder
             className="px-2 py-0.5 text-xs bg-neutral-100 text-muted-foreground rounded-full font-normal"
           >
             {badgeText}

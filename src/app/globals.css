@@ -85,6 +85,7 @@ html {
   --color-link-hover: var(--link-hover);
   --color-border-disabled: var(--border-inactive);
   --color-border-focused: var(--border-focus);
+  --color-border-strong: var(--border-strong);
   --color-border-hover: var(--border-strong);
   --color-border-error: var(--border-error);
   --color-linkedin: var(--linkedin);
@@ -98,6 +99,11 @@ html {
   /* Avatar Colors */
   --color-avatar-admin-bg: var(--avatar-admin-bg);
   --color-avatar-admin-foreground: var(--avatar-admin-foreground);
+  --color-avatar-job-bg: var(--avatar-job-bg);
+
+  /* Badge Subtle (for pill badges with subtle fill) */
+  --color-badge-subtle-bg: var(--badge-subtle-bg);
+  --color-badge-subtle-border: var(--badge-subtle-border);
 
   /* Neutral replacements for components */
   --color-neutral-subtle: var(--bg-subtle);
@@ -238,6 +244,9 @@ html {
   --color-worktrait-purple: oklch(0.6927 0.2149 312.12); /* Cooperativeness */
   --color-worktrait-cyan: oklch(0.9513 0.0735 195.99); /* Communication */
 
+  /* Purple/Lavender Scale (Job Avatars) */
+  --color-purple-300: oklch(0.78 0.12 290); /* #B1A0FF - Job avatar bg */
+
   /* ═══════════════════════════════════════════════════════════
      LAYER 2: SEMANTIC - Intent-based tokens (reference primitives)
      ═══════════════════════════════════════════════════════════ */
@@ -369,6 +378,11 @@ html {
   /* Avatar */
   --avatar-admin-bg: var(--color-orange-100);
   --avatar-admin-foreground: var(--color-orange-500);
+  --avatar-job-bg: var(--color-purple-300);
+
+  /* Badge Subtle (pill badges with very subtle fill) */
+  --badge-subtle-bg: oklch(from var(--color-neutral-400) l c h / 0.08);
+  --badge-subtle-border: oklch(from var(--color-neutral-400) l c h / 0.4);
 
   /* ═══════════════════════════════════════════════════════════
      BACKWARD COMPATIBILITY ALIASES

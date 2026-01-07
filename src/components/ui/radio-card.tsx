@@ -63,7 +63,7 @@ const RadioCard = React.forwardRef<HTMLButtonElement, RadioCardProps>(
         // Selection state
         selected 
           ? "border-border-focused" 
-          : "border-button-tertiary-border hover:border-border-hover",
+          : "border-border hover:border-border-hover",
         // Disabled state
         "disabled:cursor-not-allowed disabled:opacity-50",
         className

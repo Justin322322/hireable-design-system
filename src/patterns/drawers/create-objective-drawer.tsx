@@ -106,7 +106,7 @@ const SortableKeyResultItem: React.FC<{ id: string; title: string; badgeText?: s
             {title}
           </span>
           {badgeText && (
-            <Badge variant="default" className="px-2 py-0.5 text-xs bg-neutral-100 text-muted-foreground rounded-full font-normal">
+            <Badge variant="default" hasBorder className="px-2 py-0.5 text-xs bg-neutral-100 text-muted-foreground rounded-full font-normal">
               {badgeText}
             </Badge>
           )}

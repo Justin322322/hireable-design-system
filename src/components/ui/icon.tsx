@@ -97,6 +97,7 @@ export type IconName =
   // Admin/Business icons
   | "bar_chart"
   | "gavel"
+  | "attach_file"
   | "verified_user"
   | "verified"
   | "shield"

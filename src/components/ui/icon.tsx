@@ -154,6 +154,8 @@ export type IconName =
   // Hierarchy/Organization icons
   | "account_tree"
   | "drag_indicator"
+  // Loading/Progress icons
+  | "progress_activity"
 
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** The Material Symbol icon name (from fonts.google.com/icons) */

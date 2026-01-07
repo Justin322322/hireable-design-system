@@ -14,7 +14,7 @@ export function useApiTracker() {
 
   useEffect(() => {
     // Subscribe to updates only - initial state is set via lazy initializer
-    const unsubscribe = apiTracker.subscribe((newCalls) => {
+    const unsubscribe = apiTracker.subscribe((newCalls: ApiCall[]) => {
       setCalls(newCalls);
       setStats(apiTracker.getStats());
     });

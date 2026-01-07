@@ -70,6 +70,7 @@ const icons = {
   subject: createIconComponent("subject"),
   noteAlt: createIconComponent("note_alt"),
   scrollVertical: createIconComponent("swap_vert"),
+  progressActivity: createIconComponent("progress_activity"),
   
   // Patterns
   layers: createIconComponent("layers"),
@@ -136,6 +137,7 @@ export const sidebarNav: Record<string, NavSection> = {
           { label: "Scrollbar", href: "/components/scrollbar", icon: icons.scrollVertical, description: "Custom scrollbar styles for consistent UI.", fieldNotes: "" },
           { label: "Description Box", href: "/components/description-box", icon: icons.subject, description: "Display component or feature descriptions.", fieldNotes: "" },
           { label: "Field Notes", href: "/components/field-notes", icon: icons.noteAlt, description: "Contextual notes and annotations for form fields.", fieldNotes: "" },
+          { label: "Progress Bar", href: "/components/progress-bar", icon: icons.progressActivity, description: "Visualize completion status with different status variants.", fieldNotes: "" },
         ],
       },
       {

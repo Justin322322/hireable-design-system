@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, CardContent, Badge } from "@/components/ui";
+import { Card, CardContent, Badge, ProgressBar, type ProgressBarVariant } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 /**
@@ -44,8 +44,8 @@ export interface GoalCardProps extends React.HTMLAttributes<HTMLDivElement> {
   onClick?: () => void;
   /** Custom class name */
   className?: string;
-  /** Progress bar color */
-  progressColor?: string;
+  /** Progress bar variant */
+  progressVariant?: ProgressBarVariant;
   /** Show hover effect */
   hoverable?: boolean;
 }
@@ -59,7 +59,7 @@ export const GoalCard = React.forwardRef<HTMLDivElement, GoalCardProps>(
       metrics = [],
       onClick,
       className,
-      progressColor = "bg-client",
+      progressVariant = "ontrack",
       hoverable = true,
       ...props
     },
@@ -108,18 +108,7 @@ export const GoalCard = React.forwardRef<HTMLDivElement, GoalCardProps>(
             </div>
 
             {/* Progress bar */}
-            <div className="flex items-center w-full h-2">
-              <div className="flex-1 bg-neutral-100 rounded-full h-1.5 overflow-hidden">
-                <div
-                  className={cn("h-full rounded-full transition-all duration-300", progressColor)}
-                  style={{ width: `${clampedProgress}%` }}
-                  role="progressbar"
-                  aria-valuenow={clampedProgress}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                />
-              </div>
-            </div>
+            <ProgressBar variant={progressVariant} value={clampedProgress} width="100%" />
 
             {/* Metrics */}
             {metrics.length > 0 && (

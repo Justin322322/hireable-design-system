@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Icon, type IconName } from "./icon";
+import { ProgressBar, type ProgressBarVariant } from "./progress-bar";
 import { cn } from "@/lib/utils";
 
 // ============================================================================
@@ -19,6 +20,8 @@ export interface ProgressIndicatorProps {
   icon?: IconName;
   /** Width of the progress bar */
   barWidth?: string;
+  /** Status variant for the progress bar */
+  variant?: ProgressBarVariant;
   /** Additional className for styling */
   className?: string;
 }
@@ -33,6 +36,7 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
   label = "Progress",
   icon = "account_tree",
   barWidth = "120px",
+  variant = "ontrack",
   className,
 }) => {
   const percentage = total > 0 ? (current / total) * 100 : 0;
@@ -46,15 +50,7 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
       <span className="text-sm leading-[120%] tracking-[0.2px] text-muted-foreground">
         {current} / {total}
       </span>
-      <div
-        className="h-2 bg-neutral-100 rounded-full overflow-hidden"
-        style={{ width: barWidth }}
-      >
-        <div
-          className="h-full bg-client rounded-full transition-all duration-300"
-          style={{ width: `${percentage}%` }}
-        />
-      </div>
+      <ProgressBar variant={variant} value={percentage} width={barWidth} />
     </div>
   );
 };

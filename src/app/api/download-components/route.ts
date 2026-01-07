@@ -179,7 +179,7 @@ This package contains a complete, production-ready design system in Next.js form
 \`\`\`
 hireable-design-system/
 ├── src/
-│   ├── components/ui/       # 30+ UI components
+│   ├── components/ui/       # 37 UI components
 │   ├── hooks/               # Custom React hooks
 │   ├── lib/                 # Utility functions
 │   ├── patterns/            # Composite patterns

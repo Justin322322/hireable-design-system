@@ -122,8 +122,10 @@ const SortableKeyResultItem: React.FC<{ id: string; title: string; badgeText?: s
 
 export interface CreateObjectiveDrawerProps {
   children?: React.ReactNode;
-  /** Mode: "create" for new objective, "edit" for editing existing */
+  /** Mode: "create" for new, "edit" for editing existing */
   mode?: "create" | "edit";
+  /** Entity type: objective, key-result, or task */
+  entityType?: "objective" | "key-result" | "task";
   /** Default update method selection (for edit mode or pre-selection) */
   defaultUpdateMethod?: "automatic" | "manual" | null;
   /** Initial title (for edit mode) */
@@ -141,9 +143,16 @@ export interface CreateObjectiveDrawerProps {
   }) => void;
 }
 
+const entityLabels = {
+  objective: { singular: "Objective", titlePlaceholder: "Write objective title" },
+  "key-result": { singular: "Key Result", titlePlaceholder: "Write key result title" },
+  task: { singular: "Task", titlePlaceholder: "Write task title" },
+};
+
 export function CreateObjectiveDrawer({ 
   children,
   mode = "create",
+  entityType = "objective",
   defaultUpdateMethod = null,
   initialTitle = "",
   initialDescription = "",
@@ -153,8 +162,9 @@ export function CreateObjectiveDrawer({
   const [addOperatorTargets, setAddOperatorTargets] = useState(false);
 
   const isEditMode = mode === "edit";
-  const drawerTitle = isEditMode ? "Edit Objective" : "Create Objective";
-  const saveButtonText = isEditMode ? "Save changes" : "Save objective";
+  const labels = entityLabels[entityType];
+  const drawerTitle = isEditMode ? `Edit ${labels.singular}` : `Create ${labels.singular}`;
+  const saveButtonText = isEditMode ? "Save changes" : `Save ${labels.singular.toLowerCase()}`;
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -206,7 +216,7 @@ export function CreateObjectiveDrawer({
           {/* Scrollable Content */}
           <div className="flex-1 w-full overflow-y-auto">
             <div className="flex flex-col items-start p-4 gap-8">
-            <Input size="lg" placeholder="Write objective title" defaultValue={initialTitle} className="w-full h-14" />
+            <Input size="lg" placeholder={labels.titlePlaceholder} defaultValue={initialTitle} className="w-full h-14" />
 
             <div className="flex flex-col items-start gap-2 w-full">
               <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">

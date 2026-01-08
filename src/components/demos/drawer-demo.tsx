@@ -34,7 +34,8 @@ import {
   CodeBlock, 
   ComponentPreview,
   ComponentsTable,
-  InterfaceTable 
+  InterfaceTable,
+  OnThisPageNav 
 } from "@/components/docs";
 import { VERSION } from "@/lib/version";
 import {
@@ -50,12 +51,31 @@ import { type CandidateProfile } from "@/types/api-contracts";
 import {
   CandidateProfileDrawer,
   CreateObjectiveDrawer,
+  ObjectiveViewDrawer,
 } from "@/patterns/drawers";
 
 // Import JSON data
 import drawerData from "@/data/drawer.json";
 
 const candidateData = drawerData.candidateProfile as CandidateProfile;
+
+// Navigation items for the right sidebar
+const drawerNavItems = [
+  { id: "candidate-profile-drawer", label: "Candidate Profile" },
+  { id: "create-objective-drawer", label: "Create Objective" },
+  { id: "edit-objective-automatic", label: "Edit Objective (Auto)" },
+  { id: "edit-objective-manual", label: "Edit Objective (Manual)" },
+  { id: "create-key-result", label: "Create Key Result" },
+  { id: "edit-key-result", label: "Edit Key Result" },
+  { id: "create-task", label: "Create Task" },
+  { id: "edit-task", label: "Edit Task" },
+  { id: "objective-view-default", label: "View Objective (Default)" },
+  { id: "objective-view-automatic", label: "View Objective (Auto)" },
+  { id: "objective-view-manual", label: "View Objective (Manual)" },
+  { id: "key-result-view", label: "View Key Result" },
+  { id: "task-view", label: "View Task" },
+  { id: "static-previews", label: "Static Previews" },
+];
 
 // ============================================================================
 // STATIC PREVIEW COMPONENTS (for documentation only)
@@ -238,7 +258,7 @@ const CreateObjectiveDrawerPreview: React.FC<CreateObjectiveDrawerPreviewProps> 
 
 export default function DrawerPage() {
   return (
-    <div className="container max-w-4xl py-12 px-4 md:px-8">
+    <div className="container max-w-6xl py-12 px-4 md:px-8">
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <h1 className="text-3xl font-bold">Drawer</h1>
@@ -256,8 +276,12 @@ export default function DrawerPage() {
           <TabsTrigger value="api">API</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="examples" className="space-y-8">
+        <TabsContent value="examples" className="space-y-0">
+          <div className="flex gap-8 items-start">
+            {/* Main Content Area */}
+            <div className="flex-1 min-w-0 space-y-8">
           {/* Interactive Candidate Profile Drawer */}
+          <div id="candidate-profile-drawer" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Candidate Profile Drawer">
             <div className="flex flex-col items-center gap-3">
               <p className="text-sm text-muted-foreground">
@@ -294,8 +318,10 @@ export function CandidateProfileDrawerExample({ candidateId }: { candidateId: st
 }`}
             language="tsx"
           />
+          </div>
 
           {/* Interactive Create Objective Drawer */}
+          <div id="create-objective-drawer" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Create Objective Drawer (Interactive)">
             <div className="flex flex-col items-center gap-3">
               <p className="text-sm text-muted-foreground">
@@ -304,8 +330,10 @@ export function CandidateProfileDrawerExample({ candidateId }: { candidateId: st
               <CreateObjectiveDrawer />
             </div>
           </ComponentPreview>
+          </div>
 
           {/* Edit Objective Drawer - Automatic */}
+          <div id="edit-objective-automatic" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Edit Objective Drawer - Automatic Selected">
             <div className="flex flex-col items-center gap-3">
               <p className="text-sm text-muted-foreground">
@@ -321,8 +349,10 @@ export function CandidateProfileDrawerExample({ candidateId }: { candidateId: st
               </CreateObjectiveDrawer>
             </div>
           </ComponentPreview>
+          </div>
 
           {/* Edit Objective Drawer - Manual */}
+          <div id="edit-objective-manual" className="scroll-mt-20 space-y-4">
           <ComponentPreview title="Edit Objective Drawer - Manual Selected">
             <div className="flex flex-col items-center gap-3">
               <p className="text-sm text-muted-foreground">
@@ -338,7 +368,199 @@ export function CandidateProfileDrawerExample({ candidateId }: { candidateId: st
               </CreateObjectiveDrawer>
             </div>
           </ComponentPreview>
+          </div>
 
+          {/* Key Result Drawer */}
+          <div id="create-key-result" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Create Key Result Drawer">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Same drawer structure for creating Key Results. Uses entityType=&quot;key-result&quot;.
+              </p>
+              <CreateObjectiveDrawer entityType="key-result">
+                <Button variant="outline">Create Key Result</Button>
+              </CreateObjectiveDrawer>
+            </div>
+          </ComponentPreview>
+          </div>
+
+          {/* Edit Key Result Drawer */}
+          <div id="edit-key-result" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Edit Key Result Drawer - Automatic">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Edit mode for Key Results with Automatic tracking.
+              </p>
+              <CreateObjectiveDrawer 
+                mode="edit"
+                entityType="key-result"
+                defaultUpdateMethod="automatic"
+                initialTitle="Increase quarterly sales by 20%"
+                initialDescription="Track sales performance against Q1 targets."
+              >
+                <Button variant="outline">Edit Key Result</Button>
+              </CreateObjectiveDrawer>
+            </div>
+          </ComponentPreview>
+          </div>
+
+          {/* Task Drawer */}
+          <div id="create-task" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Create Task Drawer">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Same drawer structure for creating Tasks. Uses entityType=&quot;task&quot;.
+              </p>
+              <CreateObjectiveDrawer entityType="task">
+                <Button variant="outline">Create Task</Button>
+              </CreateObjectiveDrawer>
+            </div>
+          </ComponentPreview>
+          </div>
+
+          {/* Edit Task Drawer */}
+          <div id="edit-task" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Edit Task Drawer - Manual">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Edit mode for Tasks with Manual tracking.
+              </p>
+              <CreateObjectiveDrawer 
+                mode="edit"
+                entityType="task"
+                defaultUpdateMethod="manual"
+                initialTitle="Complete user research interviews"
+                initialDescription="Conduct 10 user interviews for the new feature."
+              >
+                <Button variant="outline">Edit Task</Button>
+              </CreateObjectiveDrawer>
+            </div>
+          </ComponentPreview>
+          </div>
+
+          {/* Talent View - Objective */}
+          <div id="objective-view-default" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Objective Talent View - Default">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Read-only view for Objectives with Default update method. Shows title, description, and info note.
+              </p>
+              <ObjectiveViewDrawer 
+                entityType="objective"
+                data={{
+                  title: "Increase Q1 Revenue by 25%",
+                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                  updateMethod: "default"
+                }}
+              >
+                <Button variant="outline">View Objective (Default)</Button>
+              </ObjectiveViewDrawer>
+            </div>
+          </ComponentPreview>
+          </div>
+
+          {/* Talent View - Objective Automatic */}
+          <div id="objective-view-automatic" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Objective Talent View - Automatic">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Automatic update method shows Key Results section below the description.
+              </p>
+              <ObjectiveViewDrawer 
+                entityType="objective"
+                data={{
+                  title: "Increase Q1 Revenue by 25%",
+                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                  updateMethod: "automatic",
+                  keyResults: [
+                    { id: "kr-1", title: "Key result title", updateMethod: "default" },
+                    { id: "kr-2", title: "Key result title", updateMethod: "automatic", progress: "3 / 3" },
+                    { id: "kr-3", title: "Key result title", updateMethod: "manual" },
+                  ]
+                }}
+              >
+                <Button variant="outline">View Objective (Automatic)</Button>
+              </ObjectiveViewDrawer>
+            </div>
+          </ComponentPreview>
+          </div>
+
+          {/* Talent View - Objective Manual */}
+          <div id="objective-view-manual" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Objective Talent View - Manual">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Manual update method shows measurement fields (operator, measurement, starting/target values).
+              </p>
+              <ObjectiveViewDrawer 
+                entityType="objective"
+                data={{
+                  title: "Increase Q1 Revenue by 25%",
+                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                  updateMethod: "manual",
+                  measurement: "Number",
+                  startingValue: "0",
+                  targetValue: "100"
+                }}
+              >
+                <Button variant="outline">View Objective (Manual)</Button>
+              </ObjectiveViewDrawer>
+            </div>
+          </ComponentPreview>
+          </div>
+
+          {/* Talent View - Key Result */}
+          <div id="key-result-view" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Key Result Talent View - Automatic">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Read-only view for Key Results with breadcrumb and Tasks section.
+              </p>
+              <ObjectiveViewDrawer 
+                entityType="key-result"
+                data={{
+                  title: "Key result title",
+                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                  updateMethod: "automatic",
+                  parentTitle: "Objective title",
+                  tasks: [
+                    { id: "task-1", title: "Task title", updateMethod: "default" },
+                    { id: "task-2", title: "Task title", updateMethod: "default" },
+                    { id: "task-3", title: "Task title", updateMethod: "default" },
+                  ]
+                }}
+              >
+                <Button variant="outline">View Key Result (Automatic)</Button>
+              </ObjectiveViewDrawer>
+            </div>
+          </ComponentPreview>
+          </div>
+
+          {/* Talent View - Task */}
+          <div id="task-view" className="scroll-mt-20 space-y-4">
+          <ComponentPreview title="Task Talent View">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Read-only view for Tasks with breadcrumb.
+              </p>
+              <ObjectiveViewDrawer 
+                entityType="task"
+                data={{
+                  title: "Task title",
+                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                  updateMethod: "default",
+                  parentTitle: "Key result title"
+                }}
+              >
+                <Button variant="outline">View Task</Button>
+              </ObjectiveViewDrawer>
+            </div>
+          </ComponentPreview>
+          </div>
+
+          {/* Static Previews */}
+          <div id="static-previews" className="scroll-mt-20 space-y-4">
+          <h2 className="text-xl font-semibold pt-4">Static Previews</h2>
           <ComponentPreview title="Create Objective Drawer - Default">
             <div className="flex flex-col items-center gap-3">
               <p className="text-sm text-muted-foreground">
@@ -367,15 +589,10 @@ export function CandidateProfileDrawerExample({ candidateId }: { candidateId: st
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { CreateObjectiveDrawer } from "@/patterns/drawers";
+            code={`import { CreateObjectiveDrawer, ObjectiveViewDrawer } from "@/patterns/drawers";
 
-// Create Objective Drawer Example
-export function CreateObjectiveDrawerExample() {
-  const handleSave = (data) => {
-    console.log("Saving objective:", data);
-    // Handle save logic
-  };
-
+// Create Objective Drawer
+export function CreateObjectiveExample() {
   return (
     <CreateObjectiveDrawer onSave={handleSave}>
       <Button>Create New Objective</Button>
@@ -383,7 +600,7 @@ export function CreateObjectiveDrawerExample() {
   );
 }
 
-// Edit Objective Drawer - Automatic Mode
+// Edit Objective - Automatic Mode
 export function EditObjectiveAutomaticExample({ objective }) {
   return (
     <CreateObjectiveDrawer 
@@ -391,29 +608,84 @@ export function EditObjectiveAutomaticExample({ objective }) {
       defaultUpdateMethod="automatic"
       initialTitle={objective.title}
       initialDescription={objective.description}
-      onSave={handleSave}
     >
       <Button variant="outline">Edit Objective</Button>
     </CreateObjectiveDrawer>
   );
 }
 
-// Edit Objective Drawer - Manual Mode
-export function EditObjectiveManualExample({ objective }) {
+// Create Key Result Drawer
+export function CreateKeyResultExample() {
   return (
-    <CreateObjectiveDrawer 
-      mode="edit"
-      defaultUpdateMethod="manual"
-      initialTitle={objective.title}
-      initialDescription={objective.description}
-      onSave={handleSave}
-    >
-      <Button variant="outline">Edit Objective</Button>
+    <CreateObjectiveDrawer entityType="key-result">
+      <Button>Create Key Result</Button>
     </CreateObjectiveDrawer>
+  );
+}
+
+// Create Task Drawer
+export function CreateTaskExample() {
+  return (
+    <CreateObjectiveDrawer entityType="task">
+      <Button>Create Task</Button>
+    </CreateObjectiveDrawer>
+  );
+}
+
+// Objective Talent View (Read-only)
+export function ObjectiveTalentViewExample({ objective }) {
+  return (
+    <ObjectiveViewDrawer 
+      entityType="objective"
+      data={{
+        title: objective.title,
+        description: objective.description,
+        status: objective.status // "default" | "in-progress" | "completed" | "at-risk"
+      }}
+    >
+      <Button variant="outline">View Objective</Button>
+    </ObjectiveViewDrawer>
+  );
+}
+
+// Key Result Talent View (Read-only)
+export function KeyResultTalentViewExample({ keyResult }) {
+  return (
+    <ObjectiveViewDrawer 
+      entityType="key-result"
+      data={{
+        title: keyResult.title,
+        description: keyResult.description,
+        status: keyResult.status
+      }}
+    >
+      <Button variant="outline">View Key Result</Button>
+    </ObjectiveViewDrawer>
+  );
+}
+
+// Task Talent View (Read-only)
+export function TaskTalentViewExample({ task }) {
+  return (
+    <ObjectiveViewDrawer 
+      entityType="task"
+      data={{
+        title: task.title,
+        description: task.description,
+        status: task.status
+      }}
+    >
+      <Button variant="outline">View Task</Button>
+    </ObjectiveViewDrawer>
   );
 }`}
             language="tsx"
           />
+          </div>
+            </div>
+            {/* Right Sidebar Navigation */}
+            <OnThisPageNav items={drawerNavItems} />
+          </div>
         </TabsContent>
 
         <TabsContent value="usage" className="space-y-8">

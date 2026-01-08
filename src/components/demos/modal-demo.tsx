@@ -17,7 +17,7 @@ import { CodeBlock, ComponentPreview } from "@/components/docs";
 import { VERSION } from "@/lib/version";
 
 // Import extracted modal patterns
-import { UploadPhotoModal, UploadPhotoModalPreview, PostJobModal, PostJobModalPreview, CompleteSetupModal, CompleteSetupModalPreview, InviteToJobModal, InviteToJobModalPreview, ApplyToJobModal, ApplyToJobModalPreview } from "@/patterns/modals";
+import { UploadPhotoModal, UploadPhotoModalPreview, PostJobModal, PostJobModalPreview, CompleteSetupModal, CompleteSetupModalPreview, InviteToJobModalPreview, ApplyToJobModalPreview } from "@/patterns/modals";
 
 // ============================================================================
 // MAIN DEMO PAGE

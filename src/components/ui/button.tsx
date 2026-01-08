@@ -30,7 +30,7 @@ const buttonVariants = cva(
           "border border-button-tertiary-border bg-button-tertiary-default text-button-tertiary-foreground shadow-sm hover:bg-button-tertiary-hover",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         // Icon - circular icon-only buttons (32x32px with 24x24 icon)
-        icon: "bg-button-icon-default text-button-icon-foreground hover:bg-button-icon-hover rounded-full p-1 [&_svg]:size-6",
+        icon: "bg-button-icon-default text-button-icon-foreground hover:bg-button-icon-hover rounded-full p-1 shadow-none [&_svg]:size-6",
         // Link - underline on hover with darker blue
         link: "text-link-default hover:text-link-hover hover:underline underline-offset-4 disabled:text-muted-foreground disabled:opacity-50",
         // Soft Blue - specific for "Add Goal" type actions (uses secondary button tokens)

@@ -122,6 +122,14 @@ const SortableKeyResultItem: React.FC<{ id: string; title: string; badgeText?: s
 
 export interface CreateObjectiveDrawerProps {
   children?: React.ReactNode;
+  /** Mode: "create" for new objective, "edit" for editing existing */
+  mode?: "create" | "edit";
+  /** Default update method selection (for edit mode or pre-selection) */
+  defaultUpdateMethod?: "automatic" | "manual" | null;
+  /** Initial title (for edit mode) */
+  initialTitle?: string;
+  /** Initial description (for edit mode) */
+  initialDescription?: string;
   onSave?: (data: {
     title: string;
     description: string;
@@ -133,10 +141,20 @@ export interface CreateObjectiveDrawerProps {
   }) => void;
 }
 
-export function CreateObjectiveDrawer({ children }: CreateObjectiveDrawerProps) {
-  const [updateMethod, setUpdateMethod] = useState<"automatic" | "manual" | null>(null);
+export function CreateObjectiveDrawer({ 
+  children,
+  mode = "create",
+  defaultUpdateMethod = null,
+  initialTitle = "",
+  initialDescription = "",
+}: CreateObjectiveDrawerProps) {
+  const [updateMethod, setUpdateMethod] = useState<"automatic" | "manual" | null>(defaultUpdateMethod);
   const [keyResults, setKeyResults] = useState<KeyResult[]>(defaultKeyResults);
   const [addOperatorTargets, setAddOperatorTargets] = useState(false);
+
+  const isEditMode = mode === "edit";
+  const drawerTitle = isEditMode ? "Edit Objective" : "Create Objective";
+  const saveButtonText = isEditMode ? "Save changes" : "Save objective";
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -163,20 +181,20 @@ export function CreateObjectiveDrawer({ children }: CreateObjectiveDrawerProps) 
   };
 
   return (
-    <Drawer onOpenChange={(open) => !open && setUpdateMethod(null)}>
+    <Drawer onOpenChange={(open) => !open && !isEditMode && setUpdateMethod(null)}>
       <DrawerTrigger asChild>
-        {children || <Button>Create Objective</Button>}
+        {children || <Button>{drawerTitle}</Button>}
       </DrawerTrigger>
       <DrawerContent className="sm:max-w-[800px] p-0" showCloseButton={false}>
         <VisuallyHidden>
-          <DrawerTitle>Create Objective</DrawerTitle>
+          <DrawerTitle>{drawerTitle}</DrawerTitle>
         </VisuallyHidden>
 
         <div className="flex flex-col h-full bg-background overflow-hidden">
           {/* Header */}
-          <div className="box-border flex flex-row justify-between items-start px-6 py-4 w-full h-16 border-b border-neutral-300 shrink-0">
-            <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
-              Create Objective
+          <div className="flex flex-row justify-between items-start px-6 py-4 w-full h-16 border-b border-neutral-300 shrink-0">
+            <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-[#181D27]">
+              {drawerTitle}
             </span>
             <DrawerClose asChild>
               <button className="flex items-center justify-center p-1 w-8 h-8 bg-background rounded-full hover:bg-muted transition-colors">
@@ -188,13 +206,13 @@ export function CreateObjectiveDrawer({ children }: CreateObjectiveDrawerProps) 
           {/* Scrollable Content */}
           <div className="flex-1 w-full overflow-y-auto">
             <div className="flex flex-col items-start p-4 gap-8">
-            <Input size="lg" placeholder="Write objective title" className="w-full h-14" />
+            <Input size="lg" placeholder="Write objective title" defaultValue={initialTitle} className="w-full h-14" />
 
             <div className="flex flex-col items-start gap-2 w-full">
               <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
                 Description
               </Label>
-              <Textarea placeholder="Write description here" className="w-full min-h-[131px]" />
+              <Textarea placeholder="Write description here" defaultValue={initialDescription} className="w-full min-h-[131px]" />
             </div>
 
             <div className="flex flex-col items-start gap-6 w-full">
@@ -360,12 +378,14 @@ export function CreateObjectiveDrawer({ children }: CreateObjectiveDrawerProps) 
           </div>
 
           {/* Footer */}
-          <div className="flex flex-row justify-end items-center px-6 py-4 gap-3 w-full border-t border-neutral-200 bg-background shrink-0">
+          <div className="flex flex-row justify-end items-center px-6 py-6 gap-3 w-full border-t border-neutral-300 bg-background shrink-0">
             <DrawerClose asChild>
-              <Button variant="outline" className="border-neutral-300">Cancel</Button>
+              <Button variant="outline" className="h-11 px-5 border-neutral-300 text-foreground font-medium text-sm capitalize shadow-none">
+                Cancel
+              </Button>
             </DrawerClose>
-            <Button className="bg-client hover:bg-client-hover text-white font-medium">
-              Save objective
+            <Button className="h-11 px-5 bg-client hover:bg-client-hover text-white font-medium text-sm capitalize shadow-none">
+              {saveButtonText}
             </Button>
           </div>
         </div>

@@ -305,6 +305,40 @@ export function CandidateProfileDrawerExample({ candidateId }: { candidateId: st
             </div>
           </ComponentPreview>
 
+          {/* Edit Objective Drawer - Automatic */}
+          <ComponentPreview title="Edit Objective Drawer - Automatic Selected">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Edit mode with Automatic update method pre-selected. Use for editing existing objectives.
+              </p>
+              <CreateObjectiveDrawer 
+                mode="edit" 
+                defaultUpdateMethod="automatic"
+                initialTitle="Increase Q1 Revenue"
+                initialDescription="Focus on expanding customer base and upselling existing accounts."
+              >
+                <Button variant="outline">Edit Objective (Automatic)</Button>
+              </CreateObjectiveDrawer>
+            </div>
+          </ComponentPreview>
+
+          {/* Edit Objective Drawer - Manual */}
+          <ComponentPreview title="Edit Objective Drawer - Manual Selected">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-sm text-muted-foreground">
+                Edit mode with Manual update method pre-selected. Shows measurement fields.
+              </p>
+              <CreateObjectiveDrawer 
+                mode="edit" 
+                defaultUpdateMethod="manual"
+                initialTitle="Complete Training Program"
+                initialDescription="Finish all required compliance training modules."
+              >
+                <Button variant="outline">Edit Objective (Manual)</Button>
+              </CreateObjectiveDrawer>
+            </div>
+          </ComponentPreview>
+
           <ComponentPreview title="Create Objective Drawer - Default">
             <div className="flex flex-col items-center gap-3">
               <p className="text-sm text-muted-foreground">
@@ -345,6 +379,36 @@ export function CreateObjectiveDrawerExample() {
   return (
     <CreateObjectiveDrawer onSave={handleSave}>
       <Button>Create New Objective</Button>
+    </CreateObjectiveDrawer>
+  );
+}
+
+// Edit Objective Drawer - Automatic Mode
+export function EditObjectiveAutomaticExample({ objective }) {
+  return (
+    <CreateObjectiveDrawer 
+      mode="edit"
+      defaultUpdateMethod="automatic"
+      initialTitle={objective.title}
+      initialDescription={objective.description}
+      onSave={handleSave}
+    >
+      <Button variant="outline">Edit Objective</Button>
+    </CreateObjectiveDrawer>
+  );
+}
+
+// Edit Objective Drawer - Manual Mode
+export function EditObjectiveManualExample({ objective }) {
+  return (
+    <CreateObjectiveDrawer 
+      mode="edit"
+      defaultUpdateMethod="manual"
+      initialTitle={objective.title}
+      initialDescription={objective.description}
+      onSave={handleSave}
+    >
+      <Button variant="outline">Edit Objective</Button>
     </CreateObjectiveDrawer>
   );
 }`}

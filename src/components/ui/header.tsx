@@ -91,7 +91,7 @@ const Header = React.forwardRef<HTMLElement, HeaderProps>(
               "flex flex-1 flex-col items-start justify-center min-h-px min-w-px shrink-0",
               isDashboard && "gap-1"
             )}>
-              <h1 className="font-semibold text-2xl text-foreground leading-[1.5] tracking-[0.2px]">
+              <h1 className="font-semibold text-2xl text-foreground leading-normal tracking-normal">
                 {title}
               </h1>
               {isDashboard && subheading && (

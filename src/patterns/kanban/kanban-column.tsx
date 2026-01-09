@@ -96,11 +96,11 @@ export const KanbanColumn = <T,>({
       {/* Header */}
       {header || (
         <div className="relative flex h-6 items-center gap-2 mb-2">
-          <span className="text-sm leading-[1.2] font-semibold tracking-[0.2px] text-foreground">
+          <span className="text-sm leading-tight font-semibold tracking-normal text-foreground">
             {title}
           </span>
           {showCount && (
-            <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-neutral-subtle px-2 text-xs leading-[1.2] font-medium text-muted-foreground">
+            <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-neutral-subtle px-2 text-xs leading-tight font-medium text-muted-foreground">
               {displayCount}
             </span>
           )}

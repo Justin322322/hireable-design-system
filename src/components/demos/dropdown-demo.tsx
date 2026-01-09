@@ -257,7 +257,7 @@ export default function DropdownPage() {
                     <SelectValue placeholder="Insert title" />
                   </SelectTrigger>
                 </Select>
-                <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
+                <span className="font-secondary text-sm text-muted-foreground tracking-normal">
                   Helper text
                 </span>
               </div>
@@ -272,7 +272,7 @@ export default function DropdownPage() {
                     <SelectValue placeholder="Insert title" />
                   </SelectTrigger>
                 </Select>
-                <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
+                <span className="font-secondary text-sm text-muted-foreground tracking-normal">
                   Helper text
                 </span>
               </div>
@@ -290,7 +290,7 @@ export default function DropdownPage() {
                     <SelectItem value="selected">Selected option</SelectItem>
                   </SelectContent>
                 </Select>
-                <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
+                <span className="font-secondary text-sm text-muted-foreground tracking-normal">
                   Helper text
                 </span>
               </div>
@@ -308,7 +308,7 @@ export default function DropdownPage() {
                     <SelectItem value="selected">Selected option</SelectItem>
                   </SelectContent>
                 </Select>
-                <span className="font-secondary text-sm text-muted-foreground tracking-[0.2px]">
+                <span className="font-secondary text-sm text-muted-foreground tracking-normal">
                   Helper text
                 </span>
               </div>
@@ -323,7 +323,7 @@ export default function DropdownPage() {
                     <SelectValue placeholder="Insert title" />
                   </SelectTrigger>
                 </Select>
-                <span className="font-secondary text-sm text-neutral-muted tracking-[0.2px]">
+                <span className="font-secondary text-sm text-neutral-muted tracking-normal">
                   Helper text
                 </span>
               </div>
@@ -341,7 +341,7 @@ export default function DropdownPage() {
                     <SelectItem value="selected">Selected option</SelectItem>
                   </SelectContent>
                 </Select>
-                <span className="font-secondary text-sm text-destructive tracking-[0.2px]">
+                <span className="font-secondary text-sm text-destructive tracking-normal">
                   This field is required
                 </span>
               </div>
@@ -380,31 +380,31 @@ export default function DropdownPage() {
               <div className="flex flex-col">
                 {/* Selected Option */}
                 <div className="flex items-center px-4 py-3 h-11 bg-button-secondary-default rounded">
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                  <span className="font-secondary text-sm text-foreground tracking-normal">
                     Insert Option
                   </span>
                 </div>
                 {/* Option 2 */}
                 <div className="flex items-center px-4 py-3 h-11 bg-background rounded hover:bg-surface-hover">
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                  <span className="font-secondary text-sm text-foreground tracking-normal">
                     Insert Option
                   </span>
                 </div>
                 {/* Option 3 */}
                 <div className="flex items-center px-4 py-3 h-11 bg-background rounded hover:bg-surface-hover">
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                  <span className="font-secondary text-sm text-foreground tracking-normal">
                     Insert Option
                   </span>
                 </div>
                 {/* Option 4 */}
                 <div className="flex items-center px-4 py-3 h-11 bg-background rounded hover:bg-surface-hover">
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                  <span className="font-secondary text-sm text-foreground tracking-normal">
                     Insert Option
                   </span>
                 </div>
                 {/* Option 5 */}
                 <div className="flex items-center px-4 py-3 h-11 bg-background rounded hover:bg-surface-hover">
-                  <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                  <span className="font-secondary text-sm text-foreground tracking-normal">
                     Insert Option
                   </span>
                 </div>
@@ -429,7 +429,7 @@ export default function DropdownPage() {
               {/* Search Bar */}
               <div className="flex items-center gap-2 px-6 py-4 h-14 bg-background border-b border-input">
                 <Icon icon="search" size={24} className="text-icon" />
-                <span className="font-secondary text-base text-muted-foreground tracking-[0.2px]">
+                <span className="font-secondary text-base text-muted-foreground tracking-normal">
                   Search
                 </span>
               </div>
@@ -438,37 +438,37 @@ export default function DropdownPage() {
                 <div className="flex flex-col">
                   {/* Option 1 */}
                   <div className="flex items-center px-4 py-3 h-11 bg-background rounded hover:bg-surface-hover">
-                    <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                    <span className="font-secondary text-sm text-foreground tracking-normal">
                       United Kingdom
                     </span>
                   </div>
                   {/* Option 2 */}
                   <div className="flex items-center px-4 py-3 h-11 bg-background rounded hover:bg-surface-hover">
-                    <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                    <span className="font-secondary text-sm text-foreground tracking-normal">
                       France
                     </span>
                   </div>
                   {/* Option 3 */}
                   <div className="flex items-center px-4 py-3 h-11 bg-background rounded hover:bg-surface-hover">
-                    <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                    <span className="font-secondary text-sm text-foreground tracking-normal">
                       Spain
                     </span>
                   </div>
                   {/* Option 4 */}
                   <div className="flex items-center px-4 py-3 h-11 bg-background rounded hover:bg-surface-hover">
-                    <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                    <span className="font-secondary text-sm text-foreground tracking-normal">
                       Italy
                     </span>
                   </div>
                   {/* Option 5 */}
                   <div className="flex items-center px-4 py-3 h-11 bg-background rounded hover:bg-surface-hover">
-                    <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                    <span className="font-secondary text-sm text-foreground tracking-normal">
                       Germany
                     </span>
                   </div>
                   {/* Option 6 */}
                   <div className="flex items-center px-4 py-3 h-11 bg-background rounded hover:bg-surface-hover">
-                    <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                    <span className="font-secondary text-sm text-foreground tracking-normal">
                       Japan
                     </span>
                   </div>
@@ -495,7 +495,7 @@ export default function DropdownPage() {
               {/* Search Bar */}
               <div className="flex items-center gap-2 px-6 py-4 h-14 bg-background border-b border-input">
                 <Icon icon="search" size={24} className="text-icon" />
-                <span className="font-secondary text-base text-muted-foreground tracking-[0.2px]">
+                <span className="font-secondary text-base text-muted-foreground tracking-normal">
                   Search
                 </span>
               </div>
@@ -554,7 +554,7 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Rest</span>
               <div className="flex items-center px-4 py-3 h-11 w-[362px] bg-background rounded">
-                <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                <span className="font-secondary text-sm text-foreground tracking-normal">
                   Insert Option
                 </span>
               </div>
@@ -563,7 +563,7 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Hover</span>
               <div className="flex items-center px-4 py-3 h-11 w-[362px] bg-surface-hover rounded">
-                <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                <span className="font-secondary text-sm text-foreground tracking-normal">
                   Insert Option
                 </span>
               </div>
@@ -572,7 +572,7 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Focused</span>
               <div className="flex items-center px-4 py-3 h-11 w-[362px] bg-button-secondary-default rounded">
-                <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                <span className="font-secondary text-sm text-foreground tracking-normal">
                   Insert Option
                 </span>
               </div>
@@ -581,7 +581,7 @@ export default function DropdownPage() {
             <div className="space-y-2">
               <span className="text-sm text-muted-foreground">Disabled</span>
               <div className="flex items-center px-4 py-3 h-11 w-[362px] bg-surface-hover rounded">
-                <span className="font-secondary text-sm text-neutral-muted tracking-[0.2px]">
+                <span className="font-secondary text-sm text-neutral-muted tracking-normal">
                   Insert Option
                 </span>
               </div>
@@ -605,7 +605,7 @@ export default function DropdownPage() {
               <span className="text-sm text-muted-foreground">Rest</span>
               <div className="flex items-center gap-2 px-6 py-3 h-11 w-[362px] bg-background rounded">
                 <Icon icon="add" size={24} className="text-icon" />
-                <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                <span className="font-secondary text-sm text-foreground tracking-normal">
                   Insert Option
                 </span>
               </div>
@@ -615,7 +615,7 @@ export default function DropdownPage() {
               <span className="text-sm text-muted-foreground">Hover</span>
               <div className="flex items-center gap-2 px-6 py-3 h-11 w-[362px] bg-surface-hover rounded">
                 <Icon icon="add" size={24} className="text-icon" />
-                <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                <span className="font-secondary text-sm text-foreground tracking-normal">
                   Insert Option
                 </span>
               </div>
@@ -625,7 +625,7 @@ export default function DropdownPage() {
               <span className="text-sm text-muted-foreground">Focused</span>
               <div className="flex items-center gap-2 px-6 py-3 h-11 w-[362px] bg-button-secondary-default rounded">
                 <Icon icon="add" size={24} className="text-icon" />
-                <span className="font-secondary text-sm text-foreground tracking-[0.2px]">
+                <span className="font-secondary text-sm text-foreground tracking-normal">
                   Insert Option
                 </span>
               </div>
@@ -635,7 +635,7 @@ export default function DropdownPage() {
               <span className="text-sm text-muted-foreground">Disabled</span>
               <div className="flex items-center gap-2 px-6 py-3 h-11 w-[362px] bg-surface-hover rounded">
                 <Icon icon="add" size={24} className="text-neutral-muted" />
-                <span className="font-secondary text-sm text-neutral-muted tracking-[0.2px]">
+                <span className="font-secondary text-sm text-neutral-muted tracking-normal">
                   Insert Option
                 </span>
               </div>
@@ -661,7 +661,7 @@ export default function DropdownPage() {
                 <RadioGroup>
                   <RadioGroupItem value="rest" label="Insert Option" />
                 </RadioGroup>
-                <span className="px-2 py-1 text-xs font-secondary bg-toast-info-bg/50 text-client rounded tracking-[0.2px]">
+                <span className="px-2 py-1 text-xs font-secondary bg-toast-info-bg/50 text-client rounded tracking-normal">
                   FULL-TIME
                 </span>
               </div>
@@ -673,7 +673,7 @@ export default function DropdownPage() {
                 <RadioGroup>
                   <RadioGroupItem value="hover" label="Insert Option" />
                 </RadioGroup>
-                <span className="px-2 py-1 text-xs font-secondary bg-toast-info-bg/50 text-client rounded tracking-[0.2px]">
+                <span className="px-2 py-1 text-xs font-secondary bg-toast-info-bg/50 text-client rounded tracking-normal">
                   FULL-TIME
                 </span>
               </div>
@@ -685,7 +685,7 @@ export default function DropdownPage() {
                 <RadioGroup defaultValue="focused">
                   <RadioGroupItem value="focused" label="Insert Option" />
                 </RadioGroup>
-                <span className="px-2 py-1 text-xs font-secondary bg-toast-info-bg/50 text-client rounded tracking-[0.2px]">
+                <span className="px-2 py-1 text-xs font-secondary bg-toast-info-bg/50 text-client rounded tracking-normal">
                   FULL-TIME
                 </span>
               </div>
@@ -697,7 +697,7 @@ export default function DropdownPage() {
                 <RadioGroup>
                   <RadioGroupItem value="disabled" label="Insert Option" disabled />
                 </RadioGroup>
-                <span className="px-2 py-1 text-xs font-secondary bg-toast-info-bg/50 text-client rounded tracking-[0.2px]">
+                <span className="px-2 py-1 text-xs font-secondary bg-toast-info-bg/50 text-client rounded tracking-normal">
                   FULL-TIME
                 </span>
               </div>

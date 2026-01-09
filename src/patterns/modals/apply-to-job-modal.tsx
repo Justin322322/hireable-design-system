@@ -158,7 +158,7 @@ export const ApplyToJobModal = React.forwardRef<HTMLDivElement, ApplyToJobModalP
         >
           {/* Header */}
           <DialogHeader className="flex flex-row justify-between items-center self-stretch p-0 h-8">
-            <DialogTitle className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground font-['Inter']">
+            <DialogTitle className="font-semibold text-xl leading-normal tracking-wide text-foreground font-secondary">
               Apply to Job
             </DialogTitle>
             
@@ -197,19 +197,19 @@ export const ApplyToJobModal = React.forwardRef<HTMLDivElement, ApplyToJobModalP
               )}
               
               <div className="flex flex-col items-start gap-1 flex-1 h-[35px]">
-                <span className="font-semibold text-[14px] leading-[120%] tracking-[0.2px] text-button-tertiary-foreground">
+                <span className="font-semibold text-sm leading-tight tracking-normal text-button-tertiary-foreground">
                   {job.title}
                 </span>
                 <div className="flex flex-row items-center gap-2 h-[14px]">
                   <div className="flex flex-row items-center gap-1">
-                    <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">{job.type}</span>
-                    <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">•</span>
+                    <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">{job.type}</span>
+                    <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">•</span>
                   </div>
                   <div className="flex flex-row items-center gap-1">
-                    <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">{job.duration}</span>
-                    <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">•</span>
+                    <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">{job.duration}</span>
+                    <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">•</span>
                   </div>
-                  <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">{job.salary}</span>
+                  <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">{job.salary}</span>
                 </div>
               </div>
 
@@ -220,7 +220,7 @@ export const ApplyToJobModal = React.forwardRef<HTMLDivElement, ApplyToJobModalP
 
             {/* Trial Objectives Section */}
             <div className="flex flex-col items-start gap-4 w-full">
-              <h3 className="font-semibold text-[14px] leading-[120%] tracking-[0.2px] text-foreground">
+              <h3 className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                 Trial Objectives You&apos;ll Need to Achieve
               </h3>
 
@@ -228,11 +228,11 @@ export const ApplyToJobModal = React.forwardRef<HTMLDivElement, ApplyToJobModalP
                 {objectives.map((objective) => (
                   <div key={objective.id} className="box-border flex flex-col items-start p-4 gap-3 w-full bg-background border border-border-strong rounded-[8px]">
                     <div className="flex flex-row justify-between items-center w-full h-[22px]">
-                      <span className="font-semibold text-[14px] leading-[120%] tracking-[0.2px] text-foreground">
+                      <span className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                         {objective.title}
                       </span>
                       <div className="box-border flex flex-col justify-center items-center px-2 py-1 gap-2.5 h-[22px] bg-badge-subtle-bg border-[0.5px] border-badge-subtle-border rounded-full">
-                         <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">
+                         <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">
                            {objective.type}
                          </span>
                       </div>
@@ -242,7 +242,7 @@ export const ApplyToJobModal = React.forwardRef<HTMLDivElement, ApplyToJobModalP
                       placeholder={objective.placeholder}
                       value={responses[objective.id] || ""}
                       onChange={(e) => handleResponseChange(objective.id, e.target.value)}
-                      className="w-full min-h-[72px] bg-background border border-border-strong rounded-[8px] p-4 text-[14px] leading-[120%] tracking-[0.2px] text-muted-foreground resize-none focus-visible:ring-0 focus-visible:border-button-primary-default"
+                      className="w-full min-h-[72px] bg-background border border-border-strong rounded-[8px] p-4 text-sm leading-tight tracking-normal text-muted-foreground resize-none focus-visible:ring-0 focus-visible:border-button-primary-default"
                     />
                   </div>
                 ))}
@@ -329,7 +329,7 @@ export const ApplyToJobModalPreview: React.FC<ApplyToJobModalPreviewProps> = ({
     >
       {/* Header */}
       <div className="flex flex-row justify-between items-center self-stretch p-0 h-8 w-full">
-        <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground font-['Inter']">
+        <span className="font-semibold text-xl leading-normal tracking-wide text-foreground font-secondary">
           Apply to Job
         </span>
         
@@ -367,19 +367,19 @@ export const ApplyToJobModalPreview: React.FC<ApplyToJobModalPreviewProps> = ({
           )}
           
           <div className="flex flex-col items-start gap-1 flex-1 h-[35px]">
-            <span className="font-semibold text-[14px] leading-[120%] tracking-[0.2px] text-button-tertiary-foreground">
+            <span className="font-semibold text-sm leading-tight tracking-normal text-button-tertiary-foreground">
               {job.title}
             </span>
             <div className="flex flex-row items-center gap-2 h-[14px]">
               <div className="flex flex-row items-center gap-1">
-                <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">{job.type}</span>
-                <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">•</span>
+                <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">{job.type}</span>
+                <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">•</span>
               </div>
               <div className="flex flex-row items-center gap-1">
-                <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">{job.duration}</span>
-                <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">•</span>
+                <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">{job.duration}</span>
+                <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">•</span>
               </div>
-              <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">{job.salary}</span>
+              <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">{job.salary}</span>
             </div>
           </div>
 
@@ -390,7 +390,7 @@ export const ApplyToJobModalPreview: React.FC<ApplyToJobModalPreviewProps> = ({
 
         {/* Trial Objectives Section */}
         <div className="flex flex-col items-start gap-4 w-full">
-          <h3 className="font-semibold text-[14px] leading-[120%] tracking-[0.2px] text-foreground">
+          <h3 className="font-semibold text-sm leading-tight tracking-normal text-foreground">
             Trial Objectives You&apos;ll Need to Achieve
           </h3>
 
@@ -398,17 +398,17 @@ export const ApplyToJobModalPreview: React.FC<ApplyToJobModalPreviewProps> = ({
             {objectives.map((objective) => (
               <div key={objective.id} className="box-border flex flex-col items-start p-4 gap-3 w-full bg-background border border-border-strong rounded-[8px]">
                 <div className="flex flex-row justify-between items-center w-full h-[22px]">
-                  <span className="font-semibold text-[14px] leading-[120%] tracking-[0.2px] text-foreground">
+                  <span className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                     {objective.title}
                   </span>
                   <div className="box-border flex flex-col justify-center items-center px-2 py-1 gap-2.5 h-[22px] bg-badge-subtle-bg border-[0.5px] border-badge-subtle-border rounded-full">
-                      <span className="font-normal text-[12px] leading-[120%] tracking-[0.2px] text-muted-foreground">
+                      <span className="font-normal text-xs leading-tight tracking-normal text-muted-foreground">
                         {objective.type}
                       </span>
                   </div>
                 </div>
                 
-                <div className="w-full min-h-[72px] bg-background border border-border-strong rounded-[8px] p-4 text-[14px] leading-[120%] tracking-[0.2px] text-muted-foreground">
+                <div className="w-full min-h-[72px] bg-background border border-border-strong rounded-[8px] p-4 text-sm leading-tight tracking-normal text-muted-foreground">
                   {objective.placeholder}
                 </div>
               </div>

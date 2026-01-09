@@ -122,10 +122,10 @@ export const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps
                 )}
               </Avatar>
               <div className="relative flex flex-1 flex-col items-start gap-1 min-w-0">
-                <div className="text-sm leading-[1.2] font-semibold tracking-[0.2px] text-foreground truncate w-full">
+                <div className="text-sm leading-tight font-semibold tracking-normal text-foreground truncate w-full">
                   {name}
                 </div>
-                <div className="text-xs leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground truncate w-full">
+                <div className="text-xs leading-tight font-normal tracking-normal text-muted-foreground truncate w-full">
                   {role}
                 </div>
               </div>
@@ -149,7 +149,7 @@ export const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps
           {/* Metadata and badge */}
           <div className="relative flex w-full items-center justify-between gap-2">
             {metadata.length > 0 && (
-              <div className="flex items-center gap-1.5 text-xs leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground flex-wrap flex-1 min-w-0">
+              <div className="flex items-center gap-1.5 text-xs leading-tight font-normal tracking-normal text-muted-foreground flex-wrap flex-1 min-w-0">
                 {metadata.map((item, index) => (
                   <React.Fragment key={index}>
                     {index > 0 && <span>•</span>}
@@ -166,7 +166,7 @@ export const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps
               <Badge
                 variant={badge.variant || "ontrack"}
                 shape={badge.shape || "badge"}
-                className="px-[6px] py-[3px] text-[10px] leading-[1.2] font-semibold tracking-[0.2px] uppercase shrink-0"
+                className="px-[6px] py-[3px] text-xs leading-tight font-semibold tracking-normal uppercase shrink-0"
               >
                 {badge.label}
               </Badge>
@@ -176,7 +176,7 @@ export const CandidateCard = React.forwardRef<HTMLDivElement, CandidateCardProps
           {/* Footer */}
           {footer && (
             <div className="relative mt-auto flex w-full items-center justify-between">
-              <div className="text-xs leading-[1.2] font-normal tracking-[0.2px] text-icon truncate flex-1">
+              <div className="text-xs leading-tight font-normal tracking-normal text-icon truncate flex-1">
                 {footer.label || "—"}
               </div>
               {footer.actions?.details && (

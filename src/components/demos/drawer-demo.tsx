@@ -90,7 +90,7 @@ const CreateObjectiveDrawerPreview: React.FC<CreateObjectiveDrawerPreviewProps> 
 }) => (
   <div className="relative w-full max-w-[800px] h-auto min-h-[700px] bg-background border border-neutral-200 rounded-lg shadow-lg overflow-hidden flex flex-col">
     <div className="box-border flex flex-row justify-between items-start px-6 py-4 w-full h-16 border-b border-neutral-300 shrink-0">
-      <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+      <span className="font-semibold text-xl leading-normal tracking-wide text-foreground">
         Create Objective
       </span>
       <Button variant="ghost" size="icon" className="size-8">
@@ -102,7 +102,7 @@ const CreateObjectiveDrawerPreview: React.FC<CreateObjectiveDrawerPreviewProps> 
       <Input size="lg" placeholder="Write objective title" className="w-full h-14" />
 
       <div className="flex flex-col items-start gap-2 w-full">
-        <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+        <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
           Description
         </Label>
         <Textarea placeholder="Write description here" className="w-full min-h-[131px]" />
@@ -110,7 +110,7 @@ const CreateObjectiveDrawerPreview: React.FC<CreateObjectiveDrawerPreviewProps> 
 
       <div className="flex flex-col items-start gap-6 w-full">
         <div className="flex flex-col items-start gap-4 w-full">
-          <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+          <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
             Update method
           </Label>
           
@@ -142,7 +142,7 @@ const CreateObjectiveDrawerPreview: React.FC<CreateObjectiveDrawerPreviewProps> 
             <Button 
               variant="secondary"
               size="md"
-              className="gap-2 bg-[#CCEDFF] hover:bg-[#B8E4FF] text-[#006593]"
+              className="gap-2"
             >
               <Icon icon="add" size={14} />
               Add Key result
@@ -154,7 +154,7 @@ const CreateObjectiveDrawerPreview: React.FC<CreateObjectiveDrawerPreviewProps> 
           <div className="flex flex-col items-start gap-4 w-full">
             <div className="flex flex-row items-start gap-2 w-full">
               <div className="flex flex-col items-start gap-2 w-[180px] shrink-0">
-                <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                   Operator
                 </Label>
                 <Select defaultValue="gte">
@@ -197,7 +197,7 @@ const CreateObjectiveDrawerPreview: React.FC<CreateObjectiveDrawerPreviewProps> 
               </div>
 
               <div className="flex flex-col items-start gap-2 flex-1">
-                <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                   Measurement
                 </Label>
                 <Select defaultValue="percent">
@@ -217,14 +217,14 @@ const CreateObjectiveDrawerPreview: React.FC<CreateObjectiveDrawerPreviewProps> 
               </div>
 
               <div className="flex flex-col items-start gap-2 flex-1">
-                <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                   Starting value
                 </Label>
                 <Input placeholder="0" className="w-full h-11" />
               </div>
 
               <div className="flex flex-col items-start gap-2 flex-1">
-                <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                   Target value
                 </Label>
                 <Input placeholder="100" className="w-full h-11" />

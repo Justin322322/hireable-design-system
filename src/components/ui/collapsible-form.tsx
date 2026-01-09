@@ -27,7 +27,7 @@ interface DurationOptionProps {
 const durationColors = {
   30: "text-denotive-green",
   60: "text-button-primary-default",
-  90: "text-[#9D4EDD]",
+  90: "text-worktrait-coop",
 } as const
 
 function DurationOption({ days, selected, onClick }: DurationOptionProps) {
@@ -41,7 +41,7 @@ function DurationOption({ days, selected, onClick }: DurationOptionProps) {
       )}
     >
       <Icon icon="calendar_today" size={16} className={cn(durationColors[days], "shrink-0")} />
-      <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-foreground whitespace-nowrap">{days} Days</span>
+      <span className="text-sm font-normal leading-tight tracking-normal text-foreground whitespace-nowrap">{days} Days</span>
     </button>
   )
 }
@@ -57,14 +57,14 @@ function ObjectiveItem({ title, type, progress }: ObjectiveItemProps) {
   return (
     <div className="flex items-center gap-1 px-6 py-4 border border-neutral-muted rounded-lg bg-white">
       <div className="flex items-center gap-2 flex-1">
-        <span className="text-base font-semibold text-foreground tracking-[0.2px]">
+        <span className="text-base font-semibold text-foreground tracking-normal">
           {title}
         </span>
         <Badge variant="default" shape="pill" size="sm">
           {type === "default" ? "Default" : type === "automatic" ? "Automatic" : "Manual"}
         </Badge>
         {progress && (
-          <span className="text-sm text-muted-foreground tracking-[0.2px]">
+          <span className="text-sm text-muted-foreground tracking-normal">
             {progress}
           </span>
         )}
@@ -135,7 +135,7 @@ const CollapsibleForm = React.forwardRef<HTMLDivElement, CollapsibleFormProps>(
                 <Icon icon="check" size={20} className="text-white" />
               )}
             </div>
-            <ol className="flex-1 list-decimal font-semibold text-xl text-foreground tracking-[0.4px]">
+            <ol className="flex-1 list-decimal font-semibold text-xl text-foreground tracking-wide">
               <li className="ms-[30px]" value={stepNumber}>
                 <span>{title}</span>
               </li>
@@ -152,7 +152,7 @@ const CollapsibleForm = React.forwardRef<HTMLDivElement, CollapsibleFormProps>(
             </button>
           </div>
           {isExpanded && description && (
-            <p className="text-base text-muted-foreground tracking-[0.2px] w-full">
+            <p className="text-base text-muted-foreground tracking-normal w-full">
               {description}
             </p>
           )}
@@ -186,7 +186,7 @@ function DefaultFormContent({ type }: { type: CollapsibleFormType }) {
       <div className="flex flex-col gap-10">
         {/* Job Role */}
         <div className="flex flex-col gap-4">
-          <h3 className="text-xl font-semibold text-foreground tracking-[0.4px]">
+          <h3 className="text-xl font-semibold text-foreground tracking-wide">
             Job Role
           </h3>
           <Input placeholder="Enter job role" />
@@ -194,7 +194,7 @@ function DefaultFormContent({ type }: { type: CollapsibleFormType }) {
 
         {/* Role Description */}
         <div className="flex flex-col gap-4">
-          <h3 className="text-xl font-semibold text-foreground tracking-[0.4px]">
+          <h3 className="text-xl font-semibold text-foreground tracking-wide">
             Role Description
           </h3>
           <Textarea placeholder="Write description here" />
@@ -202,7 +202,7 @@ function DefaultFormContent({ type }: { type: CollapsibleFormType }) {
 
         {/* Skills */}
         <div className="flex flex-col gap-4">
-          <h3 className="text-xl font-semibold text-foreground tracking-[0.4px]">
+          <h3 className="text-xl font-semibold text-foreground tracking-wide">
             Skills
           </h3>
           <Select>
@@ -216,14 +216,14 @@ function DefaultFormContent({ type }: { type: CollapsibleFormType }) {
               <SelectItem value="python">Python</SelectItem>
             </SelectContent>
           </Select>
-          <p className="text-sm text-muted-foreground tracking-[0.2px]">
+          <p className="text-sm text-muted-foreground tracking-normal">
             Add skills required for this role
           </p>
         </div>
 
         {/* Years of Experience */}
         <div className="flex flex-col gap-4">
-          <h3 className="text-xl font-semibold text-foreground tracking-[0.4px]">
+          <h3 className="text-xl font-semibold text-foreground tracking-wide">
             Years of Experience
           </h3>
           <Select>
@@ -288,11 +288,11 @@ function DefaultFormContent({ type }: { type: CollapsibleFormType }) {
                 onValueChange={setMaxBudget}
               />
             </div>
-            <span className="h-12 flex items-center text-base text-foreground tracking-[0.2px]">
+            <span className="h-12 flex items-center text-base text-foreground tracking-normal">
               /month
             </span>
           </div>
-          <p className="text-sm text-muted-foreground tracking-[0.2px] max-w-[533px]">
+          <p className="text-sm text-muted-foreground tracking-normal max-w-[533px]">
             Suggested rate range based on similar roles on our platform.{" "}
             <button type="button" className="text-link-default hover:underline">
               See source

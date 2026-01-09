@@ -180,7 +180,7 @@ const SelectItemCheckbox = React.forwardRef<
         <Icon icon="check" size={14} className="text-white" />
       )}
     </span>
-    <SelectPrimitive.ItemText className="text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+    <SelectPrimitive.ItemText className="text-sm leading-tight tracking-normal text-foreground">
       {children}
     </SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
@@ -218,15 +218,15 @@ const SelectItemRadioPill = React.forwardRef<
           <span className="block h-[11.2px] w-[11.2px] rounded-full bg-client" />
         </SelectPrimitive.ItemIndicator>
       </span>
-      <SelectPrimitive.ItemText className="text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+      <SelectPrimitive.ItemText className="text-sm leading-tight tracking-normal text-foreground">
         {children}
       </SelectPrimitive.ItemText>
     </div>
     {pillText && (
       <span
         className={cn(
-          "flex items-center justify-center h-6 px-2 py-2 rounded-full text-xs leading-[1.2] tracking-[0.2px]",
-          "bg-[#fff5ec] text-[#ff8112]",
+          "flex items-center justify-center h-6 px-2 py-2 rounded-full text-xs leading-tight tracking-normal",
+          "bg-badge-atrisk-bg text-badge-atrisk-text",
           pillClassName
         )}
       >

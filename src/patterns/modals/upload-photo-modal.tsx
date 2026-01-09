@@ -172,7 +172,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
             className="flex flex-row justify-between items-center self-stretch p-0 h-8"
           >
             {/* Modal Title - left aligned */}
-            <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+            <DialogTitle className="font-semibold text-xl leading-normal tracking-wide text-foreground">
               {title}
             </DialogTitle>
             
@@ -205,12 +205,12 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
               
               <div className="flex flex-col items-center gap-2">
                 <span
-                  className="font-secondary font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground"
+                  className="font-secondary font-semibold text-xl leading-normal tracking-wide text-foreground"
                 >
                   Drop your image here to upload
                 </span>
                 <p
-                  className="m-0 font-secondary font-normal text-sm leading-[120%] text-center tracking-[0.2px] text-muted-foreground"
+                  className="m-0 font-secondary font-normal text-sm leading-tight text-center tracking-normal text-muted-foreground"
                 >
                   Works with any {acceptedFormats} file from the web<br />
                   Recommended size: {recommendedSize}
@@ -241,7 +241,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
               </div>
               
               <div className="flex flex-col items-center gap-2">
-                <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+                <span className="font-semibold text-xl leading-normal tracking-wide text-foreground">
                   Uploading image
                 </span>
               </div>
@@ -273,7 +273,7 @@ export const UploadPhotoModal = React.forwardRef<HTMLDivElement, UploadPhotoModa
               </div>
               
               <div className="flex flex-col items-center">
-                <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground text-center">
+                <span className="font-semibold text-xl leading-normal tracking-wide text-foreground text-center">
                   Upload complete!
                 </span>
               </div>
@@ -320,7 +320,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
         className="flex flex-row justify-between items-center self-stretch p-0 h-8"
       >
         <span
-          className="font-secondary font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground"
+          className="font-secondary font-semibold text-xl leading-normal tracking-wide text-foreground"
         >
           {title}
         </span>
@@ -346,20 +346,20 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
           
           <div className="flex flex-col items-center gap-2">
             <span
-              className="font-secondary font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground"
+              className="font-secondary font-semibold text-xl leading-normal tracking-wide text-foreground"
             >
               Drop your image here to upload
             </span>
             
             <p
-              className="m-0 font-secondary font-normal text-[14px] leading-[120%] text-center tracking-[0.2px] text-muted-foreground"
+              className="m-0 font-secondary font-normal text-sm leading-tight text-center tracking-normal text-muted-foreground"
             >
               Works with any {acceptedFormats} file from the web<br />
               Recommended size: {recommendedSize}
             </p>
           </div>
 
-          <Button className="bg-button-primary-default hover:bg-button-primary-hover text-button-primary-foreground rounded-[8px] w-[88px] h-[44px] px-5 py-2 text-[14px] font-medium">
+          <Button className="bg-button-primary-default hover:bg-button-primary-hover text-button-primary-foreground rounded-[8px] w-[88px] h-[44px] px-5 py-2 text-sm font-medium">
             Upload
           </Button>
         </div>
@@ -373,7 +373,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
           
           <div className="flex flex-col items-center gap-2">
             <span
-              className="font-secondary font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground"
+              className="font-secondary font-semibold text-xl leading-normal tracking-wide text-foreground"
             >
               Uploading image
             </span>
@@ -406,7 +406,7 @@ export const UploadPhotoModalPreview: React.FC<UploadPhotoModalPreviewProps> = (
           </div>
           
           <div className="flex flex-col items-center">
-            <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground text-center">
+            <span className="font-semibold text-xl leading-normal tracking-wide text-foreground text-center">
               Upload complete!
             </span>
           </div>

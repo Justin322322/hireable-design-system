@@ -80,7 +80,7 @@ const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
       ref={ref}
       href={href}
       className={cn(
-        "font-secondary text-sm leading-[1.2] tracking-[0.2px] text-muted-foreground hover:text-foreground transition-colors py-1",
+        "font-secondary text-sm leading-tight tracking-normal text-muted-foreground hover:text-foreground transition-colors py-1",
         className
       )}
       {...props}
@@ -101,7 +101,7 @@ const BreadcrumbPage = React.forwardRef<HTMLSpanElement, BreadcrumbPageProps>(
       ref={ref}
       aria-current="page"
       className={cn(
-        "font-secondary text-sm leading-[1.2] tracking-[0.2px] text-foreground font-normal py-1",
+        "font-secondary text-sm leading-tight tracking-normal text-foreground font-normal py-1",
         className
       )}
       {...props}
@@ -159,7 +159,7 @@ const BreadcrumbText = React.forwardRef<HTMLSpanElement, BreadcrumbTextProps>(
     <span
       ref={ref}
       className={cn(
-        "font-secondary text-sm leading-[1.2] tracking-[0.2px] text-muted-foreground font-normal py-1",
+        "font-secondary text-sm leading-tight tracking-normal text-muted-foreground font-normal py-1",
         className
       )}
       {...props}

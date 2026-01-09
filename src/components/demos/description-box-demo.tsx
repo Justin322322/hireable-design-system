@@ -48,7 +48,7 @@ export default function DescriptionBoxDemo() {
                 {/* Enabled State */}
                 <div className="space-y-2">
                   <span className="text-xs text-muted-foreground">Enabled</span>
-                  <span className="block font-secondary text-sm font-semibold leading-[120%] tracking-[0.2px] text-foreground">Description</span>
+                  <span className="block font-secondary text-sm font-semibold leading-tight tracking-normal text-foreground">Description</span>
                   <div className="w-full">
                     <Textarea 
                       placeholder="Write description here" 
@@ -61,7 +61,7 @@ export default function DescriptionBoxDemo() {
                 {/* Hover State */}
                 <div className="space-y-2">
                   <span className="text-xs text-muted-foreground">Hover</span>
-                  <span className="block font-secondary text-sm font-semibold leading-[120%] tracking-[0.2px] text-foreground">Description</span>
+                  <span className="block font-secondary text-sm font-semibold leading-tight tracking-normal text-foreground">Description</span>
                   <div className="w-full">
                     <Textarea 
                       placeholder="Write description here" 
@@ -74,7 +74,7 @@ export default function DescriptionBoxDemo() {
                 {/* Focused State */}
                 <div className="space-y-2">
                   <span className="text-xs text-muted-foreground">Focused</span>
-                  <span className="block font-secondary text-sm font-semibold leading-[120%] tracking-[0.2px] text-foreground">Description</span>
+                  <span className="block font-secondary text-sm font-semibold leading-tight tracking-normal text-foreground">Description</span>
                   <div className="w-full">
                     <Textarea 
                       placeholder="Write description here" 
@@ -87,7 +87,7 @@ export default function DescriptionBoxDemo() {
                 {/* Filled State */}
                 <div className="space-y-2">
                   <span className="text-xs text-muted-foreground">Filled</span>
-                  <span className="block font-secondary text-sm font-semibold leading-[120%] tracking-[0.2px] text-foreground">Description</span>
+                  <span className="block font-secondary text-sm font-semibold leading-tight tracking-normal text-foreground">Description</span>
                   <div className="w-full">
                     <Textarea 
                       defaultValue="Lorem Ipsum Dolor sit Amet" 
@@ -100,7 +100,7 @@ export default function DescriptionBoxDemo() {
                 {/* Disabled State */}
                 <div className="space-y-2">
                   <span className="text-xs text-muted-foreground">Disabled</span>
-                  <span className="block font-secondary text-sm font-semibold leading-[120%] tracking-[0.2px] text-neutral-muted">Description</span>
+                  <span className="block font-secondary text-sm font-semibold leading-tight tracking-normal text-neutral-muted">Description</span>
                   <div className="w-full">
                     <Textarea 
                       placeholder="Write description here" 

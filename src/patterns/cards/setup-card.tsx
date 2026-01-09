@@ -97,10 +97,10 @@ export const SetupCard = React.forwardRef<HTMLDivElement, SetupCardProps>(
       >
         {/* Title + Description */}
         <div className="flex flex-col items-start gap-2 flex-1">
-          <span className="font-secondary font-semibold text-sm text-foreground leading-[120%] tracking-[0.2px]">
+          <span className="font-secondary font-semibold text-sm text-foreground leading-tight tracking-normal">
             {title}
           </span>
-          <span className="font-secondary font-normal text-sm text-text-tertiary leading-[120%] tracking-[0.2px]">
+          <span className="font-secondary font-normal text-sm text-text-tertiary leading-tight tracking-normal">
             {description}
           </span>
         </div>

@@ -966,21 +966,21 @@ export default function ButtonPage() {
                       <td className="py-4 px-4 text-center">
                         <div className="inline-flex justify-center">
                           <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
-                            <Icon icon="bookmark" size={24} className="text-[#00A7F8]" />
+                            <Icon icon="bookmark" size={24} className="text-client" />
                           </span>
                         </div>
                       </td>
                       <td className="py-4 px-4 text-center">
                         <div className="inline-flex justify-center">
                           <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
-                            <Icon icon="bookmark" size={24} className="text-[#00A7F8]" />
+                            <Icon icon="bookmark" size={24} className="text-client" />
                           </span>
                         </div>
                       </td>
                       <td className="py-4 px-4 text-center">
                         <div className="inline-flex justify-center">
                           <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
-                            <Icon icon="bookmark" size={24} className="text-[#00A7F8]" />
+                            <Icon icon="bookmark" size={24} className="text-client" />
                           </span>
                         </div>
                       </td>
@@ -991,21 +991,21 @@ export default function ButtonPage() {
                       <td className="py-4 px-4 text-center">
                         <div className="inline-flex justify-center">
                           <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center pointer-events-none">
-                            <Icon icon="bookmark" size={24} filled className="text-[#00A7F8]" />
+                            <Icon icon="bookmark" size={24} filled className="text-client" />
                           </span>
                         </div>
                       </td>
                       <td className="py-4 px-4 text-center">
                         <div className="inline-flex justify-center">
                           <span className="size-8 p-1 rounded-full bg-surface-hover border inline-flex items-center justify-center pointer-events-none">
-                            <Icon icon="bookmark" size={24} filled className="text-[#00A7F8]" />
+                            <Icon icon="bookmark" size={24} filled className="text-client" />
                           </span>
                         </div>
                       </td>
                       <td className="py-4 px-4 text-center">
                         <div className="inline-flex justify-center">
                           <span className="size-8 p-1 rounded-full bg-background border inline-flex items-center justify-center opacity-50 pointer-events-none">
-                            <Icon icon="bookmark" size={24} filled className="text-[#00A7F8]" />
+                            <Icon icon="bookmark" size={24} filled className="text-client" />
                           </span>
                         </div>
                       </td>

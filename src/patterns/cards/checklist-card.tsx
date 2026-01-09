@@ -101,10 +101,10 @@ export const ChecklistCard = React.forwardRef<HTMLDivElement, ChecklistCardProps
 
         {/* Title + Description */}
         <div className="flex flex-col items-start gap-2 flex-1">
-          <span className="font-secondary font-semibold text-base text-foreground leading-[150%] tracking-[0.2px]">
+          <span className="font-secondary font-semibold text-base text-foreground leading-normal tracking-normal">
             {title}
           </span>
-          <span className="font-secondary font-normal text-sm text-text-tertiary leading-[120%] tracking-[0.2px]">
+          <span className="font-secondary font-normal text-sm text-text-tertiary leading-tight tracking-normal">
             {description}
           </span>
         </div>

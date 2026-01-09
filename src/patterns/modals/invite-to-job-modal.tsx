@@ -123,7 +123,7 @@ export const InviteToJobModal = React.forwardRef<HTMLDivElement, InviteToJobModa
         >
           {/* Header */}
           <DialogHeader className="flex flex-row justify-between items-center self-stretch p-0 h-8">
-            <DialogTitle className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground font-['Inter']">
+            <DialogTitle className="font-semibold text-xl leading-normal tracking-wide text-foreground font-secondary">
               Invite to Job
             </DialogTitle>
             
@@ -146,7 +146,7 @@ export const InviteToJobModal = React.forwardRef<HTMLDivElement, InviteToJobModa
           <div className="flex flex-col w-full gap-6">
             {/* Job Selection */}
             <div className="space-y-2 text-left">
-              <Label htmlFor="job-select" className="text-sm font-semibold leading-[120%] tracking-[0.2px] text-button-tertiary-foreground">
+              <Label htmlFor="job-select" className="text-sm font-semibold leading-tight tracking-normal text-button-tertiary-foreground">
                 Select Job Post
               </Label>
               <Select value={jobId} onValueChange={setJobId}>
@@ -165,7 +165,7 @@ export const InviteToJobModal = React.forwardRef<HTMLDivElement, InviteToJobModa
 
             {/* Message */}
             <div className="space-y-2 text-left">
-              <Label htmlFor="message" className="text-sm font-semibold leading-[120%] tracking-[0.2px] text-button-tertiary-foreground">
+              <Label htmlFor="message" className="text-sm font-semibold leading-tight tracking-normal text-button-tertiary-foreground">
                 Personalized Message <span className="font-normal text-muted-foreground">(Optional)</span>
               </Label>
               <Textarea
@@ -228,7 +228,7 @@ export const InviteToJobModalPreview: React.FC<InviteToJobModalPreviewProps> = (
     >
       {/* Header */}
       <div className="flex flex-row justify-between items-center self-stretch p-0 h-8 w-full">
-        <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground font-['Inter']">
+        <span className="font-semibold text-xl leading-normal tracking-wide text-foreground font-secondary">
           Invite to Job
         </span>
         
@@ -250,7 +250,7 @@ export const InviteToJobModalPreview: React.FC<InviteToJobModalPreviewProps> = (
       <div className="flex flex-col w-full gap-6">
         {/* Job Selection */}
         <div className="space-y-2 text-left w-full">
-          <Label className="text-sm font-semibold leading-[120%] tracking-[0.2px] text-button-tertiary-foreground">
+          <Label className="text-sm font-semibold leading-tight tracking-normal text-button-tertiary-foreground">
             Select Job Post
           </Label>
           <div className={cn(
@@ -263,7 +263,7 @@ export const InviteToJobModalPreview: React.FC<InviteToJobModalPreviewProps> = (
 
         {/* Message */}
         <div className="flex flex-col space-y-2 text-left w-full">
-          <Label className="text-sm font-semibold leading-[120%] tracking-[0.2px] text-button-tertiary-foreground">
+          <Label className="text-sm font-semibold leading-tight tracking-normal text-button-tertiary-foreground">
             Personalized Message <span className="font-normal text-muted-foreground">(Optional)</span>
           </Label>
           <div className="flex min-h-[155px] w-full rounded-[8px] border border-border-strong bg-background p-2 text-sm text-muted-foreground">

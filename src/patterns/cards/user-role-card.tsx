@@ -91,7 +91,7 @@ export const UserRoleCard = React.forwardRef<HTMLDivElement, UserRoleCardProps>(
     };
 
     const getTitleStyles = () => {
-      const baseStyles = "text-xl leading-[150%] tracking-[0.4px] text-foreground";
+      const baseStyles = "text-xl leading-normal tracking-wide text-foreground";
       
       if (titleFont === "secondary") {
         return cn(baseStyles, "font-secondary font-semibold");
@@ -100,7 +100,7 @@ export const UserRoleCard = React.forwardRef<HTMLDivElement, UserRoleCardProps>(
     };
 
     const getDescriptionStyles = () => {
-      const baseStyles = "text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground";
+      const baseStyles = "text-sm font-normal leading-tight tracking-normal text-muted-foreground";
       
       if (titleFont === "secondary") {
         return cn(baseStyles, "font-secondary");

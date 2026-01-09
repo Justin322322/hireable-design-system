@@ -59,7 +59,7 @@ function ProgressBar({
         />
       </div>
       {showLabel && (
-        <span className="w-10 text-sm font-secondary leading-[1.2] tracking-[0.2px] text-foreground text-right">
+        <span className="w-10 text-sm font-secondary leading-tight tracking-normal text-foreground text-right">
           {clampedValue}%
         </span>
       )}

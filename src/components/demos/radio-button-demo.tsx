@@ -451,14 +451,14 @@ export default function RadioButtonPage() {
                 {/* Default State */}
                 <div className="flex flex-row items-center p-6 gap-4 bg-background border border-button-tertiary-border rounded-lg cursor-pointer hover:border-foreground transition-colors">
                   <div className="size-4 rounded-full border border-button-tertiary-border bg-background shrink-0" />
-                  <span className="font-primary font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground flex-1">
+                  <span className="font-primary font-semibold text-base leading-normal tracking-normal text-foreground flex-1">
                     Example choice of answer (Default)
                   </span>
                 </div>
                 {/* Hover State */}
                 <div className="flex flex-row items-center p-6 gap-4 bg-background border border-foreground rounded-lg cursor-pointer">
                   <div className="size-4 rounded-full border border-button-tertiary-border bg-background shrink-0" />
-                  <span className="font-primary font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground flex-1">
+                  <span className="font-primary font-semibold text-base leading-normal tracking-normal text-foreground flex-1">
                     Example choice of answer (Hover)
                   </span>
                 </div>
@@ -467,7 +467,7 @@ export default function RadioButtonPage() {
                   <div className="size-4 rounded-full border border-button-primary-default bg-background flex items-center justify-center shrink-0">
                     <svg width="10" height="10" viewBox="0 0 10 10" className="text-button-primary-default"><circle cx="5" cy="5" r="5" fill="currentColor" /></svg>
                   </div>
-                  <span className="font-primary font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground flex-1">
+                  <span className="font-primary font-semibold text-base leading-normal tracking-normal text-foreground flex-1">
                     Example choice of answer (Selected)
                   </span>
                 </div>

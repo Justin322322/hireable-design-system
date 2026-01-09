@@ -11,8 +11,8 @@ export function Toaster() {
         classNames: {
           toast:
             "group toast !flex !flex-row !items-center !justify-start [&[data-sonner-toast]]:!min-h-14 [&[data-sonner-toast]]:!py-4 [&[data-sonner-toast]]:!pl-4 [&[data-sonner-toast]]:!pr-6 [&[data-sonner-toast]]:!gap-4 [&[data-sonner-toast]]:!rounded-lg bg-background text-foreground border-border",
-          title: "!font-primary !font-medium !text-sm !leading-[150%] !tracking-[0.2px] !m-0 !p-0",
-          description: "!font-primary !font-normal !text-sm !leading-[150%] !tracking-[0.2px] !m-0 !p-0 !text-muted-foreground",
+          title: "!font-primary !font-medium !text-sm !leading-normal !tracking-normal !m-0 !p-0",
+          description: "!font-primary !font-normal !text-sm !leading-normal !tracking-normal !m-0 !p-0 !text-muted-foreground",
           actionButton: "bg-primary text-primary-foreground",
           cancelButton: "bg-muted text-muted-foreground",
           icon: "[&>svg]:!size-6 [&>svg]:!w-6 [&>svg]:!h-6 !shrink-0 !m-0",

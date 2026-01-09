@@ -52,7 +52,7 @@ function StaticToast({ variant = "default", title, icon }: StaticToastProps) {
   return (
     <div className={`rounded-lg py-4 pl-4 pr-6 shadow-[0px_2px_8px_rgba(0,0,0,0.1)] flex items-center gap-6 w-full max-w-sm h-14 ${currentStyle.bg}`}>
       {icon && <Icon icon={icon} size={24} className={`${currentStyle.iconColor} shrink-0`} />}
-      <p className="flex-1 font-primary font-normal text-base leading-[150%] tracking-[0.2px] text-foreground">
+      <p className="flex-1 font-primary font-normal text-base leading-normal tracking-normal text-foreground">
         {title}
       </p>
       <Button variant="ghost" size="icon-sm" className="text-foreground hover:text-foreground/80 shrink-0 h-5 w-5">

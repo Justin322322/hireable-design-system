@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import { Icon, type IconName } from "./icon"
 
 const fieldNoteVariants = cva(
-  "flex flex-row items-start p-4 gap-4 w-full rounded-lg font-secondary text-sm leading-[120%] tracking-[0.2px]",
+  "flex flex-row items-start p-4 gap-4 w-full rounded-lg font-secondary text-sm leading-tight tracking-normal",
   {
     variants: {
       variant: {

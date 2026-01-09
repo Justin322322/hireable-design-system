@@ -58,7 +58,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
         </div>
         {capsLockActive && (
           <div
-            className="mt-2 font-secondary text-sm tracking-[0.2px] text-[var(--status-warning-text-strong)]"
+            className="mt-2 font-secondary text-sm tracking-normal text-[var(--status-warning-text-strong)]"
             role="alert"
             aria-live="polite"
           >

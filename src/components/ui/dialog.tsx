@@ -96,7 +96,7 @@ const DialogTitle = React.forwardRef<
     ref={ref}
     className={cn(
       // Figma: Inter, 600 weight, 20px, line-height 150%, letter-spacing 0.4px
-      "font-secondary text-xl font-semibold leading-[150%] tracking-[0.4px] text-foreground",
+      "font-secondary text-xl font-semibold leading-normal tracking-wide text-foreground",
       className
     )}
     {...props}
@@ -112,7 +112,7 @@ const DialogDescription = React.forwardRef<
     ref={ref}
     className={cn(
       // Figma: Inter, 400 weight, 14px, line-height 120%, letter-spacing 0.2px
-      "font-secondary text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground",
+      "font-secondary text-sm font-normal leading-tight tracking-normal text-muted-foreground",
       className
     )}
     {...props}

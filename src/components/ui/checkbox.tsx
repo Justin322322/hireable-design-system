@@ -13,21 +13,21 @@ const sizeConfig = {
     radius: "rounded-[3.2px]",
     iconSize: 16 as const,
     gap: "gap-2",
-    labelText: "text-sm font-secondary leading-[1.2] tracking-[0.2px]",
+    labelText: "text-sm font-secondary leading-tight tracking-normal",
   },
   md: {
     box: "size-6",
     radius: "rounded",
     iconSize: 20 as const,
     gap: "gap-2",
-    labelText: "text-base font-nunito leading-normal tracking-[0.2px]",
+    labelText: "text-base font-nunito leading-normal tracking-normal",
   },
   lg: {
     box: "size-7",
     radius: "rounded",
     iconSize: 24 as const,
     gap: "gap-3",
-    labelText: "text-base font-nunito leading-normal tracking-[0.2px]",
+    labelText: "text-base font-nunito leading-normal tracking-normal",
   },
 };
 

@@ -70,7 +70,7 @@ CandidateCard.displayName = "CandidateCard";
 const ProfileDrawerHeader: React.FC<{ title?: string }> = ({ title = "Talent Profile" }) => (
   <div className="flex flex-row justify-between items-start px-6 py-4 w-full h-16 border-b border-neutral-300 shrink-0">
     <div className="flex flex-row items-center gap-2 flex-1">
-      <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-[#181D27]">
+      <span className="font-semibold text-xl leading-normal tracking-wide text-foreground">
         {title}
       </span>
     </div>
@@ -119,7 +119,7 @@ const CandidateInfo: React.FC<{ data: CandidateProfile }> = ({ data }) => (
       <div className="flex gap-2 items-center">
         <Button
           variant="secondary"
-          className="h-9 px-3 py-2 bg-[#ccedff] text-[#006593] text-xs font-medium capitalize rounded-lg hover:bg-[#b8e4ff] shadow-none"
+          className="h-9 px-3 py-2 text-xs font-medium capitalize rounded-lg shadow-none"
         >
           Invite to interview
         </Button>
@@ -130,10 +130,10 @@ const CandidateInfo: React.FC<{ data: CandidateProfile }> = ({ data }) => (
     </div>
 
     <div className="flex flex-col gap-2 w-full">
-      <h2 className="font-semibold text-[32px] leading-[150%] text-foreground font-['DM_Sans']">
+      <h2 className="font-semibold text-3xl leading-normal text-foreground font-sans">
         {data.name}
       </h2>
-      <div className="flex gap-2 items-center flex-wrap text-sm text-secondary-foreground tracking-[0.2px]">
+      <div className="flex gap-2 items-center flex-wrap text-sm text-secondary-foreground tracking-normal">
         <span>{data.role}</span>
         <span>•</span>
         <span>{data.salary}</span>
@@ -145,7 +145,7 @@ const CandidateInfo: React.FC<{ data: CandidateProfile }> = ({ data }) => (
     </div>
 
     <div className="py-1">
-      <Badge className="h-6 px-2 py-2 bg-[#eef9f2] text-[#27ae60] text-xs font-normal rounded-full border-0">
+      <Badge variant="complete" className="h-6 px-2 py-2 text-xs font-normal rounded-full border-0">
         {data.aiMatch?.percentage || 80}% matched
       </Badge>
     </div>
@@ -158,10 +158,10 @@ const CandidateInfo: React.FC<{ data: CandidateProfile }> = ({ data }) => (
 
 const BioSection: React.FC<{ bio: string }> = ({ bio }) => (
   <div className="flex flex-col gap-4 w-full">
-    <h3 className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+    <h3 className="font-semibold text-base leading-normal tracking-normal text-foreground">
       Bio
     </h3>
-    <p className="text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+    <p className="text-sm leading-tight tracking-normal text-foreground">
       {bio}
     </p>
   </div>
@@ -184,7 +184,7 @@ const defaultTraits: { label: string; variant: WorktraitVariant; icon: React.Rea
 
 const WorkplaceTagsSection: React.FC = () => (
   <div className="flex flex-col gap-4 w-full">
-    <h3 className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+    <h3 className="font-semibold text-base leading-normal tracking-normal text-foreground">
       Workplace Tags
     </h3>
     <div className="flex flex-wrap gap-2 w-full">
@@ -207,7 +207,7 @@ const WorkplaceTagsSection: React.FC = () => (
 
 const LinksSection: React.FC<{ links?: string[] }> = ({ links = ["LinkedIn Profile", "My Portfolio", "My Website"] }) => (
   <div className="flex flex-col gap-4 w-full">
-    <h3 className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+    <h3 className="font-semibold text-base leading-normal tracking-normal text-foreground">
       Links
     </h3>
     <div className="flex gap-2 flex-wrap">
@@ -229,7 +229,7 @@ const LinksSection: React.FC<{ links?: string[] }> = ({ links = ["LinkedIn Profi
 
 const SkillsSection: React.FC<{ skills: string[] }> = ({ skills }) => (
   <div className="flex flex-col gap-4 w-full">
-    <h3 className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+    <h3 className="font-semibold text-base leading-normal tracking-normal text-foreground">
       Skills
     </h3>
     <div className="flex flex-wrap gap-2">
@@ -267,22 +267,22 @@ const StarRating: React.FC<{ rating: number; maxRating?: number }> = ({ rating, 
 const PerformanceCard: React.FC<{ review: PerformanceReview }> = ({ review }) => (
   <div className="flex flex-col gap-3 p-6 bg-background w-full">
     <div className="flex gap-2 items-center w-full">
-      <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+      <span className="font-semibold text-xl leading-normal tracking-wide text-foreground">
         {review.role}
       </span>
       {review.isTest && (
-        <Badge className="h-6 px-2 py-1 bg-[#fff5ec] text-[#ff8112] text-xs font-normal rounded border border-[#ff8112]">
+        <Badge variant="atrisk" className="h-6 px-2 py-1 text-xs font-normal rounded">
           TEST
         </Badge>
       )}
     </div>
     <div className="flex gap-6 items-center">
-      <span className="text-sm leading-[1.2] tracking-[0.2px] text-secondary-foreground">
+      <span className="text-sm leading-tight tracking-normal text-secondary-foreground">
         {review.date}
       </span>
       <StarRating rating={review.rating} />
     </div>
-    <p className="text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+    <p className="text-sm leading-tight tracking-normal text-foreground">
       {review.review}
     </p>
   </div>
@@ -319,7 +319,7 @@ const PerformanceHistorySection: React.FC<{ reviews?: PerformanceReview[] }> = (
   reviews = defaultPerformanceHistory,
 }) => (
   <div className="flex flex-col gap-4 w-full">
-    <h3 className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+    <h3 className="font-semibold text-base leading-normal tracking-normal text-foreground">
       Performance History
     </h3>
     <div className="flex flex-col w-full">
@@ -345,7 +345,7 @@ const ReferenceSection: React.FC<{ references?: string[] }> = ({
   references = ["Maria Dela Cruz", "Josefina Aquino", "Manuel Lopez"] 
 }) => (
   <div className="flex flex-col gap-4 w-full">
-    <h3 className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+    <h3 className="font-semibold text-base leading-normal tracking-normal text-foreground">
       Reference
     </h3>
     <div className="flex gap-2 flex-wrap">

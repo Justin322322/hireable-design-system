@@ -56,14 +56,14 @@ export default function AvatarPage() {
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="md">
                   <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
-                  <AvatarFallback className="text-[10px]">JD</AvatarFallback>
+                  <AvatarFallback className="text-xs">JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Medium (24px)</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="sm">
                   <AvatarImage src="/images/john-doe.svg" alt="John Doe" />
-                  <AvatarFallback className="text-[8px]">JD</AvatarFallback>
+                  <AvatarFallback className="text-xs">JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Small (16px)</span>
               </div>
@@ -85,12 +85,12 @@ export default function AvatarPage() {
 {/* Medium - 24px */}
 <Avatar size="md">
   <AvatarImage src="/avatar.png" alt="User" />
-  <AvatarFallback className="text-[10px]">VC</AvatarFallback>
+  <AvatarFallback className="text-xs">VC</AvatarFallback>
 </Avatar>
 {/* Small - 16px */}
 <Avatar size="sm">
   <AvatarImage src="/avatar.png" alt="User" />
-  <AvatarFallback className="text-[8px]">GR</AvatarFallback>
+  <AvatarFallback className="text-xs">GR</AvatarFallback>
 </Avatar>`}
             language="tsx"
           />
@@ -111,13 +111,13 @@ export default function AvatarPage() {
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="md">
-                  <AvatarFallback className="text-[10px]">JD</AvatarFallback>
+                  <AvatarFallback className="text-xs">JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Medium</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar size="sm">
-                  <AvatarFallback className="text-[8px]">JD</AvatarFallback>
+                  <AvatarFallback className="text-xs">JD</AvatarFallback>
                 </Avatar>
                 <span className="text-xs text-muted-foreground">Small</span>
               </div>
@@ -134,10 +134,10 @@ export default function AvatarPage() {
   <AvatarFallback>AB</AvatarFallback>
 </Avatar>
 <Avatar size="md">
-  <AvatarFallback className="text-[10px]">CD</AvatarFallback>
+  <AvatarFallback className="text-xs">CD</AvatarFallback>
 </Avatar>
 <Avatar size="sm">
-  <AvatarFallback className="text-[8px]">EF</AvatarFallback>
+  <AvatarFallback className="text-xs">EF</AvatarFallback>
 </Avatar>`}
             language="tsx"
           />

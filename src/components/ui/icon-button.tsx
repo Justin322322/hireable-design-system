@@ -121,7 +121,7 @@ const SaveButton = React.forwardRef<HTMLButtonElement, SaveButtonProps>(
         icon="bookmark"
         aria-label={label}
         filled={saved}
-        className={cn("text-[#00A7F8] hover:text-[#00A7F8]", className)}
+        className={cn("text-client hover:text-client", className)}
         {...props}
       />
     )

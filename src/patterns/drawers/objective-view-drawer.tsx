@@ -89,7 +89,7 @@ interface ViewDrawerHeaderProps {
 const ViewDrawerHeader: React.FC<ViewDrawerHeaderProps> = ({ title, updateMethod = "default" }) => (
   <div className="flex flex-row justify-between items-start px-6 py-4 w-full h-16 border-b border-neutral-300 shrink-0">
     <div className="flex flex-row items-center gap-2 flex-1">
-      <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-[#181D27]">
+      <span className="font-semibold text-xl leading-normal tracking-wide text-foreground">
         {title}
       </span>
       <Badge className="h-6 px-2 py-2 bg-neutral-100 text-secondary-foreground text-xs font-normal rounded-full border-0">
@@ -132,14 +132,14 @@ interface KeyResultItemCardProps {
 const KeyResultItemCard: React.FC<KeyResultItemCardProps> = ({ item }) => (
   <div className="flex items-center gap-1 px-4 py-4 w-full bg-background border border-neutral-300 rounded-lg">
     <div className="flex items-center gap-2 flex-1">
-      <span className="font-semibold text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+      <span className="font-semibold text-sm leading-tight tracking-normal text-foreground">
         {item.title}
       </span>
       <Badge className="h-6 px-2 py-2 bg-neutral-100 text-secondary-foreground text-xs font-normal rounded-full border-0">
         {updateMethodLabels[item.updateMethod]}
       </Badge>
       {item.updateMethod === "automatic" && item.progress && (
-        <span className="text-sm leading-[1.2] tracking-[0.2px] text-secondary-foreground">
+        <span className="text-sm leading-tight tracking-normal text-secondary-foreground">
           {item.progress}
         </span>
       )}
@@ -157,7 +157,7 @@ interface KeyResultsSectionProps {
 
 const KeyResultsSection: React.FC<KeyResultsSectionProps> = ({ keyResults }) => (
   <div className="flex flex-col gap-4 w-full">
-    <h3 className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+    <h3 className="font-semibold text-base leading-normal tracking-normal text-foreground">
       Key results
     </h3>
     <div className="flex flex-col gap-2 w-full">
@@ -186,7 +186,7 @@ const ManualInputSection: React.FC<ManualInputSectionProps> = ({
   <div className="flex flex-col gap-4 w-full">
     <div className="flex gap-2 w-full">
       <div className="flex flex-col gap-2 w-[180px] shrink-0">
-        <Label className="font-semibold text-sm leading-[1.2] tracking-[0.2px] text-neutral-300">
+        <Label className="font-semibold text-sm leading-tight tracking-normal text-neutral-300">
           Operator
         </Label>
         <Select defaultValue="gte" disabled>
@@ -200,7 +200,7 @@ const ManualInputSection: React.FC<ManualInputSectionProps> = ({
       </div>
 
       <div className="flex flex-col gap-2 flex-1">
-        <Label className="font-semibold text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+        <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
           Measurement
         </Label>
         <Select defaultValue={measurement.toLowerCase()} disabled>
@@ -220,14 +220,14 @@ const ManualInputSection: React.FC<ManualInputSectionProps> = ({
       </div>
 
       <div className="flex flex-col gap-2 flex-1">
-        <Label className="font-semibold text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+        <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
           Starting value
         </Label>
         <Input value={startingValue} disabled className="w-full h-11 opacity-70" />
       </div>
 
       <div className="flex flex-col gap-2 flex-1">
-        <Label className="font-semibold text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+        <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
           Target value
         </Label>
         <Input value={targetValue} disabled className="w-full h-11 opacity-70" />
@@ -236,7 +236,7 @@ const ManualInputSection: React.FC<ManualInputSectionProps> = ({
 
     <div className="flex items-center gap-3">
       <Switch disabled />
-      <Label className="font-normal text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+      <Label className="font-normal text-sm leading-tight tracking-normal text-foreground">
         Add operator based targets
       </Label>
     </div>
@@ -254,7 +254,7 @@ interface TaskItemCardProps {
 const TaskItemCard: React.FC<TaskItemCardProps> = ({ item }) => (
   <div className="flex items-center gap-1 px-4 py-4 w-full bg-background border border-neutral-300 rounded-lg">
     <div className="flex items-center gap-2 flex-1">
-      <span className="font-semibold text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+      <span className="font-semibold text-sm leading-tight tracking-normal text-foreground">
         {item.title}
       </span>
       <Badge className="h-6 px-2 py-2 bg-neutral-100 text-secondary-foreground text-xs font-normal rounded-full border-0">
@@ -274,7 +274,7 @@ interface TasksSectionProps {
 
 const TasksSection: React.FC<TasksSectionProps> = ({ tasks }) => (
   <div className="flex flex-col gap-4 w-full">
-    <h3 className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+    <h3 className="font-semibold text-base leading-normal tracking-normal text-foreground">
       Tasks
     </h3>
     <div className="flex flex-col gap-2 w-full">
@@ -324,17 +324,17 @@ export function ObjectiveViewDrawer({
 
               {/* Title */}
               <div className="flex flex-col gap-2 w-full">
-                <h2 className="font-semibold text-2xl leading-[150%] tracking-[0.2px] text-foreground font-['DM_Sans']">
+                <h2 className="font-semibold text-2xl leading-normal tracking-normal text-foreground font-sans">
                   {data.title}
                 </h2>
               </div>
 
               {/* Description */}
               <div className="flex flex-col gap-4 w-full">
-                <h3 className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+                <h3 className="font-semibold text-base leading-normal tracking-normal text-foreground">
                   Description
                 </h3>
-                <p className="text-sm leading-[1.2] tracking-[0.2px] text-foreground">
+                <p className="text-sm leading-tight tracking-normal text-foreground">
                   {data.description}
                 </p>
               </div>

@@ -52,8 +52,8 @@ function WorktraitTag({
   
   // Text styling based on Figma specs
   const textClasses = isLarge
-    ? "font-nunito font-medium text-sm leading-[1.2] tracking-[0.2px] uppercase text-foreground flex-none whitespace-nowrap"
-    : "font-secondary font-normal text-xs leading-[1.2] tracking-[0.2px] text-foreground flex-none whitespace-nowrap";
+    ? "font-nunito font-medium text-sm leading-tight tracking-normal uppercase text-foreground flex-none whitespace-nowrap"
+    : "font-secondary font-normal text-xs leading-tight tracking-normal text-foreground flex-none whitespace-nowrap";
 
   return (
     <div

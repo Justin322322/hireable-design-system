@@ -71,10 +71,10 @@ const RadioCard = React.forwardRef<HTMLButtonElement, RadioCardProps>(
       {...props}
     >
       <div className="flex flex-col items-start p-4 gap-1 w-full bg-background rounded">
-        <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+        <span className="font-semibold text-sm leading-tight tracking-normal text-foreground">
           {title}
         </span>
-        <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+        <span className="text-sm font-normal leading-tight tracking-normal text-muted-foreground">
           {description}
         </span>
       </div>

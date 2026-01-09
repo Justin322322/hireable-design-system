@@ -113,15 +113,15 @@ const RadioGroupItem = React.forwardRef<
       </span>
       {hasDescription ? (
         <span className="flex flex-col gap-0.5">
-          <span className={cn("font-secondary leading-normal tracking-[0.2px] text-foreground", config.labelText)}>
+          <span className={cn("font-secondary leading-normal tracking-normal text-foreground", config.labelText)}>
             {label}
           </span>
-          <span className="font-secondary text-sm leading-[1.2] tracking-[0.2px] text-muted-foreground">
+          <span className="font-secondary text-sm leading-tight tracking-normal text-muted-foreground">
             {description}
           </span>
         </span>
       ) : (
-        <span className={cn("font-secondary leading-[1.2] tracking-[0.2px] text-foreground", config.labelText)}>
+        <span className={cn("font-secondary leading-tight tracking-normal text-foreground", config.labelText)}>
           {label}
         </span>
       )}

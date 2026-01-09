@@ -105,7 +105,7 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
         >
           {/* Header */}
           <DialogHeader className="flex flex-row justify-between items-center self-stretch p-0 h-8">
-            <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+            <DialogTitle className="font-semibold text-xl leading-normal tracking-wide text-foreground">
               Post a Job
             </DialogTitle>
             
@@ -138,10 +138,10 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
               )}
             >
               <div className="flex flex-col items-start gap-1 flex-1">
-                <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-neutral-300">
+                <span className="font-semibold text-sm leading-tight tracking-normal text-neutral-300">
                   Full-time (Coming Soon)
                 </span>
-                <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-neutral-300">
+                <span className="text-sm font-normal leading-tight tracking-normal text-neutral-300">
                   Hire for a long-term role with defined responsibilities, strong collaboration, and room for growth.
                 </span>
               </div>
@@ -158,10 +158,10 @@ export const PostJobModal = React.forwardRef<HTMLDivElement, PostJobModalProps>(
               )}
             >
               <div className="flex flex-col items-start gap-1 flex-1">
-                <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                <span className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                   Test (30-60-90 Day)
                 </span>
-                <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+                <span className="text-sm font-normal leading-tight tracking-normal text-muted-foreground">
                   Run a paid, short-term trial on real work to evaluate performance and fit before committing to a full-time hire.
                 </span>
               </div>
@@ -218,7 +218,7 @@ export const PostJobModalPreview: React.FC<PostJobModalPreviewProps> = ({
     >
       {/* Header */}
       <div className="flex flex-row justify-between items-center self-stretch p-0 h-8 w-full">
-        <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground font-['Inter']">
+        <span className="font-semibold text-xl leading-normal tracking-wide text-foreground font-secondary">
           Post a Job
         </span>
         
@@ -241,10 +241,10 @@ export const PostJobModalPreview: React.FC<PostJobModalPreviewProps> = ({
         {/* Full-time Option (Disabled) */}
         <label className="box-border flex flex-row items-start p-4 gap-6 w-full rounded-lg border border-neutral-muted cursor-not-allowed">
           <div className="flex flex-col items-start gap-1 flex-1">
-            <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-neutral-300">
+            <span className="font-semibold text-sm leading-tight tracking-normal text-neutral-300">
               Full-time (Coming Soon)
             </span>
-            <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-neutral-300">
+            <span className="text-sm font-normal leading-tight tracking-normal text-neutral-300">
               Hire for a long-term role with defined responsibilities, strong collaboration, and room for growth.
             </span>
           </div>
@@ -254,10 +254,10 @@ export const PostJobModalPreview: React.FC<PostJobModalPreviewProps> = ({
         {/* Test 30-60-90 Option (Selected) */}
         <label className="box-border flex flex-row items-start p-4 gap-6 w-full rounded-lg border border-button-primary-default cursor-pointer">
           <div className="flex flex-col items-start gap-1 flex-1">
-            <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+            <span className="font-semibold text-sm leading-tight tracking-normal text-foreground">
               Test (30-60-90 Day)
             </span>
-            <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+            <span className="text-sm font-normal leading-tight tracking-normal text-muted-foreground">
               Run a paid, short-term trial on real work to evaluate performance and fit before committing to a full-time hire.
             </span>
           </div>

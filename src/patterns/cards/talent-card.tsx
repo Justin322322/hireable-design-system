@@ -144,10 +144,10 @@ export const TalentCard = React.forwardRef<HTMLDivElement, TalentCardProps>(
 
         {/* Name + Role */}
         <div className="flex flex-col items-start gap-1 flex-1">
-          <span className="font-secondary font-semibold text-sm text-foreground leading-[120%] tracking-[0.2px]">
+          <span className="font-secondary font-semibold text-sm text-foreground leading-tight tracking-normal">
             {name}
           </span>
-          <span className="font-secondary font-normal text-xs text-text-tertiary leading-[120%] tracking-[0.2px]">
+          <span className="font-secondary font-normal text-xs text-text-tertiary leading-tight tracking-normal">
             {role}
           </span>
         </div>

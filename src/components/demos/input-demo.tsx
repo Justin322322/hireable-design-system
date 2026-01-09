@@ -103,7 +103,7 @@ export default async function InputPage() {
                 type="text"
                 className="border-border-error focus-visible:border-border-error"
               />
-              <span className="font-secondary text-sm text-destructive tracking-[0.2px]">
+              <span className="font-secondary text-sm text-destructive tracking-normal">
                 Username is required
               </span>
             </div>
@@ -119,7 +119,7 @@ export default async function InputPage() {
     type="text"
     className="border-border-error focus-visible:border-border-error"
   />
-  <span className="font-secondary text-sm text-destructive tracking-[0.2px]">
+  <span className="font-secondary text-sm text-destructive tracking-normal">
     Username is required
   </span>
 </div>`}

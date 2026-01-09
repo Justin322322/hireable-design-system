@@ -44,10 +44,10 @@ export const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
   return (
     <div className={cn("flex flex-row items-center gap-3", className)}>
       <Icon icon={icon} size={20} className="text-muted-foreground" />
-      <span className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-muted-foreground">
+      <span className="font-semibold text-sm leading-tight tracking-normal text-muted-foreground">
         {label}
       </span>
-      <span className="text-sm leading-[120%] tracking-[0.2px] text-muted-foreground">
+      <span className="text-sm leading-tight tracking-normal text-muted-foreground">
         {current} / {total}
       </span>
       <ProgressBar variant={variant} value={percentage} width={barWidth} />

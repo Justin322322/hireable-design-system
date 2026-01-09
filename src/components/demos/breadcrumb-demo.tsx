@@ -157,7 +157,7 @@ export default function BreadcrumbDemoPage() {
                 <ol className="flex items-center gap-1">
                   {/* Home */}
                   <li className="flex items-center gap-1">
-                    <a href="#" className="font-secondary text-sm leading-[1.2] tracking-[0.2px] text-muted-foreground hover:text-foreground transition-colors py-1">
+                    <a href="#" className="font-secondary text-sm leading-tight tracking-normal text-muted-foreground hover:text-foreground transition-colors py-1">
                       Home
                     </a>
                     <span role="presentation" aria-hidden="true" className="flex items-center text-icon">
@@ -187,7 +187,7 @@ export default function BreadcrumbDemoPage() {
                   </li>
                   {/* Current Page */}
                   <li className="flex items-center gap-1">
-                    <span aria-current="page" className="font-secondary text-sm leading-[1.2] tracking-[0.2px] text-foreground font-normal py-1">
+                    <span aria-current="page" className="font-secondary text-sm leading-tight tracking-normal text-foreground font-normal py-1">
                       Current Page
                     </span>
                   </li>

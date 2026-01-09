@@ -142,10 +142,10 @@ export const ProfileCard = React.forwardRef<HTMLDivElement, ProfileCardProps>(
 
             {/* Name and role */}
             <div className="flex flex-col items-start gap-1 flex-1 min-w-0">
-              <p className="font-semibold text-sm text-foreground leading-[120%] truncate w-full">
+              <p className="font-semibold text-sm text-foreground leading-tight truncate w-full">
                 {name}
               </p>
-              <p className="font-normal text-xs text-foreground leading-[120%] truncate w-full">
+              <p className="font-normal text-xs text-foreground leading-tight truncate w-full">
                 {role}
               </p>
             </div>
@@ -166,7 +166,7 @@ export const ProfileCard = React.forwardRef<HTMLDivElement, ProfileCardProps>(
                   variant="complete"
                   size="sm"
                   shape="badge"
-                  className="h-5 px-2 py-1 text-[10px] uppercase"
+                  className="h-5 px-2 py-1 text-xs uppercase"
                 >
                   {normalizedMatchPercentage}% matched
                 </Badge>

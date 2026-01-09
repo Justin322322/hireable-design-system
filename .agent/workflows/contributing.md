@@ -157,7 +157,152 @@ All tokens are defined in `src/app/globals.css`.
 
 ---
 
+## Component States
+
+Every interactive component should support these states where applicable:
+
+| State | Token Pattern | Visual Indicator |
+|-------|---------------|------------------|
+| Default | `--{component}-{variant}-default` | Base appearance |
+| Hover | `--{component}-{variant}-hover` | Subtle background/color change |
+| Focus | `--border-focused` / `ring` | Focus ring or border |
+| Active/Pressed | `--{component}-{variant}-active` | Pressed appearance |
+| Disabled | `--{component}-{variant}-disabled` | Reduced opacity, muted colors |
+| Loading | — | Spinner or skeleton |
+| Error | `--border-error` | Red border/text |
+| Success | `--status-success` | Green indicator |
+
+### State Implementation Example
+
+```tsx
+const buttonVariants = cva("...", {
+  variants: {
+    variant: {
+      primary: [
+        "bg-button-primary-default text-button-primary-foreground",
+        "hover:bg-button-primary-hover",
+        "active:bg-button-primary-active",
+        "focus-visible:ring-2 focus-visible:ring-ring",
+        "disabled:bg-button-primary-disabled disabled:text-button-primary-disabled-foreground",
+      ].join(" "),
+    },
+  },
+});
+```
+
+---
+
+## Props Documentation Template
+
+Document all component props using TypeScript interfaces with JSDoc comments:
+
+```tsx
+/**
+ * Button component for user actions.
+ *
+ * @example
+ * <Button variant="primary" size="lg">Click me</Button>
+ *
+ * @see {@link accessibility.md} for keyboard and screen reader requirements
+ */
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Visual style variant
+   * @default "primary"
+   */
+  variant?: "primary" | "secondary" | "tertiary" | "destructive";
+
+  /**
+   * Size of the button
+   * @default "default"
+   */
+  size?: "sm" | "default" | "lg" | "icon";
+
+  /**
+   * Shows loading spinner and disables interaction
+   * @default false
+   */
+  isLoading?: boolean;
+
+  /**
+   * Icon to display before button text
+   */
+  leftIcon?: React.ReactNode;
+
+  /**
+   * Icon to display after button text
+   */
+  rightIcon?: React.ReactNode;
+}
+```
+
+### Required Props Documentation
+
+Every component interface should include:
+
+1. **Extends native HTML attributes** where applicable
+2. **JSDoc `@example`** showing basic usage
+3. **Default values** documented with `@default`
+4. **Required props** clearly marked (no `?`)
+
+---
+
+## Accessibility Checklist
+
+Before shipping any component, verify accessibility requirements from `accessibility.md`:
+
+### Keyboard Navigation
+
+- [ ] All interactive elements are focusable (`tabIndex={0}` or native focusable)
+- [ ] Focus order follows visual/logical order
+- [ ] Focus indicator is visible (ring or outline)
+- [ ] `Enter`/`Space` activates buttons and controls
+- [ ] `Escape` closes modals, drawers, dropdowns
+- [ ] Arrow keys navigate composite widgets (menus, tabs, radio groups)
+
+### Screen Reader Support
+
+- [ ] Component has appropriate `role` attribute
+- [ ] Buttons have accessible labels (`aria-label` for icon-only)
+- [ ] State changes are announced (`aria-live`, `aria-expanded`, `aria-selected`)
+- [ ] Form fields have associated labels (`htmlFor`/`id` or wrapping `<label>`)
+- [ ] Error messages linked with `aria-describedby`
+- [ ] Decorative images have `aria-hidden="true"` or empty `alt=""`
+
+### Visual Accessibility
+
+- [ ] Color contrast meets WCAG AA (4.5:1 text, 3:1 UI)
+- [ ] Information not conveyed by color alone
+- [ ] Focus indicators visible on all backgrounds
+- [ ] Text remains readable at 200% zoom
+
+### Motion
+
+- [ ] Animations respect `prefers-reduced-motion`
+- [ ] No content flashes more than 3 times/second
+
+### Required ARIA by Component Type
+
+| Component | Required ARIA |
+|-----------|---------------|
+| Button (icon-only) | `aria-label="Description"` |
+| Modal/Dialog | `role="dialog"`, `aria-modal="true"`, `aria-labelledby` |
+| Drawer | `role="dialog"`, `aria-modal="true"`, `aria-labelledby` |
+| Dropdown | `aria-haspopup="menu"`, `aria-expanded` |
+| Menu item | `role="menuitem"` |
+| Tabs | `role="tablist"`, tabs: `role="tab"`, `aria-selected` |
+| Tab panel | `role="tabpanel"`, `aria-labelledby` |
+| Alert/Toast | `role="alert"` or `role="status"` |
+| Progress | `role="progressbar"`, `aria-valuenow`, `aria-valuemin`, `aria-valuemax` |
+| Switch | `role="switch"`, `aria-checked` |
+| Form field (error) | `aria-invalid="true"`, `aria-describedby="error-id"` |
+
+---
+
 ## Checklist Before Committing
+
+### File Structure
 
 - [ ] Component created in `src/components/ui/`
 - [ ] Exported from barrel `src/components/ui/index.ts`
@@ -165,5 +310,24 @@ All tokens are defined in `src/app/globals.css`.
 - [ ] Registered in `src/config/component-registry.ts`
 - [ ] Added to sidebar in `src/config/docs.ts`
 - [ ] Reference added to `DESIGN_SYSTEM_OUTPUT.md`
+
+### Code Quality
+
 - [ ] Uses design tokens (no hardcoded colors)
 - [ ] Uses barrel imports
+- [ ] Props documented with TypeScript + JSDoc
+- [ ] All states implemented (hover, focus, disabled, etc.)
+
+### Accessibility (see checklist above)
+
+- [ ] Keyboard navigation works
+- [ ] Screen reader announces correctly
+- [ ] Color contrast passes
+- [ ] Reduced motion supported (if animated)
+
+### Testing
+
+- [ ] Component renders without errors
+- [ ] All variants/sizes render correctly
+- [ ] Demo page shows all use cases
+- [ ] Tested at multiple breakpoints

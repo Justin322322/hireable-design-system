@@ -88,7 +88,7 @@ function SidebarMenuItemComponent({ item, isCollapsed }: { item: SidebarMenuItem
       </div>
       {!isCollapsed && (
         <span 
-          className="flex-1 text-sm font-secondary leading-[1.2] tracking-[0.2px] text-foreground truncate"
+          className="flex-1 text-sm font-secondary leading-tight tracking-normal text-foreground truncate"
         >
           {item.label}
         </span>
@@ -177,7 +177,7 @@ function SidebarProfile({ profile, isCollapsed }: { profile: SidebarUserProfile,
           ) : profile.initials ? (
             <div 
               className={cn(
-                "flex items-center justify-center size-9 rounded-full text-[12.6px] font-bold tracking-[0.18px] shrink-0",
+                "flex items-center justify-center size-9 rounded-full text-xs font-bold tracking-normal shrink-0",
                 profile.initialsColor
               )}
               aria-hidden="true"
@@ -191,10 +191,10 @@ function SidebarProfile({ profile, isCollapsed }: { profile: SidebarUserProfile,
           )}
           {!isCollapsed && (
             <div className="flex flex-col gap-1 overflow-hidden">
-              <span className="text-sm font-semibold font-secondary leading-[1.2] tracking-[0.2px] text-foreground truncate">
+              <span className="text-sm font-semibold font-secondary leading-tight tracking-normal text-foreground truncate">
                 {profile.name}
               </span>
-              <span className="text-xs font-secondary leading-[1.2] tracking-[0.2px] text-icon truncate">
+              <span className="text-xs font-secondary leading-tight tracking-normal text-icon truncate">
                 {profile.email}
               </span>
             </div>
@@ -229,7 +229,7 @@ function SidebarProfile({ profile, isCollapsed }: { profile: SidebarUserProfile,
             <div className="flex items-center justify-center size-6 text-icon">
               <Icon icon="person" size={20} />
             </div>
-            <span className="text-sm font-secondary leading-[1.2] tracking-[0.2px] text-foreground">
+            <span className="text-sm font-secondary leading-tight tracking-normal text-foreground">
               Profile
             </span>
           </button>
@@ -247,7 +247,7 @@ function SidebarProfile({ profile, isCollapsed }: { profile: SidebarUserProfile,
             <div className="flex items-center justify-center size-6 text-icon">
               <Icon icon="logout" size={20} />
             </div>
-            <span className="text-sm font-secondary leading-[1.2] tracking-[0.2px] text-foreground">
+            <span className="text-sm font-secondary leading-tight tracking-normal text-foreground">
               Log out
             </span>
           </button>

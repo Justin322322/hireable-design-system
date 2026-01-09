@@ -91,7 +91,7 @@ export const GoalCard = React.forwardRef<HTMLDivElement, GoalCardProps>(
             {badge && (
               <Badge
                 variant={badge.variant || "default"}
-                className="px-2 py-0.5 rounded-full text-[10px] font-medium whitespace-nowrap shrink-0"
+                className="px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap shrink-0"
               >
                 {badge.label}
               </Badge>
@@ -102,7 +102,7 @@ export const GoalCard = React.forwardRef<HTMLDivElement, GoalCardProps>(
           <div className="flex flex-col gap-2 w-full">
             {/* Progress percentage */}
             <div className="flex items-center">
-              <span className="font-semibold text-2xl text-foreground leading-[1.2]">
+              <span className="font-semibold text-2xl text-foreground leading-tight">
                 {clampedProgress}%
               </span>
             </div>
@@ -116,7 +116,7 @@ export const GoalCard = React.forwardRef<HTMLDivElement, GoalCardProps>(
                 {metrics.map((metric, index) => (
                   <span
                     key={index}
-                    className="text-xs text-neutral-600 leading-[1.2] tracking-[0.02em]"
+                    className="text-xs text-neutral-600 leading-tight tracking-[0.02em]"
                   >
                     {metric.current !== undefined && metric.total !== undefined
                       ? `${metric.current} of ${metric.total} ${metric.label}`

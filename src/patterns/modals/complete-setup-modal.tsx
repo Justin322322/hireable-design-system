@@ -111,10 +111,10 @@ export const CompleteSetupModal = React.forwardRef<HTMLDivElement, CompleteSetup
           {/* Header */}
           <DialogHeader className="flex flex-row justify-between items-start self-stretch p-0 gap-[21px]">
             <div className="flex flex-col items-start gap-1 flex-1">
-              <DialogTitle className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-foreground">
+              <DialogTitle className="font-semibold text-xl leading-normal tracking-wide text-foreground">
                 Complete Your Setup
               </DialogTitle>
-              <DialogDescription className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+              <DialogDescription className="text-sm font-normal leading-tight tracking-normal text-muted-foreground">
                 You need to complete the following requirements before publishing your job post.
               </DialogDescription>
             </div>
@@ -147,7 +147,7 @@ export const CompleteSetupModal = React.forwardRef<HTMLDivElement, CompleteSetup
             {infoMessage && (
               <div className="flex flex-row items-start p-4 gap-4 w-full bg-fieldnote-info-bg rounded-lg">
                 <Icon icon="info" size={20} className="text-fieldnote-info-text shrink-0" />
-                <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-fieldnote-info-text flex-1">
+                <span className="text-sm font-normal leading-tight tracking-normal text-fieldnote-info-text flex-1">
                   {infoMessage}
                 </span>
               </div>
@@ -196,10 +196,10 @@ const SetupCard: React.FC<SetupCardProps> = ({ title, description, onClick }) =>
       className="box-border flex flex-row items-center p-4 gap-6 w-full bg-white border border-neutral-muted rounded-lg cursor-pointer hover:border-neutral-400 transition-colors text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-button-primary-default focus-visible:ring-offset-2"
     >
       <div className="flex flex-col items-start gap-2 flex-1">
-        <span className="font-semibold text-base leading-[150%] tracking-[0.2px] text-foreground">
+        <span className="font-semibold text-base leading-normal tracking-normal text-foreground">
           {title}
         </span>
-        <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+        <span className="text-sm font-normal leading-tight tracking-normal text-muted-foreground">
           {description}
         </span>
       </div>
@@ -228,10 +228,10 @@ export const CompleteSetupModalPreview: React.FC<CompleteSetupModalPreviewProps>
       {/* Header */}
       <div className="flex flex-row justify-between items-start self-stretch p-0 gap-[21px]">
         <div className="flex flex-col items-start gap-1 flex-1">
-          <span className="font-semibold text-[20px] leading-[150%] tracking-[0.4px] text-foreground">
+          <span className="font-semibold text-xl leading-normal tracking-wide text-foreground">
             Complete Your Setup
           </span>
-          <span className="text-[14px] font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+          <span className="text-sm font-normal leading-tight tracking-normal text-muted-foreground">
             You need to complete the following requirements before publishing your job post.
           </span>
         </div>
@@ -255,10 +255,10 @@ export const CompleteSetupModalPreview: React.FC<CompleteSetupModalPreviewProps>
             className="box-border flex flex-row items-center p-4 gap-6 w-full bg-white border border-neutral-muted rounded-[8px]"
           >
             <div className="flex flex-col items-start gap-2 flex-1">
-              <span className="font-semibold text-[16px] leading-[150%] tracking-[0.2px] text-foreground">
+              <span className="font-semibold text-base leading-normal tracking-normal text-foreground">
                 {item.title}
               </span>
-              <span className="text-[14px] font-normal leading-[120%] tracking-[0.2px] text-muted-foreground">
+              <span className="text-sm font-normal leading-tight tracking-normal text-muted-foreground">
                 {item.description}
               </span>
             </div>
@@ -269,7 +269,7 @@ export const CompleteSetupModalPreview: React.FC<CompleteSetupModalPreviewProps>
         {/* Info Note */}
         <div className="flex flex-row items-start p-4 gap-4 w-full bg-fieldnote-info-bg rounded-lg">
           <Icon icon="info" size={20} className="text-fieldnote-info-text shrink-0" />
-          <span className="text-sm font-normal leading-[120%] tracking-[0.2px] text-fieldnote-info-text flex-1">
+          <span className="text-sm font-normal leading-tight tracking-normal text-fieldnote-info-text flex-1">
             Your job post has been saved as a draft. You can publish it once you complete the setup.
           </span>
         </div>

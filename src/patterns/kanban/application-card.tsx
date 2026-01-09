@@ -94,24 +94,24 @@ export const ApplicationCard = React.forwardRef<HTMLDivElement, ApplicationCardP
         <CardContent className="flex flex-col items-start gap-2 p-3">
           {/* Header with company and timestamp */}
           <div className="flex w-full items-center justify-between">
-            <p className="text-[10px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground truncate flex-1">
+            <p className="text-xs leading-tight font-normal tracking-normal text-muted-foreground truncate flex-1">
               {company}
             </p>
             {timestamp && (
-              <p className="text-[10px] leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground shrink-0 ml-2">
+              <p className="text-xs leading-tight font-normal tracking-normal text-muted-foreground shrink-0 ml-2">
                 {timestamp}
               </p>
             )}
           </div>
 
           {/* Position */}
-          <p className="w-full truncate text-base leading-normal font-semibold tracking-[0.2px] text-foreground">
+          <p className="w-full truncate text-base leading-normal font-semibold tracking-normal text-foreground">
             {position}
           </p>
 
           {/* Metadata */}
           {metadata.length > 0 && (
-            <div className="flex items-center gap-1.5 text-xs leading-[1.2] font-normal tracking-[0.2px] text-muted-foreground flex-wrap">
+            <div className="flex items-center gap-1.5 text-xs leading-tight font-normal tracking-normal text-muted-foreground flex-wrap">
               {metadata.map((item, index) => (
                 <React.Fragment key={index}>
                   {index > 0 && <span>•</span>}
@@ -129,7 +129,7 @@ export const ApplicationCard = React.forwardRef<HTMLDivElement, ApplicationCardP
           {badge && (
             <Badge
               variant={badge.matched ? "ontrack" : badge.variant || "default"}
-              className="px-2 py-1 text-xs leading-[1.2] font-normal tracking-[0.3px]"
+              className="px-2 py-1 text-xs leading-tight font-normal tracking-normal"
             >
               {badge.label}
             </Badge>
@@ -138,7 +138,7 @@ export const ApplicationCard = React.forwardRef<HTMLDivElement, ApplicationCardP
           {/* Footer */}
           {footer && (
             <div className="flex w-full items-center justify-between py-1">
-              <p className="text-xs leading-[1.2] font-normal tracking-[0.2px] text-foreground truncate flex-1">
+              <p className="text-xs leading-tight font-normal tracking-normal text-foreground truncate flex-1">
                 {footer.label || "—"}
               </p>
               {footer.action && (

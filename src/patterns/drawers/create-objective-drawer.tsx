@@ -102,7 +102,7 @@ const SortableKeyResultItem: React.FC<{ id: string; title: string; badgeText?: s
           <Icon icon="drag_indicator" size={20} className="text-muted-foreground group-hover:text-foreground" />
         </button>
         <div className="flex flex-row items-center gap-2.5 flex-1">
-          <span className="text-sm leading-normal tracking-[0.2px] text-foreground">
+          <span className="text-sm leading-normal tracking-normal text-foreground">
             {title}
           </span>
           {badgeText && (
@@ -203,7 +203,7 @@ export function CreateObjectiveDrawer({
         <div className="flex flex-col h-full bg-background overflow-hidden">
           {/* Header */}
           <div className="flex flex-row justify-between items-start px-6 py-4 w-full h-16 border-b border-neutral-300 shrink-0">
-            <span className="font-semibold text-xl leading-[150%] tracking-[0.4px] text-[#181D27]">
+            <span className="font-semibold text-xl leading-normal tracking-wide text-foreground">
               {drawerTitle}
             </span>
             <DrawerClose asChild>
@@ -219,7 +219,7 @@ export function CreateObjectiveDrawer({
             <Input size="lg" placeholder={labels.titlePlaceholder} defaultValue={initialTitle} className="w-full h-14" />
 
             <div className="flex flex-col items-start gap-2 w-full">
-              <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+              <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                 Description
               </Label>
               <Textarea placeholder="Write description here" defaultValue={initialDescription} className="w-full min-h-[131px]" />
@@ -227,7 +227,7 @@ export function CreateObjectiveDrawer({
 
             <div className="flex flex-col items-start gap-6 w-full">
               <div className="flex flex-col items-start gap-4 w-full">
-                <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                   Update method
                 </Label>
                 
@@ -276,7 +276,7 @@ export function CreateObjectiveDrawer({
                   <Button 
                     variant="secondary"
                     size="md"
-                    className="gap-2 bg-[#CCEDFF] hover:bg-[#B8E4FF] text-[#006593]"
+                    className="gap-2"
                     onClick={handleAddKeyResult}
                   >
                     <Icon icon="add" size={14} />
@@ -289,7 +289,7 @@ export function CreateObjectiveDrawer({
                 <div className="flex flex-col items-start gap-4 w-full">
                   <div className="flex flex-row items-start gap-2 w-full">
                     <div className="flex flex-col items-start gap-2 w-[180px] shrink-0">
-                      <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                      <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                         Operator
                       </Label>
                       <Select defaultValue="gte">
@@ -332,7 +332,7 @@ export function CreateObjectiveDrawer({
                     </div>
 
                     <div className="flex flex-col items-start gap-2 flex-1">
-                      <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                      <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                         Measurement
                       </Label>
                       <Select defaultValue="number">
@@ -352,14 +352,14 @@ export function CreateObjectiveDrawer({
                     </div>
 
                     <div className="flex flex-col items-start gap-2 flex-1">
-                      <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                      <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                         Starting value
                       </Label>
                       <Input placeholder="0" className="w-full h-11" />
                     </div>
 
                     <div className="flex flex-col items-start gap-2 flex-1">
-                      <Label className="font-semibold text-sm leading-[120%] tracking-[0.2px] text-foreground">
+                      <Label className="font-semibold text-sm leading-tight tracking-normal text-foreground">
                         Target value
                       </Label>
                       <Input placeholder="0" className="w-full h-11" />
@@ -371,7 +371,7 @@ export function CreateObjectiveDrawer({
                       checked={addOperatorTargets}
                       onCheckedChange={setAddOperatorTargets}
                     />
-                    <Label className="font-normal text-sm leading-[120%] tracking-[0.2px] text-foreground cursor-pointer">
+                    <Label className="font-normal text-sm leading-tight tracking-normal text-foreground cursor-pointer">
                       Add operator based targets
                     </Label>
                   </div>

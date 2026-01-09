@@ -142,14 +142,14 @@ export const EmptyStateCard = React.forwardRef<HTMLDivElement, EmptyStateCardPro
 
           {/* Label - only shown if label is provided */}
           {label && (
-            <span className="font-secondary font-normal text-xs text-button-secondary-foreground uppercase leading-[120%] tracking-[0.2px]">
+            <span className="font-secondary font-normal text-xs text-button-secondary-foreground uppercase leading-tight tracking-normal">
               {label}
             </span>
           )}
 
           {/* Title */}
           <h3 className={cn(
-            "font-secondary font-semibold text-base text-foreground leading-[150%] tracking-[0.2px]",
+            "font-secondary font-semibold text-base text-foreground leading-normal tracking-normal",
             effectiveAlign === "center" && "text-center"
           )}>
             {title}
@@ -157,7 +157,7 @@ export const EmptyStateCard = React.forwardRef<HTMLDivElement, EmptyStateCardPro
 
           {/* Description */}
           <p className={cn(
-            "font-secondary font-normal text-sm text-text-tertiary leading-[120%] tracking-[0.2px]",
+            "font-secondary font-normal text-sm text-text-tertiary leading-tight tracking-normal",
             effectiveAlign === "center" && "text-center"
           )}>
             {description}

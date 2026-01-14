@@ -53,7 +53,7 @@ export default function LoadingScreenPage() {
                 <LoadingScreen />
                 <Button 
                   variant="outline" 
-                  className="fixed bottom-20 left-1/2 -translate-x-1/2 z-60 bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-background/80 transition-colors"
+                  className="fixed bottom-20 left-1/2 -translate-x-1/2 z-[60] bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-background/80 transition-colors"
                   onClick={() => setLoading(false)}
                 >
                   Stop Loading (Esc)

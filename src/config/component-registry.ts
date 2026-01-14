@@ -28,6 +28,7 @@ import TabsDemo from "@/components/demos/tabs-demo";
 import ToastDemo from "@/components/demos/toast-demo";
 import ToggleDemo from "@/components/demos/toggle-demo";
 import ProgressBarDemo from "@/components/demos/progress-bar-demo";
+import LoadingScreenDemo from "@/components/demos/loading-screen-demo";
 
 export const componentRegistry: Record<string, React.ComponentType<object> | ((props: object) => Promise<React.JSX.Element>)> = {
   "avatar": AvatarDemo,
@@ -57,5 +58,6 @@ export const componentRegistry: Record<string, React.ComponentType<object> | ((p
   "description-box": DescriptionBoxDemo,
   "field-notes": FieldNotesDemo,
   "header": HeaderDemo,
+  "loading-screen": LoadingScreenDemo,
   "progress-bar": ProgressBarDemo,
 };
